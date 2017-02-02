@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- Type 별칭 미리 정의하기 -->
+	<typeAliases>
+		<typeAlias type="com.spring.dvd.users.dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.spring.dvd.test.testDto" alias="testDto"/>
+	</typeAliases>
+
+	<!-- sql 문을 정의하고 있는 xml 문서 정보 -->
+	<mappers>
+		<mapper resource="com/spring/dvd/mybatis/UsersMapper.xml"/>
+		<mapper resource="com/spring/dvd/mybatis/TestMapper.xml"/>
+	</mappers>
+</configuration>
+
+
+
+

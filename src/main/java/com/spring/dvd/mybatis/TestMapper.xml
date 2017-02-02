@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+	<insert id="insert" parameterType="testDto" >
+		INSERT INTO test1
+		VALUES(
+		#{num},
+		#{name}
+		)
+	</insert>
+	
+	<select id="getList" resultType="testDto">
+		SELECT num,name
+		FROM test1
+	</select>
+</mapper>
