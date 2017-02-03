@@ -5,4 +5,6 @@ import com.spring.dvd.generic.dao.GenericDao;
 
 public interface BasketDao extends GenericDao<BasketDto, String>{
 
+	int delete(BasketDto dto);
+	
 }
