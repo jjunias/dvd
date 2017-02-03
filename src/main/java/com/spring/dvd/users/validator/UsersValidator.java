@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 
 import com.spring.dvd.generic.validator.GenericValidator;
 
-
+@Component
 public class UsersValidator implements GenericValidator  {
 
 	@Override
