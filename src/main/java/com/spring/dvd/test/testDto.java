@@ -6,5 +6,5 @@ import com.spring.dvd.generic.dto.GenericDto;
 
 public class testDto extends GenericDto {
 	
-	List<Test2Dto> basket;
+
 }
