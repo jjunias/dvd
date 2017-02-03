@@ -10,24 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 //GenericController<T Dto 타입, K getDate 파라메터 타입,D Dao 타입 , S Service 타입 , V Validator 타입>
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.dvd.generic.dao.GenericDao;
 import com.spring.dvd.generic.service.GenericService;
 import com.spring.dvd.generic.validator.GenericValidator;
 
+
+
 public abstract class GenericController<T, K, D extends GenericDao<T, K>, S extends GenericService<T, K, D>, V extends GenericValidator> {
 	@Autowired
 	S service;
 	@Autowired
 	V validator;
-	@RequestMapping(value="/{id}/**/",params="catal=view")
-	public void CatalogForm(@PathVariable String id,Model model){
-		model.addAttribute("catalog",id);
-	}
+		
 	// 페이지 이동하는 요청에대한 맵핑
 	@RequestMapping(value = "/**/", params = "type=views")
-	public void MoveForm() {
+	public void MoveForm(String nation,Model model) {
+		if (nation != null) {
+			model.addAttribute("catalog", nation);
+		}
 	}
 
 	// insert
@@ -35,7 +38,6 @@ public abstract class GenericController<T, K, D extends GenericDao<T, K>, S exte
 	@RequestMapping("/insert")
 	@ResponseBody
 	public int Insert(@ModelAttribute T dto) {
-		System.out.println("hi");
 		return service.insert(dto);
 	}
 
@@ -53,13 +55,11 @@ public abstract class GenericController<T, K, D extends GenericDao<T, K>, S exte
 	public int Delete(@RequestParam K num) {
 		return service.delete(num);
 	}
-
 	// getData
 	@RequestMapping(value = "/**/", params = "type=data")
 	public void GetData(@RequestParam K data, Model model) {
 		model.addAttribute("dto", service.getData(data));
 	}
-
 	// getList
 	@RequestMapping(value = "/**/", params = "type=list")
 	public void GetList(Model model) {

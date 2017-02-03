@@ -7,12 +7,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.spring.dvd.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.spring.dvd.test.testDto" alias="testDto"/>
+		<typeAlias type="com.spring.dvd.movie.dto.DvdDto" alias="dvdDto"/>
 	</typeAliases>
 
 	<!-- sql 문을 정의하고 있는 xml 문서 정보 -->
 	<mappers>
 		<mapper resource="com/spring/dvd/mybatis/UsersMapper.xml"/>
 		<mapper resource="com/spring/dvd/mybatis/TestMapper.xml"/>
+		<mapper resource="com/spring/dvd/mybatis/DvdMapper.xml"/>
 	</mappers>
 </configuration>
 
