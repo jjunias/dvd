@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>한국 영화</title>
+<title>해외 영화</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
-<h3>한국 영화</h3>
-
+<h3>해외 영화</h3>
+<button onclick="location.href='admin/insert_form.do?type=views&national=overseas'">글쓰기</button>
 </body>
 </html>
