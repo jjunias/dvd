@@ -29,3 +29,13 @@ fileSize NUMBER NOT NULL
 
 DVD 시퀀스
 CREATE SEQUENCE Dvd_seq NOCACHE;
+
+dvd_num 값(외래키)
+title 제목
+content 내용
+score 평점
+
+create table basket(
+id varchar2(50) references TestUser(id) on delete cascade,
+num number references testProduct(num) on delete cascade);
+
