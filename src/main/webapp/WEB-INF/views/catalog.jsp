@@ -33,6 +33,7 @@
 			<li><a href="/dvd/home.do?type=list">로고</a></li>
 			<li><a href="/dvd/domestic/main.do?catal=view">국내 영화</a></li>
 			<li><a href="/dvd/overseas/main.do?catal=view">해외 영화</a></li>
+			<li><a href="/dvd/users/insert_form.do?type=views">회원가입</a></li>
 		</ul>
 	</div>
 	<div class="sub_catal">

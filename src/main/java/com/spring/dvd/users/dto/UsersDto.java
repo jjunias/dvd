@@ -3,95 +3,104 @@ package com.spring.dvd.users.dto;
 import com.spring.dvd.generic.dto.GenericDto;
 
 public class UsersDto extends GenericDto{
-	//  이름 , 생년월일 , 아이디 , 비밀번호 , 이메일 앞부분, 이메일 뒷부분 , 질문-답변(비밀번호 찾기)
-	String userName;
-	int userBirth;
-	String userId;
-	String userPwd;
-	String userEmailId;
-	String userEmail;
-	String userQuestion;
-	String userAnswer;
+	//  이름 , 아이디 , 비밀번호 , 이메일, 전화번호, 우편번호, 주소, 상세주소
+	private String name;
+	private String id;
+	private String pwd;
+	private String email;
+	private int phone;
+	private String addrNum;
+	private String addr;
+	private String addrDetail;
+	private String regdate;
 	
 	public UsersDto(){}
 
-	public UsersDto(String userName, int userBirth, String userId, String userPwd, String userEmailId, String userEmail,
-			String userQuestion, String userAnswer) {
+	public UsersDto(String name, String id, String pwd, String email, int phone, String addrNum, String addr,
+			String addrDetail, String regdate) {
 		super();
-		this.userName = userName;
-		this.userBirth = userBirth;
-		this.userId = userId;
-		this.userPwd = userPwd;
-		this.userEmailId = userEmailId;
-		this.userEmail = userEmail;
-		this.userQuestion = userQuestion;
-		this.userAnswer = userAnswer;
+		this.name = name;
+		this.id = id;
+		this.pwd = pwd;
+		this.email = email;
+		this.phone = phone;
+		this.addrNum = addrNum;
+		this.addr = addr;
+		this.addrDetail = addrDetail;
+		this.regdate = regdate;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getUserBirth() {
-		return userBirth;
+	public String getId() {
+		return id;
 	}
 
-	public void setUserBirth(int userBirth) {
-		this.userBirth = userBirth;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
-	public String getUserPwd() {
-		return userPwd;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getUserEmailId() {
-		return userEmailId;
+	public int getPhone() {
+		return phone;
 	}
 
-	public void setUserEmailId(String userEmailId) {
-		this.userEmailId = userEmailId;
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	public String getAddrNum() {
+		return addrNum;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setAddrNum(String addrNum) {
+		this.addrNum = addrNum;
 	}
 
-	public String getUserQuestion() {
-		return userQuestion;
+	public String getAddr() {
+		return addr;
 	}
 
-	public void setUserQuestion(String userQuestion) {
-		this.userQuestion = userQuestion;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 
-	public String getUserAnswer() {
-		return userAnswer;
+	public String getAddrDetail() {
+		return addrDetail;
 	}
 
-	public void setUserAnswer(String userAnswer) {
-		this.userAnswer = userAnswer;
+	public void setAddrDetail(String addrDetail) {
+		this.addrDetail = addrDetail;
 	}
-	
-	
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
 	
 }
