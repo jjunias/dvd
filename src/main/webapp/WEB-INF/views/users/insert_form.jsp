@@ -66,9 +66,9 @@
 			<div class="form-group">
 				<label for="phone" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control"  name="phone"  id="phone" placeholder="휴대폰 번호"><br/>
+					<input type="text" class="form-control"  name="phone"  id="phone" placeholder="휴대폰 번호"><br/>
 				</div>
-			</div>
+			</div> 
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
@@ -88,6 +88,8 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="button" id="insertBtn"  class="btn btn-default">가입하기</button>
+					
+					</button>
 				</div>
 			</div>
 		</form>
