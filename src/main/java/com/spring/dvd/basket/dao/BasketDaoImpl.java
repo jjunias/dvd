@@ -17,23 +17,6 @@ public class BasketDaoImpl implements BasketDao{
 	public int insert(BasketDto dto) {
 		return session.insert("basket.insert", dto);
 	}
-
-	@Override
-	public List<BasketDto> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public BasketDto getData(String data) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int update(BasketDto dto) {
-		return 0;
-	}
 	
 	@Override
 	public int delete(BasketDto dto) {
@@ -41,9 +24,8 @@ public class BasketDaoImpl implements BasketDao{
 	}
 
 	@Override
-	public int delete(String data) {
-		return 0;
+	public List<BasketDto> getList(String id) {
+		List<BasketDto> list = session.selectList("basket.getList", id);
+		return list;
 	}
-	
-	
 }

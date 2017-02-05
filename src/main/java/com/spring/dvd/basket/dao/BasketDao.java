@@ -1,10 +1,13 @@
 package com.spring.dvd.basket.dao;
 
+import java.util.List;
+
 import com.spring.dvd.basket.dto.BasketDto;
-import com.spring.dvd.generic.dao.GenericDao;
 
-public interface BasketDao extends GenericDao<BasketDto, String>{
+public interface BasketDao {
 
-	int delete(BasketDto dto);
+	public int insert(BasketDto dto);
+	public int delete(BasketDto dto);
+	public List<BasketDto> getList(String id);
 	
 }
