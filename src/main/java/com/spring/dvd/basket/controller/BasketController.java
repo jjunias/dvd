@@ -30,8 +30,9 @@ public class BasketController {
 	}
 	
 	@RequestMapping("/basket/list")
-	public ModelAndView getList(HttpSession session){
-		ModelAndView mView = basketService.getList((String)session.getAttribute("id"));
+	public ModelAndView getList(String id){
+		//String id = (String)session.getAttribute("id");
+		ModelAndView mView = basketService.getList(id);
 		mView.setViewName("basket/list");
 		return mView;
 	}
