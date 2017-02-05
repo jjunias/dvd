@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qna">
+	<insert id="insert" parameterType="qnaDto">
+		INSERT INTO qna
+		VALUES(qna_seq.NEXTVAL, #{qna_writer}, #{qna_title}, #{qna_content}, SYSDATE, #{qna_ref_num})
+	</insert>
+	
+	<update id="update" parameterType="qnaDto">
+		UPDATE qna
+		SET qna_title=#{qna_title}, qna_content=#{qna_content}
+		WHERE qna_num=#{qna_num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM qna
+		WHERE qna_num=#{qna_num}	
+	</delete>
+</mapper>

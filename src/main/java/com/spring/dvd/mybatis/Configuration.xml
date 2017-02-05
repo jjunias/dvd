@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.spring.dvd.test.testDto" alias="testDto"/>
 		<typeAlias type="com.spring.dvd.movie.dto.DvdDto" alias="dvdDto"/>
 		<typeAlias type="com.spring.dvd.basket.dto.BasketDto" alias="basketDto"/>
+		<typeAlias type="com.spring.dvd.qna.dto.QnaDto" alias="qnaDto"/>
 	</typeAliases>
 
 	<!-- sql 문을 정의하고 있는 xml 문서 정보 -->
@@ -17,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/spring/dvd/mybatis/TestMapper.xml"/>
 		<mapper resource="com/spring/dvd/mybatis/DvdMapper.xml"/>
 		<mapper resource="com/spring/dvd/mybatis/BasketMapper.xml"/>
+		<mapper resource="com/spring/dvd/mybatis/QnaMapper.xml"/>
 	</mappers>
 </configuration>
 
