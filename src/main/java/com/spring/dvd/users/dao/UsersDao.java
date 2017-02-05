@@ -5,4 +5,6 @@ import com.spring.dvd.users.dto.UsersDto;
 
 public interface UsersDao extends GenericDao<UsersDto, String> {
 
+	public boolean canUseId(String id);
+	public String getPassword(String id);
 } 	

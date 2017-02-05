@@ -45,4 +45,22 @@ public class UsersDaoImpl implements UsersDao{
 		return 0;
 	}
 
+	@Override
+	public boolean canUseId(String id) {
+		//인자로 전달된 아이디를 DB 에서 select 해본다. 
+		String selectedId=session.selectOne("users.isExistId", id);
+		if(selectedId==null){//없으면
+			return true;//사용가능한 아이디이다. 
+		}else{
+			return false;
+		}
+	}
+
+	@Override
+	public String getPassword(String id) {
+		String password=session.selectOne("users.getPwd", id);
+		
+		return password;
+	}
+
 }

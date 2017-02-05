@@ -6,6 +6,9 @@
 <head>
 <jsp:include page="/WEB-INF/views/source.jsp"/><!-- jquery , boostrap -->
 <style>
+	.help-block{
+		display: none;
+	}
 	.formBox{
 		width:60%;
 		margin:0 auto;
@@ -37,11 +40,12 @@
 			<div class="top_area"></div>
 		</div><br/>
 		<form  id="signup_form" class="form-horizontal">
-			<div class="form-group">
+			<div class="form-group has-feedback">
 				<label for="id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control"  name="id"  id="id" placeholder="아이디"/>
-					<p>여기는 아이디 check 부분</p><br/>
+					<p class="help-block">사용할 수 없는 아이디 입니다.</p>
+					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -88,8 +92,6 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="button" id="insertBtn"  class="btn btn-default">가입하기</button>
-					
-					</button>
 				</div>
 			</div>
 		</form>
@@ -161,4 +163,48 @@
             }
         }).open();
     }
+    
+    $("#id").on("keyup", function(){
+		//입력한 아이디 읽어오기
+		var inputId=$("#id").val();
+		//ajax 요청을 이용해서 서버에 전송
+		$.ajax({
+			url:"checkid.do",
+			method:"get",
+			data:{inputId:inputId},
+			
+			success:function(data){
+				console.log(data);
+				$("#id")
+				.parent()
+				.parent()
+				.removeClass("has-success has-error");
+				if(data){
+					$("#id")
+					.parent()
+					.parent()
+					.addClass("has-success")
+					.find(".help-block")
+					.hide()
+					.parent()
+					.find(".glyphicon")
+					.removeClass("glyphicon-remove")
+					.addClass("glyphicon-ok");
+				}else{
+					$("#id")
+					.parent()
+					.parent()
+					.addClass("has-error")
+					.find(".help-block")
+					.show()
+					.parent()
+					.find(".glyphicon")
+					.removeClass("glyphicon-ok")
+					.addClass("glyphicon-remove");
+				}
+			}
+		});
+	});
+    
+    
 </script>
