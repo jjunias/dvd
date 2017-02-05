@@ -48,11 +48,12 @@
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group has-feedback">
 				<label for="pwd" class="col-sm-2 control-label">비밀번호</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(8자 이상)"/>
-					<p>여기는 비밀번호 check 부분</p>
+					<input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
+					<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
+					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -205,6 +206,55 @@
 			}
 		});
 	});
+    
+ // 정규식 : 비밀번호
+    function chkPwd(str)
+    {
+     var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+     if(!reg_pwd.test(str))
+     {
+      return false;
+     }
+     return true;
+    }
+    // 폼 전송
+    $("#pwd").on("blur", function(){
+    	$("#pwd")
+		.parent()
+		.parent()
+		.removeClass("has-success has-error");
+	     // 확인 : 비밀번호
+	     $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
+	     if(!chkPwd($('#pwd').val().trim()))
+	     {
+	    	 $("#pwd")
+				.parent()
+				.parent()
+				.addClass("has-error")
+				.find(".help-block")
+				.show()
+				.parent()
+				.find(".glyphicon")
+				.removeClass("glyphicon-ok")
+				.addClass("glyphicon-remove");
+	      $('#pwd').val('');
+	      $('#pwd').focus();
+	      return false;
+	     }else{
+	    	 $("#pwd")
+				.parent()
+				.parent()
+				.addClass("has-success")
+				.find(".help-block")
+				.hide()
+				.parent()
+				.find(".glyphicon")
+				.removeClass("glyphicon-remove")
+				.addClass("glyphicon-ok");
+	     }
+	     
+	     //document.f.submit();
+    });
     
     
 </script>
