@@ -54,6 +54,7 @@
       height:40px;
    }
    a{
+   	  margin-left:15px;
       color:white;
       
    }
@@ -82,24 +83,33 @@
       color:white;
    }
    .loginBar{
-   margin:0 auto;
+   padding:20px;
    width:300px;
     position:absolute;
       display:none;
       z-index: 999999 !important;
-      top:50px;
+      top:20px;
       background-color: white;
       border-radius: 10px 10px 10px 10px;
    }
    .login_toggle, .sessionId{
       color:white;
       float:left;
+      cursor: pointer;
    }
    .top_area{
       border-bottom: 1px solid gray;
    }
    #loginBtn{
-      width:280px;
+      width:100%;
+   }
+   .gBtn{
+   	  float: right;
+   	  cursor: pointer;
+   }
+   .socialBtn{
+   	  width:100%;
+   	  text-align: center;
    }
 }
 </style>
@@ -120,35 +130,36 @@
                 <div class="login_toggle">로그인</div>
              </c:when>
              <c:otherwise>
-                <div class="sessionId"><a href="/dvd/users/info.do">${id }</a>님 로그인중..</div>
+                <div class="sessionId"><a href="/dvd/users/info.do">${id } 님 로그인중..</a></div>
              </c:otherwise>
        </c:choose>
          <div class="loginBar">
-         <h3 style="text-align: center">Log in</h3>
-         <br/>
-         <div class="top_area"></div>
-         <br/>
-         <form id="login" >
-            <div class="form-group">
-               <label for="id" >아이디</label>
-               <input type="text" class="form-control"  name="id"  id="id"/>
-            </div>
-            <div class="form-group">
-               <label for="pwd" >비밀번호</label>
-               <input type="password" class="form-control" name="pwd"  id="pwd"/>
-            </div>
-            <button class="btn btn-info btn1"  type="button" id="loginBtn" >로그인</button>
-         </form>
-         <br/>
-         <br/>
-         <div class="top_area"></div>
-         <div class="buttonGroup">
-            <form action="">
-               <button class="btn btn-social btn-facebook"><span class="fa fa-facebook"></span>Sign in with Facebook</button>
-               <button class="btn btn-social btn-twitter"><span class="fa fa-twitter"></span>Sign in with Twitter</button>
-            </form>
-         </div>
-      </div>
+         	 <div class="gBtn"><span class="glyphicon glyphicon-remove "></span></div>
+	         <h3 style="text-align: center"><strong>Log in</strong></h3>
+	         <br/>
+	         <div class="top_area"></div>
+	         <br/>
+	         <form id="login" >
+	            <div class="form-group">
+	               <label for="id" >아이디</label>
+	               <input type="text" class="form-control"  name="id"  id="id"/>
+	            </div>
+	            <div class="form-group">
+	               <label for="pwd" >비밀번호</label>
+	               <input type="password" class="form-control" name="pwd"  id="pwd"/>
+	            </div>
+	            <button class="btn btn-info btn1"  type="button" id="loginBtn" >로그인</button>
+	         </form>
+	         <br/>
+	         <div class="top_area"></div>
+	         <h4 style="text-align: center">SNS Log in</h4>
+	         <div class="buttonGroup">
+	            <form action="">
+	               <button class="btn btn-social btn-facebook socialBtn"><span class="fa fa-facebook"></span>Sign in with <strong style="font-size:16px;">Facebook</strong></button>
+	               <button class="btn btn-social btn-twitter socialBtn"><span class="fa fa-twitter"></span>Sign in with <strong style="font-size:16px;">Twitter</strong></button>
+	            </form>
+        	 </div>
+      	</div>
       <c:choose>
              <c:when test="${id eq null}">
                 <a href="/dvd/users/insert_form.do?type=views">회원가입</a>
@@ -208,7 +219,11 @@
    }
    
    $(".login_toggle").click(function(){
-    $(".loginBar").toggle();
+    $(".loginBar").slideToggle(300);
+   });
+   
+   $(".gBtn").click(function(){
+	 $(".loginBar").slideToggle(300);  
    });
    
    

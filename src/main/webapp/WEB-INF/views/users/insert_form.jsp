@@ -110,7 +110,16 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	
+	
+	
+	
 	$("#insertBtn").click(function(){
+		if($("#signup_form").find("input").val() == ""){
+			$("#id").focus();
+		}if($("#pwd").val() == ""){
+			$("#pwd").focus();
+		}if
+		
 		
 			var formData = $("#signup_form").serialize();
 			
