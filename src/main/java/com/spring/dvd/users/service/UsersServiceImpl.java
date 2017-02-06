@@ -47,25 +47,24 @@ public class UsersServiceImpl extends GenericServiceImpl<UsersDto, String, Users
 
 	@Override
 	public int update(UsersDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return usersDao.update(dto);
 	}
 
 	@Override
 	public int delete(String data) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return usersDao.delete(data);
 	}
 
 	@Override
 	public UsersDto getData(String data) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return usersDao.getData(data);
 	}
 
 	@Override
 	public List<UsersDto> getList() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

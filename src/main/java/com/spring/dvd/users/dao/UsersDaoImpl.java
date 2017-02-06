@@ -21,35 +21,32 @@ public class UsersDaoImpl implements UsersDao {
 
 	@Override
 	public List<UsersDto> getList() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public UsersDto getData(String id) {
-		// TODO Auto-generated method stub
-		UsersDto dto = new UsersDto();
 
-		return dto;
+		return session.selectOne("users.getData", id);
 	}
 
 	@Override
 	public int update(UsersDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return session.update("users.update",dto);
 	}
 
 	@Override
 	public int delete(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return session.delete("users.delete",id);
 	}
 
 	public boolean canUseId(String id) {
-		// 인자로 전달된 아이디를 DB 에서 select 해본다.
 		String selectedId = session.selectOne("users.isExistId", id);
-		if (selectedId == null) {// 없으면
-			return true;// 사용가능한 아이디이다.
+		if (selectedId == null) {
+			return true;
 		} else {
 			return false;
 		}
@@ -63,7 +60,7 @@ public class UsersDaoImpl implements UsersDao {
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
