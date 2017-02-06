@@ -34,7 +34,7 @@
 			<li><a href="/dvd/movie/domestic_main.do?type=views&nation=domestic">국내 영화</a></li>
 			<li><a href="/dvd/movie/overseas_main.do?type=views&nation=overseas">해외 영화</a></li>
 			<li><a href="/dvd/users/insert_form.do?type=views">회원가입</a></li>
-			<li><a href="/dvd/basket/list.do?id='cystory'">장바구니</a></li>
+			<li><a href="/dvd/basket/list.do?id=cystory">장바구니</a></li>
 		</ul>
 	</div>
 	<div class="sub_catal">

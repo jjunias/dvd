@@ -29,6 +29,6 @@ public class BasketServiceImpl implements BasketService{
 		List<BasketDto> list = basketDao.getList(id);
 		ModelAndView mView = new ModelAndView();
 		mView.addObject("list", list);
-		return null;
+		return mView;
 	}
 }
