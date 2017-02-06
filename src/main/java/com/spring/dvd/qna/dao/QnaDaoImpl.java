@@ -25,20 +25,20 @@ public class QnaDaoImpl implements QnaDao{
 	}
 
 	@Override
-	public int delete(int num) {
-		return session.delete("qna.delete", num);
+	public int delete(int qna_num) {
+		return session.delete("qna.delete", qna_num);
 	}
 
 	@Override
-	public List<QnaDto> getList() {
-
-		return null;
+	public List<QnaDto> getList(int dvd_num) {
+		List<QnaDto> list = session.selectList("qna.getList");
+		return list;
 	}
 
 	@Override
-	public QnaDto getData(int num) {
-
-		return null;
+	public QnaDto getData(int qna_num) {
+		QnaDto dto = session.selectOne("qna.getData", qna_num);
+		return dto;
 	}
 	
 }

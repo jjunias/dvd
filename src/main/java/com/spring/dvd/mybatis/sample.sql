@@ -35,7 +35,27 @@ title 제목
 content 내용
 score 평점
 
+-- 장바구니 테이블
 create table basket(
 id varchar2(50) references TestUser(id) on delete cascade,
 num number references testProduct(num) on delete cascade);
+
+-- Q&A 테이블
+CREATE TABLE qna(
+qna_num NUMBER PRIMARY KEY,
+qna_writer VARCHAR2(100) NOT NULL,
+qna_title VARCHAR2(50) NOT NULL,
+qna_content VARCHAR2(2000) NOT NULL,
+regdate DATE,
+qna_ref_num NUMBER NOT NULL,
+dvd_num NUMBER REFERENCES dvd(num) ON DELETE CASCADE
+);
+
+-- Q&A 시퀀스
+CREATE SEQUENCE qna_seq NOCACHE;
+
+
+
+
+
 
