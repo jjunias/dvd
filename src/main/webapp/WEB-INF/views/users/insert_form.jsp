@@ -120,7 +120,8 @@
 				data:formData,
 				success:function(data){
 					if(data == 1){
-						alert("성공");
+						alert("가입 ㅊㅋ염");
+						location.href="/dvd/home.do"
 					}else{
 						alert("실패");
 					}

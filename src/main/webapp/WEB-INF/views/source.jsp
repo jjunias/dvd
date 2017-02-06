@@ -3,6 +3,9 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.1.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/assets/css/font-awesome.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap-social.css"/>
+
 <style>
 *{
 	-webkit-box-sizing: border-box;

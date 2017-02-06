@@ -25,7 +25,24 @@
 	background-size:100% 100%;
 	height:900px;
 }
+.loginBar{
+	border:1px solid red;
+	width:30%;
+	margin:0 auto;
+}
+#id,#pwd{
+	width:100%;
+}
+.btn1{
+	margin:0 auto;
+	width:100%;
+}
+.top_area{
+	border-bottom: 1px solid #cecece;
+}
+.buttonGroup{
 
+}
 </style>
 <div class="catalog">
 	<div class="main_catal">
@@ -34,6 +51,7 @@
 			<li><a href="/dvd/movie/domestic_main.do?type=views&nation=domestic">국내 영화</a></li>
 			<li><a href="/dvd/movie/overseas_main.do?type=views&nation=overseas">해외 영화</a></li>
 			<li><a href="/dvd/users/insert_form.do?type=views">회원가입</a></li>
+			<li><a href="/dvd/users/login_form.do?type=views">로그인</a></li>
 		</ul>
 	</div>
 	<div class="sub_catal">
@@ -59,8 +77,10 @@
 	<h3>${catalog}</h3>
 	<button class="btn_write">글쓰기</button>
 </div>
+
 <script>
 	if("${catalog}" != ''){
 		$(".sub").show();
 	}
+	
 </script>

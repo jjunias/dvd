@@ -33,13 +33,7 @@ public abstract class GenericController<T, K, D extends GenericDao<T, K>, S exte
 		}
 	}
 
-	// insert
-	// return 1 이면 가입 성공 return 0 이면 가입 실패
-	@RequestMapping("/insert")
-	@ResponseBody
-	public int Insert(@ModelAttribute T dto) {
-		return service.insert(dto);
-	}
+	
 
 	// update
 	@RequestMapping("/update")
