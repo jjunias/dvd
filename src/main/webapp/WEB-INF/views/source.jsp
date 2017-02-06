@@ -6,6 +6,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/jquery-ui.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/assets/css/font-awesome.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap-social.css"/>
 
 <style>
 *{

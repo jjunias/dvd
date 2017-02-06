@@ -7,27 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.spring.dvd.generic.dao.GenericDao;
 
 public abstract class GenericServiceImpl<T, K, D extends GenericDao<T, K>> implements GenericService<T, K, D> {
-	@Autowired
-	D dao;
+   @Autowired
+   D dao;
 
-	public int insert(T dto) {
-		return dao.insert(dto);
-	}
+   public int insert(T dto) {
+      return dao.insert(dto);
+   }
 
-	public int update(T dto) {
-		return dao.update(dto);
-	}
+   public int update(T dto) {
+      return dao.update(dto);
+   }
 
-	public int delete(K data) {
+   public int delete(K data) {
 
-		return dao.delete(data);
-	}
+      return dao.delete(data);
+   }
 
-	public List<T> getList() {
-		return dao.getList();
-	}
+   public List<T> getList() {
+      return dao.getList();
+   }
 
-	public T getData(K data) {
-		return dao.getData(data);
-	}
+   public T getData(K data) {
+      return dao.getData(data);
+   }
 }

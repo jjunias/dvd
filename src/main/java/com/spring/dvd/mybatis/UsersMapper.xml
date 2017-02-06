@@ -19,4 +19,10 @@
 		WHERE id=#{id}
 	</select>
 	
+	<select id="login" parameterType="String" resultType="String">
+		SELECT pwd
+		FROM DVD_USERS
+		WHERE id = #{id}
+	</select>
+	
 </mapper>

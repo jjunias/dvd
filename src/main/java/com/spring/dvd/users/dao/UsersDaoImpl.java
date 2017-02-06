@@ -55,11 +55,10 @@ public class UsersDaoImpl implements UsersDao {
 		}
 	}
 
-	@Override
-	public String getPassword(String id) {
-		String password = session.selectOne("users.getPwd", id);
 
-		return password;
+	public String isValid(String id) {
+		System.out.println("2번");
+		return session.selectOne("users.login", id);
 	}
 
 	@Override
