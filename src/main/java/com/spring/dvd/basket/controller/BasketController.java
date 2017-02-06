@@ -1,7 +1,5 @@
 package com.spring.dvd.basket.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,8 +28,9 @@ public class BasketController {
 	}
 	
 	@RequestMapping("/basket/list")
-	public ModelAndView getList(HttpSession session){
-		ModelAndView mView = basketService.getList((String)session.getAttribute("id"));
+	public ModelAndView getList(String id){
+		//String id = (String)session.getAttribute("id");
+		ModelAndView mView = basketService.getList(id);
 		mView.setViewName("basket/list");
 		return mView;
 	}

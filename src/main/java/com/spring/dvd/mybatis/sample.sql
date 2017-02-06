@@ -37,7 +37,7 @@ title 제목
 content 내용
 score 평점
 
-create table basket(
-id varchar2(50) references TestUser(id) on delete cascade,
-num number references testProduct(num) on delete cascade);
+create table dvd_basket(
+id varchar2(50) references dvd_users(id) on delete cascade,
+num number references dvd(num) on delete cascade);
 
