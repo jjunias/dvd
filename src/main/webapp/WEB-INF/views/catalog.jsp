@@ -81,11 +81,29 @@
       list-style: none;
       color:white;
    }
-   
+   .loginBar{
+   margin:0 auto;
+   width:300px;
+ 	position:absolute;
+   	display:none;
+   	z-index: 999999 !important;
+   	top:50px;
+   	background-color: white;
+   	border-radius: 10px 10px 10px 10px;
+   }
+   .login_toggle, .sessionId{
+   	color:white;
+   	float:left;
+   }
+   .top_area{
+   	border-bottom: 1px solid gray;
+   }
+   #loginBtn{
+   	width:280px;
+   }
 }
 </style>
 <div class="catalog">
-
    <div class="top_catal">
       <img class="logo" src="${pageContext.request.contextPath}/resources/images/logo.png" onclick="location.href='/dvd/home.do?type=list'"/>
       <form action="/dvd/movie/search.do" method="get">
@@ -95,11 +113,51 @@
                 <button class="btn btn-default"><p class="glyphicon glyphicon-search"></p></button>
              </span>
           </div>
-       </form>
+      </form>
        <div class="top_users">
-         <a href="">로그인</a> |
-         <a href="/dvd/users/insert_form.do?type=views">회원가입</a> |
-         <a href="">장바구니</a>
+       <c:choose>
+       		<c:when test="${id eq null}">
+       			<div class="login_toggle">로그인</div>
+       		</c:when>
+       		<c:otherwise>
+       			<div class="sessionId"><a href="/dvd/users/info.do">${id }</a>님 로그인중..</div>
+       		</c:otherwise>
+       </c:choose>
+         <div class="loginBar">
+			<h3 style="text-align: center">Log in</h3>
+			<br/>
+			<div class="top_area"></div>
+			<br/>
+			<form id="login" >
+				<div class="form-group">
+					<label for="id" >아이디</label>
+					<input type="text" class="form-control"  name="id"  id="id"/>
+				</div>
+				<div class="form-group">
+					<label for="pwd" >비밀번호</label>
+					<input type="password" class="form-control" name="pwd"  id="pwd"/>
+				</div>
+				<button class="btn btn-info btn1"  type="button" id="loginBtn" >로그인</button>
+			</form>
+			<br/>
+			<br/>
+			<div class="top_area"></div>
+			<div class="buttonGroup">
+				<form action="">
+					<button class="btn btn-social btn-facebook"><span class="fa fa-facebook"></span>Sign in with Facebook</button>
+					<button class="btn btn-social btn-twitter"><span class="fa fa-twitter"></span>Sign in with Twitter</button>
+				</form>
+			</div>
+		</div>
+		<c:choose>
+       		<c:when test="${id eq null}">
+       			<a href="/dvd/users/insert_form.do?type=views">회원가입</a>
+       			 <a href="">장바구니</a>
+       		</c:when>
+       		<c:otherwise>
+       			<a href="/dvd/users/logout.do">로그아웃</a>
+       		</c:otherwise>
+       </c:choose>
       </div>
    </div>
    <div class="main_left">
@@ -148,4 +206,31 @@
    }else if("${param.national}"=="overseas"){
       $(".sub_overseas").show();
    }
+   
+   $(".login_toggle").click(function(){
+	 $(".loginBar").toggle();
+   });
+   
+   
+   // 로그인
+   $("#loginBtn").click(function(){
+		
+		var formData = $("#login").serialize();
+	
+		$.ajax({
+			url:"/dvd/users/login.do",
+			type:"post",
+			data:formData,
+			success:function(data){
+				alert(data);
+				if(data){
+					alert("로그인 성공");
+					location.href="/dvd/home.do"
+				}else{
+					alert("실패");
+				}
+			}	
+		});
+	});
+   
 </script>
