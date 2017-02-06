@@ -56,10 +56,12 @@
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group has-feedback">
 				<label for="pwd2" class="col-sm-2 control-label">비밀번호확인</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" name="pwd2"  id="pwd2" placeholder="비밀번호 확인"/><br/>
+					<p class="help-block"> 비밀번호를 확인하세요.</p>
+					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -68,17 +70,20 @@
 					<input type="text" class="form-control"  name="name"  id="name" placeholder="이름"/><br/>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group has-feedback">
 				<label for="phone" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control"  name="phone"  id="phone" placeholder="휴대폰 번호"><br/>
+					<p class="help-block"> 올바른 형식이 아닙니다.</p>
+					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div> 
-			<div class="form-group">
+			<div class="form-group has-feedback">
 				<label for="email" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
 					<input type="email" class="form-control" name="email"  id="email" placeholder="Email"/>
-					<p>여기는 이메일 check 부분 + 이메일인증버튼추가</p><br/>
+					<p class="help-block">여기는 이메일 check 부분 + 이메일인증버튼추가</p><br/>
+					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -223,6 +228,34 @@
 		.parent()
 		.parent()
 		.removeClass("has-success has-error");
+
+    	 var inputVal1 = $("#pwd").val().trim();
+         var inputVal2 = $("#pwd2").val().trim();
+    	if(inputVal1==inputVal2){
+    		if(inputVal1==null){
+    			$("#pwd2")
+    			.parent()
+    			.parent()
+    			.addClass("has-success")
+    			.find(".help-block")
+    			.hide()
+    			.parent()
+    			.find(".glyphicon")
+    			.removeClass("glyphicon-remove")
+    			.addClass("glyphicon-ok");
+    		}else{
+    			$("#pwd2")
+    			.parent()
+    			.parent()
+    			.addClass("has-error")
+    			.find(".help-block")
+    			.show()
+    			.parent()
+    			.find(".glyphicon")
+    			.removeClass("glyphicon-ok")
+    			.addClass("glyphicon-remove");
+    		}
+    	}
 	     // 확인 : 비밀번호
 	     $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
 	     if(!chkPwd($('#pwd').val().trim()))
@@ -238,7 +271,6 @@
 				.removeClass("glyphicon-ok")
 				.addClass("glyphicon-remove");
 	      $('#pwd').val('');
-	      $('#pwd').focus();
 	      return false;
 	     }else{
 	    	 $("#pwd")
@@ -255,6 +287,111 @@
 	     
 	     //document.f.submit();
     });
+
     
+    // 비밀번호 확인
+    $("#pwd2").on("blur", function(){
+    	
+        var inputVal1 = $("#pwd").val().trim();
+        var inputVal2 = $("#pwd2").val().trim();
+    	$("#pwd2")
+		.parent()
+		.parent()
+		.removeClass("has-success has-error")
+    	
+		if(inputVal1 == inputVal2){
+			$("#pwd2")
+			.parent()
+			.parent()
+			.addClass("has-success")
+			.find(".help-block")
+			.hide()
+			.parent()
+			.find(".glyphicon")
+			.removeClass("glyphicon-remove")
+			.addClass("glyphicon-ok");
+		}else{
+			$("#pwd2")
+			.parent()
+			.parent()
+			.addClass("has-error")
+			.find(".help-block")
+			.show()
+			.parent()
+			.find(".glyphicon")
+			.removeClass("glyphicon-ok")
+			.addClass("glyphicon-remove");
+		}
+    	
+    });
+    
+    // 전화번호
+    $("#phone").on("blur",function(){
+    	$("#phone")
+    	.parent()
+		.parent()
+		.removeClass("has-success has-error");
+    	var reg_phone = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;
+    	var phoneVal = $("#phone").val();
+    	if(reg_phone.test(phoneVal)){
+    		$("#phone")
+			.parent()
+			.parent()
+			.addClass("has-success")
+			.find(".help-block")
+			.hide()
+			.parent()
+			.find(".glyphicon")
+			.removeClass("glyphicon-remove")
+			.addClass("glyphicon-ok");
+    	}else{
+   			$("#phone")
+   			.parent()
+   			.parent()
+   			.addClass("has-error")
+   			.find(".help-block")
+   			.show()
+   			.parent()
+   			.find(".glyphicon")
+   			.removeClass("glyphicon-ok")
+   			.addClass("glyphicon-remove");
+    	}
+    });
+    
+    // 이메일
+    
+    $("#email").on("blur",function(){
+    	var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    	var emailVal = $("#email").val().trim();
+    	
+    	$("#email")
+		.parent()
+		.parent()
+		.removeClass("has-success has-error");
+    	
+    	if(regEmail.test(emailVal)){
+    		$("#email")
+			.parent()
+			.parent()
+			.addClass("has-success")
+			.find(".help-block")
+			.hide()
+			.parent()
+			.find(".glyphicon")
+			.removeClass("glyphicon-remove")
+			.addClass("glyphicon-ok");
+    	}else{
+    		$("#email")
+   			.parent()
+   			.parent()
+   			.addClass("has-error")
+   			.find(".help-block")
+   			.show()
+   			.parent()
+   			.find(".glyphicon")
+   			.removeClass("glyphicon-ok")
+   			.addClass("glyphicon-remove");
+    	}
+    });
     
 </script>
