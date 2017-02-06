@@ -1,9 +1,11 @@
 package com.spring.dvd.basket.service;
 
-import com.spring.dvd.basket.dao.BasketDao;
-import com.spring.dvd.basket.dto.BasketDto;
-import com.spring.dvd.generic.service.GenericService;
+import org.springframework.web.servlet.ModelAndView;
 
-public interface BasketService extends GenericService<BasketDto, String, BasketDao>{
-	
+import com.spring.dvd.basket.dto.BasketDto;
+
+public interface BasketService {
+	public int insert(BasketDto dto);
+	public int delete(BasketDto dto);
+	public ModelAndView getList(String id);
 }

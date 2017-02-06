@@ -13,4 +13,10 @@
 		SYSDATE)
 	</insert>
 	
+	<select id="isExistId" parameterType="string" resultType="string">
+		SELECT id
+		FROM DVD_USERS
+		WHERE id=#{id}
+	</select>
+	
 </mapper>

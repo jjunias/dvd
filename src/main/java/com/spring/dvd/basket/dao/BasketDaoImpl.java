@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.dvd.basket.dto.BasketDto;
 
 @Repository
-public class BasketDaoImpl implements BasketDao{
+public class BasketDaoImpl implements BasketDao {
 	@Autowired
 	private SqlSession session;
 
@@ -19,37 +19,13 @@ public class BasketDaoImpl implements BasketDao{
 	}
 
 	@Override
-	public List<BasketDto> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public BasketDto getData(String data) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int update(BasketDto dto) {
-		return 0;
-	}
-	
-	@Override
 	public int delete(BasketDto dto) {
 		return session.delete("basket.delete", dto);
 	}
 
 	@Override
-	public int delete(String data) {
-		return 0;
+	public List<BasketDto> getList(String id) {
+		List<BasketDto> list = session.selectList("basket.getList", id);
+		return list;
 	}
-
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
 }

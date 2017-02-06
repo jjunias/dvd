@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 import com.spring.dvd.users.dto.UsersDto;
 
 @Repository
-public class UsersDaoImpl implements UsersDao{
-	
+public class UsersDaoImpl implements UsersDao {
+
 	@Autowired
 	private SqlSession session;
-	
+
 	@Override
 	public int insert(UsersDto dto) {
 		return session.insert("users.insert", dto);
@@ -43,6 +43,23 @@ public class UsersDaoImpl implements UsersDao{
 	public int delete(String id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public boolean canUseId(String id) {
+		// 인자로 전달된 아이디를 DB 에서 select 해본다.
+		String selectedId = session.selectOne("users.isExistId", id);
+		if (selectedId == null) {// 없으면
+			return true;// 사용가능한 아이디이다.
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public String getPassword(String id) {
+		String password = session.selectOne("users.getPwd", id);
+
+		return password;
 	}
 
 	@Override
