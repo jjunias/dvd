@@ -31,8 +31,8 @@
 	<div class="main_catal">
 		<ul>
 			<li><a href="/dvd/home.do?type=list">로고</a></li>
-			<li><a href="/dvd/movie/domestic_main.do?type=views&nation=domestic">국내 영화</a></li>
-			<li><a href="/dvd/movie/overseas_main.do?type=views&nation=overseas">해외 영화</a></li>
+			<li><a href="/dvd/movie/domestic_main.do?type=list&national=domestic">국내 영화</a></li>
+			<li><a href="/dvd/movie/overseas_main.do?type=list&national=overseas">해외 영화</a></li>
 			<li><a href="/dvd/users/insert_form.do?type=views">회원가입</a></li>
 		</ul>
 	</div>
@@ -47,17 +47,11 @@
 			<li>범죄,드라마</li>
 			<li>코미디</li>
 			<li>멜로/로맨스</li>
-			<li>기타</li>
+			<li>기 타</li>
 		</ul>
 	</div>
-	<p style="margin-top:1500px">안녕</p>
-	<c:forEach var="tmp" items="${list }">
-		<p>${tmp.num }</p>
-		<p>${tmp.name }</p>
-	</c:forEach>
 	<div class="content"></div>
 	<h3>${catalog}</h3>
-	<button class="btn_write">글쓰기</button>
 </div>
 <script>
 	if("${catalog}" != ''){

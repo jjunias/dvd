@@ -1,7 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dvd">
+	
 	<insert id="insert" parameterType="dvdDto">
-	INSER INTO(num,genre,title)
+	INSERT INTO DVD(num,national,genre,title,actor,content,production,price,trailer,regdate,orgFileName,saveFileName,fileSize)
+	VALUES(
+	Dvd_seq.NEXTVAL,
+	#{national},
+	#{genre},
+	#{title},
+	#{actor},
+	#{content},
+	#{production},
+	#{price},
+	#{trailer},
+	SYSDATE,
+	#{orgFileName},
+	#{saveFileName},
+	#{fileSize}
+	)
 	</insert>
+	
+	<select id="getList" parameterType="dvdDto" resultType="dvdDto">
+		SELECT *
+		FROM(
+			SELECT result_list.*,ROWNUM rnum
+			FROM (
+				SELECT *
+				FROM dvd
+				<where>
+					<if test="title != null">
+						OR title LIKE '%'||#{title}||'%'
+					</if>
+					<if test="national !=null">
+						OR national = #{national}
+					</if> 
+				</where>
+				ORDER BY num DESC
+			)result_list
+		)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	
+	</select>
+	
+	<select id="getData" parameterType="int" resultType="dvdDto">
+		SELECT *
+		FROM dvd
+		where num = #{num}
+	</select>
+	
+	<update id="update" parameterType="dvdDto">
+		UPDATE dvd
+		SET
+		genre = #{genre},
+		title = #{title},
+		actor = #{actor},
+		content = #{content},
+		production = #{production},
+		price = #{price},
+		trailer = #{trailer},
+		orgFileName = #{orgFileName},
+		saveFileName = #{saveFileName},
+		fileSize = #{fileSize}
+		WHERE num = #{num}			
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE
+		FROM dvd
+		WHERE num = #{num}
+	</delete>
+	
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)      <!--DB가 null 일 경우 0 출력(NVL)-->
+		FROM dvd
+	</select>
 </mapper>

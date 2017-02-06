@@ -5,13 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.spring.dvd.generic.dao.GenericDao;
-import com.spring.dvd.generic.dto.GenericDto;
 
-public abstract class GenericServiceImpl<T extends GenericDto, K, D extends GenericDao<T, K>>
-		implements GenericService<T, K, D> {
+public abstract class GenericServiceImpl<T, K, D extends GenericDao<T, K>> implements GenericService<T, K, D> {
 	@Autowired
 	D dao;
-	T dto;
 
 	public int insert(T dto) {
 		return dao.insert(dto);
@@ -27,12 +24,10 @@ public abstract class GenericServiceImpl<T extends GenericDto, K, D extends Gene
 	}
 
 	public List<T> getList() {
-
 		return dao.getList();
 	}
 
 	public T getData(K data) {
 		return dao.getData(data);
 	}
-
 }
