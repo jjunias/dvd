@@ -116,7 +116,7 @@
             <a href="/dvd/movie/domestic_main.do?type=list&national=domestic">국내 영화</a>
             <div class="sub_domestic">
                <ul class="sub">
-                  <li>액션</li>
+                  <li><a href="/dvd/movie/domestic_main.do?type=list&national=domestic&genre=action">액션</a></li>
                   <li>범죄,드라마</li>
                   <li>코미디</li>
                   <li>멜로/로맨스</li>

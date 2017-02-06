@@ -41,6 +41,7 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 	@RequestMapping(value = "/**/", params = "type=list")
 	public void getList(@ModelAttribute DvdDto dto,@RequestParam(defaultValue="1") int num ,Model model) {
 		dto.setPageNum(num);
+		System.out.println(dto.getGenre());
 		List<DvdDto> list = service.getList(dto);
 		model.addAttribute("list", list);
 	}

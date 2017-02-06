@@ -33,9 +33,12 @@
 					<if test="title != null">
 						OR title LIKE '%'||#{title}||'%'
 					</if>
+					<if test="genre !=null">
+						AND genre = #{genre}
+					</if>
 					<if test="national !=null">
-						OR national = #{national}
-					</if> 
+						AND national = #{national}
+					</if>
 				</where>
 				ORDER BY num DESC
 			)result_list
