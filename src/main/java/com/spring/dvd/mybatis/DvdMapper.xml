@@ -28,6 +28,7 @@
 			FROM (
 				SELECT *
 				FROM dvd
+				
 				<where>
 					<if test="title != null">
 						OR title LIKE '%'||#{title}||'%'
@@ -40,7 +41,6 @@
 			)result_list
 		)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
-	
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="dvdDto">

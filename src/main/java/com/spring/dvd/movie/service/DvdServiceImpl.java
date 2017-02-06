@@ -45,6 +45,7 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		// TODO Auto-generated method stub
 		dto.setTotalPageCount(dao.getCount()); //DB 전체 갯수를 넣어줌
 		page.Paging(dto);
+		search.Search(dto);
 		return dao.getList(dto);
 	}
 }
