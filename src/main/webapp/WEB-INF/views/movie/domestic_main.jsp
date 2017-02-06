@@ -11,6 +11,11 @@
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
 <h3>한국 영화</h3>
-<button onclick="location.href='admin/insert_form.do?type=views&nation=domestic'">글쓰기</button>
+<button onclick="location.href='admin/insert_form.do?type=views&national=domestic'">글쓰기</button>
+<c:forEach var="tmp" items="${list}">
+<h3>${tmp.genre }</h3>
+<h3>${tmp.num }</h3>
+<img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" onclick="location.href='detail_form.do?num=${tmp.num}'"/>
+</c:forEach>
 </body>
 </html>

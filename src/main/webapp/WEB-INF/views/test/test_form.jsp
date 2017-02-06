@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js"></script>
 <html>
 <head>
 <meta charset="UTF-8">

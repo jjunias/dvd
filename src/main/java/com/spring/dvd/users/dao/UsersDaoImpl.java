@@ -45,4 +45,10 @@ public class UsersDaoImpl implements UsersDao{
 		return 0;
 	}
 
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

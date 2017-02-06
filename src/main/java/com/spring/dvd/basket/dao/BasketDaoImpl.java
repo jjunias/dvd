@@ -44,6 +44,12 @@ public class BasketDaoImpl implements BasketDao{
 	public int delete(String data) {
 		return 0;
 	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }

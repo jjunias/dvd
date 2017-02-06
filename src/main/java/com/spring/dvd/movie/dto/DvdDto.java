@@ -1,11 +1,9 @@
 package com.spring.dvd.movie.dto;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import com.spring.dvd.generic.dto.GenericDto;
 
-public class DvdDto extends GenericDto {
-
+public class DvdDto extends GenericDto{
+	
 	private int num; //상품 번호
 	private String national; //국적
 	private String genre; //장르
@@ -14,20 +12,15 @@ public class DvdDto extends GenericDto {
     private String content; //내용
     private String production; //제작 년도
     private int price; // 가격
+    private String trailer; //동영상 링크
     private float grade; //평점
     private int views; //조회수
     private String regdate; //등록 일자
-    //파일 업로드
-    private MultipartFile myFile;
-  	private String orgFileName;
-  	private String saveFileName;	//파일 시스템에 저장된 파일명
-  	private long fileSize;			//파일의 크기 byte
-    
+  
     public DvdDto(){}//defalut 생성자
 
 	public DvdDto(int num, String national, String genre, String title, String actor, String content, String production,
-			int price, float grade, int views, String regdate, MultipartFile myFile, String orgFileName,
-			String saveFileName, long fileSize) {
+			int price, String trailer, float grade, int views, String regdate) {
 		this.num = num;
 		this.national = national;
 		this.genre = genre;
@@ -36,13 +29,10 @@ public class DvdDto extends GenericDto {
 		this.content = content;
 		this.production = production;
 		this.price = price;
+		this.trailer = trailer;
 		this.grade = grade;
 		this.views = views;
 		this.regdate = regdate;
-		this.myFile = myFile;
-		this.orgFileName = orgFileName;
-		this.saveFileName = saveFileName;
-		this.fileSize = fileSize;
 	}
 
 	public int getNum() {
@@ -109,6 +99,14 @@ public class DvdDto extends GenericDto {
 		this.price = price;
 	}
 
+	public String getTrailer() {
+		return trailer;
+	}
+
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
+	}
+
 	public float getGrade() {
 		return grade;
 	}
@@ -131,37 +129,5 @@ public class DvdDto extends GenericDto {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
-	}
-
-	public MultipartFile getMyFile() {
-		return myFile;
-	}
-
-	public void setMyFile(MultipartFile myFile) {
-		this.myFile = myFile;
-	}
-
-	public String getOrgFileName() {
-		return orgFileName;
-	}
-
-	public void setOrgFileName(String orgFileName) {
-		this.orgFileName = orgFileName;
-	}
-
-	public String getSaveFileName() {
-		return saveFileName;
-	}
-
-	public void setSaveFileName(String saveFileName) {
-		this.saveFileName = saveFileName;
-	}
-
-	public long getFileSize() {
-		return fileSize;
-	}
-
-	public void setFileSize(long fileSize) {
-		this.fileSize = fileSize;
 	}
 }

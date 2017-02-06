@@ -13,12 +13,14 @@ regdate date);
 DVD 테이블
 CREATE TABLE dvd(
 num NUMBER PRIMARY KEY,
+national VARCHAR2(20) not null,
 genre VARCHAR2(50) not null,
 title VARCHAR2(50) not null,
 actor VARCHAR2(100) not null,
 content CLOB not null,
 production VARCHAR2(50) not null,
 price NUMBER not null,
+trailer VARCHAR2(100) not null,
 grade  NUMBER(2,1),
 views NUMBER,
 regdate DATE,

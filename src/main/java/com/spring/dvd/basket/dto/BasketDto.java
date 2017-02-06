@@ -1,8 +1,6 @@
 package com.spring.dvd.basket.dto;
 
-import com.spring.dvd.generic.dto.GenericDto;
-
-public class BasketDto extends GenericDto{
+public class BasketDto{
 	private String id;
 	private int num;
 	

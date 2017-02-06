@@ -10,5 +10,5 @@ public interface GenericDao<T,K> {
 	public T getData(K data);
 	public int update(T dto);
 	public int delete(K data);
-
+	public int getCount();
 }

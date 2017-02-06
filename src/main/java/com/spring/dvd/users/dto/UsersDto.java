@@ -1,8 +1,6 @@
 package com.spring.dvd.users.dto;
 
-import com.spring.dvd.generic.dto.GenericDto;
-
-public class UsersDto extends GenericDto{
+public class UsersDto{
 	//  이름 , 아이디 , 비밀번호 , 이메일, 전화번호, 우편번호, 주소, 상세주소
 	private String name;
 	private String id;
