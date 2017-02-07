@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rating">
+	<insert id="insert" parameterType="ratingDto">
+		INSERT INTO rating
+		VALUES(
+		dvd_rating_seq.NEXTVAL,
+		#{writer},
+		#{score},
+		#{content},
+		#{dvd_num},
+		SYSDATE
+		)
+	</insert>
+	<select id="getList" parameterType="ratingDto" resultType="ratingDto">
+		SELECT *
+		FROM(
+			SELECT rating.*,ROWNUM rnum
+			FROM(
+				SELECT *
+				FROM rating
+				)rating
+				WHERE dvd_num = #{dvd_num}
+				ORDER BY num DESC
+		    )
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)      <!--DB가 null 일 경우 0 출력(NVL)-->
+		FROM rating
+	</select>
+</mapper>
