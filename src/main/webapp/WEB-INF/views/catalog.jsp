@@ -119,6 +119,7 @@
       <form action="/dvd/movie/search.do" method="get">
          <div class="input-group search_bar">
              <input type="text" class="form-control" name="keyword" placeholder="Search..">
+             <input type="hidden" name="type" value="list" />
              <span class="input-group-btn">
                 <button class="btn btn-default"><p class="glyphicon glyphicon-search"></p></button>
              </span>
@@ -180,7 +181,7 @@
    
    <div class="main_catal">
       <ul>
-         <li>카테고리</li>      
+         <li>카테고리 ${dvd_num}</li>      
          <li>
             <a href="/dvd/movie/domestic_main.do?type=list&national=domestic">국내 영화</a>
             <div class="sub_domestic">
@@ -240,7 +241,7 @@
             alert(data);
             if(data){
                alert("로그인 성공");
-               location.href="/dvd/home.do"
+               location.reload();
             }else{
                alert("실패");
             }

@@ -96,7 +96,7 @@
 		<div class="view_list">
 			<span><a href="#dvd_content" style="padding-left:20%">동영상</a> |</span>
 			<span><a href="#content">줄거리</a> |</span>
-			<span><a href="">평점/리뷰</a> |</span>
+			<span><a href="#rating">평점/리뷰</a> |</span>
 			<span><a href="">Q&A</a></span>
 		</div>
 		<div class="dvd_content" id="dvd_content">

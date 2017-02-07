@@ -38,26 +38,26 @@
 			<option value="etc">기타</option>
 		</select><br/>
 		<label class="control-label" for="title">제 목:</label>
-		<input class="form-control" type="text" name="title" id="title" value="${dvdUpdate.title }"/><br/>
+		<input class="form-control" type="text" name="title" id="title" value="${dvd.title }"/><br/>
 		<label class="control-label" for="production">제작년도:</label>
-		<input class="form-control" type="text" name="production" id="production" value="${dvdUpdate.production }"/><br/>
+		<input class="form-control" type="text" name="production" id="production" value="${dvd.production }"/><br/>
 		<label class="control-label" for="actor">출연 배우:</label>
-		<input class="form-control" type="text" name="actor" id="actor" value="${dvdUpdate.actor }" /><br/>
+		<input class="form-control" type="text" name="actor" id="actor" value="${dvd.actor }" /><br/>
 		<label class="control-label" for="price">가 격:</label>
-		<input class="form-control" type="text" numberonly="true" name="price" id="price" value="${dvdUpdate.price }"/><br/>
+		<input class="form-control" type="text" numberonly="true" name="price" id="price" value="${dvd.price }"/><br/>
 		<label class="control-label" for="trailer">동영상:</label>
-		<input class="form-control" type="text" name="trailer" id="trailer" value="${dvdUpdate.trailer }"/><br/>
+		<input class="form-control" type="text" name="trailer" id="trailer" value="${dvd.trailer }"/><br/>
 		<label class="control-label" for="picture">메인 사진</label>
 		<div class="filebox">
 			<label for="ex_filename">업로드</label>
-			<input class="upload-name" type="text" id="upload_" value="${dvdUpdate.saveFileName }" disabled="disabled"/> 
+			<input class="upload-name" type="text" id="upload_" value="${dvd.saveFileName }" disabled="disabled"/> 
 			<input type="file" id="ex_filename" accept=".gif,.jpg,.png" name="myFile" value="hi" class="upload-hidden"/>
 		
 		</div>
-		<textarea name="content" id="content" style="width:766px;height:412px;display:none">${dvdUpdate.content }</textarea>
+		<textarea name="content" id="content" style="width:766px;height:412px;display:none">${dvd.content }</textarea>
 		<input class="btn btn-default" type="button" onclick="submitContents(this);" value="수정" />
 		<input class="btn btn-default" type="button" 
-		       onclick="location.href='${pageContext.request.contextPath }/movie/detail_form.do?num=${dvdUpdate.num}&type=data'" value="취소" />
+		       onclick="location.href='${pageContext.request.contextPath }/movie/detail_form.do?num=${dvd.num}&type=data'" value="취소" />
 		<button class="btn btn-default" type="button" onclick="delete_btn()">삭제</button>  
 		</div>	
 	</form>
@@ -108,7 +108,7 @@
 	//input file
 	$(function(){
 		for(i=0;i<7;i++){
-    		if("${dvdUpdate.genre}" == $("option").eq(i).val()){
+    		if("${dvd.genre}" == $("option").eq(i).val()){
     			$("option").eq(i).attr("selected","selected");
     		}
     	}

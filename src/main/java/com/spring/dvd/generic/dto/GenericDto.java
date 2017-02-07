@@ -12,6 +12,8 @@ public class GenericDto {
   	private int pageNum;
 	private int startRowNum;
 	private int endRowNum;           //페이지 네이션
+	private int startPageNum;
+	private int endPageNum;
 	private int totalPageCount;
 	
 	private String keyword;	 	// 검색
@@ -21,7 +23,8 @@ public class GenericDto {
 	public GenericDto(){}
 
 	public GenericDto(MultipartFile myFile, String orgFileName, String saveFileName, long fileSize, int pageNum,
-			int startRowNum, int endRowNum, int totalPageCount, String keyword, String title, String condition) {
+			int startRowNum, int endRowNum, int startPageNum, int endPageNum, int totalPageCount, String keyword,
+			String title, String condition) {
 		super();
 		this.myFile = myFile;
 		this.orgFileName = orgFileName;
@@ -30,6 +33,8 @@ public class GenericDto {
 		this.pageNum = pageNum;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+		this.startPageNum = startPageNum;
+		this.endPageNum = endPageNum;
 		this.totalPageCount = totalPageCount;
 		this.keyword = keyword;
 		this.title = title;
@@ -92,6 +97,22 @@ public class GenericDto {
 		this.endRowNum = endRowNum;
 	}
 
+	public int getStartPageNum() {
+		return startPageNum;
+	}
+
+	public void setStartPageNum(int startPageNum) {
+		this.startPageNum = startPageNum;
+	}
+
+	public int getEndPageNum() {
+		return endPageNum;
+	}
+
+	public void setEndPageNum(int endPageNum) {
+		this.endPageNum = endPageNum;
+	}
+
 	public int getTotalPageCount() {
 		return totalPageCount;
 	}
@@ -123,4 +144,5 @@ public class GenericDto {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
+
 }

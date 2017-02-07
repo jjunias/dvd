@@ -45,9 +45,10 @@ num number references dvd(num) on delete cascade);
 CREATE TABLE rating(
 num NUMBER primary key,
 writer REFERENCES dvd_users(id) ON DELETE CASCADE,
-rating NUMBER NOT NULL,
+score NUMBER(2,1) NOT NULL,
 content VARCHAR2(50) NOT NULL,
-dvd_num REFERENCES dvd(num) ON DELETE CASCADE
+dvd_num REFERENCES dvd(num) ON DELETE CASCADE,
+regdate DATE
 );
 <!-- DVD 시퀀스 -->
-CREATE SEQUENCE dvd_rating_dvd NOCACHE;
+CREATE SEQUENCE dvd_rating_seq NOCACHE;
