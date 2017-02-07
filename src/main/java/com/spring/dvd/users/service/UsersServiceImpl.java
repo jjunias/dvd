@@ -22,10 +22,10 @@ public class UsersServiceImpl extends GenericServiceImpl<UsersDto, String, Users
 	@Override
 
 	public int insert(UsersDto dto) {
-		// String pwd = pEncoder.encode(dto.getId());
-		// dto.setPwd(pwd);
+		String pwd = dto.getPwd();
+		String encoderPwd = pEncoder.encode(pwd);
+		dto.setPwd(encoderPwd);
 		return usersDao.insert(dto);
-
 	}
 
 	@Override
@@ -35,31 +35,26 @@ public class UsersServiceImpl extends GenericServiceImpl<UsersDto, String, Users
 
 	@Override
 	public boolean isValid(UsersDto dto) {
-		String pwd = usersDao.isValid(dto.getId());
-		// boolean test = pEncoder.matches(dto.getPwd(),pwd);
-		if (pwd.equals(dto.getPwd())) {
-			return true;
-		} else {
-			return false;
-
-		}
+		String Encoderpwd = usersDao.isValid(dto.getId());
+		String pwd = dto.getPwd();
+		return pEncoder.matches(pwd, Encoderpwd);
 	}
 
 	@Override
 	public int update(UsersDto dto) {
-		
+
 		return usersDao.update(dto);
 	}
 
 	@Override
 	public int delete(String data) {
-		
+
 		return usersDao.delete(data);
 	}
 
 	@Override
 	public UsersDto getData(String data) {
-		
+
 		return usersDao.getData(data);
 	}
 

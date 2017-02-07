@@ -104,6 +104,7 @@
 			<h3>줄거리</h3>
 			<span id="content">${dvd.content}</span>
 		</div>
+		<jsp:include page="/WEB-INF/views/movie/rating/rating_form.jsp"></jsp:include>
 	</div>
 </body>
 </html>
