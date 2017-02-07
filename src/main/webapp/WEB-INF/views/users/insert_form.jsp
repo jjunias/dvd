@@ -73,7 +73,7 @@
 			<div class="form-group has-feedback">
 				<label for="phone" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control"  name="phone"  id="phone" placeholder="휴대폰 번호"><br/>
+					<input type="text" class="form-control"  numberonly="true"  name="phone"  id="phone" placeholder="휴대폰 번호"><br/>
 					<p class="help-block"> 올바른 형식이 아닙니다.</p>
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
@@ -110,8 +110,29 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	
+	
+	$(document).on("keyup", "input:text[numberOnly]",function(){
+		$(this).val($(this).val().replace(/[^0-9]/gi,""))
+	});
+	
 	$("#insertBtn").click(function(){
-		
+		if($("#id").val() == ""){
+			$("#id").focus();
+		}if($("#pwd").val() == ""){
+			$("#pwd").focus();
+		}if($("#name").val() == ""){
+			$("#name").focus();
+		}if($("#phone").val() == ""){
+			$("#phone").focus();
+		}if($("#email").val() == ""){
+			$("#email").focus();
+		}if($("#addrNum").val() == ""){
+			$("#addrNum").focus();
+		}if($("#addr").val() == ""){
+			$("#addr").focus();
+		}if($("#addrDetail").val() == ""){
+			$("#addrDetail").focus();
+		}else{
 			var formData = $("#signup_form").serialize();
 			
 			$.ajax({
@@ -127,6 +148,7 @@
 					}
 				}	
 			});
+		}		
 	});
 
     function postCode() {
