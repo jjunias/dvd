@@ -54,6 +54,19 @@ dvd_num NUMBER REFERENCES dvd(num) ON DELETE CASCADE
 -- Q&A 시퀀스
 CREATE SEQUENCE qna_seq NOCACHE;
 
+-- Q&A 테이블 테스트 입력
+INSERT INTO qna
+VALUES(1, 'aaa', 'title', 'content', sysdate, 0, 1);
+INSERT INTO qna
+VALUES(2, 'bbb', 'title1', 'content1', sysdate, 0, 1);
+INSERT INTO qna
+VALUES(3, 'admin', 'title3', 'content3', sysdate, 1, 1);
+INSERT INTO qna
+VALUES(4, 'ccc', 'title2', 'content2', sysdate, 0, 1);
+INSERT INTO qna
+VALUES(5, 'admin', 'title4', 'content4', sysdate, 2, 1);
+INSERT INTO qna
+VALUES(6, 'admin', 'title5', 'content5', sysdate, 4, 1);
 
 
 
