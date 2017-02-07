@@ -40,6 +40,10 @@ score 평점
 create table dvd_basket(
 id varchar2(50) references dvd_users(id) on delete cascade,
 num number references dvd(num) on delete cascade);
+-- 장바구니 테이블
+create table basket(
+id varchar2(50) references TestUser(id) on delete cascade,
+num number references testProduct(num) on delete cascade);
 
 <!-- 평점 테이블 -->
 CREATE TABLE rating(
@@ -52,3 +56,35 @@ regdate DATE
 );
 <!-- DVD 시퀀스 -->
 CREATE SEQUENCE dvd_rating_seq NOCACHE;
+
+
+-- Q&A 테이블
+CREATE TABLE qna(
+qna_num NUMBER PRIMARY KEY,
+qna_writer VARCHAR2(100) NOT NULL,
+qna_title VARCHAR2(50) NOT NULL,
+qna_content VARCHAR2(2000) NOT NULL,
+regdate DATE,
+qna_ref_num NUMBER NOT NULL,
+dvd_num NUMBER REFERENCES dvd(num) ON DELETE CASCADE
+);
+
+-- Q&A 시퀀스
+CREATE SEQUENCE qna_seq NOCACHE;
+
+-- Q&A 테이블 테스트 입력
+INSERT INTO qna
+VALUES(1, 'aaa', 'title', 'content', sysdate, 0, 1);
+INSERT INTO qna
+VALUES(2, 'bbb', 'title1', 'content1', sysdate, 0, 1);
+INSERT INTO qna
+VALUES(3, 'admin', 'title3', 'content3', sysdate, 1, 1);
+INSERT INTO qna
+VALUES(4, 'ccc', 'title2', 'content2', sysdate, 0, 1);
+INSERT INTO qna
+VALUES(5, 'admin', 'title4', 'content4', sysdate, 2, 1);
+INSERT INTO qna
+VALUES(6, 'admin', 'title5', 'content5', sysdate, 4, 1);
+
+
+
