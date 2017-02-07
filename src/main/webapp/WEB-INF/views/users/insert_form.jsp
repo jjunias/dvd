@@ -114,13 +114,23 @@
 	
 	
 	$("#insertBtn").click(function(){
-		if($("#signup_form").find("input").val() == ""){
+		if($("#id").val() == ""){
 			$("#id").focus();
 		}if($("#pwd").val() == ""){
 			$("#pwd").focus();
-		}if
-		
-		
+		}if($("#name").val() == ""){
+			$("#name").focus();
+		}if($("#phone").val() == ""){
+			$("#phone").focus();
+		}if($("#email").val() == ""){
+			$("#email").focus();
+		}if($("#addrNum").val() == ""){
+			$("#addrNum").focus();
+		}if($("#addr").val() == ""){
+			$("#addr").focus();
+		}if($("#addrDetail").val() == ""){
+			$("#addrDetail").focus();
+		}else{
 			var formData = $("#signup_form").serialize();
 			
 			$.ajax({
@@ -136,6 +146,7 @@
 					}
 				}	
 			});
+		}		
 	});
 
     function postCode() {
