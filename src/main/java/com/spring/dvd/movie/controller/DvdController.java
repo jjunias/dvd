@@ -35,11 +35,7 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 	public String Insert(HttpServletRequest request, @ModelAttribute DvdDto dto) {
 		service.insert(request, dto);
 		String national = dto.getNational();
-		if ("domestic".equals(national)) {
-			return "redirect:/movie/domestic_main.do?type=list&national=" + national;
-		} else {
-			return "redirect:/movie/overseas_main.do?type=list&national=" + national;
-		}
+		return "redirect:/movie/movie_main.do?type=list&national=" + national;
 	}
 
 	// 리스트 가져오기
@@ -78,10 +74,6 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 		service.delete(dvdUpdate.getNum());
 		String national = dvdUpdate.getNational();
 		status.setComplete();
-		if ("domestic".equals(national)) {
-			return "redirect:/movie/domestic_main.do?type=list&national=" + national;
-		} else {
-			return "redirect:/movie/overseas_main.do?type=list&national=" + national;
-		}
+		return "redirect:/movie/movie_main.do?type=list&national=" + national;
 	}
 }

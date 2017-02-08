@@ -10,7 +10,6 @@
 		left:25%;
 		width:60%;
 		height:1200px;
-		background-color:#FAF4C0;
 	}
 	.imgBox{
 		float:left;
@@ -39,7 +38,6 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
-	<h3>한국 영화</h3>
 	<button class="btn btn-default write_btn" onclick="location.href='admin/insert_form.do?type=views&national=${param.national}'">글쓰기</button>
 	<div class="content">
 		<c:forEach var="tmp" items="${list}">
