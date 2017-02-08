@@ -54,7 +54,7 @@
       height:40px;
    }
    a{
-   	  margin-left:15px;
+        margin-left:15px;
       color:white;
       
    }
@@ -104,12 +104,12 @@
       width:100%;
    }
    .gBtn{
-   	  float: right;
-   	  cursor: pointer;
+        float: right;
+        cursor: pointer;
    }
    .socialBtn{
-   	  width:100%;
-   	  text-align: center;
+        width:100%;
+        text-align: center;
    }
 }
 </style>
@@ -135,36 +135,36 @@
              </c:otherwise>
        </c:choose>
          <div class="loginBar">
-         	 <div class="gBtn"><span class="glyphicon glyphicon-remove "></span></div>
-	         <h3 style="text-align: center"><strong>Log in</strong></h3>
-	         <br/>
-	         <div class="top_area"></div>
-	         <br/>
-	         <form id="login" >
-	            <div class="form-group">
-	               <label for="id" >아이디</label>
-	               <input type="text" class="form-control"  name="id"  id="id"/>
-	            </div>
-	            <div class="form-group">
-	               <label for="pwd" >비밀번호</label>
-	               <input type="password" class="form-control" name="pwd"  id="pwd"/>
-	            </div>
-	            <button class="btn btn-info btn1"  type="button" id="loginBtn" >로그인</button>
-	         </form>
-	         <br/>
-	         <div class="top_area"></div>
-	         <h4 style="text-align: center">SNS Log in</h4>
-	         <div class="buttonGroup">
-	            <form action="">
-	               <button class="btn btn-social btn-facebook socialBtn"><span class="fa fa-facebook"></span>Sign in with <strong style="font-size:16px;">Facebook</strong></button>
-	               <button class="btn btn-social btn-twitter socialBtn"><span class="fa fa-twitter"></span>Sign in with <strong style="font-size:16px;">Twitter</strong></button>
-	            </form>
-        	 </div>
-      	</div>
+             <div class="gBtn"><span class="glyphicon glyphicon-remove "></span></div>
+            <h3 style="text-align: center"><strong>Log in</strong></h3>
+            <br/>
+            <div class="top_area"></div>
+            <br/>
+            <form id="login" >
+               <div class="form-group">
+                  <label for="id" >아이디</label>
+                  <input type="text" class="form-control"  name="id"  id="id"/>
+               </div>
+               <div class="form-group">
+                  <label for="pwd" >비밀번호</label>
+                  <input type="password" class="form-control" name="pwd"  id="pwd"/>
+               </div>
+               <button class="btn btn-info btn1"  type="button" id="loginBtn" >로그인</button>
+            </form>
+            <br/>
+            <div class="top_area"></div>
+            <h4 style="text-align: center">SNS Log in</h4>
+            <div class="buttonGroup">
+               <form action="">
+                  <button class="btn btn-social btn-facebook socialBtn"><span class="fa fa-facebook"></span>Sign in with <strong style="font-size:16px;">Facebook</strong></button>
+                  <button class="btn btn-social btn-twitter socialBtn"><span class="fa fa-twitter"></span>Sign in with <strong style="font-size:16px;">Twitter</strong></button>
+               </form>
+            </div>
+         </div>
       <c:choose>
              <c:when test="${id eq null}">
                 <a href="/dvd/users/insert_form.do?type=views">회원가입</a>
-                 <a href="/dvd/users/pay.do?type=views">장바구니</a>
+                 <a href="">장바구니</a>
              </c:when>
              <c:otherwise>
                 <a href="/dvd/users/logout.do">로그아웃</a>
@@ -209,38 +209,6 @@
       </ul>
       <div class="adver"></div>
    </div>
-	<div class="main_catal">
-		<ul>
-			<li><a href="/dvd/home.do?type=list">로고</a></li>
-			<li><a href="/dvd/movie/domestic_main.do?type=views&nation=domestic">국내 영화</a></li>
-			<li><a href="/dvd/movie/overseas_main.do?type=views&nation=overseas">해외 영화</a></li>
-			<li><a href="/dvd/users/insert_form.do?type=views">회원가입</a></li>
-			<li><a href="/dvd/basket/list.do?id=cystory">장바구니</a></li>
-			<li><a href="/dvd/qna/qna_list.do?dvd_num=1">Q&A____</a></li>
-		</ul>
-	</div>
-	<div class="sub_catal">
-		<ul class="sub">
-			<li>
-			<a href ="   
-				<c:if test="${catalog eq 'domestic'}">
-				adfadf
-				</c:if>
-			">액션</a></li>
-			<li>범죄,드라마</li>
-			<li>코미디</li>
-			<li>멜로/로맨스</li>
-			<li>기타</li>
-		</ul>
-	</div>
-	<p style="margin-top:1500px">안녕</p>
-	<c:forEach var="tmp" items="${list }">
-		<p>${tmp.num }</p>
-		<p>${tmp.name }</p>
-	</c:forEach>
-	<div class="content"></div>
-	<h3>${catalog}</h3>
-	<button class="btn_write">글쓰기</button>
 </div>
 
 <script>
@@ -256,7 +224,7 @@
    });
    
    $(".gBtn").click(function(){
-	 $(".loginBar").slideToggle(300);  
+    $(".loginBar").slideToggle(300);  
    });
    
    
@@ -280,5 +248,4 @@
          }   
       });
    });
-   
 </script>
