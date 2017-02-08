@@ -1,5 +1,6 @@
 package com.spring.dvd.movie.dto;
 
+
 import com.spring.dvd.generic.dto.GenericDto;
 
 public class DvdDto extends GenericDto{
