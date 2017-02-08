@@ -73,7 +73,7 @@
 			<div class="form-group has-feedback">
 				<label for="phone" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control"  numberonly="true"  name="phone"  id="phone" placeholder="휴대폰 번호"><br/>
+					<input type="text" class="form-control"  numberonly="true"  name="phone"  id="phone" placeholder="(-)를 제외한 전화번호를 입력하세요."><br/>
 					<p class="help-block"> 올바른 형식이 아닙니다.</p>
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
@@ -238,7 +238,7 @@
  // 정규식 : 비밀번호
     function chkPwd(str)
     {
-     var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+     var reg_pwd = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/;
      if(!reg_pwd.test(str))
      {
       return false;

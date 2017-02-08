@@ -87,7 +87,7 @@
   	display:none;
   }
   .feedback-span{
-
+  
   }
 
 </style>
@@ -113,13 +113,11 @@
 			<label for="pwd" class="control-label">비밀번호</label>
 			<input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
 			<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
-			<span class="glyphicon form-control-feedback feedback-span" ></span>
 		</div>
 		<div class="form-group has-feedback">
 			<label for="pwd2" class="ontrol-label">비밀번호확인</label>
 			<input type="password" class="form-control" name="pwd2"  id="pwd2" placeholder="비밀번호 확인"/><br/>
 			<p class="help-block"> 비밀번호를 확인하세요.</p>
-			<span class="glyphicon form-control-feedback feedback-span"></span>
 		</div>
     </div>
     <br/>
@@ -263,20 +261,12 @@ $("#pwd").on("blur", function(){
 			.addClass("has-success")
 			.find(".help-block")
 			.hide()
-			.parent()
-			.find(".glyphicon")
-			.removeClass("glyphicon-remove")
-			.addClass("glyphicon-ok");
 		}else{
 			$("#pwd")
 			.parent()
 			.addClass("has-error")
 			.find(".help-block")
 			.show()
-			.parent()
-			.find(".glyphicon")
-			.removeClass("glyphicon-ok")
-			.addClass("glyphicon-remove");
 		}
     	
     });

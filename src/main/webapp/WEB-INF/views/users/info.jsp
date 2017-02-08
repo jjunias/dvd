@@ -47,13 +47,13 @@
 			<div class="form-group has-feedback">
 				<label for="id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control"  name="id"  id="id"  readonly  value=" ${dto.id }" />
+					<input type="text" class="form-control"  name="id"  id="id"  disabled="disabled"  value=" ${dto.id }" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control"  name="name"  id="name" readonly value="${dto.name }"/><br/>
+					<input type="text" class="form-control"  name="name"  id="name" disabled="disabled" value="${dto.name }"/><br/>
 				</div>
 			</div>
 			<div class="form-group has-feedback">
