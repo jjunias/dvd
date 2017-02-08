@@ -64,4 +64,17 @@ public class UsersDaoImpl implements UsersDao {
 		return 0;
 	}
 
+	@Override
+	public String getPassword(String id) {
+		String password=session.selectOne("users.getPwd", id);
+		
+		return password;
+	}
+
+	@Override
+	public int pwdUpdate(UsersDto dto) {
+		
+		return session.update("users.pwdUpdate",dto);
+	}
+
 }

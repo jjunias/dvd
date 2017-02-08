@@ -23,7 +23,7 @@ public class UsersController extends GenericController<UsersDto, String, UsersDa
 	@Autowired
 	private UsersService service;
 
-	@RequestMapping("checkid")
+	@RequestMapping("/checkid")
 	@ResponseBody
 	public boolean checkid(@RequestParam String inputId) {
 		return service.canUseId(inputId);
@@ -50,7 +50,7 @@ public class UsersController extends GenericController<UsersDto, String, UsersDa
 	}
 
 	// 로그아웃
-	@RequestMapping("logout")
+	@RequestMapping("/logout")
 	public String Logout(HttpSession session) {
 		session.removeAttribute("id");
 		return "redirect:/home.do";
@@ -79,6 +79,15 @@ public class UsersController extends GenericController<UsersDto, String, UsersDa
 		if (success == 1) {
 			session.removeAttribute("id");
 		}
+		return success;
+	}
+	
+	@RequestMapping("/private/password")
+	@ResponseBody
+	public boolean pwdUpdate(@ModelAttribute UsersDto dto,@RequestParam String today_pwd, HttpSession session){
+		String id = (String) session.getAttribute("id");
+		dto.setId(id);
+		boolean success = service.pwdUpdate(dto, today_pwd);
 		return success;
 	}
 

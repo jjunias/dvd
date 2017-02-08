@@ -23,6 +23,10 @@
 	.top_area{
 		border-bottom: 1px solid gray;
 	}
+	#deleteBtn{
+		float:right;
+	}
+	
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -44,22 +48,6 @@
 				<label for="id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control"  name="id"  id="id"  readonly  value=" ${dto.id }" />
-				</div>
-			</div>
-			<div class="form-group has-feedback">
-				<label for="pwd" class="col-sm-2 control-label">비밀번호</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
-					<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
-					<span class="glyphicon form-control-feedback"></span>
-				</div>
-			</div>
-			<div class="form-group has-feedback">
-				<label for="pwd2" class="col-sm-2 control-label">비밀번호확인</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" name="pwd2"  id="pwd2" placeholder="비밀번호 확인"/><br/>
-					<p class="help-block"> 비밀번호를 확인하세요.</p>
-					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -96,10 +84,11 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="button" id="updateBtn"  class="btn btn-default">수정하기</button>
-					<button type="button" id="deleteBtn"  class="btn btn-default">탈퇴하기</button>
+					<button type="button" id="deleteBtn"  class="btn btn-warning">탈퇴하기</button>
 				</div>
 			</div>
 		</form>
+		<a href="/dvd/users/private/password_form.do?type=views">비밀번호 변경</a>
 	</div>
 </div>
 
@@ -108,6 +97,9 @@
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+	
+
+	
 	
 	$("#updateBtn").click(function(){
 		
@@ -249,8 +241,7 @@
 
     	 var inputVal1 = $("#pwd").val().trim();
          var inputVal2 = $("#pwd2").val().trim();
-    	if(inputVal1==inputVal2){
-    		if(inputVal1==null){
+    	if(inputVal1==inputVal2 && !inputVal1 == ""){
     			$("#pwd2")
     			.parent()
     			.parent()
@@ -273,7 +264,7 @@
     			.removeClass("glyphicon-ok")
     			.addClass("glyphicon-remove");
     		}
-    	}
+    	
 	     // 확인 : 비밀번호
 	     $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
 	     if(!chkPwd($('#pwd').val().trim()))
@@ -317,7 +308,7 @@
 		.parent()
 		.removeClass("has-success has-error")
     	
-		if(inputVal1 == inputVal2){
+		if(inputVal1 == inputVal2 && !inputVal2 == ""){
 			$("#pwd2")
 			.parent()
 			.parent()
