@@ -195,7 +195,7 @@
             </div>
          </li>
          <li>
-            <a href="/dvd/movie/overseas_main.do?type=list&national=overseas">해외 영화</a></li>
+            <a href="/dvd/movie/domestic_main.do?type=list&national=overseas">해외 영화</a></li>
             <div class="sub_overseas">
                <ul class="sub">
                   <li>액션</li>

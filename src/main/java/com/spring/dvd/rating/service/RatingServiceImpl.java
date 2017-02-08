@@ -10,6 +10,7 @@ import com.spring.dvd.movie.dto.DvdDto;
 import com.spring.dvd.rating.common.RatingPagenation;
 import com.spring.dvd.rating.dao.RatingDao;
 import com.spring.dvd.rating.dto.RatingDto;
+import com.spring.dvd.rating.dto.RatingRecommendDto;
 
 @Service
 public class RatingServiceImpl extends GenericServiceImpl<RatingDto,Integer,RatingDao> implements RatingService {
@@ -25,5 +26,14 @@ public class RatingServiceImpl extends GenericServiceImpl<RatingDto,Integer,Rati
 		dto = page.Paging(dto,10);
 		List<RatingDto> list = dao.getList(dto);
 		return list;
+	}
+	@Override
+	public int RecommendInsert(RatingRecommendDto dto) {
+		// TODO Auto-generated method stub
+		boolean checked = dao.idCheck(dto);
+		if(checked){
+			return dao.RecommendInsert(dto);
+		}
+		return 0;
 	}
 }

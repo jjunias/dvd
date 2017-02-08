@@ -5,20 +5,25 @@ import com.spring.dvd.generic.dto.GenericDto;
 public class RatingDto extends GenericDto{
 	private int num;
 	private String writer;
+	private String title;
 	private float score;
 	private String content;
 	private int dvd_num;
+	private int recommend;
 	private String regdate;
 	
 	public RatingDto(){}
 
-	public RatingDto(int num, String writer, float score, String content, int dvd_num, String regdate) {
+	public RatingDto(int num, String writer, String title, float score, String content, int dvd_num, int recommend,
+			String regdate) {
 		super();
 		this.num = num;
 		this.writer = writer;
+		this.title = title;
 		this.score = score;
 		this.content = content;
 		this.dvd_num = dvd_num;
+		this.recommend = recommend;
 		this.regdate = regdate;
 	}
 
@@ -36,6 +41,14 @@ public class RatingDto extends GenericDto{
 
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public float getScore() {
@@ -60,6 +73,14 @@ public class RatingDto extends GenericDto{
 
 	public void setDvd_num(int dvd_num) {
 		this.dvd_num = dvd_num;
+	}
+
+	public int getRecommend() {
+		return recommend;
+	}
+
+	public void setRecommend(int recommend) {
+		this.recommend = recommend;
 	}
 
 	public String getRegdate() {

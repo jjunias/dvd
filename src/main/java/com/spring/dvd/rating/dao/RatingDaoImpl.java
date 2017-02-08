@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.dvd.movie.dto.DvdDto;
 import com.spring.dvd.rating.dto.RatingDto;
+import com.spring.dvd.rating.dto.RatingRecommendDto;
 @Repository
 public class RatingDaoImpl implements RatingDao {
 	@Autowired
@@ -60,5 +61,21 @@ public class RatingDaoImpl implements RatingDao {
 		// TODO Auto-generated method stub
 		return session.selectList("rating.getList",dto);
 
+	}
+
+	@Override
+	public int RecommendInsert(RatingRecommendDto dto) {
+		// TODO Auto-generated method stub
+		return session.insert("rating.recommendInsert",dto);
+	}
+
+	@Override
+	public boolean idCheck(RatingRecommendDto dto) {
+
+		String id = session.selectOne("rating.idCheck",dto);
+		if(null == id){
+			return true;
+		}
+		return false;
 	}
 }

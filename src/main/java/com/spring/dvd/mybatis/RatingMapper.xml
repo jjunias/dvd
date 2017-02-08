@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="rating">
 	<insert id="insert" parameterType="ratingDto">
-		INSERT INTO rating
+		INSERT INTO rating (num,writer,title,score,content,dvd_num,regdate)
 		VALUES(
 		dvd_rating_seq.NEXTVAL,
 		#{writer},
+		#{title},
 		#{score},
 		#{content},
 		#{dvd_num},
@@ -17,12 +18,14 @@
 		FROM(
 			SELECT rating.*,ROWNUM rnum
 			FROM(
-				SELECT *
+				SELECT num,writer,title,score,content,dvd_num,recommend,TO_CHAR(regdate,'YY-MM-DD') regdate
 				FROM rating
+				ORDER BY num DESC
 				)rating
 				WHERE dvd_num = #{dvd_num}
-				ORDER BY num DESC
+				
 		    )
+		    
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	<select id="getCount" resultType="int">
