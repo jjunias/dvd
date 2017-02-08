@@ -4,10 +4,10 @@ name VARCHAR2(50) not null,
 id VARCHAR2(100) primary key,
 pwd VARCHAR2(100) not null,
 email VARCHAR2(100) not null,
-phone NUMBER not null,
-addrNum VARCHAR2(200) not null,
-addr VARCHAR2(200) not null,
-addrDetail VARCHAR2(300) not null,
+phone VARCHAR2(20) not null,
+addrNum VARCHAR2(50) not null,
+addr VARCHAR2(100) not null,
+addrDetail VARCHAR2(50) not null,
 regdate date);
 
 DVD 테이블

@@ -8,4 +8,6 @@ public interface UsersDao extends GenericDao<UsersDto, String> {
 
 	public boolean canUseId(String id);
 	public String isValid(String id);
+	public String getPassword(String id);
+	public int pwdUpdate(UsersDto dto);
 } 	

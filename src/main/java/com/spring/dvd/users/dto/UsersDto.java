@@ -6,7 +6,7 @@ public class UsersDto{
 	private String id;
 	private String pwd;
 	private String email;
-	private int phone;
+	private String phone;
 	private String addrNum;
 	private String addr;
 	private String addrDetail;
@@ -14,7 +14,7 @@ public class UsersDto{
 	
 	public UsersDto(){}
 
-	public UsersDto(String name, String id, String pwd, String email, int phone, String addrNum, String addr,
+	public UsersDto(String name, String id, String pwd, String email, String phone, String addrNum, String addr,
 			String addrDetail, String regdate) {
 		super();
 		this.name = name;
@@ -60,11 +60,11 @@ public class UsersDto{
 		this.email = email;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -99,6 +99,7 @@ public class UsersDto{
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-
+	
+	
 	
 }
