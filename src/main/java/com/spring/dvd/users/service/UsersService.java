@@ -8,4 +8,5 @@ import com.spring.dvd.users.dto.UsersDto;
 public interface UsersService extends GenericService<UsersDto, String, UsersDao> {
 	public boolean canUseId(String id);
 	public boolean isValid(UsersDto dto);
+	public boolean pwdUpdate(UsersDto dto,String pwd);
 }

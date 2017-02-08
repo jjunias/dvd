@@ -25,6 +25,13 @@
 		WHERE id = #{id}
 	</select>
 	
+	<select id="getPwd" parameterType="string" resultType="string">
+		SELECT pwd 
+		FROM DVD_USERS
+		WHERE id=#{id}	
+	</select>
+	
+	
 	<select id="getData" parameterType="String" resultType="usersDto">
 		SELECT *
 		FROM DVD_USERS
@@ -34,7 +41,6 @@
 	<update id="update" parameterType="usersDto">
 		UPDATE DVD_USERS
 		SET
-		pwd = #{pwd},
 		phone = #{phone},
 		email = #{email},
 		addrNum = #{addrNum},
@@ -48,5 +54,12 @@
 		FROM DVD_USERS
 		WHERE id=#{id}
 	</delete>
+	
+	<update id="pwdUpdate" parameterType="usersDto">
+		UPDATE DVD_USERS
+		SET
+		pwd = #{pwd}
+		WHERE id=#{id}
+	</update>
 	
 </mapper>

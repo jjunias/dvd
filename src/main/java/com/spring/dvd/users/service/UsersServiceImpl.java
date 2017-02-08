@@ -42,7 +42,9 @@ public class UsersServiceImpl extends GenericServiceImpl<UsersDto, String, Users
 
 	@Override
 	public int update(UsersDto dto) {
-
+//		String encodedPwd=pEncoder.encode(dto.getPwd());
+		//Dto 객체에 다시 넣어준다.
+//		dto.setPwd(encodedPwd);
 		return usersDao.update(dto);
 	}
 
@@ -63,4 +65,18 @@ public class UsersServiceImpl extends GenericServiceImpl<UsersDto, String, Users
 		return null;
 	}
 
+	@Override
+	public boolean pwdUpdate(UsersDto dto, String pwd) {
+		String prePwd = usersDao.isValid(dto.getId());
+		String inputPwd = pwd;
+		boolean success = pEncoder.matches(inputPwd, prePwd);
+		if(success){
+			
+			String encoderPwd = pEncoder.encode(dto.getPwd());
+			dto.setPwd(encoderPwd);
+			usersDao.pwdUpdate(dto);
+		}
+		return success;
+	}
+	
 }

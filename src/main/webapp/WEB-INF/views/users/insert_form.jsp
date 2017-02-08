@@ -251,11 +251,15 @@
 		.parent()
 		.parent()
 		.removeClass("has-success has-error");
+    	
+    	$("#pwd2")
+		.parent()
+		.parent()
+		.removeClass("has-success has-error");
 
     	 var inputVal1 = $("#pwd").val().trim();
          var inputVal2 = $("#pwd2").val().trim();
-    	if(inputVal1==inputVal2){
-    		if(inputVal1==null){
+    	if(inputVal1==inputVal2 && !inputVal1 == ""){
     			$("#pwd2")
     			.parent()
     			.parent()
@@ -278,7 +282,7 @@
     			.removeClass("glyphicon-ok")
     			.addClass("glyphicon-remove");
     		}
-    	}
+    	
 	     // 확인 : 비밀번호
 	     $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
 	     if(!chkPwd($('#pwd').val().trim()))
@@ -322,7 +326,7 @@
 		.parent()
 		.removeClass("has-success has-error")
     	
-		if(inputVal1 == inputVal2){
+		if(inputVal1 == inputVal2 && !inputVal2 == ""){
 			$("#pwd2")
 			.parent()
 			.parent()
