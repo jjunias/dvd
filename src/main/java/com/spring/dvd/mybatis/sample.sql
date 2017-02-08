@@ -1,4 +1,4 @@
-USER 테이블
+--USER 테이블
 CREATE TABLE dvd_users(
 name VARCHAR2(50) not null,
 id VARCHAR2(100) primary key,
@@ -10,7 +10,7 @@ addr VARCHAR2(100) not null,
 addrDetail VARCHAR2(50) not null,
 regdate date);
 
-DVD 테이블
+--DVD 테이블
 CREATE TABLE dvd(
 num NUMBER PRIMARY KEY,
 national VARCHAR2(20) not null,
@@ -29,19 +29,15 @@ saveFileName VARCHAR2(100) NOT NULL,
 fileSize NUMBER NOT NULL
 );
 
-DVD 시퀀스
+--DVD 시퀀스
 CREATE SEQUENCE Dvd_seq NOCACHE;
 
-dvd_num 값(외래키)
-title 제목
-content 내용
-score 평점
+-- 장바구니 테이블
+CREATE TABLE dvd_basket(
+id VARCHAR2(50) REFERENCES dvd_users(id) ON DELETE CASCADE,
+num NUMBER REFERENCES dvd(num) ON DELETE CASCADE);
 
-create table dvd_basket(
-id varchar2(50) references dvd_users(id) on delete cascade,
-num number references dvd(num) on delete cascade);
-
-<!-- 평점 테이블 -->
+-- 평점 테이블
 CREATE TABLE rating(
 num NUMBER primary key,
 writer REFERENCES dvd_users(id) ON DELETE CASCADE,
@@ -59,5 +55,22 @@ rating_num NUMBER references rating(num) on delete cascade,
 userId VARCHAR2(50) references dvd_users(id) on delete cascade 
 );
 
-<!-- DVD 시퀀스 -->
+-- DVD 시퀀스
 CREATE SEQUENCE dvd_rating_seq NOCACHE;
+
+
+-- Q&A 테이블
+CREATE TABLE qna(
+qna_num NUMBER PRIMARY KEY,
+qna_writer VARCHAR2(100) NOT NULL,
+qna_title VARCHAR2(50) NOT NULL,
+qna_content VARCHAR2(2000) NOT NULL,
+qna_answer VARCHAR2(2000),
+dvd_num NUMBER REFERENCES dvd(num) ON DELETE CASCADE NOT NULL,
+regdate DATE
+);
+
+-- Q&A 시퀀스
+CREATE SEQUENCE qna_seq NOCACHE;
+
+
