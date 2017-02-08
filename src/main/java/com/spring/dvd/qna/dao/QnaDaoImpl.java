@@ -20,13 +20,23 @@ public class QnaDaoImpl implements QnaDao{
 	}
 
 	@Override
-	public int update(QnaDto dto) {
-		return session.update("qna.update", dto);
+	public int a_update(QnaDto dto) {
+		return session.update("qna.a_update", dto);
+	}
+	
+	@Override
+	public int q_update(QnaDto dto) {
+		return session.update("qna.q_update", dto);
 	}
 
 	@Override
-	public int delete(int qna_num) {
-		return session.delete("qna.delete", qna_num);
+	public int a_delete(int qna_num) {
+		return session.delete("qna.a_delete", qna_num);
+	}
+	
+	@Override
+	public int q_delete(int qna_num) {
+		return session.delete("qna.q_delete", qna_num);
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,22 +22,33 @@ public class QnaController {
 	@RequestMapping("/qna/qna_insert")
 	@ResponseBody
 	public int insert(@ModelAttribute QnaDto dto, HttpSession session) {
-		//String id = (String) session.getAttribute("id");
-		String id = "admin";
+		String id = (String) session.getAttribute("id");
 		dto.setQna_writer(id);
 		return qnaService.insert(dto);
 	}
 	
-	@RequestMapping("/qna/qna_update")
+	@RequestMapping("/qna/a_update")
 	@ResponseBody
-	public int update(@ModelAttribute QnaDto dto){
-		return qnaService.update(dto);
+	public int a_update(@ModelAttribute QnaDto dto){
+		return qnaService.a_update(dto);
 	}
 	
-	@RequestMapping("/qna/qna_delete")
-	public String delete(@RequestParam int qna_num){
-		qnaService.delete(qna_num);
-		return "redirect:/product/product_info.do?productNum=";
+	@RequestMapping("/qna/q_update")
+	@ResponseBody
+	public int q_update(@ModelAttribute QnaDto dto){
+		return qnaService.q_update(dto);
+	}
+	
+	@RequestMapping("/qna/a_delete")
+	@ResponseBody
+	public int a_delete(@RequestParam int qna_num){
+		return qnaService.a_delete(qna_num);
+	}
+	
+	@RequestMapping("/qna/q_delete")
+	@ResponseBody
+	public int q_delete(@RequestParam int qna_num){
+		return qnaService.q_delete(qna_num);
 	}
 	
 	@RequestMapping("/qna/qna_list")

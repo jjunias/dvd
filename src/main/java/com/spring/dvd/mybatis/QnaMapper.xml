@@ -6,13 +6,25 @@
 		VALUES(qna_seq.NEXTVAL, #{qna_writer}, #{qna_title}, #{qna_content}, SYSDATE, #{dvd_num})
 	</insert>
 	
-	<update id="update" parameterType="qnaDto">
+	<update id="a_update" parameterType="qnaDto">
 		UPDATE qna
 		SET qna_answer=#{qna_answer}
 		WHERE qna_num=#{qna_num}
 	</update>
 	
-	<delete id="delete" parameterType="int">
+	<update id="q_update" parameterType="qnaDto">
+		UPDATE qna
+		SET qna_title=#{qna_title}, qna_content=#{qna_content}
+		WHERE qna_num=#{qna_num}
+	</update>
+	
+	<update id="a_delete" parameterType="int">
+		UPDATE qna
+		SET qna_answer=null
+		WHERE qna_num=#{qna_num}
+	</update>
+	
+	<delete id="q_delete" parameterType="int">
 		DELETE FROM qna
 		WHERE qna_num=#{qna_num}	
 	</delete>

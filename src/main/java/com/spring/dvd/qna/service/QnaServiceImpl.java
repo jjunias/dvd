@@ -20,13 +20,23 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 	@Override
-	public int update(QnaDto dto) {
-		return qnaDao.update(dto);
+	public int a_update(QnaDto dto) {
+		return qnaDao.a_update(dto);
+	}
+	
+	@Override
+	public int q_update(QnaDto dto) {
+		return qnaDao.q_update(dto);
+	}
+	
+	@Override
+	public int a_delete(int qna_num) {
+		return qnaDao.a_delete(qna_num);
 	}
 
 	@Override
-	public int delete(int qna_num) {
-		return qnaDao.delete(qna_num);
+	public int q_delete(int qna_num) {
+		return qnaDao.q_delete(qna_num);
 	}
 
 	@Override
