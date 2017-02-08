@@ -9,7 +9,7 @@
       position:absolute;
       left:0;
       top:120px;
-      width:15%;
+      width:5%;
       height:800px;
    }
    .main_right{
@@ -31,7 +31,6 @@
    .top_catal{
       width:100%;
       height:120px;
-      background:black;
    }
    .logo{
       position:absolute;
@@ -55,7 +54,7 @@
    }
    a{
         margin-left:15px;
-      color:white;
+      color:black;
       
    }
    a:HOVER{
@@ -68,7 +67,7 @@
       left:15%;
    }
    .main_catal{
-      background-color:black;
+      background-color:white;
       width:200px;
       height:800px;
       font-size:17px;
@@ -76,11 +75,11 @@
    .adver{
       width:200px;
       height:600px;
-      background-color: black;
+      background-color: white;
    }
    ul{
       list-style: none;
-      color:white;
+      color:black;
    }
    .loginBar{
    padding:20px;
@@ -93,7 +92,7 @@
       border-radius: 10px 10px 10px 10px;
    }
    .login_toggle, .sessionId{
-      color:white;
+      color:black;
       float:left;
       cursor: pointer;
    }
@@ -116,7 +115,7 @@
 <div class="catalog">
    <div class="top_catal">
       <img class="logo" src="${pageContext.request.contextPath}/resources/images/logo.png" onclick="location.href='/dvd/home.do?type=list'"/>
-      <form action="/dvd/movie/search.do" method="get">
+      <form action="/dvd/movie/movie_main.do">
          <div class="input-group search_bar">
              <input type="text" class="form-control" name="keyword" placeholder="Search..">
              <input type="hidden" name="type" value="list" />
@@ -172,18 +171,12 @@
        </c:choose>
       </div>
    </div>
-   <div class="main_left">
-      <img src="${pageContext.request.contextPath}/resources/images/left.PNG"/>
-   </div>
-   <div class="main_right">
-      <img src="${pageContext.request.contextPath}/resources/images/Right.PNG"/>
-   </div>
    
    <div class="main_catal">
       <ul>
          <li>카테고리 ${dvd_num}</li>      
          <li>
-            <a href="/dvd/movie/domestic_main.do?type=list&national=domestic">국내 영화</a>
+            <a href="/dvd/movie/movie_main.do?type=list&national=domestic">국내 영화</a>
             <div class="sub_domestic">
                <ul class="sub">
                   <li><a href="/dvd/movie/domestic_main.do?type=list&national=domestic&genre=action">액션</a></li>
@@ -195,7 +188,7 @@
             </div>
          </li>
          <li>
-            <a href="/dvd/movie/domestic_main.do?type=list&national=overseas">해외 영화</a></li>
+            <a href="/dvd/movie/movie_main.do?type=list&national=overseas">해외 영화</a></li>
             <div class="sub_overseas">
                <ul class="sub">
                   <li>액션</li>
@@ -238,6 +231,7 @@
          type:"post",
          data:formData,
          success:function(data){
+        	
             alert(data);
             if(data){
                alert("로그인 성공");
