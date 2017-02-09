@@ -30,10 +30,10 @@
 	</delete>
 	
 	<select id="getList" parameterType="int" resultType="qnaDto">
-		SELECT qna_num, qna_writer, qna_title, qna_content, dvd_num, qna_answer, regdate
+		SELECT qna_num, qna_writer, qna_title, qna_content, dvd_num, qna_answer, TO_CHAR(regdate,'YY-MM-DD') regdate
 		FROM qna
 		WHERE dvd_num = #{dvd_num}
-		ORDER BY qna_num
+		ORDER BY qna_num DESC
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="qnaDto">

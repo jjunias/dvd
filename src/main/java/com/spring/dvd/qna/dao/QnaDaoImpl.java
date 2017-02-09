@@ -41,8 +41,7 @@ public class QnaDaoImpl implements QnaDao{
 
 	@Override
 	public List<QnaDto> getList(int dvd_num) {
-		List<QnaDto> list = session.selectList("qna.getList", dvd_num);
-		return list;
+		return session.selectList("qna.getList", dvd_num);
 	}
 
 	@Override

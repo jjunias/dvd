@@ -1,13 +1,10 @@
 package com.spring.dvd.movie.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.instrument.classloading.tomcat.TomcatLoadTimeWeaver;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,6 +14,8 @@ import com.spring.dvd.movie.common.DvdPagenation;
 import com.spring.dvd.movie.common.DvdSearch;
 import com.spring.dvd.movie.dao.DvdDao;
 import com.spring.dvd.movie.dto.DvdDto;
+import com.spring.dvd.qna.dao.QnaDao;
+import com.spring.dvd.qna.dto.QnaDto;
 import com.spring.dvd.rating.dao.RatingDao;
 import com.spring.dvd.rating.dto.RatingDto;
 
@@ -26,6 +25,8 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 	DvdDao dao;
 	@Autowired
 	RatingDao ratingDao;
+	@Autowired
+	QnaDao qnaDao;
 	@Autowired
 	DvdFileUtils file;  //파일 업로드
 	@Autowired
@@ -64,10 +65,12 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		pagingRating.setDvd_num(num);
 		pagingRating = page.Paging(pagingRating, 10);
 		List<RatingDto> ratingList = ratingDao.getList(pagingRating);
+		List<QnaDto> qnaList = qnaDao.getList(num);
 		DvdDto dto = dao.getData(num);
 		mView.addObject("dvd", dto);
 		mView.addObject("ratingList", ratingList);
 		mView.addObject("pagingRating",pagingRating);
+		mView.addObject("qnaList", qnaList);
 		return mView;
 	}
 }

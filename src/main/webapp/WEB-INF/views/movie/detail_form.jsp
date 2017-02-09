@@ -105,6 +105,7 @@
 			<span id="content">${dvd.content}</span>
 		</div>
 		<jsp:include page="/WEB-INF/views/movie/rating/rating_form.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/movie/qna/qnalist.jsp"></jsp:include>
 	</div>
 </body>
 </html>

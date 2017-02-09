@@ -28,8 +28,8 @@
 	
 </style>
 <body>
-	<h3>QnA 페이지입니다.</h3>
-	<table>
+	<table class="table table-hover">
+		<p><strong style="font-size:30px">Q&A</strong></p>
 		<thead>
 			<tr>
 				<th>글 번호</th>
@@ -39,19 +39,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="tmp" items="${list }">
+			<c:forEach var="tmp" items="${qnaList }">
 				<tr>
 					<td>${tmp.qna_num }</td>
 					<td style="cursor:pointer" onclick="showcontent(${tmp.qna_num})">${tmp.qna_title }</td>
+					<td>${tmp.qna_writer }</td>
+					<td>${tmp.regdate }</td>
 					<td>
-						<!-- 답변 유무에 따라 다르게 표시 -->
 						<c:choose>
 							<c:when test="${tmp.qna_answer eq null }">미답변</c:when>
 							<c:otherwise>답변완료</c:otherwise>
 						</c:choose>
 					</td>
-					<td>${tmp.qna_writer }</td>
-					<td>${tmp.regdate }</td>
 				</tr>
 				
 				<!-- Q&A 글 내용 보기 -->
@@ -60,12 +59,13 @@
 						<span>내용 :</span> ${tmp.qna_content}
 						<c:if test="${id eq tmp.qna_writer }">
 							<a onclick="q_deleteLink(${tmp.qna_num})" style="float:right; cursor:pointer">삭제</a>
-							<a id="q_modifyLink" style="float:right; cursor:pointer">수정</a>
+							<a onclick="q_modifyLink(${tmp.qna_num})" style="float:right; cursor:pointer">수정</a>
 						</c:if>
 						
 					<!-- question 글 수정 폼 시작 -->
-						<div class="q_modifyWrite">
-							<form id="q_modifyForm">
+						
+						<form id="q_modifyForm${tmp.qna_num}">
+							<div class="q_modifyWrite q_modifyWrite${tmp.qna_num}">
 								<div class="form-group">
 									<input type="hidden" name="qna_num" value="${tmp.qna_num }"/>
 									<label class="control-label" for="qna_title">제목:</label>
@@ -75,9 +75,10 @@
 									<label class="control-label" for="qna_content">질문내용:</label>
 									<textarea class="form-control" name="qna_content" id="qna_content" cols="20" rows="5">${tmp.qna_content }</textarea>
 								</div>
-								<button class="btn btn-default" type="button" id="q_modifyBtn">작성</button>
-							</form>
-						</div>
+								<button class="btn btn-default" type="button" onclick="q_modifyBtn(${tmp.qna_num})">작성</button>
+							</div>
+						</form>
+						
 					<!-- question 글 수정 폼 끝 -->
 						
 						<div style="margin-top:20px;border:1px solid grey;"></div>
@@ -88,33 +89,32 @@
 									<br/>
 									<c:if test="${id eq 'admin' }">
 										<a onclick="a_deleteLink(${tmp.qna_num})" style="float:right; cursor:pointer">삭제</a>
-										<a id="a_modifyLink" style="float:right; cursor:pointer">수정</a>
+										<a onclick="a_modifyLink(${tmp.qna_num})" style="float:right; cursor:pointer">수정</a>
 									</c:if>
-									<div class="a_modifyWrite">
-										<form id="a_modifyForm">
+									<form id="a_modifyForm${tmp.qna_num}">
+										<div class="a_modifyWrite a_modifyWrite${tmp.qna_num}">
 											<div class="form-group">
-												<p style="margin-top:10px;font-size:18px"><strong>댓글 달기</strong></p>
+												<p style="margin-top:10px;font-size:18px"><strong>댓글 수정</strong></p>
 												<input type="hidden" name="qna_num" value="${tmp.qna_num }"/>
 												<label class="control-label" for="qna_answer">답변:</label>
 												<textarea class="form-control" name="qna_answer" id="qna_answer" cols="20" rows="5">${tmp.qna_answer }</textarea>
 											</div>
-												<button class="btn btn-default" type="button" id="a_modifyBtn">작성</button>
-										</form>
-									</div>
+												<button class="btn btn-default" onclick="a_modifyBtn(${tmp.qna_num})" type="button">작성</button>
+										</div>
+									</form>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<c:if test="${id eq 'admin' }">
 									<div>
-										<form id="answerForm">
+										<form id="answerForm${tmp.qna_num }">
 											<div class="form-group">
 												<p style="margin-top:10px;font-size:18px"><strong>댓글 달기</strong></p>
 												<input type="hidden" name="qna_num" value="${tmp.qna_num }" />
 												<label class="control-label" for="qna_answer">답변:</label>
 												<textarea class="form-control" name="qna_answer" id="qna_answer" style="width:85%; float:right; resize:none;"></textarea>
 											</div>
-												<button class="btn btn-default" type="button" style="margin-bottom:20px;"
-												id="answerBtn">댓글 작성</button>
+												<button class="btn btn-default" onclick="answerBtn(${tmp.qna_num })" type="button" style="margin-bottom:20px;">댓글 작성</button>
 										</form>
 									</div>
 								</c:if>	
@@ -134,7 +134,7 @@
 	<form id="questionForm">
 		<div class="qnaWrite">
 			<div class="form-group">
-				<input type="hidden" name="dvd_num" value="1"/>
+				<input type="hidden" name="dvd_num" value="${dvd.num}"/>
 				<label class="control-label" for="qna_title">제목:</label>
 				<input class="form-control" type="text" name="qna_title" id="qna_title"/>
 			</div>
@@ -149,43 +149,40 @@
 
 </body>
 
+<!-- 질문 글 자세히 보기 토글, 질문 글 작성, 답글 작성 -->
 <script>
 	function showcontent(data){
 		$(".showContent"+data).toggle();
 	};
 	
-	$("#answerBtn").click(function(){
-		var a_form = $("#answerForm").serialize();
+	function answerBtn(data){
+		var a_form = $("#answerForm"+data).serialize();
 		$.ajax({
-			url:"a_update.do",
+			url:"qna/a_update.do",
 			type:"post",
 			data:a_form,
 			success:function(data){
 				if(data == 1){
-					alert("글이 등록 되었습니다.");
-					
-				}else{
-					alert("잠시 후 ...꺼졍");
+					alert("답변이 등록 되었습니다.");
+					location.reload();
 				}
 			}
-		})
-	});
+		});
+	}
 	
 	$("#questionBtn").click(function(){
 		var q_form = $("#questionForm").serialize();
 		$.ajax({
-			url:"qna_insert.do",
+			url:"qna/qna_insert.do",
 			type:"post",
 			data:q_form,
 			success:function(data){
 				if(data == 1){
-					alert("글이 등록 되었습니다.");
-					
-				}else{
-					alert("잠시 후 ...꺼졍");
+					alert("질문이 등록 되었습니다.");
+					location.reload();
 				}
 			}
-		})
+		});
 	});
 	
 	$(".qnaBtn").on("click", function(){
@@ -193,76 +190,72 @@
 	});
 </script>
 
+<!-- 질문 글 수정 토글, 질문 글 수정, 삭제 -->
 <script>
-	$("#q_modifyLink").click(function(){
-		$(".q_modifyWrite").toggle();
-	});
+	function q_modifyLink(data){
+		$(".q_modifyWrite"+data).toggle();
+	};
 	
-	$("#q_modifyBtn").click(function(){
-		var q_form = $("#q_modifyForm").serialize();
+	function q_modifyBtn(data){
+		var q_form = $("#q_modifyForm"+data).serialize();
 		$.ajax({
-			url:"q_update.do",
+			url:"qna/q_update.do",
 			type:"post",
 			data:q_form,
 			success:function(data){
 				if(data == 1){
-					alert("글이 수정 되었습니다.");
-					
-				}else{
-					alert("잠시 후 ...꺼졍");
+					alert("질문이 수정 되었습니다.");
+					location.reload();
 				}
 			}
 		})
-	});
+	};
 	
 	function q_deleteLink(msg){
 		$.ajax({
-			url:"q_delete.do",
+			url:"qna/q_delete.do",
 			type:"post",
 			data:{"qna_num":msg},
 			success:function(data){
 				if(data==1){
-					alert("글이 삭제 되었습니다.");
-				}else{
-					alret("삭제에 실패!");
+					alert("질문이 삭제 되었습니다.");
+					location.reload();
 				}
 			}
 		});
 	};
 </script>
 
+<!-- 답글 수정 토글, 답글 수정, 삭제 -->
 <script>
-	$("#a_modifyLink").click(function(){
-		$(".a_modifyWrite").toggle();
-	});
+	function a_modifyLink(data){
+		$(".a_modifyWrite"+data).toggle();
+	};
 	
-	$("#a_modifyBtn").click(function(){
-		var a_form = $("#a_modifyForm").serialize();
+	function a_modifyBtn(data){
+		var a_form = $("#a_modifyForm"+data).serialize();
 		$.ajax({
-			url:"a_update.do",
+			url:"qna/a_update.do",
 			type:"post",
 			data:a_form,
 			success:function(data){
 				if(data == 1){
-					alert("글이 수정 되었습니다.");
-					
-				}else{
-					alert("잠시 후 ...꺼졍");
+					alert("답변이 수정 되었습니다.");
+					location.reload();
 				}
 			}
 		})
-	});
+	};
 	
 	function a_deleteLink(msg){
 		$.ajax({
-			url:"a_delete.do",
+			url:"qna/a_delete.do",
 			type:"post",
 			data:{"qna_num":msg},
 			success:function(data){
 				if(data==1){
-					alert("댓글이 삭제 되었습니다.");
-				}else{
-					alert("삭제에 실패!");
+					alert("답변이 삭제 되었습니다.");
+					location.reload();
 				}
 			}
 		});
