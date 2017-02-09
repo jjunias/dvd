@@ -40,14 +40,20 @@ public class QnaDaoImpl implements QnaDao{
 	}
 
 	@Override
-	public List<QnaDto> getList(int dvd_num) {
-		return session.selectList("qna.getList", dvd_num);
+	public List<QnaDto> getList(QnaDto dto) {
+		return session.selectList("qna.getList", dto);
 	}
 
 	@Override
 	public QnaDto getData(int qna_num) {
 		QnaDto dto = session.selectOne("qna.getData", qna_num);
 		return dto;
+	}
+	
+	//전체 글 갯수를 리턴하는 메소드 
+	@Override
+	public int getCount() {
+		return session.selectOne("qna.getCount");
 	}
 	
 }

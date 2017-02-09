@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="qna">
+	<sql id="qnaColumns">
+		qna_num, qna_writer, qna_title, qna_content,
+		TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate, dvd_num
+	</sql>
+	
 	<insert id="insert" parameterType="qnaDto">
 		INSERT INTO qna(qna_num, qna_writer, qna_title, qna_content, regdate, dvd_num)
 		VALUES(qna_seq.NEXTVAL, #{qna_writer}, #{qna_title}, #{qna_content}, SYSDATE, #{dvd_num})
@@ -29,16 +34,38 @@
 		WHERE qna_num=#{qna_num}	
 	</delete>
 	
-	<select id="getList" parameterType="int" resultType="qnaDto">
-		SELECT qna_num, qna_writer, qna_title, qna_content, dvd_num, qna_answer, TO_CHAR(regdate,'YY-MM-DD') regdate
-		FROM qna
-		WHERE dvd_num = #{dvd_num}
-		ORDER BY qna_num DESC
+	<select id="getList" parameterType="qnaDto" resultType="qnaDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM rnum
+			 FROM 	(SELECT <include refid="qnaColumns"/>
+					FROM qna
+					<where>
+					  	<if test="qna_writer != null">
+					  		OR qna_writer LIKE '%'||#{qna_writer}||'%'
+					  	</if>
+					  	<if test="qna_title != null">
+					  		OR qna_title LIKE '%'||#{qna_title}||'%'
+					  	</if>
+					  	<if test="qna_content != null">
+					  		OR qna_content LIKE '%'||#{qna_content}||'%'
+					  	</if>
+				  	</where>
+					ORDER BY qna_num DESC) result1
+			)
+		WHERE
+		<![CDATA[ rnum >= #{startRowNum} AND rnum <= #{endRowNum} ]]>
+		AND dvd_num = #{dvd_num}
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="qnaDto">
 		SELECT qna_num, qna_writer, qna_title, qna_content, dvd_num, qna_answer, regdate
 		FROM qna
 		WHERE qna_num = #{qna_num}
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM qna
 	</select>
 </mapper>

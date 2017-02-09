@@ -39,8 +39,8 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 	@Override
-	public List<QnaDto> getList(int dvd_num) {
-		return qnaDao.getList(dvd_num);
+	public List<QnaDto> getList(QnaDto dto) {
+		return qnaDao.getList(dto);
 	}
 
 	@Override

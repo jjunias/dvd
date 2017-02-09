@@ -54,15 +54,17 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/qna_list")
-	public ModelAndView getList(@RequestParam int dvd_num){
-		ModelAndView mView = new ModelAndView(); 
-		List<QnaDto> list = qnaService.getList(dvd_num);
+	@ResponseBody
+	public ModelAndView getList(@ModelAttribute QnaDto dto){
+		ModelAndView mView = new ModelAndView();
+		List<QnaDto> list = qnaService.getList(dto);
 		mView.addObject("qnaList", list);
 		mView.setViewName("qna/qnalist");
 		return mView;
 	}
 	
 	@RequestMapping("/qna_detail")
+	@ResponseBody
 	public ModelAndView detail(@RequestParam int qna_num){
 		QnaDto dto = qnaService.getData(qna_num);
 		ModelAndView mView = new ModelAndView();

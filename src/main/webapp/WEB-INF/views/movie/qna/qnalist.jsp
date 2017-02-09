@@ -26,6 +26,19 @@
 		display:none;
 	}
 	
+	.page_display a{
+		text-decoration: none;
+		color: #000;
+	}
+	.page_display a.active{
+		font-weight: bold;
+		color: red;
+		text-decoration: underline;
+	}
+	.page_display a.muted{
+		color: #cecece;
+	}
+	
 </style>
 <body>
 	<table class="table table-hover">
@@ -146,6 +159,38 @@
 		</div>
 	</form>
 	<!-- Q&A 글 작성 폼 끝 -->
+
+
+	<!-- 페이지 디스플레이 출력 -->
+	<div class="page_display">
+		<c:choose>
+			<c:when test="${startPageNum ne 1 }">
+				<a href="detail_form.do?num&${dvd.num}&ratingNum=${startPageNum-1 }">[ 이전 ]</a>
+			</c:when>
+			<c:otherwise>
+				<a class="muted" href="javascript:">[ 이전 ]</a>
+			</c:otherwise>
+		</c:choose>
+	
+		<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+			<c:choose>
+				<c:when test="${i eq pageNum }">
+					<a class="active" href="detail_form.do?num&${dvd.num}&ratingNum=${i }">${i }</a>
+				</c:when>
+				<c:otherwise>
+					<a href="detail_form.do?num&${dvd.num}&ratingNum=${i }">${i }</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<c:choose>
+			<c:when test="${endPageNum lt totalPageCount }">
+				<a href="detail_form.do?num&${dvd.num}&ratingNum=${endPageNum+1 }">[ 다음 ]</a>
+			</c:when>
+			<c:otherwise>
+				<a class="muted" href="javascript:">[ 다음 ]</a>
+			</c:otherwise>
+		</c:choose>
+	</div>
 
 </body>
 
