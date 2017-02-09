@@ -6,13 +6,6 @@
 <!DOCTYPE html>
 <html>
 <style>
-	.content{
-		position:absolute;
-		top:120px;
-		left:25%;
-		width:60%;
-		background-color:#FFFFE4;
-	}
 	.imgBox{
 		float:left;
 		margin:60px 2% 0 5%;
@@ -78,9 +71,11 @@
 <body>
 	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
 	<div class="content">
-		<div class="update_btn">
-			<button class="btn btn-warning" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
-		</div>
+		<c:if test="${id eq 'admin' }">
+			<div class="update_btn">
+				<button class="btn btn-warning" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
+			</div>
+		</c:if>
 		<h1>영화 상세</h1>
 		<div class="box">
 			<div class="imgBox">

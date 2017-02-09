@@ -176,7 +176,6 @@
 			data: ratingForm,
 			success:function(data){
 				if(data ==1){
-					alert("글이 등록 되었습니다.");
 					location.reload();
 				}
 			}

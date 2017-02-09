@@ -4,13 +4,6 @@
 <!DOCTYPE html>
 <jsp:include page="/WEB-INF/views/source.jsp"/>
 <style>
-	.content{
-		position:absolute;
-		top:120px;
-		left:25%;
-		width:60%;
-		height:1200px;
-	}
 	.imgBox{
 		float:left;
 		margin:60px 1% 0 1%;
@@ -45,7 +38,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
-	<button class="btn btn-default write_btn" onclick="location.href='admin/insert_form.do?type=views&national=${param.national}'">글쓰기</button>
+	<c:if test="${id eq 'admin'}">
+		<button class="btn btn-default write_btn" onclick="location.href='admin/insert_form.do?type=views&national=${param.national}'">글쓰기</button>
+	</c:if>
 	<div class="content">
 		<c:forEach var="tmp" items="${list}" varStatus="count">
 			<div class="imgBox">

@@ -5,20 +5,6 @@
       width: 100%;
       height: 100%;
    }
-   .main_left{
-      position:absolute;
-      left:0;
-      top:120px;
-      width:5%;
-      height:800px;
-   }
-   .main_right{
-      position:absolute;
-      right:0;
-      top:120px;
-      width:15%;
-      height:800px;
-   }
    .sub_domestic,.sub_overseas{
       display:none;
    }
@@ -31,6 +17,7 @@
    .top_catal{
       width:100%;
       height:120px;
+      background-color:#4ABFD3;
    }
    .logo{
       position:absolute;
@@ -52,25 +39,13 @@
    .search_bar button{
       height:40px;
    }
-   a{
-        margin-left:15px;
-      color:black;
-      
-   }
-   a:HOVER{
-      color:grey;
-      text-decoration: none;
-   }
    .main_catal{
       position:absolute;
       top:120px;
-      left:15%;
-   }
-   .main_catal{
-      background-color:white;
-      width:200px;
+      width:20%;
       height:800px;
       font-size:17px;
+      
    }
    .adver{
       width:200px;
@@ -82,14 +57,14 @@
       color:black;
    }
    .loginBar{
-   padding:20px;
-   width:300px;
-    position:absolute;
-      display:none;
-      z-index: 999999 !important;
-      top:20px;
-      background-color: white;
-      border-radius: 10px 10px 10px 10px;
+	   	padding:20px;
+		width:300px;
+	    position:absolute;
+		display:none;
+		z-index: 999 !important;
+		top:20px;
+		background-color: white;
+		border-radius: 10px 10px 10px 10px;
    }
    .login_toggle, .sessionId{
       color:black;
@@ -110,6 +85,12 @@
         width:100%;
         text-align: center;
    }
+   .content{
+		position:absolute;
+		top:120px;
+		left:20%;
+		width:60% !important;
+	}
 }
 </style>
 <div class="catalog">
@@ -179,11 +160,11 @@
             <a href="/dvd/movie/movie_main.do?type=list&national=domestic">국내 영화</a>
             <div class="sub_domestic">
                <ul class="sub">
-                  <li><a href="/dvd/movie/domestic_main.do?type=list&national=domestic&genre=action">액션</a></li>
-                  <li>범죄,드라마</li>
-                  <li>코미디</li>
-                  <li>멜로/로맨스</li>
-                  <li>기 타</li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=action">액션</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=drama">범죄,드라마</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=comedy">코미디</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=romance">멜로/로맨스</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=etc">기 타</a></li>
                </ul>
             </div>
          </li>
@@ -191,11 +172,11 @@
             <a href="/dvd/movie/movie_main.do?type=list&national=overseas">해외 영화</a></li>
             <div class="sub_overseas">
                <ul class="sub">
-                  <li>액션</li>
-                  <li>범죄,드라마</li>
-                  <li>코미디</li>
-                  <li>멜로/로맨스</li>
-                  <li>기 타</li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=action">액션</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=drama">범죄,드라마</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=comedy">코미디</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=romance">멜로/로맨스</a></li>
+                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=etc">기 타</a></li>
                </ul>
             </div>
          </li>
@@ -213,11 +194,11 @@
    }
    
    $(".login_toggle").click(function(){
-    $(".loginBar").slideToggle(300);
+    $(".loginBar").stop().slideToggle(300);
    });
    
    $(".gBtn").click(function(){
-    $(".loginBar").slideToggle(300);  
+    $(".loginBar").stop().slideToggle(300);  
    });
    
    
@@ -231,13 +212,9 @@
          type:"post",
          data:formData,
          success:function(data){
-        	
-            alert(data);
             if(data){
-               alert("로그인 성공");
                location.reload();
             }else{
-               alert("실패");
             }
          }   
       });
