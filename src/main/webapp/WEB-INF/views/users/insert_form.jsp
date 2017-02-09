@@ -109,6 +109,7 @@
          </div>
       </form>
    </div>
+
 </div>
 </body>
 </html>
@@ -248,14 +249,10 @@
          }
       });
    });
-    
-    
-    
-    
-    
+
  // 정규식 : 비밀번호
     function chkPwd(str){
-       var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+    	var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
      if(!reg_pwd.test(str))
      {
       return false;
@@ -416,6 +413,58 @@
         }
         
         //document.f.submit();
+    });
+    
+    
+    
+    
+    // 이름 
+           
+    function chkName(str){
+    	var nameReg = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+     if(!nameReg.test(str))
+     {
+      return false;
+     }
+     return true;
+    }
+    // 폼 전송
+    $("#name").on("blur", function(){
+    	$("#name")
+		.parent()
+		.parent()
+		.removeClass("has-success has-error");
+   
+    	 var inputVal1 = $("#name").val().trim();
+    	
+	     $('#name').val($('#name').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
+	     if(!chkName($('#name').val().trim()))
+	     {
+	    	 $("#name")
+				.parent()
+				.parent()
+				.addClass("has-error")
+				.find(".help-block")
+				.show()
+				.parent()
+				.find(".glyphicon")
+				.removeClass("glyphicon-ok")
+				.addClass("glyphicon-remove");
+	      return false;
+	     }else{
+	    	 $("#name")
+				.parent()
+				.parent()
+				.addClass("has-success")
+				.find(".help-block")
+				.hide()
+				.parent()
+				.find(".glyphicon")
+				.removeClass("glyphicon-remove")
+				.addClass("glyphicon-ok");
+	     }
+	     
+	     //document.f.submit();
     });
     
     
