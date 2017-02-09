@@ -213,11 +213,11 @@
    }
    
    $(".login_toggle").click(function(){
-    $(".loginBar").slideToggle(300);
+    $(".loginBar").stop().slideToggle(300);
    });
    
    $(".gBtn").click(function(){
-    $(".loginBar").slideToggle(300);  
+    $(".loginBar").stop().slideToggle(300);
    });
    
    

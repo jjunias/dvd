@@ -43,7 +43,7 @@
 			<div class="form-group has-feedback">
 				<label for="id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control"  name="id"  id="id" placeholder="아이디"/>
+					<input type="text" class="form-control"  name="id"  id="id" placeholder="아이디는 영소문자로 시작하는 6~20자 영소문자 또는 숫자이어야 합니다."/>
 					<p class="help-block">사용할 수 없는 아이디 입니다.</p>
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
@@ -52,7 +52,7 @@
 				<label for="pwd" class="col-sm-2 control-label">비밀번호</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
-					<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
+					<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자,특수문자를 혼합하여 8~15자 이내)</p>
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
@@ -64,16 +64,18 @@
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group has-feedback">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control"  name="name"  id="name" placeholder="이름"/><br/>
+					<input type="text" class="form-control"  name="name"  id="name" placeholder="한글2~4자,영문 Firstname(2~10자)(space)Lastname(2~10자)"/>
+					<p class="help-block">한글은 2 ~ 4글자(공백 없음) , 영문은 Firstname(2 ~ 10글자) (space) Lastname(2 ~10글자)로 입력해 주세요.</p>
+					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
 			<div class="form-group has-feedback">
 				<label for="phone" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control"  numberonly="true"  name="phone"  id="phone" placeholder="(-)를 제외한 전화번호를 입력하세요."><br/>
+					<input type="text" class="form-control"  numberonly="true"  name="phone"  id="phone" placeholder="(-)를 제외한 전화번호를 입력하세요."/><br/>
 					<p class="help-block"> 올바른 형식이 아닙니다.</p>
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
@@ -193,6 +195,18 @@
         }).open();
     }
     
+    
+    function chkId(str){
+	    var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+	    if(!idReg.test(str)){
+	    	return false;
+	    }
+	    return true;
+    }
+    
+    $('#id').val($('#id').val().trim());
+    
+   
     $("#id").on("keyup", function(){
 		//입력한 아이디 읽어오기
 		var inputId=$("#id").val();
@@ -201,14 +215,12 @@
 			url:"checkid.do",
 			method:"get",
 			data:{inputId:inputId},
-			
 			success:function(data){
-				console.log(data);
 				$("#id")
 				.parent()
 				.parent()
 				.removeClass("has-success has-error");
-				if(data){
+				if(data && chkId($('#id').val().trim())){
 					$("#id")
 					.parent()
 					.parent()
@@ -235,10 +247,13 @@
 		});
 	});
     
+    
+    
+    
+    
  // 정규식 : 비밀번호
-    function chkPwd(str)
-    {
-     var reg_pwd = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/;
+    function chkPwd(str){
+    	var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
      if(!reg_pwd.test(str))
      {
       return false;
@@ -351,6 +366,58 @@
 		}
     	
     });
+    
+    // 이름 
+           
+    function chkName(str){
+    	var nameReg = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+     if(!nameReg.test(str))
+     {
+      return false;
+     }
+     return true;
+    }
+    // 폼 전송
+    $("#name").on("blur", function(){
+    	$("#name")
+		.parent()
+		.parent()
+		.removeClass("has-success has-error");
+   
+    	 var inputVal1 = $("#name").val().trim();
+    	
+	     $('#name').val($('#name').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
+	     if(!chkName($('#name').val().trim()))
+	     {
+	    	 $("#name")
+				.parent()
+				.parent()
+				.addClass("has-error")
+				.find(".help-block")
+				.show()
+				.parent()
+				.find(".glyphicon")
+				.removeClass("glyphicon-ok")
+				.addClass("glyphicon-remove");
+	      return false;
+	     }else{
+	    	 $("#name")
+				.parent()
+				.parent()
+				.addClass("has-success")
+				.find(".help-block")
+				.hide()
+				.parent()
+				.find(".glyphicon")
+				.removeClass("glyphicon-remove")
+				.addClass("glyphicon-ok");
+	     }
+	     
+	     //document.f.submit();
+    });
+    
+    
+    
     
     // 전화번호
     $("#phone").on("blur",function(){
