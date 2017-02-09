@@ -52,15 +52,6 @@
    .search_bar button{
       height:40px;
    }
-   a{
-        margin-left:15px;
-      color:black;
-      
-   }
-   a:HOVER{
-      color:grey;
-      text-decoration: none;
-   }
    .main_catal{
       position:absolute;
       top:120px;
@@ -68,7 +59,7 @@
    }
    .main_catal{
       background-color:white;
-      width:200px;
+      width:5%;
       height:800px;
       font-size:17px;
    }
@@ -82,11 +73,11 @@
       color:black;
    }
    .loginBar{
-   padding:20px;
-   width:300px;
-    position:absolute;
+         padding:20px;
+      width:300px;
+       position:absolute;
       display:none;
-      z-index: 999999 !important;
+      z-index: 999 !important;
       top:20px;
       background-color: white;
       border-radius: 10px 10px 10px 10px;
@@ -213,11 +204,11 @@
    }
    
    $(".login_toggle").click(function(){
-    $(".loginBar").stop().slideToggle(300);
+    $(".loginBar").slideToggle(300);
    });
    
    $(".gBtn").click(function(){
-    $(".loginBar").stop().slideToggle(300);
+    $(".loginBar").slideToggle(300);  
    });
    
    
@@ -231,7 +222,7 @@
          type:"post",
          data:formData,
          success:function(data){
-        	
+           
             alert(data);
             if(data){
                alert("로그인 성공");
