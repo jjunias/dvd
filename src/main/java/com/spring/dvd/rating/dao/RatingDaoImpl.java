@@ -1,6 +1,7 @@
 package com.spring.dvd.rating.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,9 @@ public class RatingDaoImpl implements RatingDao {
 	@Override
 	public List<RatingDto> getList(DvdDto dto) {
 		// TODO Auto-generated method stub
+		
 		return session.selectList("rating.getList",dto);
+		
 	}
 
 	@Override
@@ -73,9 +76,36 @@ public class RatingDaoImpl implements RatingDao {
 	public boolean idCheck(RatingRecommendDto dto) {
 
 		String id = session.selectOne("rating.idCheck",dto);
+		
 		if(null == id){
 			return true;
 		}
 		return false;
 	}
+
+	@Override
+	public int recommendCount(RatingRecommendDto dto) {
+		// TODO Auto-generated method stub
+		return session.selectOne("rating.recommendCount",dto);
+	}
+
+	@Override
+	public void recommendUpdate(RatingRecommendDto dto) {
+		// TODO Auto-generated method stub
+		session.update("rating.recommendUpdate",dto);
+		
+	}
+
+	@Override
+	public float averageDvd(RatingDto dto) {
+		// TODO Auto-generated method stub
+		return session.selectOne("rating.average",dto);
+	}
+
+	@Override
+	public void averageUpdate(RatingDto dto) {
+		// TODO Auto-generated method stub
+		session.update("rating.averageUpdate",dto);
+	}
+	
 }

@@ -3,7 +3,7 @@
 <mapper namespace="dvd">
 	
 	<insert id="insert" parameterType="dvdDto">
-	INSERT INTO DVD(num,national,genre,title,actor,content,production,price,trailer,regdate,orgFileName,saveFileName,fileSize)
+	INSERT INTO DVD(num,national,genre,title,actor,content,production,price,trailer,grade,regdate,orgFileName,saveFileName,fileSize)
 	VALUES(
 	Dvd_seq.NEXTVAL,
 	#{national},
@@ -14,6 +14,7 @@
 	#{production},
 	#{price},
 	#{trailer},
+	0,
 	SYSDATE,
 	#{orgFileName},
 	#{saveFileName},

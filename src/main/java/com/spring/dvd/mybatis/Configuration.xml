@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.spring.dvd.basket.dto.BasketDto" alias="basketDto"/>
 		<typeAlias type="com.spring.dvd.rating.dto.RatingDto" alias="ratingDto"/>
 		<typeAlias type="com.spring.dvd.qna.dto.QnaDto" alias="qnaDto"/>
+		<typeAlias type="com.spring.dvd.rating.dto.RatingRecommendDto" alias="recommendDto"/>
 	</typeAliases>
 
 	<!-- sql 문을 정의하고 있는 xml 문서 정보 -->

@@ -54,5 +54,4 @@ public class DvdDaoImpl implements DvdDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("dvd.getCount");
 	}
-
 }
