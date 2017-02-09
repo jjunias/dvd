@@ -25,15 +25,33 @@ public class RatingServiceImpl extends GenericServiceImpl<RatingDto,Integer,Rati
 		dto.setTotalPageCount(dao.getCount()); //DB 전체 갯수를 넣어줌
 		dto = page.Paging(dto,10);
 		List<RatingDto> list = dao.getList(dto);
+		for(RatingDto tmp : list){
+		}
 		return list;
 	}
 	@Override
 	public int RecommendInsert(RatingRecommendDto dto) {
 		// TODO Auto-generated method stub
 		boolean checked = dao.idCheck(dto);
+		int success = 0;
 		if(checked){
-			return dao.RecommendInsert(dto);
+			success = dao.RecommendInsert(dto);
+			int count = dao.recommendCount(dto);
+			dto.setCount(count);
+			dao.recommendUpdate(dto);
 		}
-		return 0;
+		return success;
+	}
+	@Override
+	public int Insert(RatingDto dto){
+		int success = dao.insert(dto);
+		if(1 == success){
+			System.out.println("들어옴");
+			float avg = dao.averageDvd(dto);
+			dto.setScore(avg);
+			dao.averageUpdate(dto);
+			
+		}
+		return success;
 	}
 }

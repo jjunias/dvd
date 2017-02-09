@@ -111,10 +111,8 @@
 				data:formData,
 				success:function(data){
 					if(data == 1){
-						alert("수정 ㅊㅋ염");
 						location.href="/dvd/home.do"
 					}else{
-						alert("실패");
 					}
 				}	
 			});
@@ -127,10 +125,8 @@
 				type:"get",
 				success:function(data){
 					if(data == 1){
-						
 						location.href="/dvd/home.do"
 					}else{
-						alert("핳");
 					}
 				}	
 			});		

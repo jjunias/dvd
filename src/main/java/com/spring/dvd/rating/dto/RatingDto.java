@@ -90,4 +90,11 @@ public class RatingDto extends GenericDto{
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
+	@Override
+	public String toString() {
+		return "RatingDto [num=" + num + ", writer=" + writer + ", title=" + title + ", score=" + score + ", content="
+				+ content + ", dvd_num=" + dvd_num + ", recommend=" + recommend + ", regdate=" + regdate + "]";
+	}
+	
 }

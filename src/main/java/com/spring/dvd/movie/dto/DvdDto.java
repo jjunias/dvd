@@ -19,7 +19,6 @@ public class DvdDto extends GenericDto{
     private String regdate; //등록 일자
     
     private int dvd_num; //dvd num 사용
-  
     public DvdDto(){}//defalut 생성자
 
 	public DvdDto(int num, String national, String genre, String title, String actor, String content, String production,

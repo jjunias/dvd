@@ -92,18 +92,15 @@
 	$("#pwdBtn").click(function(){
 		
 			var formData = $("#pwd_form").serialize();
-			alert(formData);
 			$.ajax({
 				url:"password.do",
 				type:"post",
 				data:formData,
 				success:function(data){
-					alert(data);
 					if(data){
-						alert("비밀번호 수정 ㅊㅋ염");
+						alert("비밀번호가 변경 되었습니다.");
 						location.href="/dvd/home.do"
 					}else{
-						alert("실패");
 					}
 				}	
 			});

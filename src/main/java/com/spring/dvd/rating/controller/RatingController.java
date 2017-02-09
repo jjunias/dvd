@@ -28,7 +28,7 @@ public class RatingController extends GenericController<RatingDto, Integer, Rati
 	public int Insert(@ModelAttribute RatingDto dto, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		dto.setWriter(id);
-		return service.insert(dto);
+		return service.Insert(dto);
 	}
 
 	@RequestMapping("/getList")
@@ -40,9 +40,10 @@ public class RatingController extends GenericController<RatingDto, Integer, Rati
 	
 	@RequestMapping("/private/recommendUp")
 	@ResponseBody
-	public int recommendUp(@ModelAttribute RatingRecommendDto dto){
-		
-		return 0;
+	public int recommendUp(@ModelAttribute RatingRecommendDto dto,HttpSession session){
+		String id = (String) session.getAttribute("id");
+		dto.setUserId(id);
+		return service.RecommendInsert(dto);
 	}
 
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="rating">
 	<insert id="insert" parameterType="ratingDto">
-		INSERT INTO rating (num,writer,title,score,content,dvd_num,regdate)
+		INSERT INTO rating (num,writer,title,score,content,dvd_num,recommend,regdate)
 		VALUES(
 		dvd_rating_seq.NEXTVAL,
 		#{writer},
@@ -10,6 +10,7 @@
 		#{score},
 		#{content},
 		#{dvd_num},
+		0,
 		SYSDATE
 		)
 	</insert>
@@ -32,4 +33,45 @@
 		SELECT NVL(MAX(ROWNUM), 0)      <!--DB가 null 일 경우 0 출력(NVL)-->
 		FROM rating
 	</select>
+	
+	<select id="idCheck" parameterType="recommendDto" resultType="String">
+		SELECT userId
+		FROM rating_recommend
+		WHERE userId = #{userId}
+		AND rating_num = #{rating_num}
+	</select>
+	
+	<insert id="recommendInsert" parameterType="recommendDto">
+		INSERT INTO rating_recommend
+		VALUES(
+			#{rating_num},
+			#{userId}
+		)
+	</insert>
+	
+	<select id="recommendCount" parameterType="recommendDto" resultType="int">
+		select NVL(MAX(ROWNUM),0)
+		FROM rating_recommend
+		WHERE rating_num = #{rating_num}
+	</select>
+	
+	<update id="recommendUpdate" parameterType="recommendDto">
+		UPDATE rating
+		SET
+			recommend = #{count}
+		WHERE num = #{rating_num}
+	</update>
+	
+	<select id="average" parameterType="recommendDto" resultType="float">
+		SELECT AVG(score) 
+		FROM rating
+		WHERE dvd_num = #{dvd_num}
+	</select>
+	
+	<update id="averageUpdate" parameterType="recommendDto">
+		UPDATE DVD
+		SET
+			grade = #{score}
+		WHERE num = #{dvd_num}
+	</update>
 </mapper>
