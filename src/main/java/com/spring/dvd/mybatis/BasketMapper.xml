@@ -3,18 +3,25 @@
 <mapper namespace="basket">
 	<insert id="insert" parameterType="basketDto">
 		INSERT INTO dvd_basket
-		VALUES(#{id}, #{num})
+		VALUES(#{id}, #{dvd_num})
 	</insert>
 	
 	<delete id="delete" parameterType="basketDto">
 		DELETE FROM dvd_basket
 		WHERE id=#{id}
-		AND num=#{num}
+		AND dvd_num=#{dvd_num}
 	</delete>
 	
 	<select id="getList" parameterType="string" resultType="basketDto">
 		SELECT bs.id, dv.title, dv.price
 		FROM (SELECT * FROM dvd_basket WHERE id = #{id}) bs, dvd dv
-		WHERE dv.num = bs.num
+		WHERE dv.num = bs.dvd_num
+	</select>
+	
+	<select id="getData" parameterType="basketDto" resultType="basketDto">
+		SELECT id, dvd_num
+		FROM dvd_basket
+		WHERE id=#{id}
+		AND dvd_num=#{dvd_num}
 	</select>
 </mapper>
