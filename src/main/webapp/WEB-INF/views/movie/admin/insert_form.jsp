@@ -55,6 +55,7 @@
 				<label class="control-label" for="trailer">동영상:</label>
 				<input class="form-control input" type="text" name="trailer" id="trailer" placeholder="https://youtu.be/(이곳만 입력)"/><br/>
 				<label class="control-label" for="picture">사진 :</label>
+				<input type="hidden" name="national" value="${param.national}" />
 				<div class="filebox">
 					<label for="ex_filename" class="ex_filename">업로드</label>
 					<input class="upload-name form-control input" type="text" id="upload_" placeholder="파일을 선택해주세요" disabled="disabled"/> 
