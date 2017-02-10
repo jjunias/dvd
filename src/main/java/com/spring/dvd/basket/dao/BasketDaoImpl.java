@@ -29,4 +29,11 @@ public class BasketDaoImpl implements BasketDao {
 		List<DvdDto> list = session.selectList("basket.getList", id);
 		return list;
 	}
+
+	@Override
+	public BasketDto getData(BasketDto dto) {
+		BasketDto basketDto = session.selectOne("basket.getData", dto);
+		return basketDto;
+	}
+	
 }

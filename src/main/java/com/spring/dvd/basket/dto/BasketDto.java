@@ -2,14 +2,14 @@ package com.spring.dvd.basket.dto;
 
 public class BasketDto{
 	private String id;
-	private int num;
+	private int dvd_num;
 	
 	public BasketDto(){}
 
-	public BasketDto(String id, int num) {
+	public BasketDto(String id, int dvd_num) {
 		super();
 		this.id = id;
-		this.num = num;
+		this.dvd_num = dvd_num;
 	}
 
 	public String getId() {
@@ -20,12 +20,12 @@ public class BasketDto{
 		this.id = id;
 	}
 
-	public int getNum() {
-		return num;
+	public int getDvd_num() {
+		return dvd_num;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setDvd_num(int dvd_num) {
+		this.dvd_num = dvd_num;
 	}
 	
 	

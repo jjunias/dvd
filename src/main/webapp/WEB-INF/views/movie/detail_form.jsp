@@ -90,7 +90,7 @@
 				</div>
 				<hr/>
 				<button class="btn btn-success buy_btn">구매 하기</button>
-				<button class="btn btn-warning">장바구니 담기</button>
+				<button class="btn btn-warning" onclick="basketBtn(${dvd.num })">장바구니 담기</button>
 			</div>
 		</div>
 		<div class="view_list">
@@ -108,4 +108,23 @@
 		<jsp:include page="/WEB-INF/views/movie/qna/qnalist.jsp"></jsp:include>
 	</div>
 </body>
+<script>
+	function basketBtn(msg){
+		$.ajax({
+			url:"../basket/insert.do",
+			type:"post",
+			data:{"dvd_num":msg},
+			success:function(data){
+				if(data==1){
+					alert("상품을 장바구니에 담았습니다!");
+					location.reload();
+				}
+				else{
+					alert("이미 장바구니에 담은 상품입니다.");
+					location.reload();
+				}
+			}
+		});
+	};
+</script>
 </html>

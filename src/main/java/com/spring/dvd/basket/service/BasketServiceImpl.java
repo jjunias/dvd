@@ -16,7 +16,13 @@ public class BasketServiceImpl implements BasketService{
 
 	@Override
 	public int insert(BasketDto dto) {
-		return basketDao.insert(dto);
+		BasketDto basDto = basketDao.getData(dto);
+		if(basDto == null){
+			return basketDao.insert(dto);
+		}
+		else{
+			return 0;
+		}
 	}
 
 	@Override
