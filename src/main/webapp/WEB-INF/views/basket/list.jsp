@@ -11,7 +11,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th>아이디</th>
+				<th>상품번호</th>
 				<th>제목</th>
 				<th>가격</th>
 			</tr>
@@ -19,7 +19,7 @@
 		<tbody>
 		<c:forEach var="tmp" items="${list}">
 			<tr>
-				<td>${tmp.id }</td>
+				<td>${tmp.num }</td>
 				<td>${tmp.title }</td>
 				<td>${tmp.price }</td>
 			</tr>

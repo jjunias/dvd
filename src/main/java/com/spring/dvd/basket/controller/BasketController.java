@@ -1,5 +1,7 @@
 package com.spring.dvd.basket.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.dvd.basket.dto.BasketDto;
 import com.spring.dvd.basket.service.BasketService;
+import com.spring.dvd.movie.dto.DvdDto;
 
 @Controller
 public class BasketController {
@@ -29,8 +32,9 @@ public class BasketController {
 	
 	@RequestMapping("/basket/list")
 	public ModelAndView getList(String id){
-		//String id = (String)session.getAttribute("id");
-		ModelAndView mView = basketService.getList(id);
+		ModelAndView mView = new ModelAndView();
+		List<DvdDto> list = basketService.getList(id);
+		mView.addObject("list", list);
 		mView.setViewName("basket/list");
 		return mView;
 	}
