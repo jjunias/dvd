@@ -7,6 +7,7 @@
 <title>views/basket/list.jsp</title>
 </head>
 <body>
+	<a href="/dvd/users/private/pay.do?type=views">구매하기</a>
 	<h3>장바구니 목록입니다.</h3>
 	<table>
 		<thead>

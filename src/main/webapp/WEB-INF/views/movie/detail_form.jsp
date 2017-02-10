@@ -117,4 +117,8 @@
 		score : "${dvd.grade}",
 		readOnly: true
 	});
+	
+	$(".buy_btn").click(function(){
+		location.href="/dvd/users/pay.do?type=views";
+	});
 </script>

@@ -46,25 +46,25 @@
       </div><br/>
       <form  id="signup_form" class="form-horizontal">
          <div class="form-group has-feedback">
-            <label for="id" class="col-sm-2 control-label">아이디</label>
+            <label for="users_id" class="col-sm-2 control-label">아이디</label>
             <div class="col-sm-10">
-               <input type="text" class="form-control"  name="id"  id="id" placeholder="영소문자로 시작하는 6~20자 영소문자 또는 숫자이어야 합니다."/>
+               <input type="text" class="form-control"  name="id"  id="users_id" placeholder="영소문자로 시작하는 6~20자 영소문자 또는 숫자이어야 합니다."/>
                <p class="help-block">사용할 수 없는 아이디 입니다.</p>
                <span class="glyphicon form-control-feedback"></span>
             </div>
          </div>
          <div class="form-group has-feedback">
-            <label for="pwd" class="col-sm-2 control-label">비밀번호</label>
+            <label for="users_pwd" class="col-sm-2 control-label">비밀번호</label>
             <div class="col-sm-10">
-               <input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
+               <input type="password" class="form-control" name="pwd"  id="users_pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
                <p class="help-block"> 비밀번호를 확인하세요.(영문,숫자,특수문자를 혼합하여 8~15자 이내)</p>
                <span class="glyphicon form-control-feedback"></span>
             </div>
          </div>
          <div class="form-group has-feedback">
-            <label for="pwd2" class="col-sm-2 control-label">비밀번호확인</label>
+            <label for="users_pwd2" class="col-sm-2 control-label">비밀번호확인</label>
             <div class="col-sm-10">
-               <input type="password" class="form-control" name="pwd2"  id="pwd2" placeholder="비밀번호 확인"/><br/>
+               <input type="password" class="form-control" name="pwd2"  id="users_pwd2" placeholder="비밀번호 확인"/><br/>
                <p class="help-block"> 비밀번호를 확인하세요.</p>
                <span class="glyphicon form-control-feedback"></span>
             </div>
@@ -123,10 +123,10 @@
    });
    
    $("#insertBtn").click(function(){
-      if($("#id").val() == ""){
-         $("#id").focus();
-      }if($("#pwd").val() == ""){
-         $("#pwd").focus();
+      if($("#users_id").val() == ""){
+         $("#users_id").focus();
+      }if($("#users_pwd").val() == ""){
+         $("#users_pwd").focus();
       }if($("#name").val() == ""){
          $("#name").focus();
       }if($("#phone").val() == ""){
@@ -207,24 +207,24 @@
        return true;
     }
     
-    $('#id').val($('#id').val().trim());
+    $('#users_id').val($('#users_id').val().trim());
     
    
-    $("#id").on("keyup", function(){
+    $("#users_id").on("keyup", function(){
       //입력한 아이디 읽어오기
-      var inputId=$("#id").val();
+      var inputId=$("#users_id").val();
       //ajax 요청을 이용해서 서버에 전송
       $.ajax({
          url:"checkid.do",
          method:"get",
          data:{inputId:inputId},
          success:function(data){
-            $("#id")
+            $("#users_id")
             .parent()
             .parent()
             .removeClass("has-success has-error");
-            if(data && chkId($('#id').val().trim())){
-               $("#id")
+            if(data && chkId($('#users_id').val().trim())){
+               $("#users_id")
                .parent()
                .parent()
                .addClass("has-success")
@@ -235,7 +235,7 @@
                .removeClass("glyphicon-remove")
                .addClass("glyphicon-ok");
             }else{
-               $("#id")
+               $("#users_id")
                .parent()
                .parent()
                .addClass("has-error")
@@ -260,21 +260,21 @@
      return true;
     }
     // 폼 전송
-    $("#pwd").on("blur", function(){
-       $("#pwd")
+    $("#users_pwd").on("blur", function(){
+       $("#users_pwd")
       .parent()
       .parent()
       .removeClass("has-success has-error");
        
-       $("#pwd2")
+       $("#users_pwd2")
       .parent()
       .parent()
       .removeClass("has-success has-error");
 
-        var inputVal1 = $("#pwd").val().trim();
-         var inputVal2 = $("#pwd2").val().trim();
+        var inputVal1 = $("#users_pwd").val().trim();
+         var inputVal2 = $("#users_pwd2").val().trim();
        if(inputVal1==inputVal2 && !inputVal1 == ""){
-             $("#pwd2")
+             $("#users_pwd2")
              .parent()
              .parent()
              .addClass("has-success")
@@ -285,7 +285,7 @@
              .removeClass("glyphicon-remove")
              .addClass("glyphicon-ok");
           }else{
-             $("#pwd2")
+             $("#users_pwd2")
              .parent()
              .parent()
              .addClass("has-error")
@@ -298,10 +298,10 @@
           }
        
         // 확인 : 비밀번호
-        $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
-        if(!chkPwd($('#pwd').val().trim()))
+        $('#users_pwd').val($('#users_pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
+        if(!chkPwd($('#users_pwd').val().trim()))
         {
-           $("#pwd")
+           $("#users_pwd")
             .parent()
             .parent()
             .addClass("has-error")
@@ -311,10 +311,10 @@
             .find(".glyphicon")
             .removeClass("glyphicon-ok")
             .addClass("glyphicon-remove");
-         $('#pwd').val('');
+         $('#users_pwd').val('');
          return false;
         }else{
-           $("#pwd")
+           $("#users_pwd")
             .parent()
             .parent()
             .addClass("has-success")
@@ -331,17 +331,17 @@
 
     
     // 비밀번호 확인
-    $("#pwd2").on("blur", function(){
+    $("#users_pwd2").on("blur", function(){
        
-        var inputVal1 = $("#pwd").val().trim();
-        var inputVal2 = $("#pwd2").val().trim();
-       $("#pwd2")
+        var inputVal1 = $("#users_pwd").val().trim();
+        var inputVal2 = $("#users_pwd2").val().trim();
+       $("#users_pwd2")
       .parent()
       .parent()
       .removeClass("has-success has-error")
        
       if(inputVal1 == inputVal2 && !inputVal2 == ""){
-         $("#pwd2")
+         $("#users_pwd2")
          .parent()
          .parent()
          .addClass("has-success")
@@ -352,7 +352,7 @@
          .removeClass("glyphicon-remove")
          .addClass("glyphicon-ok");
       }else{
-         $("#pwd2")
+         $("#users_pwd2")
          .parent()
          .parent()
          .addClass("has-error")

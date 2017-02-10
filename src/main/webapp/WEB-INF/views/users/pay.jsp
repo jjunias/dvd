@@ -92,7 +92,8 @@
 
 </style>
 <body>
-<div class="container">
+	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
+<div class="content">
   <div class="col-xs-7">
     <div class="car_info">
       <h3>주문자 정보</h3>
