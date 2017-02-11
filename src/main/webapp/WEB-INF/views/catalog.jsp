@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 	body{
-		background-color: #C6C6C6;
+		background-color: #FAFAFA;
 		height:0px;
 	}
    img{
@@ -83,6 +83,8 @@
    }
    .content{
 		position:absolute;
+		background-color: #F6F6F6;
+		border:2px solid darkgrey;
 		margin-top:200px;
 		top:300px;
 		left:20%;
@@ -95,7 +97,7 @@
 		top:410px;
 		width:16%;
 		height:40px;
-		background:#C6C6C6;
+		background:#FAFAFA;
 	}
 	.main_right{
 		position:absolute;
@@ -103,7 +105,7 @@
 		top:410px;
 		width:16%;
 		height:40px;
-		background:#C6C6C6;
+		background:#FAFAFA;
 	}
 	.top_one{
 		position:fixed;
@@ -121,8 +123,8 @@
 		width:68%;
 		height:40px;
 		border-top:40px solid transparent;
-		border-left:60px solid #C6C6C6;
-		border-right:60px solid #C6C6C6;
+		border-left:60px solid #FAFAFA;
+		border-right:60px solid #FAFAFA;
 		margin-left:16%;
 	}
 	.main_img{
