@@ -7,4 +7,6 @@ import com.spring.dvd.movie.dto.DvdDto;
 
 public interface DvdDao extends GenericDao<DvdDto,Integer>{
 	public List<DvdDto> getList(DvdDto dto);
+	public int getCount(DvdDto dto);
+	public void  viewsUp(int num);
 }

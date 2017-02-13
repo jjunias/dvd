@@ -3,7 +3,7 @@
 <mapper namespace="dvd">
 	
 	<insert id="insert" parameterType="dvdDto">
-	INSERT INTO DVD(num,national,genre,title,actor,content,production,price,trailer,grade,regdate,orgFileName,saveFileName,fileSize)
+	INSERT INTO DVD(num,national,genre,title,actor,content,production,price,trailer,grade,views,regdate,orgFileName,saveFileName,fileSize)
 	VALUES(
 	Dvd_seq.NEXTVAL,
 	#{national},
@@ -14,6 +14,7 @@
 	#{production},
 	#{price},
 	#{trailer},
+	0,
 	0,
 	SYSDATE,
 	#{orgFileName},
@@ -29,7 +30,6 @@
 			FROM (
 				SELECT *
 				FROM dvd
-				
 				<where>
 					<if test="title != null">
 						OR title LIKE '%'||#{title}||'%'
@@ -41,7 +41,18 @@
 						AND national = #{national}
 					</if>
 				</where>
-				ORDER BY num DESC
+				ORDER BY 
+				<choose >
+				 <when test="grade ==1">
+				 	grade DESC
+				 </when>
+				 <when test="views ==1">
+				 	views DESC
+				 </when>
+				 <otherwise>
+				 	production DESC
+				 </otherwise>
+				</choose>
 			)result_list
 		)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
@@ -75,8 +86,25 @@
 		WHERE num = #{num}
 	</delete>
 	
-	<select id="getCount" resultType="int">
+	<select id="getCount" parameterType="dvdDto" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)      <!--DB가 null 일 경우 0 출력(NVL)-->
 		FROM dvd
+		<where>
+					<if test="title != null">
+						OR title LIKE '%'||#{title}||'%'
+					</if>
+					<if test="genre !=null">
+						AND genre = #{genre}
+					</if>
+					<if test="national !=null">
+						AND national = #{national}
+					</if>
+				</where>
 	</select>
+	
+	<update id="viewUp" parameterType="int">
+		UPDATE dvd
+		SET views = views+1
+		WHERE num = #{num}
+	</update>
 </mapper>

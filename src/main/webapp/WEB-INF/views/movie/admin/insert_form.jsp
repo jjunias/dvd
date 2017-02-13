@@ -23,6 +23,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
    <jsp:include page="/WEB-INF/views/catalog.jsp"/>
    <div class="content">
       <div class="top">
@@ -71,6 +72,56 @@
          </div>      
       </form>
    </div>
+=======
+	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
+	<div class="content">
+		<div class="top">
+				<img src="${pageContext.request.contextPath }/resources/images/rabbit_1.png"/>
+			<div class="top_area"></div>
+			<h2>글 등록</h2>
+			<p>등록 하실 DVD를 등록 해주세요.</p>
+			<div class="top_area"></div>
+		</div><br/>	
+		<form class="form-horizontal" action="insert.do" method="post" name ="insertForm" id="insertForm" enctype="multipart/form-data">
+			<div class="form-group">	
+				<label class="control-label" for="genre">장 르:</label>
+				<select class="form-control input" name="genre" id="genre">
+					<option value="">장르 선택</option>
+					<option value="action">액션</option>
+					<option value="romance">로맨스</option>
+					<option value="comedy">코미디</option>
+					<option value="horror">공포</option>
+					<option value="drama">드라마</option>
+					<option value="etc">기타</option>
+				</select><br/>
+				<label class="control-label" for="title">제 목:</label>
+				<input class="form-control input" type="text" name="title" id="title"/><br/>
+				<label class="control-label" for="production">개 봉 일:</label>
+				<input class="form-control input" type="text" name="production" id="production" /><br/>
+				<label class="control-label" for="actor">배 우:</label>
+				<input class="form-control input" type="text" name="actor" id="actor" /><br/>
+				<label class="control-label" for="price">가 격:</label>
+				<input class="form-control input" type="text" numberonly="true" name="price" id="price" /><br/>
+				<label class="control-label" for="trailer">동영상:</label>
+				<input class="form-control input" type="text" name="trailer" id="trailer" placeholder="https://youtu.be/(이곳만 입력)"/><br/>
+				<label class="control-label" for="picture">사진 :</label>
+				<input type="hidden" name="national" value="${param.national}" />
+				<div class="filebox">
+					<label for="ex_filename" class="ex_filename">업로드</label>
+					<input class="upload-name form-control input" type="text" id="upload_" placeholder="파일을 선택해주세요" disabled="disabled"/> 
+					<input type="file" id="ex_filename" accept=".gif,.jpg,.png" name="myFile" class="upload-hidden"/>
+				</div>
+			</div>
+			<div class="naver">
+				<textarea name="content" id="content" style="width:766px;height:412px;display:none"></textarea>
+			</div>
+			<div class="btn_div">
+				<input class="btn btn-default" type="button" onclick="submitContents(this);" value="등록" />
+				<button class="btn btn-default" type="button" onclick="">취소</button>
+			</div>		
+		</form>
+	</div>
+>>>>>>> refs/heads/master
 </body>
 </html>
 <script>
