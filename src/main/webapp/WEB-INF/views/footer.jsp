@@ -7,6 +7,7 @@
 		width:100%;
 		height:120px;
 		background-color:#232323;
+		margin-top:30px;
 	}
 </style>
 <div class="footer">

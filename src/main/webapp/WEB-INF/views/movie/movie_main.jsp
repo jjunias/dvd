@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <jsp:include page="/WEB-INF/views/source.jsp"/>
 <style>
@@ -102,11 +103,31 @@
 				</c:if>
 					<div class="sub_catal">
 						<div class="sub">
-							<a href="" style="margin-left:75px">액션</a> |
-							<a href="">범죄/드라마</a> |
-							<a href="">코미디</a> |
-							<a href="">멜로/로맨스</a> |
-							<a href="">기타</a>
+							<a style="margin-left:75px;
+							<c:if test="${param.genre eq 'action'}">
+							color:darkgrey;
+							</c:if>
+							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=action">액션</a> |
+							<a style="
+							<c:if test="${param.genre eq 'drama'}">
+							color:darkgrey;
+							</c:if>
+							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=drama">범죄/드라마</a> |
+							<a style="
+							<c:if test="${param.genre eq 'comedy'}">
+							color:darkgrey;
+							</c:if>
+							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=comedy">코미디</a> |
+							<a style="
+							<c:if test="${param.genre eq 'romance'}">
+							color:darkgrey;
+							</c:if>
+							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=romance">멜로/로맨스</a> |
+							<a style="
+							<c:if test="${param.genre eq 'etc'}">
+							color:darkgrey;
+							</c:if>
+							"href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=etc">기타</a>
 						</div>
 					</div>
 				<c:if test="${param.national eq 'overseas' }"><strong>해외 영화</strong></c:if>
@@ -130,7 +151,7 @@
 					<span><span style="margin-left:10px">개봉일 :${tmp.production}</span>
 						<p class="scores" style="display:none;">${tmp.grade}</p>
 						<div class="rating_star" style="margin-left:10px;"></div>
-						<span style="float:right;margin-top:-18px;margin-right:10px;">${tmp.grade*2} / 	10.0</span>
+						<span style="float:right;margin-top:-18px;margin-right:10px;"><fmt:formatNumber value="${tmp.grade*2}" pattern=".0"/> / 10.0</span>
 					</span>
 				</div>
 			</div>
@@ -153,7 +174,7 @@
 						<c:otherwise>
 							<li><a href="movie_main.do?type=list&page=paging&national=${param.national}&genre=${param.genre}&num=${i}&keyword=${param.keyword}&sort=${param.sort}">${i}</a></li>
 						</c:otherwise>
-					</c:choose>    
+					</c:choose>
 				</c:forEach>
 				<c:choose>
 					<c:when test="${paging.totalPageCount > paging.endPageNum }">
@@ -182,13 +203,13 @@
 	$(".sort_select").change(function(){
 		var data = $(this).val();
 		if(data == 'grade'){
-			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&grade=1&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&num=1&page=sort&national=${param.national}&genre=${param.genre}&grade=1&keyword=${param.keyword}&sort='+data;
 		}else if(data == 'production'){
-			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&num=1&page=sort&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
 		}else if(data == 'views'){
-			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&views=1&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&num=1&page=sort&national=${param.national}&genre=${param.genre}&views=1&keyword=${param.keyword}&sort='+data;
 		}else if(data == 'num'){
-			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&num=1&page=sort&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
 		}
 	});
 	$(function(){

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 	body{
 		background-color: #FAFAFA;
@@ -203,39 +204,21 @@
 	<div class="side_bar">
 	</div>
 </div>
-<div class="main_tr">
-      <div class="sub_domestic">
-          <ul>
-             <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=action">액션</a></li>
-             <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=drama">범죄,드라마</a></li>
-             <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=comedy">코미디</a></li>
-             <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=romance">멜로/로맨스</a></li>
-             <li><a href="/dvd/movie/movie_main.do?type=list&national=domestic&genre=etc">기 타</a></li>
-          </ul>
-       </div>
-        <div class="sub_overseas">
-               <ul class="sub">
-                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=action">액션</a></li>
-                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=drama">범죄,드라마</a></li>
-                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=comedy">코미디</a></li>
-                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=romance">멜로/로맨스</a></li>
-                  <li><a href="/dvd/movie/movie_main.do?type=list&national=overseas&genre=etc">기 타</a></li>
-               </ul>
-            </div>
-</div>
+<div class="main_tr"></div>
 <div>
    <div class="top_catal">
           <ul class="catalog">
       		<li style="margin-left:15%">MAIN</li>
-      		<li onclick="domestic()">한국 영화</li>
-      		<li onclick="overseas()">해외 영화</li>
-      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&production=new'">최신 영화</li>
-      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&grade=1'">인기 영화</li>
+      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic'">한국 영화</li>
+      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&national=overseas'">해외 영화</li>
+      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&production=new'">최신 영화</li>
+      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&grade=1'">인기 영화</li>
       		<li>
       		<form action="/dvd/movie/movie_main.do">
       			<div class="input-group search_bar">
 		             <input type="text" class="form-control" name="keyword" placeholder="Search..">
 		             <input type="hidden" name="type" value="list" />
+		             <input type="hidden" name="num" value="1" />
 		             <span class="input-group-btn">
                 <button class="btn btn-default"><p class="glyphicon glyphicon-search"></p></button>
 		             </span>
@@ -288,14 +271,6 @@
    </div>
 </div>
 <script>
-	var domestic = function(){
-		$(".sub_domestic").stop().slideToggle();
-		$(".sub_overseas").slideUp();
-	}
-	var overseas = function(){
-		$(".sub_overseas").stop().slideToggle();
-		$(".sub_domestic").slideUp();
-	}
    $(".login_toggle").click(function(){
     $(".loginBar").stop().slideToggle(300);
    });

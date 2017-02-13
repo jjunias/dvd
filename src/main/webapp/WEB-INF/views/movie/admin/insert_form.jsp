@@ -37,12 +37,12 @@
 				<label class="control-label" for="genre">장 르:</label>
 				<select class="form-control input" name="genre" id="genre">
 					<option value="">장르 선택</option>
-					<option value="action">액션</option>
-					<option value="romance">로맨스</option>
-					<option value="comedy">코미디</option>
-					<option value="horror">공포</option>
-					<option value="drama">드라마</option>
-					<option value="etc">기타</option>
+					<option value="액션">액션</option>
+					<option value="로맨스">로맨스</option>
+					<option value="코미디">코미디</option>
+					<option value="공포">공포</option>
+					<option value="드라마">드라마</option>
+					<option value="기타">기타</option>
 				</select><br/>
 				<label class="control-label" for="title">제 목:</label>
 				<input class="form-control input" type="text" name="title" id="title"/><br/>
