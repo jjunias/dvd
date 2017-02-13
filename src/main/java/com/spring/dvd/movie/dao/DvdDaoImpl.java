@@ -50,9 +50,20 @@ public class DvdDaoImpl implements DvdDao {
 	}
 
 	@Override
-	public int getCount() {
+	public int getCount(DvdDto dto) {
 		// TODO Auto-generated method stub
-		return session.selectOne("dvd.getCount");
+		return session.selectOne("dvd.getCount",dto);
 	}
 
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void viewsUp(int num) {
+		// TODO Auto-generated method stub
+		session.update("dvd.viewUp",num);
+	}
 }

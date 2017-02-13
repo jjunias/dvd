@@ -61,11 +61,11 @@
 					<textarea readonly="readonly" name="rating_content" class="rating_content">${tmp.content}</textarea>
 				</td>
 				<td class="content_btn">
-				<button class="btn btn-warning">수정</button>
-				<button class="btn btn-danger">삭제</button>
-				<button class="btn btn-default" id="up_btn">
-					<span class="glyphicon glyphicon-thumbs-up" style="font-size:20px;color:darkblue"></span>
-				</button>
+					<button class="btn btn-warning">수정</button>
+					<button class="btn btn-danger">삭제</button>
+					<button class="btn btn-default" onclick="up_btn('${status.count}','${tmp.num}')">
+						<span class="glyphicon glyphicon-thumbs-up" style="font-size:20px;color:darkblue"></span>
+					</button>
 				</td>
 			</tr>
 		</c:forEach>
@@ -125,6 +125,24 @@
 		</form>
 	</div>
 <script>
+	var up_btn = function(count,num){
+		$.ajax({
+			url:"rating/private/recommendUp.do",
+			type:"post",
+			data:{"rating_num":num},
+			success:function(data){
+				if(data == 1){
+					var preCommend = $(".rating_recommend").eq(count-1).text();
+					var commend =parseInt(preCommend)+1;
+					$(".rating_recommend").eq(count-1).text(commend+"회");
+				}else{
+					alert("이미 공감한 글 입니다.");
+				}
+			}
+		});
+		/* /private/recommendUp */
+	}
+		
 	$("#input_content").keyup(function(){
 		$(".text_size").text($("#input_content").val().length);
 	});
@@ -158,7 +176,6 @@
 			data: ratingForm,
 			success:function(data){
 				if(data ==1){
-					alert("글이 등록 되었습니다.");
 					location.reload();
 				}
 			}

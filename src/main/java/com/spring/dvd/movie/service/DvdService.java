@@ -14,6 +14,6 @@ import com.spring.dvd.movie.dto.DvdDto;
 public interface DvdService extends GenericService<DvdDto,Integer,DvdDao>{
 	public int insert(HttpServletRequest request,DvdDto dto);
 	public int update(HttpServletRequest request,DvdDto dto);
-	public List<DvdDto> getList(DvdDto dto);
+	public ModelAndView getList(DvdDto dto);
 	public ModelAndView getData(int num, int ratingNum);
 }

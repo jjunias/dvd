@@ -3,16 +3,10 @@
 <jsp:include page="/WEB-INF/views/source.jsp"/>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
 <!DOCTYPE html>
 <html>
 <style>
-	.content{
-		position:absolute;
-		top:120px;
-		left:25%;
-		width:60%;
-		background-color:#FFFFE4;
-	}
 	.imgBox{
 		float:left;
 		margin:60px 2% 0 5%;
@@ -63,6 +57,13 @@
 		margin-top: 15px;
 		margin-right:2%;
 	}
+	.star{
+		width:110px !important;
+	}
+	.star img{
+		width:16px;
+		height:16px;
+	}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -71,10 +72,12 @@
 <body>
 	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
 	<div class="content">
-		<div class="update_btn">
-			<button class="btn btn-warning" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
-		</div>
-		<h1>　영화 상세</h1>
+		<c:if test="${id eq 'admin' }">
+			<div class="update_btn">
+				<button class="btn btn-warning" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
+			</div>
+		</c:if>
+		<h1>영화 상세</h1>
 		<div class="box">
 			<div class="imgBox">
 				<img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}" onclick="location.href='detail_form.do?num=${dvd.num}'"/>
@@ -88,6 +91,7 @@
 					<p>개봉일 : ${dvd.production}</p>
 					가격 :<fmt:formatNumber value="${dvd.price}"/>원<br/>
 				</div>
+				<div class="star"></div>
 				<hr/>
 				<button class="btn btn-success buy_btn">구매 하기</button>
 				<button class="btn btn-warning" onclick="basketBtn(${dvd.num })">장바구니 담기</button>
@@ -126,5 +130,13 @@
 			}
 		});
 	};
+</script>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
+<script>
+	$('.star').raty({
+		half : true,
+		score : "${dvd.grade}",
+		readOnly: true
+	});
 </script>
 </html>
