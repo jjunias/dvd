@@ -140,13 +140,13 @@
 	$(".sort_select").change(function(){
 		var data = $(this).val();
 		if(data == 'grade'){
-			location.href='movie_main.do?type=list&national=${param.national}&genre=${param.genre}&grade=1&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&grade=1&keyword=${param.keyword}&sort='+data;
 		}else if(data == 'production'){
-			location.href='movie_main.do?type=list&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
 		}else if(data == 'views'){
-			location.href='movie_main.do?type=list&national=${param.national}&genre=${param.genre}&views=1&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&views=1&keyword=${param.keyword}&sort='+data;
 		}else if(data == 'num'){
-			location.href='movie_main.do?type=list&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
+			location.href='movie_main.do?type=list&page=sort&national=${param.national}&genre=${param.genre}&keyword=${param.keyword}&sort='+data;
 		}
 	});
 	$(function(){

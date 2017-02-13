@@ -40,7 +40,8 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 
 	// 리스트 가져오기
 	@RequestMapping(value = "/**/", params = "type=list")
-	public ModelAndView getList(@ModelAttribute DvdDto dto, @RequestParam(defaultValue = "1") int num,@RequestParam(defaultValue = "") String sort) {
+	public ModelAndView getList(@ModelAttribute DvdDto dto, @RequestParam(defaultValue = "1") int num,@RequestParam(defaultValue = "") String sort
+			,@RequestParam(defaultValue = "") String ) {
 		if(sort.equals("grade")){
 			dto.setGrade(1);
 		}else if(sort.equals("view")){
