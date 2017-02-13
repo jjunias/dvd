@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="qna">
 	<sql id="qnaColumns">
-		qna_num, qna_writer, qna_title, qna_content,
+		qna_num, qna_writer, qna_title, qna_content, qna_answer,
 		TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate, dvd_num
 	</sql>
 	

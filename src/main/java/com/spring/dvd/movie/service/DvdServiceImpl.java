@@ -68,7 +68,7 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		return mView;
 	}
 	@Override
-	public ModelAndView getData(int num,int ratingNum){
+	public ModelAndView getData(int num,int ratingNum, int qnaNum, String scroll){
 		ModelAndView mView = new ModelAndView();
 		DvdDto pagingRating = new DvdDto();
 		pagingRating.setPageNum(ratingNum);
@@ -85,35 +85,27 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		
 	// QnA 페이지네이션 시작
 		QnaDto qnaDto = new QnaDto();
-		int pageNum = ratingNum;
-		//보여줄 페이지 데이터의 시작 ResultSet row 번호
-		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
-		//보여줄 페이지 데이터의 끝 ResultSet row 번호
-		int endRowNum=pageNum*PAGE_ROW_COUNT;
-		//전체 row 의 갯수를 DB 에서 얻어온다.
+		int startRowNum=1+(qnaNum-1)*PAGE_ROW_COUNT;
+		int endRowNum=qnaNum*PAGE_ROW_COUNT;
 		int totalRow = qnaDao.getCount();
-		//전체 페이지의 갯수 구하기
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
-		//시작 페이지 번호
-		int startPageNum=1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
-		//끝 페이지 번호
+		int startPageNum=1+((qnaNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
 		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
-		//끝 페이지 번호가 잘못된 값이라면 
 		if(totalPageCount < endPageNum){
-			endPageNum=totalPageCount; //보정해준다. 
+			endPageNum=totalPageCount;
 		}
 		
-		//시작 row 번호와 끝 row 번호를 Dto 에 담는다.
 		qnaDto.setStartRowNum(startRowNum);
 		qnaDto.setEndRowNum(endRowNum);
 		qnaDto.setDvd_num(num);
 		
 		List<QnaDto> qnaList = qnaDao.getList(qnaDto);
 		mView.addObject("qnaList", qnaList);
-		mView.addObject("pageNum", pageNum);
+		mView.addObject("pageNum", qnaNum);
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalPageCount", totalPageCount);
+		mView.addObject("scroll", scroll);
 	// QnA 페이지네이션 끝
 		
 		return mView;

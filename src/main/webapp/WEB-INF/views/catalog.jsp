@@ -351,7 +351,6 @@ ul {
 			<c:when test="${id eq null}">
 				<a href="/dvd/users/insert_form.do?type=views">회원가입</a>
 				<span> | </span>
-				<a href="">장바구니</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/dvd/users/logout.do">로그아웃</a>

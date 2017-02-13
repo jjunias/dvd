@@ -10,7 +10,7 @@ public class QnaDto {
 	private int dvd_num;
 	private int startRowNum;
 	private int endRowNum;
-	
+
 	public QnaDto(){}
 
 	public QnaDto(int qna_num, String qna_writer, String qna_title, String qna_content, String regdate,
@@ -98,6 +98,5 @@ public class QnaDto {
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
 	}
-	
-	
+
 }
