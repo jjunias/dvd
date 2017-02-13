@@ -13,8 +13,8 @@
       position:absolute;
       right:1%;
       top:10px;
-      font-size:18px;
-   }
+      font-size:16px;
+   }  
    .top_users a{
 		color:white;
    }
@@ -46,7 +46,6 @@
       top:40px;
       width:20%;
       height:800px;
-      font-size:17px;
       z-index:99999;
    }
    ul{
@@ -82,12 +81,9 @@
         text-align: center;
    }
    .content{
-		position:absolute;
-		background-color: #F6F6F6;
-		border:2px solid darkgrey;
-		margin-top:200px;
-		top:300px;
-		left:20%;
+		float:left;
+		margin-top:400px;
+		margin-left:20%;
 		width:60% !important;
 		z-index:-1;
 	}
@@ -147,7 +143,7 @@
 		margin-top:40px;
 		margin-right:20px;
 		color:white;
-		font-size:24px;
+		font-size:20px;
 	}
 	.sub_domestic{
 		position:fixed;
@@ -162,7 +158,7 @@
 	.sub_overseas{
 		position:fixed;
 		top:80px;
-		left:41%;
+		left:39%;
 		background-color : #232323;
 		width: 130px;
 		padding-left:0px;
@@ -190,11 +186,22 @@
     .catalog li{
     	cursor: pointer;
     }
+    .side_bar{
+    	position:absolute;
+    	top:100px;
+    	right:30%;
+		width:100px;
+		height:400px;
+		background-color:#232323; 
+    }
 }
 </style>
 <div class="main_img"></div>
 <div class="main_left"></div>
-<div class="main_right"></div>
+<div class="main_right">
+	<div class="side_bar">
+	</div>
+</div>
 <div class="main_tr">
       <div class="sub_domestic">
           <ul>
@@ -221,8 +228,8 @@
       		<li style="margin-left:15%">MAIN</li>
       		<li onclick="domestic()">한국 영화</li>
       		<li onclick="overseas()">해외 영화</li>
-      		<li>최신 영화</li>
-      		<li>인기 영화</li>
+      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&production=new'">최신 영화</li>
+      		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&grade=1'">인기 영화</li>
       		<li>
       		<form action="/dvd/movie/movie_main.do">
       			<div class="input-group search_bar">
@@ -239,7 +246,7 @@
       <div class="top_users"/>
        <c:choose>
              <c:when test="${id eq null}">
-                <div class="login_toggle">로그인</div><span>　|　</span>
+                <div class="login_toggle">로그인</div><span> | </span>
              </c:when>
              <c:otherwise>
                 <div class="sessionId"><a href="/dvd/users/info.do">${id } 님 로그인중..</a></div>
@@ -274,7 +281,7 @@
          </div>
       <c:choose>
              <c:when test="${id eq null}">
-                <a href="/dvd/users/insert_form.do?type=views">회원가입</a><span>　|　</span>
+                <a href="/dvd/users/insert_form.do?type=views">회원가입</a><span> | </span>
                  <a href="">장바구니</a>
              </c:when>
              <c:otherwise>
@@ -284,7 +291,6 @@
       </div>
    </div>
 </div>
-
 <script>
 	var domestic = function(){
 		$(".sub_domestic").stop().slideToggle();

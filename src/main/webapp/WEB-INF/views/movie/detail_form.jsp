@@ -3,6 +3,7 @@
 <jsp:include page="/WEB-INF/views/source.jsp"/>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
 <!DOCTYPE html>
 <html>
 <style>
@@ -110,6 +111,7 @@
 		<jsp:include page="/WEB-INF/views/movie/rating/rating_form.jsp"></jsp:include>
 	</div>
 </body>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </html>
 <script>
 	$('.star').raty({

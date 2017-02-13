@@ -53,7 +53,7 @@
 				<label class="control-label" for="price">가 격:</label>
 				<input class="form-control input" type="text" numberonly="true" name="price" id="price" value="${dvd.price }"/><br/>
 				<label class="control-label" for="trailer">동영상:</label>
-				<input class="form-control input" type="text" name="trailer" id="trailer" placeholder="https://youtu.be/((이곳만 입력))"/><br/>
+				<input class="form-control input" type="text" name="trailer" id="trailer" placeholder="https://youtu.be/((이곳만 입력))" value="${dvd.trailer}"/><br/>
 				<label class="control-label" for="picture">사진 :</label>
 				<input type="hidden" name="national" value="${param.national}" />
 				<div class="filebox">
