@@ -57,9 +57,10 @@
 	    position:absolute;
 		display:none;
 		z-index: 999 !important;
-		top:20px;
+		top:25px;
 		background-color: white;
 		border-radius: 10px 10px 10px 10px;
+		left: -95px;
    }
    .login_toggle, .sessionId{
       color:white;
