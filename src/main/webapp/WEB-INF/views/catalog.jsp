@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
@@ -196,14 +197,242 @@
 		height:400px;
 		background-color:#232323; 
     }
+body {
+	background-color: #FAFAFA;
+	height: 0px;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.top_users {
+	position: absolute;
+	right: 1%;
+	top: 10px;
+	font-size: 16px;
+}
+
+.top_users a {
+	color: white;
+}
+
+.top_users a:ACTIVE, .top_users a:VISITED, .top_users a:HOVER {
+	color: white;
+	outline: none;
+	text-decoration: none;
+}
+
+.top_catal {
+	position: fixed;
+	width: 100%;
+	height: 40px;
+	background-color: #232323;
+}
+
+.search_bar {
+	position: absolute;
+	top: 40px;
+	margin-left: 7%;
+	width: 25%;
+}
+
+.search_bar input {
+	height: 35px;
+}
+
+.search_bar button {
+	height: 35px;
+}
+
+.main_catal {
+	position: absolute;
+	top: 40px;
+	width: 20%;
+	height: 800px;
+	z-index: 99999;
+}
+
+ul {
+	list-style: none;
+}
+
+.loginBar {
+	padding: 20px;
+	width: 300px;
+	position: absolute;
+	display: none;
+	z-index: 999 !important;
+	top: 25px;
+	background-color: white;
+	border-radius: 10px 10px 10px 10px;
+	left: -95px;
+}
+
+.login_toggle, .sessionId {
+	color: white;
+	float: left;
+	cursor: pointer;
+}
+
+.top_area {
+	border-bottom: 1px solid gray;
+}
+
+#loginBtn {
+	width: 100%;
+}
+
+.gBtn {
+	float: right;
+	cursor: pointer;
+}
+
+.socialBtn {
+	width: 100%;
+	text-align: center;
+}
+
+.content {
+	float: left;
+	margin-top: 400px;
+	margin-left: 20%;
+	width: 60% !important;
+	z-index: -1;
+}
+
+.main_left {
+	position: absolute;
+	left: 0;
+	top: 410px;
+	width: 16%;
+	height: 40px;
+	background: #FAFAFA;
+}
+
+.main_right {
+	position: absolute;
+	right: 0;
+	top: 410px;
+	width: 16%;
+	height: 40px;
+	background: #FAFAFA;
+}
+
+.top_one {
+	position: fixed;
+	top: 40px;
+	width: 68%;
+	height: 40px;
+	border-top: 40px solid #232323;
+	border-left: 60px solid transparent;
+	border-right: 60px solid transparent;
+	margin-left: 16%;
+}
+
+.main_tr {
+	position: absolute;
+	top: 410px;
+	width: 68%;
+	height: 40px;
+	border-top: 40px solid transparent;
+	border-left: 60px solid #FAFAFA;
+	border-right: 60px solid #FAFAFA;
+	margin-left: 16%;
+}
+
+.main_img {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 450px;
+	background-image:
+		url("${pageContext.request.contextPath}/resources/images/main.jpg");
+	z-index: -1;
+}
+
+.catalog {
+	position: absolute;
+	height: 80px;
+	width: 60%;
+	left: 20%;
+	z-index: 999999;
+}
+
+.catalog li {
+	float: left;
+	margin-top: 40px;
+	margin-right: 20px;
+	color: white;
+	font-size: 20px;
+}
+
+.sub_domestic {
+	position: fixed;
+	top: 80px;
+	left: 34%;
+	background-color: #232323;
+	width: 130px;
+	padding-left: 0px;
+	color: white;
+	display: none;
+}
+
+.sub_overseas {
+	position: fixed;
+	top: 80px;
+	left: 39%;
+	background-color: #232323;
+	width: 130px;
+	padding-left: 0px;
+	color: white;
+	display: none;
+}
+
+.sub_domestic a {
+	color: white;
+}
+
+.sub_overseas a {
+	color: white;
+}
+
+.sub_domestic li {
+	margin-left: -15px;
+}
+
+.sub_overseas li {
+	margin-left: -15px;
+}
+
+.sub_domestic a:ACTIVE, .sub_domestic a:VISITED, .sub_domestic a:HOVER,
+	.sub_overseas a:ACTIVE, .sub_overseas a:VISITED, .sub_overseas a:HOVER
+	{
+	color: white;
+	outline: none;
+	text-decoration: none;
+}
+
+.catalog li {
+	cursor: pointer;
+}
+
+.side_bar {
+	position: absolute;
+	top: 100px;
+	right: 30%;
+	width: 100px;
+	height: 400px;
+	background-color: #232323;
 }
 </style>
 <div class="main_img"></div>
 <div class="main_left"></div>
 <div class="main_right">
-	<div class="side_bar">
-	</div>
+	<div class="side_bar"></div>
 </div>
+
 <div class="main_tr"></div>
 <div>
    <div class="top_catal">
