@@ -46,9 +46,9 @@ public class RatingDaoImpl implements RatingDao {
 	}
 
 	@Override
-	public int getCount() {
+	public int getCount(int dvd_num) {
 		// TODO Auto-generated method stub
-		return session.selectOne("rating.getCount");
+		return session.selectOne("rating.getCount",dvd_num);
 	}
 
 	@Override
@@ -106,6 +106,11 @@ public class RatingDaoImpl implements RatingDao {
 	public void averageUpdate(RatingDto dto) {
 		// TODO Auto-generated method stub
 		session.update("rating.averageUpdate",dto);
+	}
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

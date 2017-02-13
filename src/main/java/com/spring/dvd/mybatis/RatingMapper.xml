@@ -32,6 +32,7 @@
 	<select id="getCount" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)      <!--DB가 null 일 경우 0 출력(NVL)-->
 		FROM rating
+		WHERE dvd_num = #{dvd_num}
 	</select>
 	
 	<select id="idCheck" parameterType="recommendDto" resultType="String">

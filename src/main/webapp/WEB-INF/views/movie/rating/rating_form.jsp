@@ -76,8 +76,8 @@
    <center>
       <ul class="pagination">
       <c:choose>
-         <c:when test="">
-            <li><a href="">&laquo;</a></li>
+         <c:when test="${pagingRating.startPageNum>5}">
+            <li><a href="detail_form.do?num=${dvd.num}&page=review&ratingNum=${pagingRating.startPageNum-1}">&laquo;</a></li>
          </c:when>
          <c:otherwise>
             <li class="disabled"><a class="muted" href="javascript:">&laquo;</a></li>
@@ -85,17 +85,17 @@
       </c:choose>
       <c:forEach var="i" begin="${pagingRating.startPageNum }" end="${pagingRating.endPageNum }">
          <c:choose>
-            <c:when test="">
-               <li class="active"><a href="detail_form.do?num&${dvd.num}&ratingNum=${i }">${i }</a></li>   
+            <c:when test="${i eq param.ratingNum}">
+               <li class="active"><a href="javascript:">${i }</a></li>   
             </c:when>
             <c:otherwise>
-               <li><a onclick="paging(${i})">${i }</a></li>
+               <li><a href="detail_form.do?num=${dvd.num}&page=review&ratingNum=${i }">${i}</a></li>
             </c:otherwise>
          </c:choose>    
       </c:forEach>
       <c:choose>
-         <c:when test="">
-            <li><a href="">&raquo;</a></li>
+         <c:when test="${pagingRating.totalPageCount > pagingRating.endPageNum}">
+            <li><a href="detail_form.do?num=${dvd.num}&page=review&ratingNum=${pagingRating.endPageNum+1}">&raquo;</a></li>
          </c:when>
          <c:otherwise>
             <li class="disabled"><a class="muted" href="javascript:">&raquo;</a></li>
@@ -176,132 +176,14 @@
 			data: ratingForm,
 			success:function(data){
 				if(data ==1){
-					location.reload();
+					location.href="detail_form.do?num=${dvd.num}&page=review&ratingNum=1";
 				}
 			}
 		});
 	});
-	var paging = function(data){
-		$.ajax({
-			type:"get",
-			url:"rating/getList.do?dvd_num=${dvd.num}&pageNum="+data,
-			success:function(data){
-				var length = data.length;
-				for(var i=0;i<length;i++){
-					$(".content_tr").eq(i).hide();
-					$(".rating").eq(i).show();
-					$(".rating_writer").eq(i).text(data[i].writer);
-					$(".rating_title").eq(i).text(data[i].title);
-					$(".rating_score").eq(i).text(data[i].score);
-					$(".rating_recommend").eq(i).text(data[i].recommend+"회");
-					$(".rating_regdate").eq(i).text(data[i].regdate);
-					if(data[i].score == 0.5){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 1){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 1.5){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-half.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 2){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 2.5){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-half.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 3){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 3.5){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-half.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 4){
-						html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-						"<img src='/dvd/resources/images/star-off.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-						"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 4.5){
-					html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-half.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-					"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					else if(data[i].score == 5){
-					html = "<div class='rating_star' title='gorgeous' style='cursor: default; width: 100px;'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='1' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='2' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:4px' alt='3' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px; margin-right:5px' alt='4' title='gorgeous'>"+
-					"<img src='/dvd/resources/images/star-on.png' style='margin-top:4px;' alt='5' title='gorgeous'>"+
-					"<input type='hidden' name='score' value='4' readonly='readonly'></div>"
-					$(".rating_score").eq(i).html(html);
-					}
-					$("#rating_content").eq(i).text(data[i].content);
-				}
-				for(var i=length;i<10;i++){
-					 $(".rating").eq(i).hide();
-					 $(".content_tr").eq(i).hide();
-				}
-			}
-		}); 
-	}
+	$(function(){
+		if('${page}' =='review'){
+			$(window).scrollTop($("#rating").offset().top);
+		}
+	});
 </script>

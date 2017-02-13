@@ -11,6 +11,7 @@ public interface RatingDao extends GenericDao<RatingDto,Integer> {
 	public List<RatingDto> getList(DvdDto dto);
 	public List<RatingDto> getList(RatingDto dto);
 	public int RecommendInsert(RatingRecommendDto dto);
+	public int getCount(int dvd_num);
 	public boolean idCheck(RatingRecommendDto dto);
 	public int recommendCount(RatingRecommendDto dto);
 	public void recommendUpdate(RatingRecommendDto dto);

@@ -68,10 +68,10 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		ModelAndView mView = new ModelAndView();
 		DvdDto pagingRating = new DvdDto();
 		pagingRating.setPageNum(ratingNum);
-		int total = ratingDao.getCount();
+		int total = ratingDao.getCount(num);
 		pagingRating.setTotalPageCount(total);
 		pagingRating.setDvd_num(num);
-		pagingRating = page.Paging(pagingRating, 10);
+		pagingRating = page.Paging(pagingRating, 1);
 		List<RatingDto> ratingList = ratingDao.getList(pagingRating);
 		dao.viewsUp(num);
 		DvdDto dto = dao.getData(num);

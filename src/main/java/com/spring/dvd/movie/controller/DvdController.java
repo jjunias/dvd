@@ -41,7 +41,7 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 	// 리스트 가져오기
 	@RequestMapping(value = "/**/", params = "type=list")
 	public ModelAndView getList(@ModelAttribute DvdDto dto, @RequestParam(defaultValue = "1") int num,@RequestParam(defaultValue = "") String sort
-			,@RequestParam(defaultValue = "") String ) {
+			,@RequestParam(defaultValue = "") String page ) {
 		if(sort.equals("grade")){
 			dto.setGrade(1);
 		}else if(sort.equals("view")){
@@ -49,13 +49,16 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 		}
 		dto.setPageNum(num);
 		ModelAndView mView = service.getList(dto);
+		mView.addObject("page", page);
 		return mView;
 	}
 
 	// 상세보기
 	@RequestMapping(value = "/detail_form")
-	public ModelAndView getData(@RequestParam int num,@RequestParam(defaultValue = "1") int ratingNum) {
+	public ModelAndView getData(@RequestParam int num,@RequestParam(defaultValue = "1") int ratingNum,
+			@RequestParam(defaultValue ="") String page) {
 		ModelAndView mView = service.getData(num,ratingNum);
+		mView.addObject("page", page);
 		return mView;
 	}
 
