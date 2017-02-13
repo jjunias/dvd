@@ -174,11 +174,6 @@
 	        			<td>${dvd.price }원</td>
 	        		</tr>
 	        	</tbody>
-	        	<tfoot>
-	        		<tr>
-	        			<td>${dvd.content }</td>
-	        		</tr>
-	        	</tfoot>
 	        </table>
 			  
 	      </div>
