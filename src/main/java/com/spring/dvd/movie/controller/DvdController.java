@@ -55,10 +55,9 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 
 	// 상세보기
 	@RequestMapping(value = "/detail_form")
-	public ModelAndView getData(@RequestParam int num,@RequestParam(defaultValue = "1") int ratingNum,
-			@RequestParam(defaultValue ="") String page) {
-		ModelAndView mView = service.getData(num,ratingNum);
-		mView.addObject("page", page);
+	public ModelAndView getData(@RequestParam int num,@RequestParam(defaultValue = "1") int ratingNum, @RequestParam(defaultValue = "1") int qnaNum,
+			@RequestParam(defaultValue = "1") String scroll) {
+		ModelAndView mView = service.getData(num,ratingNum,qnaNum,scroll);
 		return mView;
 	}
 

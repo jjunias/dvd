@@ -34,8 +34,8 @@ CREATE SEQUENCE Dvd_seq NOCACHE;
 
 -- 장바구니 테이블
 CREATE TABLE dvd_basket(
-id VARCHAR2(50) REFERENCES dvd_users(id) ON DELETE CASCADE,
-num NUMBER REFERENCES dvd(num) ON DELETE CASCADE);
+basket_id VARCHAR2(50) REFERENCES dvd_users(id) ON DELETE CASCADE,
+basket_num NUMBER REFERENCES dvd(num) ON DELETE CASCADE);
 
 -- 평점 테이블
 CREATE TABLE rating(

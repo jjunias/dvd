@@ -10,6 +10,7 @@ public interface QnaDao {
 	public int q_update(QnaDto dto);
 	public int a_delete(int qna_num);
 	public int q_delete(int qna_num);
-	public List<QnaDto> getList(int dvd_num);
+	public List<QnaDto> getList(QnaDto dto);
 	public QnaDto getData(int qna_num);
+	public int getCount();
 }

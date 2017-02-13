@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.dvd.basket.dto.BasketDto;
+import com.spring.dvd.movie.dto.DvdDto;
 
 @Repository
 public class BasketDaoImpl implements BasketDao {
@@ -24,8 +25,15 @@ public class BasketDaoImpl implements BasketDao {
 	}
 
 	@Override
-	public List<BasketDto> getList(String id) {
-		List<BasketDto> list = session.selectList("basket.getList", id);
+	public List<DvdDto> getList(String id) {
+		List<DvdDto> list = session.selectList("basket.getList", id);
 		return list;
 	}
+
+	@Override
+	public BasketDto getData(BasketDto dto) {
+		BasketDto basketDto = session.selectOne("basket.getData", dto);
+		return basketDto;
+	}
+	
 }

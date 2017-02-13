@@ -1,13 +1,10 @@
 package com.spring.dvd.movie.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.instrument.classloading.tomcat.TomcatLoadTimeWeaver;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,6 +14,8 @@ import com.spring.dvd.movie.common.DvdPagenation;
 import com.spring.dvd.movie.common.DvdSearch;
 import com.spring.dvd.movie.dao.DvdDao;
 import com.spring.dvd.movie.dto.DvdDto;
+import com.spring.dvd.qna.dao.QnaDao;
+import com.spring.dvd.qna.dto.QnaDto;
 import com.spring.dvd.rating.dao.RatingDao;
 import com.spring.dvd.rating.dto.RatingDto;
 
@@ -27,11 +26,16 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 	@Autowired
 	RatingDao ratingDao;
 	@Autowired
+	QnaDao qnaDao;
+	@Autowired
 	DvdFileUtils file;  //파일 업로드
 	@Autowired
 	DvdPagenation page;  //페이징 처리
 	@Autowired
 	DvdSearch search; // 검색
+	
+	private static final int PAGE_ROW_COUNT=5;
+	private static final int PAGE_DISPLAY_COUNT=5;
 
 	@Override
 	public int insert(HttpServletRequest request, DvdDto dto) {
@@ -64,7 +68,7 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		return mView;
 	}
 	@Override
-	public ModelAndView getData(int num,int ratingNum){
+	public ModelAndView getData(int num,int ratingNum, int qnaNum, String scroll){
 		ModelAndView mView = new ModelAndView();
 		DvdDto pagingRating = new DvdDto();
 		pagingRating.setPageNum(ratingNum);
@@ -78,6 +82,32 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		mView.addObject("dvd", dto);
 		mView.addObject("ratingList", ratingList);
 		mView.addObject("pagingRating",pagingRating);
+		
+	// QnA 페이지네이션 시작
+		QnaDto qnaDto = new QnaDto();
+		int startRowNum=1+(qnaNum-1)*PAGE_ROW_COUNT;
+		int endRowNum=qnaNum*PAGE_ROW_COUNT;
+		int totalRow = qnaDao.getCount();
+		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		int startPageNum=1+((qnaNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
+		if(totalPageCount < endPageNum){
+			endPageNum=totalPageCount;
+		}
+		
+		qnaDto.setStartRowNum(startRowNum);
+		qnaDto.setEndRowNum(endRowNum);
+		qnaDto.setDvd_num(num);
+		
+		List<QnaDto> qnaList = qnaDao.getList(qnaDto);
+		mView.addObject("qnaList", qnaList);
+		mView.addObject("pageNum", qnaNum);
+		mView.addObject("startPageNum", startPageNum);
+		mView.addObject("endPageNum", endPageNum);
+		mView.addObject("totalPageCount", totalPageCount);
+		mView.addObject("scroll", scroll);
+	// QnA 페이지네이션 끝
+		
 		return mView;
 	}
 }

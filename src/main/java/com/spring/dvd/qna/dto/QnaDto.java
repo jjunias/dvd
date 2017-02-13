@@ -8,11 +8,13 @@ public class QnaDto {
 	private String regdate;
 	private String qna_answer;
 	private int dvd_num;
-	
+	private int startRowNum;
+	private int endRowNum;
+
 	public QnaDto(){}
-	
+
 	public QnaDto(int qna_num, String qna_writer, String qna_title, String qna_content, String regdate,
-			String qna_answer, int dvd_num) {
+			String qna_answer, int dvd_num, int startRowNum, int endRowNum) {
 		super();
 		this.qna_num = qna_num;
 		this.qna_writer = qna_writer;
@@ -21,6 +23,8 @@ public class QnaDto {
 		this.regdate = regdate;
 		this.qna_answer = qna_answer;
 		this.dvd_num = dvd_num;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public int getQna_num() {
@@ -78,4 +82,21 @@ public class QnaDto {
 	public void setDvd_num(int dvd_num) {
 		this.dvd_num = dvd_num;
 	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
 }
