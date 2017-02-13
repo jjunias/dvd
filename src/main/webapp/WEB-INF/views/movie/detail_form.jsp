@@ -93,7 +93,7 @@
 				</div>
 				<div class="star"></div>
 				<hr/>
-				<button class="btn btn-success buy_btn">구매 하기</button>
+				<button class="btn btn-success buy_btn" >구매 하기</button>
 				<button class="btn btn-warning">장바구니 담기</button>
 			</div>
 		</div>
@@ -119,4 +119,8 @@
 		score : "${dvd.grade}",
 		readOnly: true
 	});
+	$(".buy_btn").click(function(){
+		location.href="/dvd/users/pay.do?num=${dvd.num}";
+	});
+	
 </script>

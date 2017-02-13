@@ -56,11 +56,11 @@
 		width:300px;
 	    position:absolute;
 		display:none;
-		z-index: 999 !important;
-		top:25px;
+		z-index: 99999999 !important;
+		top:30px;
 		background-color: white;
 		border-radius: 10px 10px 10px 10px;
-		left: -95px;
+		left: -85px;
    }
    .login_toggle, .sessionId{
       color:white;
@@ -248,9 +248,13 @@
        <c:choose>
              <c:when test="${id eq null}">
                 <div class="login_toggle">로그인</div><span> | </span>
+                <a href="/dvd/users/insert_form.do?type=views">회원가입</a><span> | </span>
+                <a href="">장바구니</a>
              </c:when>
              <c:otherwise>
-                <div class="sessionId"><a href="/dvd/users/info.do">${id } 님 로그인중..</a></div>
+                <div class="sessionId"><a href="/dvd/users/info.do">내 정보</a></div><span> | </span>
+                <a href="">장바구니</a><span> | </span>
+                <a href="/dvd/users/logout.do">로그아웃</a>
              </c:otherwise>
        </c:choose>
          <div class="loginBar">
@@ -261,12 +265,12 @@
             <br/>
             <form id="login" >
                <div class="form-group">
-                  <label for="id" >아이디</label>
-                  <input type="text" class="form-control"  name="id"  id="id"/>
+                  <label for="login_id" >아이디</label>
+                  <input type="text" class="form-control"  name="id"  id="login_id" />
                </div>
                <div class="form-group">
-                  <label for="pwd" >비밀번호</label>
-                  <input type="password" class="form-control" name="pwd"  id="pwd"/>
+                  <label for="login_pwd" >비밀번호</label>
+                  <input type="password" class="form-control" name="pwd"  id="login_pwd" />
                </div>
                <button class="btn btn-info btn1"  type="button" id="loginBtn" >로그인</button>
             </form>
@@ -280,15 +284,6 @@
                </form>
             </div>
          </div>
-      <c:choose>
-             <c:when test="${id eq null}">
-                <a href="/dvd/users/insert_form.do?type=views">회원가입</a><span> | </span>
-                 <a href="">장바구니</a>
-             </c:when>
-             <c:otherwise>
-                <a href="/dvd/users/logout.do">로그아웃</a>
-             </c:otherwise>
-       </c:choose>
       </div>
    </div>
 </div>

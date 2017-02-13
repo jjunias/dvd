@@ -23,8 +23,11 @@
 	.top_area{
 		border-bottom: 1px solid gray;
 	}
-	#deleteBtn{
+	#deleteBtn, #updateBtn{
 		float:right;
+	}
+	#updateBtn{
+		margin-right:10px;
 	}
 	
 </style>
@@ -83,12 +86,13 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="button" id="updateBtn"  class="btn btn-default">수정하기</button>
+					<button type="button" id="passwordBtn"  class="btn btn-default">비밀번호 변경</button>
 					<button type="button" id="deleteBtn"  class="btn btn-warning">탈퇴하기</button>
+					<button type="button" id="updateBtn"  class="btn btn-default">수정하기</button>
+					 
 				</div>
 			</div>
 		</form>
-		<a href="/dvd/users/private/password_form.do?type=views">비밀번호 변경</a>
 	</div>
 </div>
 
@@ -99,7 +103,9 @@
 <script>
 	
 
-	
+	$("#passwordBtn").click(function(){
+		location.href="/dvd/users/private/password_form.do?type=views";
+	});
 	
 	$("#updateBtn").click(function(){
 		
