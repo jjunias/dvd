@@ -224,4 +224,9 @@
 		$(".rating_titleWrite").val("");
 		$(".rating_contentWrite").val("");
 	});
+	$(".star").raty({
+		half : true,
+		score : "${dvd.grade}",
+		readOnly: true
+	}); 
 </script>

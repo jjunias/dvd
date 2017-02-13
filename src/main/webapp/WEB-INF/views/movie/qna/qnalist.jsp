@@ -1,22 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>/views/qna/list.jsp</title>
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.1.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
-
 <style>
-.content {
-	clear: both;
-}
-
 .contentTR {
 	display: none;
 }
@@ -47,14 +33,7 @@
 .page_display a.muted {
 	color: #cecece;
 }
-
-body {
-	position: relative;
-}
 </style>
-
-</head>
-<body>
 	<table class="table table-hover">
 		<p id="qnaScroll">
 			<strong style="font-size: 30px">Q&A</strong>
@@ -215,9 +194,6 @@ body {
 			</c:otherwise>
 		</c:choose>
 	</div>
-
-</body>
-
 <!-- 질문 글 자세히 보기 토글, 질문 글 작성, 답글 작성 -->
 <script>
 	function showcontent(data){

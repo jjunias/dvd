@@ -161,13 +161,8 @@
 	};
 </script>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
-<script>
-	$('.star').raty({
-		half : true,
-		score : "${dvd.grade}",
-		readOnly: true
-	});
-	
+
+<script>	
 	$(".buy_btn").click(function(){
 		location.href="/dvd/users/pay.do?num=${dvd.num}";
 	});
