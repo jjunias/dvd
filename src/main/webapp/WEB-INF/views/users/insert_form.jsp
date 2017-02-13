@@ -10,6 +10,7 @@
       display: none;
    }
    .formBox{
+   	  padding-top:80px;
       width:50%;
       margin:0 auto;
    }
@@ -18,6 +19,7 @@
       display:inline;
    }
    .signupTop{
+
       text-align: center;
    }
    .top_area{
@@ -36,10 +38,6 @@
 	<div class="content">
    <div class="formBox">
       <div class="signupTop">
-         <a href="">
-            <img src="${pageContext.request.contextPath }/resources/images/rabbit_1.png" alt="" />
-         </a>
-         <div class="top_area"></div>
          <h2>회원가입</h2>
          <p>로그인정보 및 회원정보를 입력하세요.</p>
          <div class="top_area"></div>
