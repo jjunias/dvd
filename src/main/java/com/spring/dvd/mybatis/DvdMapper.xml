@@ -30,6 +30,7 @@
 			FROM (
 				SELECT *
 				FROM dvd
+				
 				<where>
 					<if test="title != null">
 						OR title LIKE '%'||#{title}||'%'

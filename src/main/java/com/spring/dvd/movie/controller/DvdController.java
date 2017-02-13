@@ -85,4 +85,9 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 		status.setComplete();
 		return "redirect:/movie/movie_main.do?type=list&national=" + national;
 	}
+	@RequestMapping("/search")
+	public void search(@ModelAttribute DvdDto dto,@RequestParam(defaultValue="1") int num,Model model){
+		dto.setPageNum(num);
+		model.addAttribute("list",service.getList(dto));
+	}
 }
