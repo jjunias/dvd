@@ -1,11 +1,12 @@
 package com.spring.dvd.basket.service;
 
-import org.springframework.web.servlet.ModelAndView;
+import java.util.List;
 
 import com.spring.dvd.basket.dto.BasketDto;
+import com.spring.dvd.movie.dto.DvdDto;
 
 public interface BasketService {
 	public int insert(BasketDto dto);
 	public int delete(BasketDto dto);
-	public ModelAndView getList(String id);
+	public List<DvdDto> getList(String id);
 }
