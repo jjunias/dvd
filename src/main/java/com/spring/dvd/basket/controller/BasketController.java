@@ -32,9 +32,15 @@ public class BasketController {
 	}
 	
 	@RequestMapping("/delete")
-	@ResponseBody
-	public int delete(@ModelAttribute BasketDto dto){
-		return basketService.delete(dto);
+	public String delete(@RequestParam(value="check_sub") List<Integer> check, HttpSession session){
+		String id = (String)session.getAttribute("id");
+		BasketDto dto = new BasketDto();
+		dto.setId(id);
+		for(int value : check){
+			dto.setDvd_num(value);
+			basketService.delete(dto);
+		}
+		return "redirect:/basket/list.do?id="+id;
 	}
 	
 	@RequestMapping("/list")
@@ -42,7 +48,7 @@ public class BasketController {
 		ModelAndView mView = new ModelAndView();
 		List<DvdDto> list = basketService.getList(id);
 		mView.addObject("list", list);
-		mView.setViewName("basket/list");
+		mView.setViewName("basket/basket_list");
 		return mView;
 	}
 }

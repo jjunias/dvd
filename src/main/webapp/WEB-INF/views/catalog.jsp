@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:include page="/WEB-INF/views/source.jsp"/>
 <style>
 	body{
 		background-color: #FAFAFA;
@@ -465,7 +465,7 @@ ul {
              </c:when>
              <c:otherwise>
                 <div class="sessionId"><a href="/dvd/users/info.do">내 정보</a></div><span> | </span>
-                <a href="">장바구니</a><span> | </span>
+                <a href="/dvd/basket/list.do?id=${id }">장바구니</a><span> | </span>
                 <a href="/dvd/users/logout.do">로그아웃</a>
              </c:otherwise>
        </c:choose>
