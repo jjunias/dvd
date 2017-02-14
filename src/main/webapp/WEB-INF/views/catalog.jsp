@@ -224,6 +224,7 @@
 	}
 	.cartImg, .infoImg, .scheduleImg, .questionImg{
 		width:80%;
+		height: 50px;;	
 	}
 	.cartUnderline{
 		text-decoration: none; !important
