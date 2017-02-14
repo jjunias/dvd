@@ -10,9 +10,6 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <style>
-  img{
-    width: 100%;
-  }
   .line_area{
     border-bottom: 1px solid gray;
   }

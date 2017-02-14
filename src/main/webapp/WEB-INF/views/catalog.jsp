@@ -198,7 +198,6 @@
 		border-radius: 15px 15px 15px 15px;
 		border:4px solid #cecece;
 		box-shadow:4px 4px #cecece;
-		
     }
   .affix{
 	  	top:60px;
@@ -251,7 +250,7 @@
 				</a>
 			</div>
 			<div class="infoBtn">
-				<a href="">
+				<a href="/dvd/users/info.do">
 					<img class="infoImg" src="/dvd/resources/images/users1.png" alt="" />
 				</a>
 			</div>

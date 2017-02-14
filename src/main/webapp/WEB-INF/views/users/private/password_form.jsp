@@ -14,6 +14,7 @@
 		margin:0 auto;
 	}
 	.updateTop{
+		padding-top:80px;
 		text-align: center;
 	}
 	.top_area{
@@ -32,13 +33,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
+<jsp:include page="/WEB-INF/views/catalog.jsp"/>
+<div class="content">
 	<div class="formBox">
 		<div class="updateTop">
-			<a href="">
-				<img src="${pageContext.request.contextPath }/resources/images/rabbit_1.png" alt="" />
-			</a>
-			<div class="top_area"></div>
 			<h2>비밀번호 변경</h2>
 			<p><strong style="color:red">다른 아이디/사이트에서 사용한 적 없는 비밀번호</strong></p>
 			<p><strong style="color:red">이전에 사용한 적 없는 비밀번호</strong>가 안전합니다.</p>
@@ -74,7 +72,6 @@
 					<button class="btn btn-primary pwdBtn"  type="button" id="pwdBtn">확인</button>
 				</div>
 			</div>
-			
 		</form>
 		<div class="top_area"></div><br/>
 	</div>
