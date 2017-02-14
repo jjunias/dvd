@@ -18,8 +18,8 @@
   }
   .payCart{
     border:1px solid gray;
-    height: 307px;
-    overflow-y:scroll;
+    height: 200px;
+    padding-top:26px;
   }
   .control-label{
     padding-right: 20px;
@@ -59,15 +59,19 @@
     border:2px double blue;
     height: 250px;
   }
-  .priceBox, .couponBox{
+  .priceBox{
     float: right;
     margin-right: 15px;
+    padding-left:15px;
   }
   ul{
     padding-left: 20px;
+    margin-bottom:0px;
   }
   li{
+  	padding-top:10px;
     margin: 10px;
+    margin-bottom:0px;
   }
   .pay_font{
     font-size: 20px;
@@ -94,6 +98,20 @@
   }
   .table-info{
   	text-align: center;
+  }
+  .final_price{
+ 
+  }
+  .dvd_price{
+  	padding-top:4px;
+  	font-size:20px;
+  	float:right;
+  }
+  .priceTotal{
+  	float:right;
+  }
+  #amount{
+  	width:24%;
   }
 
 </style>
@@ -156,7 +174,7 @@
 	    <h3>주문상품 정보</h3>  
 	    <div class="payCart">
 	      <div class="col-xs-4">
-	        <img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/>
+	        <a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
 	      </div>
 	      <div class="col-xs-8">
 	        <table class="table table-info">
@@ -164,18 +182,28 @@
 	        		<tr>
 	        			<td>장르</td>
 	        			<td>제목</td>
-	        			<td>가격</td>
+	        			<td>제작년도</td>
 	        		</tr>
 	        	</thead>
 	        	<tbody>
 	        		<tr>
 	        			<td>${dvd.genre }</td>
 	        			<td>${dvd.title }</td>
-	        			<td>${dvd.price }원</td>
+	        			<td>${dvd.production }</td>
 	        		</tr>
 	        	</tbody>
 	        </table>
-			  
+	        <br/>
+	        <div class="dvd_priceBox">
+	        	<div class="dvd_amount">
+			        수량:<select class="form-control" name="amount" id="amount" >
+								<c:forEach begin="1" end="10" var="i">
+									<option  name="option" value="${i }">${i }</option>
+								</c:forEach>
+						   </select>
+					<div class="dvd_price">가격 : <strong>${dvd.price }</strong>원</div>
+	        	</div>
+	        </div>
 	      </div>
 	    </div>
 	    <br/>
@@ -183,8 +211,9 @@
 	    <div class="payment">
 	      <ul>
 	        <li>
-	          <span>상품가격</span>
+	          <span final_price>상품가격</span>
 	          <div class="priceBox"><strong>${dvd.price }</strong>원</div>
+	          <div class="priceTotal">${dvd.price } <span>1개</span></div>
 	        </li>
 	      </ul>
 	      <br/>
@@ -202,6 +231,15 @@
 	</div>
 </div>
 <script>
+
+$("#amount").on("change",function(){
+	var a =  $(this).val();
+	$(".priceBox").find("strong").text("${dvd.price}"*a);
+	$(".priceTotal").find("span").text("*"+a+"개");
+	
+	
+})
+
 
     function postCode() {
         new daum.Postcode({
@@ -280,6 +318,8 @@ $("#pwd").on("blur", function(){
 		}
     	
     });
+    
+
     
     
 </script>

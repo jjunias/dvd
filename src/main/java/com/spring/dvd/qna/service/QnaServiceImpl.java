@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.dvd.qna.dao.QnaDao;
 import com.spring.dvd.qna.dto.QnaDto;
@@ -40,11 +39,8 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 	@Override
-	public ModelAndView getList(int dvd_num) {
-		List<QnaDto> list = qnaDao.getList(dvd_num);
-		ModelAndView mView=new ModelAndView();
-		mView.addObject("list", list);
-		return mView;
+	public List<QnaDto> getList(QnaDto dto) {
+		return qnaDao.getList(dto);
 	}
 
 	@Override

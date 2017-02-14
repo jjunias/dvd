@@ -15,5 +15,5 @@ public interface DvdService extends GenericService<DvdDto,Integer,DvdDao>{
 	public int insert(HttpServletRequest request,DvdDto dto);
 	public int update(HttpServletRequest request,DvdDto dto);
 	public ModelAndView getList(DvdDto dto);
-	public ModelAndView getData(int num, int ratingNum);
+	public ModelAndView getData(int num, int ratingNum, int qnaNum, String scroll);
 }
