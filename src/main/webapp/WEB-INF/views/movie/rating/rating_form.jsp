@@ -68,8 +68,8 @@
 			<tr>
 				<th style="width:20%"><strong>작성자</strong></th>
 				<th style="width:35%">제목</th>
-				<th style="width:25%">평점</th>
-				<th style="width:10%">추천수</th>
+				<th style="width:20%">평점</th>
+				<th style="width:15%">추천수</th>
 				<th style="width:10%">등록일</th>
 			</tr>
 		</thead>
@@ -104,7 +104,7 @@
 		<ul class="pagination">
 				<c:choose>
 					<c:when test="${pagingRating.startPageNum>5}">
-						<li><a href="detail_form.do?num=${dvd.num}&page=review&ratingNum=${pagingRating.startPageNum-1}">&laquo;</a></li>
+						<li><a href="detail_form.do?num=${dvd.num}}&scroll=rating&ratingNum=${pagingRating.startPageNum-1}">&laquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="disabled"><a class="muted" href="javascript:">&laquo;</a></li>
@@ -116,13 +116,13 @@
 							<li class="active"><a href="javascript:">${i }</a></li>   
 						</c:when>
 						<c:otherwise>
-							<li><a href="detail_form.do?num=${dvd.num}&page=review&ratingNum=${i }">${i}</a></li>
+							<li><a href="detail_form.do?num=${dvd.num}&scroll=rating&ratingNum=${i }">${i}</a></li>
 						</c:otherwise>
 					</c:choose>    
 				</c:forEach>
 				<c:choose>
 					<c:when test="${pagingRating.totalPageCount > pagingRating.endPageNum}">
-						<li><a href="detail_form.do?num=${dvd.num}&page=review&ratingNum=${pagingRating.endPageNum+1}">&raquo;</a></li>
+						<li><a href="detail_form.do?num=${dvd.num}&scroll=rating&ratingNum=${pagingRating.endPageNum+1}">&raquo;</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="disabled"><a class="muted" href="javascript:">&raquo;</a></li>
@@ -201,19 +201,19 @@
 			data: ratingForm,
 			success:function(data){
 				if(data ==1){
-					location.href="detail_form.do?num=${dvd.num}&page=review&ratingNum=1";
+					location.href="detail_form.do?num=${dvd.num}&scroll=rating&ratingNum=1";
 				}
 			}
 		});
 	});
 	//스크롤 이동
 	$(function(){
-		if('${page}' =='review'){
-			$(window).scrollTop($("#rating").offset().top);
+		if('${scroll}' =='rating'){
+			$(window).scrollTop($("#box_rating").offset().top);
 		}
 	});
 	$(".rating_writeBtn").click(function(){
-		$(".rating_writeBox").show();
+		$(".rating_writeBox").toggle();
 	});
 	$("#rating_cancel").click(function(){
 		$(".rating_writeBox").hide();

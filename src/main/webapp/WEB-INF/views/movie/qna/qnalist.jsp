@@ -3,320 +3,224 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
-.contentTR {
-	display: none;
-}
-
-.qnaWrite {
-	display: none;
-}
-
-.q_modifyWrite {
-	display: none;
-}
-
-.a_modifyWrite {
-	display: none;
-}
-
-.page_display a {
-	text-decoration: none;
-	color: #000;
-}
-
-.page_display a.active {
-	font-weight: bold;
-	color: red;
-	text-decoration: underline;
-}
-
-.page_display a.muted {
-	color: #cecece;
-}
+	#box_qna{
+		background-color:#F5F5F5;
+		margin-top:10px;
+		padding-bottom:50px;
+		padding-left:10%;
+		border:1px solid #E4E4E4;
+	}
+	.qna_table,.qna_write{
+		width:90%
+	}
+	.qa_content{
+		display:none;
+		background-color:#FAFAFA;
+	}
+	.textarea{
+		width:100%;
+		background-color:#FAFAFA;
+		resize:none;
+		height:70px;
+		outline:none;
+		border:0px solid #FAFAFA;
+	}
+	.qna_answer{
+		width:100%;
+		height:70px;
+	}
+	.qna_body{
+		border-bottom: 2px solid #E4E4E4;
+	}
+	.qna_writeBtn{
+		float:right;
+	}
+	.qna_writeBox{
+		display:none;
+		border-top:2px solid #E4E4E4;
+		border-bottom:2px solid #E4E4E4;
+		width:50%;
+		margin-left:25%;
+	}
+	#qna_btn,#qna_cancel{
+		float:right;
+		margin-top:10px;
+		margin-left:5px;
+	}
+	.answer_update{
+		display:none;
+	}
 </style>
-	<table class="table table-hover">
-		<p id="qnaScroll">
-			<strong style="font-size: 30px">Q&A</strong>
-		</p>
+<div id="box_qna">
+	<h3>Q & A</h3>
+	<table class="table qna_table">
 		<thead>
-			<tr>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성시간</th>
+			</tr>
+				<th style="width:20%"><strong>작성자</strong></th>
+				<th style="width:45%">제목</th>
+				<th style="width:20%">답변 유무</th>`
+				<th style="width:10%">등록일</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="tmp" items="${qnaList }">
+			<c:forEach var="tmp" items="${qnaList }" varStatus="status">
 				<tr>
-					<td style="cursor: pointer" onclick="showcontent(${tmp.qna_num})">${tmp.qna_title }</td>
 					<td>${tmp.qna_writer }</td>
-					<td>${tmp.regdate }</td>
-					<td><c:choose>
-							<c:when test="${tmp.qna_answer eq null }">미답변</c:when>
-							<c:otherwise>답변완료</c:otherwise>
-						</c:choose></td>
-				</tr>
-
-				<!-- Q&A 글 내용 보기 -->
-				<tr class="contentTR showContent${tmp.qna_num}">
-					<td colspan="4"><span>내용 :</span> ${tmp.qna_content} <c:if
-							test="${id eq tmp.qna_writer }">
-							<a onclick="q_deleteLink(${tmp.qna_num})"
-								style="float: right; cursor: pointer">삭제</a>
-							<a onclick="q_modifyLink(${tmp.qna_num})"
-								style="float: right; cursor: pointer">수정</a>
-						</c:if> <!-- question 글 수정 폼 시작 -->
-
-						<form id="q_modifyForm${tmp.qna_num}">
-							<div class="q_modifyWrite q_modifyWrite${tmp.qna_num}">
-								<div class="form-group">
-									<input type="hidden" name="qna_num" value="${tmp.qna_num }" />
-									<label class="control-label" for="qna_title">제목:</label> <input
-										class="form-control" type="text" name="qna_title"
-										id="qna_title" value="${tmp.qna_title }">
-								</div>
-								<div class="form-group">
-									<label class="control-label" for="qna_content">질문내용:</label>
-									<textarea class="form-control" name="qna_content"
-										id="qna_content" cols="20" rows="5">${tmp.qna_content }</textarea>
-								</div>
-								<button class="btn btn-default" type="button"
-									onclick="q_modifyBtn(${tmp.qna_num})">작성</button>
-							</div>
-						</form> <!-- question 글 수정 폼 끝 -->
-
-						<div style="margin-top: 20px; border: 1px solid grey;"></div> <c:choose>
-							<c:when test="${tmp.qna_answer ne null }">
-								<div class="replyContent"
-									style="border-bottom: 1px dotted grey; clear: both; margin-left: 70px;">
-									<p>${tmp.qna_answer}</p>
-									<br />
-									<c:if test="${id eq 'admin' }">
-										<a onclick="a_deleteLink(${tmp.qna_num})"
-											style="float: right; cursor: pointer">삭제</a>
-										<a onclick="a_modifyLink(${tmp.qna_num})"
-											style="float: right; cursor: pointer">수정</a>
-									</c:if>
-									<form id="a_modifyForm${tmp.qna_num}">
-										<div class="a_modifyWrite a_modifyWrite${tmp.qna_num}">
-											<div class="form-group">
-												<p style="margin-top: 10px; font-size: 18px">
-													<strong>댓글 수정</strong>
-												</p>
-												<input type="hidden" name="qna_num" value="${tmp.qna_num }" />
-												<label class="control-label" for="qna_answer">답변:</label>
-												<textarea class="form-control" name="qna_answer"
-													id="qna_answer" cols="20" rows="5">${tmp.qna_answer }</textarea>
-											</div>
-											<button class="btn btn-default"
-												onclick="a_modifyBtn(${tmp.qna_num})" type="button">작성</button>
-										</div>
-									</form>
-								</div>
+					<td style="cursor: pointer" onclick="showcontent('${status.count}')">${tmp.qna_title}</td>
+					<td>
+						<c:choose>
+							<c:when test="${tmp.qna_answer eq null }">
+								<span>미답변</span>
 							</c:when>
 							<c:otherwise>
-								<c:if test="${id eq 'admin' }">
-									<div>
-										<form id="answerForm${tmp.qna_num }">
-											<div class="form-group">
-												<p style="margin-top: 10px; font-size: 18px">
-													<strong>댓글 달기</strong>
-												</p>
-												<input type="hidden" name="qna_num" value="${tmp.qna_num }" />
-												<label class="control-label" for="qna_answer">답변:</label>
-												<textarea class="form-control" name="qna_answer"
-													id="qna_answer"
-													style="width: 85%; float: right; resize: none;"></textarea>
-											</div>
-											<button class="btn btn-default"
-												onclick="answerBtn(${tmp.qna_num })" type="button"
-												style="margin-bottom: 20px;">댓글 작성</button>
-										</form>
-									</div>
-								</c:if>
+								<span>답변완료</span>
 							</c:otherwise>
-						</c:choose></td>
+						</c:choose>
+					</td>
+					<td>${tmp.regdate }</td>
+				</tr>
+				<tr>
+					<td colspan="4" class="qa_content">
+						<div class="question">
+							<button class="btn btn-default">Q</button><br/>
+							<textarea class="textarea">${tmp.qna_content}</textarea>
+						</div><hr/>
+						<div class="answer">  		
+							<button class="btn btn-default">A</button><br/>
+							<c:choose>
+								<c:when test="${tmp.qna_answer eq null }">
+									<form class="answer_form">
+										<input type="hidden" name="qna_num" value="${tmp.qna_num }"/>
+										<textarea name="qna_answer" class="qna_answer">${tmp.qna_answer}</textarea>
+										<button class="btn btn-default qna_answerBtn" type="button" style="float:right;margin-top:5px;">답변 등록</button>
+									</form>
+								</c:when>
+								<c:otherwise>
+									<c:if test="${id eq 'admin'}">
+										<button class="btn btn-default open_answer" type="button" style="float:right;margin-top:-50px">답변 수정</button>
+										<button class="btn btn-default" onclick="a_deleteLink('${tmp.qna_num}')" type="button" style="float:right;margin-top:-10px">답변 삭제</button>
+									</c:if>
+									<textarea class="textarea">${tmp.qna_answer}</textarea>
+									<form class="answer_update">
+										<input type="hidden" name="qna_num" value="${tmp.qna_num }"/>
+										<textarea name="qna_answer" class="qna_answer">${tmp.qna_answer}</textarea>
+										<button class="btn btn-default qna_answerUpdateBtn" type="button" style="float:right;margin-top:5px;">답변 등록</button>
+									</form>									
+								</c:otherwise>
+							</c:choose>	
+						</div> 
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-
-	<c:if test="${id ne null }">
-		<button type="submit" class="btn btn-info qnaBtn">글쓰기</button>
-	</c:if>
-
-	<!-- Q&A 글 작성 폼 시작 -->
-	<form id="questionForm">
-		<div class="qnaWrite">
-			<div class="form-group">
-				<input type="hidden" name="dvd_num" value="${dvd.num}" /> <label
-					class="control-label" for="qna_title">제목:</label> <input
-					class="form-control" type="text" name="qna_title" id="qna_title" />
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="qna_content">질문내용:</label>
-				<textarea class="form-control" name="qna_content" id="qna_content"
-					cols="20" rows="5"></textarea>
-			</div>
-			<button class="btn btn-default" type="button" id="questionBtn">작성</button>
+	
+	
+	<div class="qna_write">
+		<button type="submit" class="btn btn-default qna_writeBtn">글쓰기</button>
+		<div class="qna_writeBox form-group">
+			<form id="qna_form">
+				<div class="form-group">
+					<input type="hidden" name="dvd_num" value="${dvd.num}" />
+					<label class="control-label" for="qna_title">제목:</label>
+					<input class="form-control rating_titleWrite" type="text" name="qna_title" id="qna_title"/>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="qna_content">질문:</label>
+					<textarea class="form-control qna_contentWrite" name="qna_content" id="qna_content" maxlength="400" cols="25" rows="10" style="resize=none;"></textarea>
+					<span class="text_size">0</span>/400byte
+				</div>
+				<button class="btn btn-default" type="button" id="qna_cancel">취소</button>
+				<button class="btn btn-default" type="button" id="qna_btn">작성</button>
+			</form>
 		</div>
-	</form>
-	<!-- Q&A 글 작성 폼 끝 -->
-
-
-	<!-- 페이지 디스플레이 출력 -->
-	<div class="page_display">
-		<c:choose>
-			<c:when test="${startPageNum ne 1 }">
-				<a href="detail_form.do?num=${dvd.num}&ratingNum=${param.ratingNum }&qnaNum=${startPageNum-1 }&scroll=qna">[ 이전 ]</a>
-			</c:when>
-			<c:otherwise>
-				<a class="muted" href="javascript:">[ 이전 ]</a>
-			</c:otherwise>
-		</c:choose>
-
-		<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-			<c:choose>
-				<c:when test="${i eq pageNum }">
-					<a class="active" href="detail_form.do?num=${dvd.num}&ratingNum=${param.ratingNum }&qnaNum=${i }&scroll=qna">${i }</a>
-				</c:when>
-				<c:otherwise>
-					<a href="detail_form.do?num=${dvd.num}&ratingNum=${param.ratingNum }&qnaNum=${i }&scroll=qna">${i }</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		<c:choose>
-			<c:when test="${endPageNum lt totalPageCount }">
-				<a href="detail_form.do?num=${dvd.num}&ratingNum=${param.ratingNum }&qnaNum=${endPageNum+1 }&scroll=qna">[ 다음 ]</a>
-			</c:when>
-			<c:otherwise>
-				<a class="muted" href="javascript:">[ 다음 ]</a>
-			</c:otherwise>
-		</c:choose>
 	</div>
-<!-- 질문 글 자세히 보기 토글, 질문 글 작성, 답글 작성 -->
+</div>
+
 <script>
-	function showcontent(data){
-		$(".showContent"+data).toggle();
-	};
-	
-	function answerBtn(data){
-		var a_form = $("#answerForm"+data).serialize();
-		$.ajax({
-			url:"qna/a_update.do",
-			type:"post",
-			data:a_form,
-			success:function(data){
-				if(data == 1){
-					alert("답변이 등록 되었습니다.");
-					location.reload();
-				}
-			}
-		});
-	}
-	
-	$("#questionBtn").click(function(){
-		var q_form = $("#questionForm").serialize();
+	//글쓰기 토글
+	$(".qna_writeBtn").click(function(){
+		$(".qna_writeBox").toggle();
+	});
+	//글자 길이
+	$("#qna_content").keyup(function(){
+		$(".text_size").text($("#qna_content").val().length);
+	});
+	//글 등록
+	$("#qna_btn").click(function(){
+		var q_form = $("#qna_form").serialize();
 		$.ajax({
 			url:"qna/qna_insert.do",
 			type:"post",
 			data:q_form,
 			success:function(data){
 				if(data == 1){
-					alert("질문이 등록 되었습니다.");
 					location.href="detail_form.do?num=${dvd.num}&ratingNum=${param.ratingNum}&scroll=qna";
 				}
 			}
 		});
 	});
-	
-	$(".qnaBtn").on("click", function(){
-		$(".qnaWrite").toggle();
+	//글쓰기 닫기
+	$("#qna_cancel").click(function(){
+		$(".qna_writeBox").hide();
+		$("#qna_title").val("");
+		$("#qna_content").val("");
 	});
-</script>
-
-<!-- 질문 글 수정 토글, 질문 글 수정, 삭제 -->
-<script>
-	function q_modifyLink(data){
-		$(".q_modifyWrite"+data).toggle();
-	};
-	
-	function q_modifyBtn(data){
-		var q_form = $("#q_modifyForm"+data).serialize();
-		$.ajax({
-			url:"qna/q_update.do",
-			type:"post",
-			data:q_form,
-			success:function(data){
-				if(data == 1){
-					alert("질문이 수정 되었습니다.");
-					location.reload();
-				}
-			}
-		})
-	};
-	
-	function q_deleteLink(msg){
-		$.ajax({
-			url:"qna/q_delete.do",
-			type:"post",
-			data:{"qna_num":msg},
-			success:function(data){
-				if(data==1){
-					alert("질문이 삭제 되었습니다.");
-					location.reload();
-				}
-			}
-		});
-	};
-</script>
-
-<!-- 답글 수정 토글, 답글 수정, 삭제 -->
-<script>
-	function a_modifyLink(data){
-		$(".a_modifyWrite"+data).toggle();
-	};
-	
-	function a_modifyBtn(data){
-		var a_form = $("#a_modifyForm"+data).serialize();
+	//글쓰기 토글
+	var showcontent = function(data){
+		var datas = data-1;
+		$(".qa_content").eq(datas).toggle();
+	}
+	//답변 등록
+	$(".qna_answerBtn").click(function(){
+		var a_form = $(".answer_form").serialize();
 		$.ajax({
 			url:"qna/a_update.do",
 			type:"post",
 			data:a_form,
 			success:function(data){
 				if(data == 1){
-					alert("답변이 수정 되었습니다.");
 					location.reload();
 				}
 			}
-		})
-	};
-	
-	function a_deleteLink(msg){
+		});
+	});
+	$(".qna_answerUpdateBtn").click(function(){
+		var a_form = $(".answer_update").serialize();
+		$.ajax({
+			url:"qna/a_update.do",
+			type:"post",
+			data:a_form,
+			success:function(data){
+				if(data == 1){
+					location.reload();
+				}
+			}
+		});
+	});
+	$(".open_answer").click(function(){
+		$(".answer_update").toggle();
+	});
+	//답변 삭제
+	function a_deleteLink(data){
 		$.ajax({
 			url:"qna/a_delete.do",
 			type:"post",
-			data:{"qna_num":msg},
+			data:{"qna_num":data},
 			success:function(data){
 				if(data==1){
-					alert("답변이 삭제 되었습니다.");
 					location.reload();
 				}
 			}
 		});
 	};
-</script>
-
-<script>
+	//scroll 이동
 	$(function(){
 		if('${scroll}' == 'qna'){
 			$(window).scrollTop($("#qnaScroll").offset().top);
 		}	
 	});
-	
 </script>
-</html>
-
 
 
 
