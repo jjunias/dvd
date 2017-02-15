@@ -237,6 +237,189 @@
 	.help-block{
 		display: none;
 	}
+  .line_area{
+    border-bottom: 1px solid gray;
+  }
+	/* pay.jsp css  */
+  .payCart-pay{
+    border:1px solid gray;
+    height: 200px;
+    padding-top:26px;
+  }
+  .control-label-pay{
+    padding-right: 20px;
+  }
+  .form-control-pay{
+    width: 70%;
+    display: inline;
+    margin-left: 4px;
+  }
+  .pay-phone, .pay-shipping-phone, .pay-email, .pay-pwd, .pay-addrNum{
+    margin-left: 32px;
+  }
+  .pay-name{
+    margin-left: 15px;
+  }
+  .pay-shipping-name{
+  	margin-left:34px;
+  }
+  .pay-shippingBtn{
+    position: absolute;
+    margin-right: 45px;
+    top: 0;
+    right: 0;
+  }
+  .pay-shippingAddr{
+    position: relative;
+  }
+  .pay-addrNum{
+    width:30%;
+  }
+  .pay-addr, .pay-addrDetail{
+    margin-left: 112px;
+  }
+  .pay-payment{
+    border:2px double blue;
+    height: 250px;
+  }
+  .pay-priceBox{
+    float: right;
+    margin-right: 15px;
+    padding-left:15px;
+  }
+  .pay-ul{
+    padding-left: 20px;
+    margin-bottom:0px;
+  }
+  .pay-li{
+  	padding-top:10px;
+    margin: 10px;
+    margin-bottom:0px;
+  }
+  .pay-pay_font{
+    font-size: 20px;
+  }
+  .pay-pay_result{
+    font-size: 20px;
+    color: red;
+  }
+  .pay-paymentBtn{
+    margin-left: 10%;
+    width: 80%;
+  }
+  .pay-content_box{
+  	padding-top:60px;
+  }
+  .pay-pay_final{
+  	margin-top:0px;
+  }
+  .pay-table-info{
+  	text-align: center;
+  }
+  .pay-dvd_price{
+  	padding-top:4px;
+  	font-size:20px;
+  	float:right;
+  }
+  .pay-priceTotal{
+  	float:right;
+  }
+  .pay-amount{
+  	width:24%;
+  }
+	
+	/* cart_pay.jsp css  */
+  .payCart-cart{
+    border:1px solid gray;
+    height: 280px;
+    padding-top:26px;
+    overflow-y: scroll; 
+  }
+  .control-label-cart{
+    padding-right: 20px;
+  }
+  .form-control-cart{
+    width: 70%;
+    display: inline;
+  }
+  .cart-phone, .cart-shipping-phone, .cart-email, .cart-pwd, .cart-addrNum{
+    margin-left: 32px;
+  }
+  .cart-name, .cart-shipping-name{
+    margin-left: 15px;
+  }
+  .cart-shippingBtn{
+    position: absolute;
+    margin-right: 45px;
+    top: 0;
+    right: 0;
+  }
+  .cart-shippingAddr{
+    position: relative;
+  }
+  .cart-addrNum{
+    width:30%;
+  }
+  .cart-addr, .cart-addrDetail{
+    margin-left: 112px;
+  }
+  .cart-pwd2{
+  	margin-left:5px;
+  }
+  .cart-payment{
+    border:2px double blue;
+    height: 250px;
+  }
+  .cart-priceBox{
+    float: right;
+    margin-right: 15px;
+    padding-left:15px;
+  }
+  .ul-cart{
+    padding-left: 20px;
+    margin-bottom:0px;
+  }
+  .li-cart{
+  	padding-top:10px;
+    margin: 10px;
+    margin-bottom:0px;
+  }
+  .cart-pay_font{
+    font-size: 20px;
+  }
+  .cart-pay-result{
+    font-size: 20px;
+    color: red;
+  }
+  .cart-paymentBtn{
+    margin-left: 5%;
+    width: 90%;
+  }
+  .cart-content_box{
+  	padding-top:60px;
+  }
+  .cart-pay_final{
+  	margin-top:0px;
+  }
+  .cart-table-info{
+  	text-align: center;
+  	margin-bottom:10px;
+  }
+  .cart-dvd_price{
+  	padding-top:4px;
+  	font-size:20px;
+  	float:right;
+  }
+  .cart-priceTotal{
+  	float:right;
+  }
+  .cart-amount{
+  	width:24%;
+  }
+  .cart-col_right{
+  	padding-right:0px;
+  }
+
 		
 </style>
 <div class="main_img"></div>
@@ -270,7 +453,6 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
 
 <div class="main_tr"></div>

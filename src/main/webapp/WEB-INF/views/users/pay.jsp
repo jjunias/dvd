@@ -10,171 +10,72 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <style>
-  .line_area{
-    border-bottom: 1px solid gray;
-  }
-  .payCart{
-    border:1px solid gray;
-    height: 200px;
-    padding-top:26px;
-  }
-  .control-label{
-    padding-right: 20px;
-  }
-  .form-control{
-    width: 70%;
-    display: inline;
-  }
-  #buy_phone, #shipping_phone, #email, #pwd, #addrNum{
-    margin-left: 32px;
-  }
-  #pwd2{
-  	margin-left: 23px;
-  }
-  .buy_name{
-    margin-right: 14px;
-  }
-  .cart_bar{
-    border-bottom:1px solid #EAE1E1;
-  }
-  .shippingBtn{
-    position: absolute;
-    margin-right: 45px;
-    top: 0;
-    right: 0;
-  }
-  .shippingAddr{
-    position: relative;
-  }
-  #addrNum{
-    width:30%;
-  }
-  #addr, #addrDetail{
-    margin-left: 112px;
-  }
-  .payment{
-    border:2px double blue;
-    height: 250px;
-  }
-  .priceBox{
-    float: right;
-    margin-right: 15px;
-    padding-left:15px;
-  }
-  ul{
-    padding-left: 20px;
-    margin-bottom:0px;
-  }
-  li{
-  	padding-top:10px;
-    margin: 10px;
-    margin-bottom:0px;
-  }
-  .pay_font{
-    font-size: 20px;
-  }
-  #pay_result{
-    font-size: 20px;
-    color: red;
-  }
-  .paymentBtn{
-    margin-left: 10%;
-    width: 80%;
-  }
-  .help-block{
-  	display:none;
-  }
-  .feedback-span{
-  
-  }
-  .content_box{
-  	padding-top:60px;
-  }
-  .pay_final{
-  	margin-top:0px;
-  }
-  .table-info{
-  	text-align: center;
-  }
-  .final_price{
- 
-  }
-  .dvd_price{
-  	padding-top:4px;
-  	font-size:20px;
-  	float:right;
-  }
-  .priceTotal{
-  	float:right;
-  }
-  #amount{
-  	width:24%;
-  }
+
 
 </style>
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
 <div class="content">
-	<div class="content_box">
+	<div class="pay-content_box">
 	  <div class="col-xs-7">
 	    <div class="car_info">
 	      <h3>주문자 정보</h3>
 	      <div class="line_area"></div><br/><br/>
 	      <div class="form-group">
-	        <label for="buy_name" class="control-label buy_name">주문자 이름</label>
-	        <input type="text" class="form-control"  name="name"  id="buy_name" value="${users.name }"/><br/>
+	        <label for="buy_name" class="control-label control-label-pay buy_name">주문자 이름</label>
+	        <input type="text" class="form-control form-control-pay pay-name"  name="name"  id="buy_name" value="${users.name }"/><br/>
 	      </div>
 	      <div class="form-group">
-	        <label for="buy_phone" class="control-label">휴대전화</label>
-	        <input type="text" class="form-control"" name="phone"  id="buy_phone"  value="${users.phone }"/><br/>
+	        <label for="buy_phone" class="control-label control-label-pay">휴대전화</label>
+	        <input type="text" class="form-control form-control-pay pay-phone" name="phone"  id="buy_phone"  value="${users.phone }"/><br/>
 	      </div>
 	      <div class="form-group">
-	        <label for="email" class="control-label">메일주소</label>
-	        <input type="text" class="form-control"  name="email"  id="email" value="${users.email }"/><br/>
+	        <label for="email" class="control-label control-label-pay">메일주소</label>
+	        <input type="text" class="form-control form-control-pay pay-email"  name="email"  id="email" value="${users.email }"/><br/>
 	      </div>
 	      <div class="form-group has-feedback">
-				<label for="pwd" class="control-label">비밀번호</label>
-				<input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
+				<label for="pwd" class="control-label control-label-pay">비밀번호</label>
+				<input type="password" class="form-control form-control-pay pay-pwd" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
 				<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
 			</div>
 			<div class="form-group has-feedback">
-				<label for="pwd2" class="ontrol-label">비밀번호확인</label>
-				<input type="password" class="form-control" name="pwd2"  id="pwd2" placeholder="비밀번호 확인"/><br/>
+				<label for="pwd2" class="control-label control-label-pay">비밀번호확인</label>
+				<input type="password" class="form-control form-control-pay pay-pwd2" name="pwd2"  id="pwd2" placeholder="비밀번호 확인"/><br/>
 				<p class="help-block"> 비밀번호를 확인하세요.</p>
 			</div>
 	    </div>
 	    <br/>
 	    <div class="shipping">
 	      <div class="line_area"></div><br/>
-	      <div class="shippingAddr"> 
+	      <div class="pay-shippingAddr"> 
 	        <h3>배송지 정보</h3><br/>
-	        <button class="btn btn-default shippingBtn">주문자 정보와 동일</button>
+	        <button class="btn btn-default pay-shippingBtn">주문자 정보와 동일</button>
 	      </div>
 	      <div class="form-group">
-	        <label for="shipping_name" class="control-label buy_name">주문자 이름</label>
-	        <input type="text" class="form-control"  name="shipping_name"  id="shipping_name"/><br/>
+	        <label for="shipping_name" class="control-label control-label buy_name">주문자 이름</label>
+	        <input type="text" class="form-control form-control-pay pay-shipping-name"  name="shipping_name"  id="shipping_name"/><br/>
 	      </div>
 	      <div class="form-group">
-	        <label for="shipping_phone" class="control-label">휴대전화</label>
-	        <input type="text" class="form-control"" name="shipping_phone"  id="shipping_phone"  /><br/>
+	        <label for="shipping_phone" class="control-label control-label-pay">휴대전화</label>
+	        <input type="text" class="form-control form-control-pay pay-shipping-phone" name="shipping_phone"  id="shipping_phone"  /><br/>
 	      </div>
 	      <div class="form-group">
-	        <label for="addr" class="control-label">우편번호</label>
-	        <input type="text"  class="form-control"  name="addrNum"  id="addrNum" placeholder="우편번호">
-	        <input type="button"  class="btn btn-default"  id="postCodeBtn" onclick="postCode()" value="우편번호 찾기"><br>
-	        <input type="text"  class="form-control"  name="addr"  id="addr" placeholder="주소">
-	        <input type="text"  class="form-control"  name="addrDetail"  id="addrDetail" placeholder="상세주소">
+	        <label for="addr" class="control-label control-label-pay">우편번호</label>
+	        <input type="text"  class="form-control form-control-pay pay-addrNum"  name="addrNum"  id="addrNum" placeholder="우편번호">
+	        <input type="button"  class="btn btn-default pay-postCodeBtn"  id="postCodeBtn" onclick="postCode()" value="우편번호 찾기"><br>
+	        <input type="text"  class="form-control form-control-pay pay-addr"  name="addr"  id="addr" placeholder="주소">
+	        <input type="text"  class="form-control form-control-pay pay-addrDetail"  name="addrDetail"  id="addrDetail" placeholder="상세주소">
 	      </div>
 	    </div>
 	  </div>
 	  <div class="col-xs-5">
 	    <h3>주문상품 정보</h3>  
-	    <div class="payCart">
+	    <div class="payCart-pay">
 	      <div class="col-xs-4">
 	        <a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
 	      </div>
 	      <div class="col-xs-8">
-	        <table class="table table-info">
+	        <table class="table pay-table-info">
 	        	<thead>
 	        		<tr>
 	        			<td>장르</td>
@@ -193,36 +94,36 @@
 	        <br/>
 	        <div class="dvd_priceBox">
 	        	<div class="dvd_amount">
-			        수량:<select class="form-control" name="amount" id="amount" >
+			        수량:<select class="form-control form-control-pay pay-amount" name="amount" id="amount" >
 								<c:forEach begin="1" end="10" var="i">
 									<option  name="option" value="${i }">${i }</option>
 								</c:forEach>
 						   </select>
-					<div class="dvd_price">가격 : <strong>${dvd.price }</strong>원</div>
+					<div class="pay-dvd_price">가격 : <strong>${dvd.price }</strong>원</div>
 	        	</div>
 	        </div>
 	      </div>
 	    </div>
 	    <br/>
-	    <h3 class="pay_final">최종결제 정보</h3>
-	    <div class="payment">
-	      <ul>
-	        <li>
+	    <h3 class="pay-pay_final">최종결제 정보</h3>
+	    <div class="pay-payment">
+	      <ul class="pay-ul">
+	        <li class="pay-li">
 	          <span final_price>상품가격</span>
-	          <div class="priceBox"><strong>${dvd.price }</strong>원</div>
-	          <div class="priceTotal">${dvd.price } <span>1개</span></div>
+	          <div class="pay-priceBox"><strong>${dvd.price }</strong>원</div>
+	          <div class="pay-priceTotal">${dvd.price } <span>1개</span></div>
 	        </li>
 	      </ul>
 	      <br/>
 	      <div class="line_area"></div><br/>
-	      <ul>
-	        <li>
-	          <span class="pay_font"><strong>결제 예정액</strong></span>
-	          <div class="priceBox"><strong id="pay_result">${dvd.price }</strong>원</div>
+	      <ul class="pay-ul">
+	        <li class="pay-li">
+	          <span class="pay-pay_font"><strong>결제 예정액</strong></span>
+	          <div class="pay-priceBox"><strong class="pay-pay_result" >${dvd.price }</strong>원</div>
 	        </li>
 	      </ul>
 	      <br/>
-	      <button class="btn btn-info paymentBtn btn-lg">결제하기</button>
+	      <button class="btn btn-info pay-paymentBtn btn-lg">결제하기</button>
 	      <a href="/dvd/users/cart_pay.do?type=views">장바구니에서 결제하기 테스트</a>
 	    </div>  
 	  </div>
@@ -230,10 +131,10 @@
 </div>
 <script>
 
-$("#amount").on("change",function(){
+$(".pay-amount").on("change",function(){
 	var a =  $(this).val();
-	$(".priceBox").find("strong").text("${dvd.price}"*a);
-	$(".priceTotal").find("span").text("*"+a+"개");
+	$(".pay-priceBox").find("strong").text("${dvd.price}"*a);
+	$(".pay-priceTotal").find("span").text("*"+a+"개");
 	
 	
 })
@@ -282,7 +183,7 @@ $("#amount").on("change",function(){
     }
     
     
-    $(".shippingBtn").click(function(){
+    $(".pay-shippingBtn").click(function(){
 
 		var name = $("#buy_name").val();
     	var phone = $("#buy_phone").val();
@@ -317,6 +218,8 @@ $("#pwd").on("blur", function(){
 		}
     	
     });
+    
+    
     
 
     
