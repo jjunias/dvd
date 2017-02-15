@@ -10,9 +10,6 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <style>
-  img{
-    width: 100%;
-  }
   .line_area{
     border-bottom: 1px solid gray;
   }
@@ -226,6 +223,7 @@
 	      </ul>
 	      <br/>
 	      <button class="btn btn-info paymentBtn btn-lg">결제하기</button>
+	      <a href="/dvd/users/cart_pay.do?type=views">장바구니에서 결제하기 테스트</a>
 	    </div>  
 	  </div>
 	</div>
@@ -285,6 +283,7 @@ $("#amount").on("change",function(){
     
     
     $(".shippingBtn").click(function(){
+
 		var name = $("#buy_name").val();
     	var phone = $("#buy_phone").val();
     	
@@ -293,7 +292,7 @@ $("#amount").on("change",function(){
     	
     	$("#addrNum").val("${users.addrNum}");
     	$("#addr").val("${users.addr}");
-    	$("#addrDetail").val("${users.addrDetail}");
+    	$("#addrDetail").val("${users.addrDetail}");    		
     });
     
 $("#pwd").on("blur", function(){

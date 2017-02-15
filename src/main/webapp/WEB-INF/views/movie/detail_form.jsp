@@ -82,6 +82,7 @@
 		margin-right:380px;
 		font-family:18px;
 	}
+	
 </style>
 <head>
 <meta charset="UTF-8">

@@ -18,6 +18,7 @@
 		display:inline;
 	}
 	.updateTop{
+		padding-top:80px;
 		text-align: center;
 	}
 	.top_area{
@@ -35,13 +36,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
+<jsp:include page="/WEB-INF/views/catalog.jsp"/>
+<div class="content">
 	<div class="formBox">
 		<div class="updateTop">
-			<a href="">
-				<img src="${pageContext.request.contextPath }/resources/images/rabbit_1.png" alt="" />
-			</a>
-			<div class="top_area"></div>
 			<h2>정보수정</h2>
 			<p>회원정보를 입력하세요.</p>
 			<div class="top_area"></div>
@@ -89,10 +87,10 @@
 					<button type="button" id="passwordBtn"  class="btn btn-default">비밀번호 변경</button>
 					<button type="button" id="deleteBtn"  class="btn btn-warning">탈퇴하기</button>
 					<button type="button" id="updateBtn"  class="btn btn-default">수정하기</button>
-					 
 				</div>
 			</div>
 		</form>
+		<div class="top_area"></div><br/>
 	</div>
 </div>
 
