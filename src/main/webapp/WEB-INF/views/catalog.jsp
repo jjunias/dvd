@@ -233,7 +233,9 @@
 		margin-left:15px;
 		padding-top:20px;
 	}
-	
+	.help-block{
+		display: none;
+	}
 		
 </style>
 <div class="main_img"></div>
