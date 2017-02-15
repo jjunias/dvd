@@ -66,7 +66,7 @@
 }
 </style>
 <div id="box_rating">
-	<h3>평점 / 리뷰</h3>
+	<h3 id='rating'>평점 / 리뷰</h3>
 	<div class="rating_table">
 		<table class="table">
 		<thead>

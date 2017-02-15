@@ -64,6 +64,7 @@
 	}
 	.view_list a:HOVER {
 		color:darkgray;
+		font-style: none;
 	}
 	.update_btn{
 		float:right;
@@ -129,7 +130,7 @@
 			<span><a href="#box_trailer" style="margin-left:20%">동 영 상</a> |</span>
 			<span><a href="#box_content">줄 거 리</a> |</span>
 			<span><a href="#rating">평 점/리 뷰</a> |</span>
-			<span><a href="">Q & A</a></span>
+			<span><a href="#qna">Q & A</a></span>
 		</div>
 		<div id="box_trailer">
 			<h3>동 영 상</h3>

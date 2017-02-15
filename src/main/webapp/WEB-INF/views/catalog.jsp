@@ -86,7 +86,7 @@
    }
    .content{
 		float:left;
-		margin-top:400px;
+		margin-top:450px;
 		margin-left:20%;
 		width:60% !important;
 		z-index:-1;
@@ -139,13 +139,13 @@
 		position:absolute;
 		height:80px;
 		width:60%;
-		left:20%;
+		left:12%;
 		z-index:999999;
 	}
 	.catalog li {
 		float:left;
 		margin-top:40px;
-		margin-right:20px;
+		margin-right:70px;
 		color:white;
 		font-size:20px;
 	}
@@ -200,7 +200,7 @@
 		border:4px solid #cecece;
 		box-shadow:4px 4px #cecece;
     }
-  .affix{
+	.affix{
 	  	top:60px;
 		right:81px;
 	}
