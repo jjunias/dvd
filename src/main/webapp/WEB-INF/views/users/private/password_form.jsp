@@ -6,11 +6,8 @@
 <head>
 <jsp:include page="/WEB-INF/views/source.jsp"/><!-- jquery , boostrap -->
 <style>
-	.help-block{
-		display: none;
-	}
-	.formBox{
-		width:60%;
+	.pwd-formBox{
+		width:67%;
 		margin:0 auto;
 	}
 	.updateTop{
@@ -35,7 +32,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
 <div class="content">
-	<div class="formBox">
+	<div class="pwd-formBox">
 		<div class="updateTop">
 			<h2>비밀번호 변경</h2>
 			<p><strong style="color:red">다른 아이디/사이트에서 사용한 적 없는 비밀번호</strong></p>
