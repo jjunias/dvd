@@ -51,11 +51,11 @@
 					  		OR qna_content LIKE '%'||#{qna_content}||'%'
 					  	</if>
 				  	</where>
+				  	AND dvd_num = #{dvd_num}
 					ORDER BY qna_num DESC) result1
 			)
 		WHERE
 		<![CDATA[ rnum >= #{startRowNum} AND rnum <= #{endRowNum} ]]>
-		AND dvd_num = #{dvd_num}
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="qnaDto">
@@ -64,8 +64,9 @@
 		WHERE qna_num = #{qna_num}
 	</select>
 	
-	<select id="getCount" resultType="int">
+	<select id="getCount" parameterType="int" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM qna
+		WHERE dvd_num = #{dvd_num}
 	</select>
 </mapper>

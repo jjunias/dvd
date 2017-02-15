@@ -71,7 +71,7 @@
 	    <h3>주문상품 정보</h3>  
 	    <div class="payCart-cart">
 	      <div class="col-xs-4">
-	        <a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
+	        <%-- <a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a> --%>
 	      </div>
 	      <div class="col-xs-8">
 	        <table class="table cart-table-info">
@@ -83,34 +83,51 @@
 	        		</tr>
 	        	</thead>
 	        	<tbody>
-	        		<tr>
-	        			<td>${dvd.genre }</td>
-	        			<td>${dvd.title }</td>
-	        			<td>${dvd.production }</td>
-	        		</tr>
+	        		<c:forEach var="tmp" items="${basket_list }">
+		        		<tr>
+		        			<td>${tmp.genre }</td>
+		        			<td>${tmp.title }</td>
+		        			<td>${tmp.production }</td>
+		        			<td>
+			        			<div class="dvd_priceBox">
+						        	<div class="dvd_amount">
+								        수량:<select class="form-control" name="amount" id="amount${tmp.num }" >
+													<c:forEach begin="1" end="10" var="i">
+														<option name="option" value="${i }">${i }</option>
+													</c:forEach>
+											   </select>
+										<div class="dvd_price">가격 : <strong>${tmp.price }</strong>원</div>
+						        	</div>
+						        </div>
+					        </td>
+		        		</tr>
+	        		</c:forEach>
 	        	</tbody>
 	        </table>
 	        <br/>
-	        <div class="dvd_priceBox">
-	        	<div class="dvd_amount">
-			        수량:<select class="form-control form-control-cart cart-amount"  name="amount" id="cart-amount" >
-								<c:forEach begin="1" end="10" var="i">
-									<option  name="option" value="${i }">${i }</option>
-								</c:forEach>
-						   </select>
-					<div class="cart-dvd_price">가격 : <strong>${dvd.price }</strong>원</div>
-	        	</div>
-	        </div>
 	      </div>
 	    </div>
 	    <br/>
-	    <h3 class="cart-pay_final">최종결제 정보</h3>
-	    <div class="cart-payment">
-	      <ul class="ul-cart">
-	        <li class="li-cart">
-	          <span final_price>상품가격</span>
-	          <div class="cart-priceBox"><strong>${dvd.price }</strong>원</div>
-	          <div class="cart-priceTotal">${dvd.price } <span>1개</span></div>
+	    <h3 class="pay_final">최종결제 정보</h3>
+	    <div class="payment">
+	      <ul>
+	        <li>
+	        	<table>
+	        		<thead>
+	        			<tr>
+	        				<th>제목</th>
+	        				<th><span>상품가격</span></th>
+	        			</tr>
+	        		</thead>
+	        		<tbody>
+	        			<c:forEach var="tmp" items="${basket_list }">
+		        			<tr>
+		        				<td><div class="priceBox"><strong>${tmp.price }</strong>원</div></td>
+		        				<td><div class="priceTotal">${tmp.price } <span>1개</span></div></td>
+		        			</tr>
+	        			</c:forEach>
+	        		</tbody>
+		        </table>
 	        </li>
 	      </ul>
 	      <br/>
