@@ -6,7 +6,7 @@
 <head>
 <jsp:include page="/WEB-INF/views/source.jsp"/><!-- jquery , boostrap -->
 <style>
-	.formBox{
+	.info-formBox{
 		width:60%;
 		margin:0 auto;
 	}
@@ -35,7 +35,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
 <div class="content">
-	<div class="formBox">
+	<div class="info-formBox">
 		<div class="updateTop">
 			<h2>정보수정</h2>
 			<p>회원정보를 입력하세요.</p>
