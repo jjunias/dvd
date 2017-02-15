@@ -13,7 +13,7 @@
 	</delete>
 	
 	<select id="getList" parameterType="string" resultType="dvdDto">
-		SELECT dv.num, dv.title, dv.price
+		SELECT dv.num, dv.title, dv.price, dv.savefilename
 		FROM (SELECT * FROM dvd_basket WHERE id = #{id}) bs, dvd dv
 		WHERE dv.num = bs.dvd_num
 	</select>
