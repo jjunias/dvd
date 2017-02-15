@@ -37,9 +37,8 @@
 	}
 	.write_btn{
 		position:absolute;
-		top:130px;
+		top:530px;
 		right:20%;
-		z-index:100 !important;
 	}
 	.rating_star{
 		width:110px !important;
@@ -66,7 +65,7 @@
 		float:right;
 		margin-top:-50px;
 		margin-left:50%;
-		width:10%;
+		width:10% !important;
 	}
 	.imgBox{
 		cursor: pointer;

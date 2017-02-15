@@ -30,6 +30,7 @@
       width:100%;
       height:40px;
       background-color:#232323;
+      z-index:999;
    }
    .search_bar{
    	  position:absolute;
