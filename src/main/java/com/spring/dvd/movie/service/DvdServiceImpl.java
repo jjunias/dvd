@@ -87,7 +87,7 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		QnaDto qnaDto = new QnaDto();
 		int startRowNum=1+(qnaNum-1)*PAGE_ROW_COUNT;
 		int endRowNum=qnaNum*PAGE_ROW_COUNT;
-		int totalRow = qnaDao.getCount();
+		int totalRow = qnaDao.getCount(num);
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 		int startPageNum=1+((qnaNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
 		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
