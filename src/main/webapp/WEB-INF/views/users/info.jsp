@@ -6,9 +6,6 @@
 <head>
 <jsp:include page="/WEB-INF/views/source.jsp"/><!-- jquery , boostrap -->
 <style>
-	.help-block{
-		display: none;
-	}
 	.formBox{
 		width:60%;
 		margin:0 auto;

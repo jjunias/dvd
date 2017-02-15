@@ -30,6 +30,7 @@
       width:100%;
       height:40px;
       background-color:#232323;
+      z-index:999;
    }
    .search_bar{
    	  position:absolute;
@@ -85,7 +86,7 @@
    }
    .content{
 		float:left;
-		margin-top:400px;
+		margin-top:450px;
 		margin-left:20%;
 		width:60% !important;
 		z-index:-1;
@@ -138,13 +139,13 @@
 		position:absolute;
 		height:80px;
 		width:60%;
-		left:20%;
+		left:12%;
 		z-index:999999;
 	}
 	.catalog li {
 		float:left;
 		margin-top:40px;
-		margin-right:20px;
+		margin-right:70px;
 		color:white;
 		font-size:20px;
 	}
@@ -199,7 +200,7 @@
 		border:4px solid #cecece;
 		box-shadow:4px 4px #cecece;
     }
-  .affix{
+	.affix{
 	  	top:60px;
 		right:81px;
 	}
@@ -233,7 +234,9 @@
 		margin-left:15px;
 		padding-top:20px;
 	}
-	
+	.help-block{
+		display: none;
+	}
 		
 </style>
 <div class="main_img"></div>

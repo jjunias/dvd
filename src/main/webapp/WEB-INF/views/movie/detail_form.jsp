@@ -64,6 +64,7 @@
 	}
 	.view_list a:HOVER {
 		color:darkgray;
+		font-style: none;
 	}
 	.update_btn{
 		float:right;
@@ -82,7 +83,11 @@
 		margin-right:380px;
 		font-family:18px;
 	}
-	
+	.dvd_update{
+		margin-top:20px;
+		margin-right:10%;
+		float:right;
+	}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -91,12 +96,10 @@
 <body>
 	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
 	<div class="content">
-		<c:if test="${id eq 'admin' }">
-			<div class="update_btn">
-				<button class="btn btn-warning" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
-			</div>
-		</c:if>
 		<div class="box">
+			<c:if test="${id eq 'admin' }">
+				<button class="btn btn-warning dvd_update" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
+			</c:if>
 			<div class="imgBox">
 				<img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}" onclick="location.href='detail_form.do?num=${dvd.num}'"/>
 			</div>
@@ -127,7 +130,7 @@
 			<span><a href="#box_trailer" style="margin-left:20%">동 영 상</a> |</span>
 			<span><a href="#box_content">줄 거 리</a> |</span>
 			<span><a href="#rating">평 점/리 뷰</a> |</span>
-			<span><a href="">Q & A</a></span>
+			<span><a href="#qna">Q & A</a></span>
 		</div>
 		<div id="box_trailer">
 			<h3>동 영 상</h3>

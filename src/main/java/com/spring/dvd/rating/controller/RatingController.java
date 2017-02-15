@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.dvd.generic.controller.GenericController;
@@ -40,10 +41,21 @@ public class RatingController extends GenericController<RatingDto, Integer, Rati
 	
 	@RequestMapping("/private/recommendUp")
 	@ResponseBody
-	public int recommendUp(@ModelAttribute RatingRecommendDto dto,HttpSession session){
+	public int RecommendUp(@ModelAttribute RatingRecommendDto dto,HttpSession session){
 		String id = (String) session.getAttribute("id");
 		dto.setUserId(id);
 		return service.RecommendInsert(dto);
 	}
-
+	@RequestMapping("/private/update")
+	@ResponseBody
+	public int Update(@ModelAttribute RatingDto dto){
+		System.out.println(dto.getNum() +"gg"+ dto.getTitle());
+		System.out.println("hi");
+		return service.update(dto);
+	}
+	@RequestMapping("/private/delete")
+	@ResponseBody
+	public int delete(@RequestParam int num){
+		return service.delete(num);
+	}
 }

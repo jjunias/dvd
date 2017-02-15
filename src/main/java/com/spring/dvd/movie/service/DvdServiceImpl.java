@@ -90,18 +90,18 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		int totalRow = qnaDao.getCount();
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 		int startPageNum=1+((qnaNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		
 		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
 		if(totalPageCount < endPageNum){
 			endPageNum=totalPageCount;
 		}
-		
 		qnaDto.setStartRowNum(startRowNum);
 		qnaDto.setEndRowNum(endRowNum);
 		qnaDto.setDvd_num(num);
 		
 		List<QnaDto> qnaList = qnaDao.getList(qnaDto);
 		mView.addObject("qnaList", qnaList);
-		mView.addObject("pageNum", qnaNum);
+		mView.addObject("qnaNum", qnaNum);
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalPageCount", totalPageCount);

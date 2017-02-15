@@ -14,3 +14,4 @@ public interface QnaDao {
 	public QnaDto getData(int qna_num);
 	public int getCount();
 }
+

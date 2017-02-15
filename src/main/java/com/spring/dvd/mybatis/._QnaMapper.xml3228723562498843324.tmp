@@ -3,7 +3,7 @@
 <mapper namespace="qna">
 	<sql id="qnaColumns">
 		qna_num, qna_writer, qna_title, qna_content, qna_answer,
-		TO_CHAR(regdate,'YY-MM-DD') regdate, dvd_num
+		TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate, dvd_num
 	</sql>
 	
 	<insert id="insert" parameterType="qnaDto">
@@ -40,13 +40,22 @@
 			(SELECT result1.*, ROWNUM rnum
 			 FROM 	(SELECT <include refid="qnaColumns"/>
 					FROM qna
+					<where>
+					  	<if test="qna_writer != null">
+					  		OR qna_writer LIKE '%'||#{qna_writer}||'%'
+					  	</if>
+					  	<if test="qna_title != null">
+					  		OR qna_title LIKE '%'||#{qna_title}||'%'
+					  	</if>
+					  	<if test="qna_content != null">
+					  		OR qna_content LIKE '%'||#{qna_content}||'%'
+					  	</if>
+				  	</where>
 					ORDER BY qna_num DESC) result1
 			)
 		WHERE
-			dvd_num = #{dvd_num}
-		AND
 		<![CDATA[ rnum >= #{startRowNum} AND rnum <= #{endRowNum} ]]>
-		 
+		AND dvd_num = #{dvd_num}
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="qnaDto">
