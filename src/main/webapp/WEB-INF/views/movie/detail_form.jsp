@@ -82,7 +82,11 @@
 		margin-right:380px;
 		font-family:18px;
 	}
-	
+	.dvd_update{
+		margin-top:20px;
+		margin-right:10%;
+		float:right;
+	}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -91,12 +95,10 @@
 <body>
 	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
 	<div class="content">
-		<c:if test="${id eq 'admin' }">
-			<div class="update_btn">
-				<button class="btn btn-warning" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
-			</div>
-		</c:if>
 		<div class="box">
+			<c:if test="${id eq 'admin' }">
+				<button class="btn btn-warning dvd_update" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
+			</c:if>
 			<div class="imgBox">
 				<img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}" onclick="location.href='detail_form.do?num=${dvd.num}'"/>
 			</div>

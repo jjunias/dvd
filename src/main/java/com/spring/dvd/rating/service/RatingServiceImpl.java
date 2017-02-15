@@ -46,7 +46,6 @@ public class RatingServiceImpl extends GenericServiceImpl<RatingDto,Integer,Rati
 	public int Insert(RatingDto dto){
 		int success = dao.insert(dto);
 		if(1 == success){
-			System.out.println("들어옴");
 			float avg = dao.averageDvd(dto);
 			dto.setScore(avg);
 			dao.averageUpdate(dto);
