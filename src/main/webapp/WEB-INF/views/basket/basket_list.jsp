@@ -107,7 +107,7 @@
 <script>
 	function basket(index){
 		if(index==1){
-			document.basketForm.action = "";
+			document.basketForm.action = "cart_pay.do?type=views";
 		}
 		else{
 			document.basketForm.action = "delete.do";
