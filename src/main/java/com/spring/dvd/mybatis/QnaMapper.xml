@@ -40,22 +40,13 @@
 			(SELECT result1.*, ROWNUM rnum
 			 FROM 	(SELECT <include refid="qnaColumns"/>
 					FROM qna
-					<where>
-					  	<if test="qna_writer != null">
-					  		OR qna_writer LIKE '%'||#{qna_writer}||'%'
-					  	</if>
-					  	<if test="qna_title != null">
-					  		OR qna_title LIKE '%'||#{qna_title}||'%'
-					  	</if>
-					  	<if test="qna_content != null">
-					  		OR qna_content LIKE '%'||#{qna_content}||'%'
-					  	</if>
-				  	</where>
 					ORDER BY qna_num DESC) result1
 			)
 		WHERE
+			dvd_num = #{dvd_num}
+		AND
 		<![CDATA[ rnum >= #{startRowNum} AND rnum <= #{endRowNum} ]]>
-		AND dvd_num = #{dvd_num}
+		 
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="qnaDto">

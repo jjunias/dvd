@@ -36,13 +36,13 @@ public class RatingDaoImpl implements RatingDao {
 	@Override
 	public int update(RatingDto dto) {
 		// TODO Auto-generated method stub
-		return 0;
+		return session.update("rating.update",dto);
 	}
 
 	@Override
 	public int delete(Integer data) {
 		// TODO Auto-generated method stub
-		return 0;
+		return session.delete("rating.delete",data);
 	}
 
 	@Override
