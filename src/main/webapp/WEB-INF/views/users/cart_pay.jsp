@@ -18,8 +18,9 @@
   }
   .payCart{
     border:1px solid gray;
-    height: 200px;
+    height: 280px;
     padding-top:26px;
+    overflow-y: scroll; 
   }
   .control-label{
     padding-right: 20px;
@@ -81,8 +82,8 @@
     color: red;
   }
   .paymentBtn{
-    margin-left: 10%;
-    width: 80%;
+    margin-left: 5%;
+    width: 90%;
   }
   .help-block{
   	display:none;
@@ -98,6 +99,7 @@
   }
   .table-info{
   	text-align: center;
+  	margin-bottom:10px;
   }
   .final_price{
  
@@ -112,6 +114,9 @@
   }
   #amount{
   	width:24%;
+  }
+  .col_right{
+  	padding-right:0px;
   }
 
 </style>
@@ -170,7 +175,7 @@
 	      </div>
 	    </div>
 	  </div>
-	  <div class="col-xs-5">
+	  <div class="col-xs-5 col_right">
 	    <h3>주문상품 정보</h3>  
 	    <div class="payCart">
 	      <div class="col-xs-4">
