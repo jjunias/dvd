@@ -240,7 +240,11 @@
   .line_area{
     border-bottom: 1px solid gray;
   }
+  
+  
 	/* pay.jsp css  */
+	
+	
   .payCart-pay{
     border:1px solid gray;
     height: 200px;
@@ -329,6 +333,8 @@
   }
 	
 	/* cart_pay.jsp css  */
+	
+	
   .payCart-cart{
     border:1px solid gray;
     height: 280px;
