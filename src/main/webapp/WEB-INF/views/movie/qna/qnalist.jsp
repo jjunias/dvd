@@ -58,7 +58,7 @@
 	<table class="table qna_table">
 		<thead>
 			</tr>
-				<th style="width:20%"><strong>작성자zzz</strong></th>
+				<th style="width:20%"><strong>작성자</strong></th>
 				<th style="width:45%">제목</th>
 				<th style="width:20%">답변 유무</th>`
 				<th style="width:10%">등록일</th>
