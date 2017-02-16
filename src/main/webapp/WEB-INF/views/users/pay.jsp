@@ -35,8 +35,8 @@
 	      </div>
 	      <div class="form-group has-feedback">
 				<label for="pwd" class="control-label control-label-pay">비밀번호</label>
-				<input type="password" class="form-control form-control-pay pay-pwd" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
-				<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
+				<input type="password" class="form-control form-control-pay pay-pwd" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자,특수문자 혼합,6자 이상)"/>
+				<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자,특수문자를 혼합하여 6~20자 이내)</p>
 			</div>
 			<div class="form-group has-feedback">
 				<label for="pwd2" class="control-label control-label-pay">비밀번호확인</label>
@@ -124,7 +124,6 @@
 	      </ul>
 	      <br/>
 	      <button class="btn btn-info pay-paymentBtn btn-lg">결제하기</button>
-	      <a href="/dvd/users/cart_pay.do?type=views">장바구니에서 결제하기 테스트</a>
 	    </div>  
 	  </div>
 	</div>
@@ -196,27 +195,85 @@ $(".pay-amount").on("change",function(){
     	$("#addrDetail").val("${users.addrDetail}");    		
     });
     
-$("#pwd").on("blur", function(){
-    	
+    function chkPwd(str){
+    	var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+     if(!reg_pwd.test(str))
+     {
+      return false;
+     }
+     return true;
+    }
+    // 폼 전송
+    $("#pwd").on("blur", function(){
+       $("#pwd")
+      .parent()
+      .removeClass("has-success has-error");
+       
+       $("#pwd2")
+      .parent()
+      .removeClass("has-success has-error");
+
         var inputVal1 = $("#pwd").val().trim();
-    	$("#pwd")
-		.parent()
-		.removeClass("has-success has-error")
-    	
-		if(inputVal1==""){
-			$("#pwd")
-			.parent()
-			.addClass("has-success")
-			.find(".help-block")
-			.hide()
-		}else{
-			$("#pwd")
-			.parent()
-			.addClass("has-error")
-			.find(".help-block")
-			.show()
-		}
-    	
+        var inputVal2 = $("#pwd2").val().trim();
+       if(inputVal1==inputVal2 && !inputVal1 == ""){
+             $("#pwd2")
+             .parent()
+             .addClass("has-success")
+             .find(".help-block")
+             .hide()
+          }else{
+             $("#pwd2")
+             .parent()
+             .addClass("has-error")
+             .find(".help-block")
+             .show()
+          }
+       
+        // 확인 : 비밀번호
+        $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
+        if(!chkPwd($('#pwd').val().trim()))
+        {
+           $("#pwd")
+            .parent()
+            .addClass("has-error")
+            .find(".help-block")
+            .show()
+         $('#pwd').val('');
+         return false;
+        }else{
+           $("#pwd")
+            .parent()
+            .addClass("has-success")
+            .find(".help-block")
+            .hide()
+        }
+        
+        //document.f.submit();
+    });
+
+    
+    // 비밀번호 확인
+    $("#pwd2").on("blur", function(){
+       
+        var inputVal1 = $("#pwd").val().trim();
+        var inputVal2 = $("#pwd2").val().trim();
+       $("#pwd2")
+      .parent()
+      .removeClass("has-success has-error")
+       
+      if(inputVal1 == inputVal2 && !inputVal2 == ""){
+         $("#pwd2")
+         .parent()
+         .addClass("has-success")
+         .find(".help-block")
+         .hide()
+      }else{
+         $("#pwd2")
+         .parent()
+         .addClass("has-error")
+         .find(".help-block")
+         .show()
+      }
     });
     
     

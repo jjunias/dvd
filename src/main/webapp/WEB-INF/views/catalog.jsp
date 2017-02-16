@@ -330,9 +330,8 @@
 	/* cart_pay.jsp css  */
   .payCart-cart{
     border:1px solid gray;
-    height: 280px;
-    padding-top:26px;
-    overflow-y: scroll; 
+    height: 305px;
+    overflow-y: scroll;
   }
   .control-label-cart{
     padding-right: 20px;
@@ -369,19 +368,14 @@
     border:2px double blue;
     height: 250px;
   }
-  .cart-priceBox{
-    float: right;
-    margin-right: 15px;
-    padding-left:15px;
-  }
   .ul-cart{
     padding-left: 20px;
     margin-bottom:0px;
   }
   .li-cart{
-  	padding-top:10px;
     margin: 10px;
     margin-bottom:0px;
+    margin-top:0px;
   }
   .cart-pay_font{
     font-size: 20px;
@@ -398,7 +392,7 @@
   	padding-top:60px;
   }
   .cart-pay_final{
-  	margin-top:0px;
+  	margin-top:20px;
   }
   .cart-table-info{
   	text-align: center;
@@ -409,14 +403,20 @@
   	font-size:20px;
   	float:right;
   }
-  .cart-priceTotal{
-  	float:right;
-  }
   .cart-amount{
   	width:24%;
   }
   .cart-col_right{
   	padding-right:0px;
+  }
+  .cart-list-box{
+  	border-bottom: 1px solid gray;
+  	width:100%;
+  	height: 175px;
+  	padding-top:15px;
+  }
+  .cart-priceBox{
+  	float: right;
   }
 
 		

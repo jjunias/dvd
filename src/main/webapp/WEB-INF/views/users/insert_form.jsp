@@ -54,7 +54,7 @@
          <div class="form-group has-feedback">
             <label for="pwd" class="col-sm-2 control-label">비밀번호</label>
             <div class="col-sm-10">
-               <input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
+               <input type="password" class="form-control" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자,특수문자 혼합,6자 이상)"/>
                <p class="help-block"> 비밀번호를 확인하세요.(영문,숫자,특수문자를 혼합하여 8~15자 이내)</p>
                <span class="glyphicon form-control-feedback"></span>
             </div>
