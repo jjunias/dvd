@@ -90,6 +90,9 @@
   .pay-amount{
   	width:24%;
   }
+  .pay_img{
+  	height: 140px;
+  }
 </style>
 <head>
 <meta charset="UTF-8">
@@ -158,7 +161,7 @@
 	  <div class="col-xs-5">
 	    <h3>주문상품 정보</h3>  
 	    <div class="payCart-pay">
-	      <div class="col-xs-4">
+	      <div class="col-xs-4 pay_img">
 	        <a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
 	      </div>
 	      <div class="col-xs-8">

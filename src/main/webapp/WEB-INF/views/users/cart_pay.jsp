@@ -95,6 +95,9 @@
   .cart-priceBox{
   	float: right;
   }
+  .cart_pay_img{
+  	height: 140px;
+  }
 </style>
 <head>
 <meta charset="UTF-8">
@@ -161,7 +164,7 @@
 	    <div class="payCart-cart">
 		    <c:forEach var="tmp" items="${basket_list }">
 		    <div class="cart-list-box">
-		      <div class="col-xs-4">
+		      <div class="col-xs-4 cart_pay_img">
 		        <a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
 		      </div>
 		      <div class="col-xs-8">
