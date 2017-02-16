@@ -57,6 +57,9 @@
 		margin-top:10px;
 		margin-left:5px;
 	}
+	.rating_updateBtn{
+		margin-bottom:-10px;
+	}
 	.rating_updateWrite{
 		display:none;
 	}
@@ -95,7 +98,7 @@
 					</td>
 					<td class="content_btn">
 						<c:if test="${id eq tmp.writer}">
-							<button class="btn btn-default update_toggleBtn" onclick="update_toggleBtn(${status.count})">수정</button>
+							<button class="btn update_toggleBtn btn-default" onclick="update_toggleBtn(${status.count})">수정</button>
 							<button class="btn btn-default" onclick="ratingDelete(${tmp.num})" >삭제</button>
 						</c:if>
 						<button class="btn btn-default" onclick="up_btn('${status.count}','${tmp.num}')">

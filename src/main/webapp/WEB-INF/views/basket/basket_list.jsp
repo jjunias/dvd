@@ -43,6 +43,12 @@
 		width:100px;
 		height:150px;
 	}
+	.btn_float{
+		float:right;
+	}
+	input[type="checkbox"]{
+		width: 50px;
+	}
 </style>
 </head>
 <body>
@@ -84,17 +90,16 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-default paymentBtn" onclick="basket(1)">구매하기</button>
-			<button type="button" class="btn btn-default deleteBtn" onclick="basket(2)">삭제하기</button>
+			<div class="btn_float">
+				<button type="button" class="btn btn-default paymentBtn" onclick="basket(1)">구매하기</button>
+				<button type="button" class="btn btn-default deleteBtn" onclick="basket(2)">삭제하기</button>
+			</div>
 		</form>	
-		
-		<div class="del_pay">
-			
+		<div class="del_pay">		
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
-
 <!-- 체크박스 전체선택 및 해제 -->
 <script>
 	$("#checkAll").click(function(){

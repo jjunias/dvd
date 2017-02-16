@@ -481,9 +481,8 @@
       <div class="top_users"/>
        <c:choose>
              <c:when test="${id eq null}">
-                <div class="login_toggle">로그인</div><span> | </span>
-                <a href="/dvd/users/insert_form.do?type=views">회원가입</a><span> | </span>
-                <a href="">장바구니</a>
+                <div class="login_toggle">로그인</div><span> 　| 　</span>
+                <a href="/dvd/users/insert_form.do?type=views" style="margin-right:50px;">회원가입</a>
              </c:when>
              <c:otherwise>
                 <div class="sessionId"><a href="/dvd/users/info.do">내 정보</a></div><span> | </span>

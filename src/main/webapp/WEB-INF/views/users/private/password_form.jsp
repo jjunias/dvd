@@ -30,49 +30,49 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
-<div class="content">
-	<div class="pwd-formBox">
-		<div class="updateTop">
-			<h2>비밀번호 변경</h2>
-			<p><strong style="color:red">다른 아이디/사이트에서 사용한 적 없는 비밀번호</strong></p>
-			<p><strong style="color:red">이전에 사용한 적 없는 비밀번호</strong>가 안전합니다.</p>
-			<div class="top_area"></div>
-		</div><br/>
-		<form  id="pwd_form" class="form-horizontal">
-			<div class="form-group has-feedback">
-				<label for="today_pwd" class="col-sm-2 control-label">현재 비밀번호</label>
-				<div class="col-sm-10 pwdToggle">
-					<input type="password" class="form-control" name="today_pwd"  id="today_pwd"   />
+	<div class="content">
+		<div class="pwd-formBox">
+			<div class="updateTop">
+				<h2>비밀번호 변경</h2>
+				<p><strong style="color:red">다른 아이디/사이트에서 사용한 적 없는 비밀번호</strong></p>
+				<p><strong style="color:red">이전에 사용한 적 없는 비밀번호</strong>가 안전합니다.</p>
+				<div class="top_area"></div>
+			</div><br/>
+			<form  id="pwd_form" class="form-horizontal">
+				<div class="form-group has-feedback">
+					<label for="today_pwd" class="col-sm-2 control-label">현재 비밀번호</label>
+					<div class="col-sm-10 pwdToggle">
+						<input type="password" class="form-control" name="today_pwd"  id="today_pwd"   />
+					</div>
 				</div>
-			</div>
+				<div class="top_area"></div><br/>
+				<div class="form-group has-feedback">
+					<label for="pwd" class="col-sm-2 control-label">새 비밀번호</label>
+					<div class="col-sm-10 pwdToggle">
+						<input type="password" class="form-control" name="pwd"  id="pwd"   placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
+						<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
+						<span class="glyphicon form-control-feedback"></span>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="pwd2" class="col-sm-2 control-label">비밀번호 확인</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control"  id="pwd2" placeholder="비밀번호 확인"/><br/>
+						<p class="help-block"> 비밀번호를 확인하세요.</p>
+						<span class="glyphicon form-control-feedback"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button class="btn btn-default pwdBtn" >취소</button>
+						<button class="btn btn-primary pwdBtn"  type="button" id="pwdBtn">확인</button>
+					</div>
+				</div>
+			</form>
 			<div class="top_area"></div><br/>
-			<div class="form-group has-feedback">
-				<label for="pwd" class="col-sm-2 control-label">새 비밀번호</label>
-				<div class="col-sm-10 pwdToggle">
-					<input type="password" class="form-control" name="pwd"  id="pwd"   placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
-					<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
-					<span class="glyphicon form-control-feedback"></span>
-				</div>
-			</div>
-			<div class="form-group has-feedback">
-				<label for="pwd2" class="col-sm-2 control-label">비밀번호 확인</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control"  id="pwd2" placeholder="비밀번호 확인"/><br/>
-					<p class="help-block"> 비밀번호를 확인하세요.</p>
-					<span class="glyphicon form-control-feedback"></span>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button class="btn btn-default pwdBtn" >취소</button>
-					<button class="btn btn-primary pwdBtn"  type="button" id="pwdBtn">확인</button>
-				</div>
-			</div>
-		</form>
-		<div class="top_area"></div><br/>
+		</div>
 	</div>
-</div>
-
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
 

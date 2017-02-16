@@ -105,20 +105,25 @@
 							</c:if>
 							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=action">액션</a> |
 							<a style="
-							<c:if test="${param.genre eq 'drama'}">
+							<c:if test="${param.genre eq 'romance'}">
 							color:darkgrey;
 							</c:if>
-							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=drama">범죄/드라마</a> |
+							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=romance">로맨스</a> |
 							<a style="
 							<c:if test="${param.genre eq 'comedy'}">
 							color:darkgrey;
 							</c:if>
 							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=comedy">코미디</a> |
 							<a style="
-							<c:if test="${param.genre eq 'romance'}">
+							<c:if test="${param.genre eq 'horror'}">
 							color:darkgrey;
 							</c:if>
-							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=romance">멜로/로맨스</a> |
+							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=horror">공포</a> |
+							<a style="
+							<c:if test="${param.genre eq 'drama'}">
+							color:darkgrey;
+							</c:if>
+							" href="/dvd/movie/movie_main.do?type=list&num=1&national=${param.national}&genre=drama">드라마</a> |
 							<a style="
 							<c:if test="${param.genre eq 'etc'}">
 							color:darkgrey;
@@ -136,7 +141,7 @@
 			<option value="views">조　회</option>
 		</select> 
 		<c:if test="${id eq 'admin'}">
-			<c:if test="${param.national eq 'domestic'|| param.nationl eq'overseas'}">
+			<c:if test="${param.national eq 'domestic'|| param.national eq 'overseas'}">
 				<button class="btn btn-default write_btn" onclick="location.href='admin/insert_form.do?type=views&national=${param.national}'">글쓰기</button>
 			</c:if>
 		</c:if>

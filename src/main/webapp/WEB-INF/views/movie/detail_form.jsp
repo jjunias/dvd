@@ -143,6 +143,7 @@
 		<jsp:include page="/WEB-INF/views/movie/rating/rating_form.jsp"></jsp:include>
 		<jsp:include page="/WEB-INF/views/movie/qna/qnalist.jsp"></jsp:include>
 	</div>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 <script>
 	function basketBtn(msg){
@@ -163,8 +164,6 @@
 		});
 	};
 </script>
-<jsp:include page="/WEB-INF/views/footer.jsp"/>
-
 <script>	
 	$(".buy_btn").click(function(){
 		location.href="/dvd/users/pay.do?num=${dvd.num}";

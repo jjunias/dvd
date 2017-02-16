@@ -78,11 +78,12 @@ public class DvdController extends GenericController<DvdDto, Integer, DvdDao, Dv
 	}
 
 	@RequestMapping("/admin/delete")
-	public String Delete(@ModelAttribute("dvdUpdate") DvdDto dvdUpdate, SessionStatus status) {
+	public String Delete(@ModelAttribute("dvd") DvdDto dvdUpdate, SessionStatus status) {
 		service.delete(dvdUpdate.getNum());
 		String national = dvdUpdate.getNational();
+		System.out.println("national"+national);
 		status.setComplete();
-		return "redirect:/movie/movie_main.do?type=list&national=" + national;
+		return "redirect:/movie/movie_main.do?type=list&num=1&national=" + national;
 	}
 	@RequestMapping("/search")
 	public void search(@ModelAttribute DvdDto dto,@RequestParam(defaultValue="1") int num,Model model){
