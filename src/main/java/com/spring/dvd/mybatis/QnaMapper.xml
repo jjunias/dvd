@@ -40,13 +40,11 @@
 			(SELECT result1.*, ROWNUM rnum
 			 FROM 	(SELECT <include refid="qnaColumns"/>
 					FROM qna
+				  	WHERE dvd_num = #{dvd_num}
 					ORDER BY qna_num DESC) result1
 			)
 		WHERE
-			dvd_num = #{dvd_num}
-		AND
 		<![CDATA[ rnum >= #{startRowNum} AND rnum <= #{endRowNum} ]]>
-		 
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="qnaDto">
@@ -55,8 +53,9 @@
 		WHERE qna_num = #{qna_num}
 	</select>
 	
-	<select id="getCount" resultType="int">
+	<select id="getCount" parameterType="int" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM qna
+		WHERE dvd_num = #{dvd_num}
 	</select>
 </mapper>

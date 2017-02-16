@@ -1,3 +1,4 @@
+
 package com.spring.dvd.qna.dao;
 
 import java.util.List;
@@ -12,6 +13,5 @@ public interface QnaDao {
 	public int q_delete(int qna_num);
 	public List<QnaDto> getList(QnaDto dto);
 	public QnaDto getData(int qna_num);
-	public int getCount();
+	public int getCount(int num);
 }
-
