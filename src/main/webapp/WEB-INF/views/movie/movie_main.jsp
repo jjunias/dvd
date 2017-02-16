@@ -37,7 +37,7 @@
 	}
 	.write_btn{
 		position:absolute;
-		top:530px;
+		top:575px;
 		right:20%;
 	}
 	.rating_star{
