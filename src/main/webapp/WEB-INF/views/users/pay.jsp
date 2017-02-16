@@ -3,10 +3,97 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
+<style>
+  .payCart-pay{
+    border:1px solid gray;
+    height: 200px;
+    padding-top:26px;
+  }
+  .control-label-pay{
+    padding-right: 20px;
+  }
+  .form-control-pay{
+    width: 70%;
+    display: inline;
+    margin-left: 4px;
+  }
+  .pay-phone, .pay-shipping-phone, .pay-email, .pay-pwd, .pay-addrNum{
+    margin-left: 32px;
+  }
+  .pay-name{
+    margin-left: 15px;
+  }
+  .pay-shipping-name{
+  	margin-left:34px;
+  }
+  .pay-shippingBtn{
+    position: absolute;
+    margin-right: 45px;
+    top: 0;
+    right: 0;
+  }
+  .pay-shippingAddr{
+    position: relative;
+  }
+  .pay-addrNum{
+    width:30%;
+  }
+  .pay-addr, .pay-addrDetail{
+    margin-left: 112px;
+  }
+  .pay-payment{
+    border:2px double blue;
+    height: 250px;
+  }
+  .pay-priceBox{
+    float: right;
+    margin-right: 15px;
+    padding-left:15px;
+  }
+  .pay-ul{
+    padding-left: 20px;
+    margin-bottom:0px;
+  }
+  .pay-li{
+  	padding-top:10px;
+    margin: 10px;
+    margin-bottom:0px;
+  }
+  .pay-pay_font{
+    font-size: 20px;
+  }
+  .pay-pay_result{
+    font-size: 20px;
+    color: red;
+  }
+  .pay-paymentBtn{
+    margin-left: 10%;
+    width: 80%;
+  }
+  .pay-content_box{
+  	padding-top:60px;
+  }
+  .pay-pay_final{
+  	margin-top:0px;
+  }
+  .pay-table-info{
+  	text-align: center;
+  }
+  .pay-dvd_price{
+  	padding-top:4px;
+  	font-size:20px;
+  	float:right;
+  }
+  .pay-priceTotal{
+  	float:right;
+  }
+  .pay-amount{
+  	width:24%;
+  }
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="/WEB-INF/views/source.jsp"/><!-- jquery , boostrap -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <style>
@@ -35,8 +122,8 @@
 	      </div>
 	      <div class="form-group has-feedback">
 				<label for="pwd" class="control-label control-label-pay">비밀번호</label>
-				<input type="password" class="form-control form-control-pay pay-pwd" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
-				<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
+				<input type="password" class="form-control form-control-pay pay-pwd" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자,특수문자 혼합,6자 이상)"/>
+				<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자,특수문자를 혼합하여 6~20자 이내)</p>
 			</div>
 			<div class="form-group has-feedback">
 				<label for="pwd2" class="control-label control-label-pay">비밀번호확인</label>
@@ -124,7 +211,6 @@
 	      </ul>
 	      <br/>
 	      <button class="btn btn-info pay-paymentBtn btn-lg">결제하기</button>
-	      <a href="/dvd/users/cart_pay.do?type=views">장바구니에서 결제하기 테스트</a>
 	    </div>  
 	  </div>
 	</div>
@@ -196,27 +282,85 @@ $(".pay-amount").on("change",function(){
     	$("#addrDetail").val("${users.addrDetail}");    		
     });
     
-$("#pwd").on("blur", function(){
-    	
+    function chkPwd(str){
+    	var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+     if(!reg_pwd.test(str))
+     {
+      return false;
+     }
+     return true;
+    }
+    // 폼 전송
+    $("#pwd").on("blur", function(){
+       $("#pwd")
+      .parent()
+      .removeClass("has-success has-error");
+       
+       $("#pwd2")
+      .parent()
+      .removeClass("has-success has-error");
+
         var inputVal1 = $("#pwd").val().trim();
-    	$("#pwd")
-		.parent()
-		.removeClass("has-success has-error")
-    	
-		if(inputVal1==""){
-			$("#pwd")
-			.parent()
-			.addClass("has-success")
-			.find(".help-block")
-			.hide()
-		}else{
-			$("#pwd")
-			.parent()
-			.addClass("has-error")
-			.find(".help-block")
-			.show()
-		}
-    	
+        var inputVal2 = $("#pwd2").val().trim();
+       if(inputVal1==inputVal2 && !inputVal1 == ""){
+             $("#pwd2")
+             .parent()
+             .addClass("has-success")
+             .find(".help-block")
+             .hide()
+          }else{
+             $("#pwd2")
+             .parent()
+             .addClass("has-error")
+             .find(".help-block")
+             .show()
+          }
+       
+        // 확인 : 비밀번호
+        $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
+        if(!chkPwd($('#pwd').val().trim()))
+        {
+           $("#pwd")
+            .parent()
+            .addClass("has-error")
+            .find(".help-block")
+            .show()
+         $('#pwd').val('');
+         return false;
+        }else{
+           $("#pwd")
+            .parent()
+            .addClass("has-success")
+            .find(".help-block")
+            .hide()
+        }
+        
+        //document.f.submit();
+    });
+
+    
+    // 비밀번호 확인
+    $("#pwd2").on("blur", function(){
+       
+        var inputVal1 = $("#pwd").val().trim();
+        var inputVal2 = $("#pwd2").val().trim();
+       $("#pwd2")
+      .parent()
+      .removeClass("has-success has-error")
+       
+      if(inputVal1 == inputVal2 && !inputVal2 == ""){
+         $("#pwd2")
+         .parent()
+         .addClass("has-success")
+         .find(".help-block")
+         .hide()
+      }else{
+         $("#pwd2")
+         .parent()
+         .addClass("has-error")
+         .find(".help-block")
+         .show()
+      }
     });
     
     

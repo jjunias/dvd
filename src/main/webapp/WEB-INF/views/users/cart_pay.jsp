@@ -1,17 +1,106 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
+<style>
+  .payCart-cart{
+    border:1px solid gray;
+    height: 305px;
+    overflow-y: scroll;
+  }
+  .control-label-cart{
+    padding-right: 20px;
+  }
+  .form-control-cart{
+    width: 70%;
+    display: inline;
+  }
+  .cart-phone, .cart-shipping-phone, .cart-email, .cart-pwd, .cart-addrNum{
+    margin-left: 32px;
+  }
+  .cart-name, .cart-shipping-name{
+    margin-left: 15px;
+  }
+  .cart-shippingBtn{
+    position: absolute;
+    margin-right: 45px;
+    top: 0;
+    right: 0;
+  }
+  .cart-shippingAddr{
+    position: relative;
+  }
+  .cart-addrNum{
+    width:30%;
+  }
+  .cart-addr, .cart-addrDetail{
+    margin-left: 112px;
+  }
+  .cart-pwd2{
+  	margin-left:5px;
+  }
+  .cart-payment{
+    border:2px double blue;
+    height: 250px;
+  }
+  .ul-cart{
+    padding-left: 20px;
+    margin-bottom:0px;
+  }
+  .li-cart{
+    margin: 10px;
+    margin-bottom:0px;
+    margin-top:0px;
+  }
+  .cart-pay_font{
+    font-size: 20px;
+  }
+  .cart-pay-result{
+    font-size: 20px;
+    color: red;
+  }
+  .cart-paymentBtn{
+    margin-left: 5%;
+    width: 90%;
+  }
+  .cart-content_box{
+  	padding-top:60px;
+  }
+  .cart-pay_final{
+  	margin-top:20px;
+  }
+  .cart-table-info{
+  	text-align: center;
+  	margin-bottom:10px;
+  }
+  .cart-dvd_price{
+  	padding-top:4px;
+  	font-size:20px;
+  	float:right;
+  }
+  .cart-amount{
+  	width:24%;
+  }
+  .cart-col_right{
+  	padding-right:0px;
+  }
+  .cart-list-box{
+  	border-bottom: 1px solid gray;
+  	width:100%;
+  	height: 175px;
+  	padding-top:15px;
+  }
+  .cart-priceBox{
+  	float: right;
+  }
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="/WEB-INF/views/source.jsp"/><!-- jquery , boostrap -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
-<style>
-
-</style>
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
 <div class="content">
@@ -34,8 +123,8 @@
 	      </div>
 	      <div class="form-group has-feedback">
 				<label for="pwd" class="control-label control-label-cart">비밀번호</label>
-				<input type="password" class="form-control form-control-cart cart-pwd" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
-				<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
+				<input type="password" class="form-control form-control-cart cart-pwd" name="pwd"  id="pwd"  placeholder="비밀번호(영문,숫자,특수문자 혼합,6자 이상)"/>
+				<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자,특수문자를 혼합하여 6~20자 이내)</p>
 			</div>
 			<div class="form-group has-feedback">
 				<label for="pwd2" class="control-label control-label-cart">비밀번호확인</label>
@@ -70,72 +159,79 @@
 	  <div class="col-xs-5 cart-col_right">
 	    <h3>주문상품 정보</h3>  
 	    <div class="payCart-cart">
-	      <div class="col-xs-4">
-	        <%-- <a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a> --%>
-	      </div>
-	      <div class="col-xs-8">
-	        <table class="table cart-table-info">
-	        	<thead>
-	        		<tr>
-	        			<td>장르</td>
-	        			<td>제목</td>
-	        			<td>제작년도</td>
-	        		</tr>
-	        	</thead>
-	        	<tbody>
-	        		<c:forEach var="tmp" items="${basket_list }">
+		    <c:forEach var="tmp" items="${basket_list }">
+		    <div class="cart-list-box">
+		      <div class="col-xs-4">
+		        <a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
+		      </div>
+		      <div class="col-xs-8">
+		        <table class="table cart-table-info">
+		        	<thead>
+		        		<tr>
+		        			<td>장르</td>
+		        			<td>제목</td>
+		        			<td>제작년도</td>
+		        		</tr>
+		        	</thead>
+		        	<tbody>
 		        		<tr>
 		        			<td>${tmp.genre }</td>
 		        			<td>${tmp.title }</td>
 		        			<td>${tmp.production }</td>
-		        			<td>
-			        			<div class="dvd_priceBox">
-						        	<div class="dvd_amount">
-								        수량:<select class="form-control" name="amount" id="amount${tmp.num }" >
-													<c:forEach begin="1" end="10" var="i">
-														<option name="option" value="${i }">${i }</option>
-													</c:forEach>
-											   </select>
-										<div class="dvd_price">가격 : <strong>${tmp.price }</strong>원</div>
-						        	</div>
-						        </div>
-					        </td>
 		        		</tr>
-	        		</c:forEach>
-	        	</tbody>
-	        </table>
-	        <br/>
-	      </div>
+		        	</tbody>
+		        </table>
+		        <br/>
+		        <div class="dvd_priceBox">
+		        	<div class="dvd_amount">
+				        수량:<select class="form-control form-control-cart cart-amount" name="amount" >
+									<c:forEach begin="1" end="9" var="i">
+										<option  name="option" value="${i }">${i }</option>
+									</c:forEach>
+							   </select>
+						<div class="cart-dvd_price">가격 : <strong>${tmp.price }</strong>원</div>
+		        	</div>
+		        </div>
+		      </div>
+		    </div>
+		    </c:forEach>
 	    </div>
 	    <br/>
-	    <h3 class="pay_final">최종결제 정보</h3>
-	    <div class="payment">
-	      <ul>
-	        <li>
-	        	<table>
-	        		<thead>
-	        			<tr>
-	        				<th>제목</th>
-	        				<th><span>상품가격</span></th>
-	        			</tr>
-	        		</thead>
-	        		<tbody>
-	        			<c:forEach var="tmp" items="${basket_list }">
-		        			<tr>
-		        				<td><div class="priceBox"><strong>${tmp.price }</strong>원</div></td>
-		        				<td><div class="priceTotal">${tmp.price } <span>1개</span></div></td>
-		        			</tr>
-	        			</c:forEach>
-	        		</tbody>
-		        </table>
+	    <h3 class="cart-pay_final">최종결제 정보</h3>
+	    <div class="cart-payment">
+	      <ul class="ul-cart">
+	        <li class="li-cart">
+	          <table class="table">
+	          	<colgroup>
+	          		<col width="33.333%" />
+	          		<col width="33.333%" />
+	          		<col width="33.333%" />
+	          	</colgroup>
+	          	<thead>
+	          		<tr>
+	          			<th>제목</th>
+	          			<th>수량</th>
+	          			<th>가격</th>
+	          		</tr>
+	          	</thead>
+	          	<tbody>
+	          <c:forEach var="tmp" items="${basket_list }" > 
+	          		<tr class="list_val">
+	          			<td>${tmp.title }</td>
+	          			<td class="ea">1개</td>
+	          			<td class="table_price">${tmp.price }</td>
+	          		</tr>
+	          <c:set var="sum" value="${sum=sum+tmp.price }"/>
+	           </c:forEach>
+	          	</tbody>
+	          </table>
 	        </li>
 	      </ul>
-	      <br/>
 	      <div class="line_area"></div><br/>
 	      <ul class="ul-cart">
-	        <li class="ul-cart">
+	        <li class="li-cart">
 	          <span class="cart-pay_font"><strong>결제 예정액</strong></span>
-	          <div class="cart-priceBox"><strong class="cart-pay-result" >${dvd.price }</strong>원</div>
+	          <div class="cart-priceBox"><strong class="cart-pay-result" >${sum }</strong>원</div>
 	        </li>
 	      </ul>
 	      <br/>
@@ -146,12 +242,17 @@
 </div>
 <script>
 
-$("#cart-amount").on("change",function(){
-	var a =  $(this).val();
-	$(".cart-priceBox").find("strong").text("${dvd.price}"*a);
-	$(".cart-priceTotal").find("span").text("*"+a+"개");
-	
-	
+$(".cart-amount").on("change",function(){
+	var index = $(this).parents(".cart-list-box").index();
+	var a = $(this).val();
+	var price = $(".cart-dvd_price strong").eq(index).text() * a;
+	$(".list_val").eq(index).find(".ea").text(a + "개").next().text(price);
+	var total = 0;
+	var length = "${fn:length(basket_list)}";
+	for(i=0; i<length; i++){
+		total += parseInt($(".table_price").eq(i).text());
+	}
+	$(".cart-pay-result").text(total);
 })
 
 
@@ -210,27 +311,85 @@ $("#cart-amount").on("change",function(){
     	$("#addrDetail").val("${users.addrDetail}");
     });
     
-$("#pwd").on("blur", function(){
-    	
+    function chkPwd(str){
+    	var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+     if(!reg_pwd.test(str))
+     {
+      return false;
+     }
+     return true;
+    }
+    // 폼 전송
+    $("#pwd").on("blur", function(){
+       $("#pwd")
+      .parent()
+      .removeClass("has-success has-error");
+       
+       $("#pwd2")
+      .parent()
+      .removeClass("has-success has-error");
+
         var inputVal1 = $("#pwd").val().trim();
-    	$("#pwd")
-		.parent()
-		.removeClass("has-success has-error")
-    	
-		if(inputVal1==""){
-			$("#pwd")
-			.parent()
-			.addClass("has-success")
-			.find(".help-block")
-			.hide()
-		}else{
-			$("#pwd")
-			.parent()
-			.addClass("has-error")
-			.find(".help-block")
-			.show()
-		}
-    	
+        var inputVal2 = $("#pwd2").val().trim();
+       if(inputVal1==inputVal2 && !inputVal1 == ""){
+             $("#pwd2")
+             .parent()
+             .addClass("has-success")
+             .find(".help-block")
+             .hide()
+          }else{
+             $("#pwd2")
+             .parent()
+             .addClass("has-error")
+             .find(".help-block")
+             .show()
+          }
+       
+        // 확인 : 비밀번호
+        $('#pwd').val($('#pwd').val().trim()); // javascript를 이용해서 trim() 구현하기 바로가기
+        if(!chkPwd($('#pwd').val().trim()))
+        {
+           $("#pwd")
+            .parent()
+            .addClass("has-error")
+            .find(".help-block")
+            .show()
+         $('#pwd').val('');
+         return false;
+        }else{
+           $("#pwd")
+            .parent()
+            .addClass("has-success")
+            .find(".help-block")
+            .hide()
+        }
+        
+        //document.f.submit();
+    });
+
+    
+    // 비밀번호 확인
+    $("#pwd2").on("blur", function(){
+       
+        var inputVal1 = $("#pwd").val().trim();
+        var inputVal2 = $("#pwd2").val().trim();
+       $("#pwd2")
+      .parent()
+      .removeClass("has-success has-error")
+       
+      if(inputVal1 == inputVal2 && !inputVal2 == ""){
+         $("#pwd2")
+         .parent()
+         .addClass("has-success")
+         .find(".help-block")
+         .hide()
+      }else{
+         $("#pwd2")
+         .parent()
+         .addClass("has-error")
+         .find(".help-block")
+         .show()
+      }
     });
     
 
