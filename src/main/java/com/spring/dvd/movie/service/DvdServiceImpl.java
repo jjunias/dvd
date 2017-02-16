@@ -110,4 +110,13 @@ public class DvdServiceImpl extends GenericServiceImpl<DvdDto, Integer, DvdDao> 
 		
 		return mView;
 	}
+
+	@Override
+	public ModelAndView mainData() {
+		// TODO Auto-generated method stub
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("newList", dao.mainNew());
+		mView.addObject("favorList", dao.mainFavor());
+		return mView;
+	}
 }

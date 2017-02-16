@@ -107,4 +107,29 @@
 		SET views = views+1
 		WHERE num = #{num}
 	</update>
+	
+	<!-- main New -->
+	<select id="mainNew" resultType="dvdDto">
+		SELECT *
+		FROM(
+			SELECT selected.*,ROWNUM rnum
+			FROM (SELECT *
+		      	  FROM dvd
+		      	  ORDER BY production DESC       
+		     )selected
+		)
+		WHERE rnum BETWEEN 1 AND 5		
+	</select>
+	
+	<select id="mainFavor" resultType="dvdDto">
+		SELECT *
+		FROM(
+			SELECT selected.*,ROWNUM rnum
+			FROM (SELECT *
+		      	  FROM dvd
+		      	  ORDER BY grade DESC       
+		     )selected
+		)
+		WHERE rnum BETWEEN 1 AND 5		
+	</select>
 </mapper>

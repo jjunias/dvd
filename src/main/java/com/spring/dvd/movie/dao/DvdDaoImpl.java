@@ -66,4 +66,16 @@ public class DvdDaoImpl implements DvdDao {
 		// TODO Auto-generated method stub
 		session.update("dvd.viewUp",num);
 	}
+
+	@Override
+	public List<DvdDto> mainNew() {
+		// TODO Auto-generated method stub
+		return session.selectList("dvd.mainNew");
+	}
+
+	@Override
+	public List<DvdDto> mainFavor() {
+		// TODO Auto-generated method stub
+		return session.selectList("dvd.mainFavor");
+	}
 }

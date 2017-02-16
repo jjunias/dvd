@@ -20,9 +20,9 @@
 	}
 	
 	.basket_head_list{
+		float:right;
 		list-style: none;
-		margin-left: 10px;
-		padding: 0;
+		margin-left: 50px;
 		text-align: right;
 		font-wight: bold;
 		width: 80%;
@@ -39,16 +39,18 @@
 	.checkbox_td{
 		width: 3%;
 	}
-	td{
-		width: 15%;
+	.basket_img{
+		width:100px;
+		height:150px;
 	}
 </style>
 </head>
 <body>
-	<div class="contents">
+	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
+	<div class="content">
 		<div class="basket_hgroup">
 			<ol class="basket_head_list">
-				<li>장바구니1</li>
+				<li>장바구니</li>
 				<li> | </li>
 				<li>주문결제</li>
 				<li> | </li>
@@ -75,7 +77,7 @@
 							<td class="checkbox_td">
 								<input type="checkbox" name="check_sub" value="${tmp.num }"/>
 							</td>
-							<td><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" class="thumbnail"/></td>
+							<td><img class="basket_img" src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" class="thumbnail"/></td>
 							<td>${tmp.title }</td>
 							<td>${tmp.price }</td>
 						</tr>
@@ -90,6 +92,7 @@
 			
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 
 <!-- 체크박스 전체선택 및 해제 -->

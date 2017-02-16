@@ -21,9 +21,6 @@
 		margin-left:2%;
 		margin-right:4%;
 	}
-	.movieBox:nth-child(1){
-		margin-left:50px;
-	}
 	.imgBox{
 		height:370px;
 	}

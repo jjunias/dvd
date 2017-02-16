@@ -9,4 +9,6 @@ public interface DvdDao extends GenericDao<DvdDto,Integer>{
 	public List<DvdDto> getList(DvdDto dto);
 	public int getCount(DvdDto dto);
 	public void  viewsUp(int num);
+	public List<DvdDto> mainNew();
+	public List<DvdDto> mainFavor();
 }

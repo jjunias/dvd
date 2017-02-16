@@ -28,6 +28,7 @@
    }
    .top_catal{
  	  position:fixed;
+ 	  opacity:0.9;	
       width:100%;
       height:40px;
       background-color:#232323;
@@ -193,8 +194,8 @@
     }
     .side_bar{
     	position:absolute;
-    	top:100px;
-    	right:30%;
+    	top:450px;
+    	right:5%;
 		width:100px;
 		height:400px;
 		border-radius: 15px 15px 15px 15px;
@@ -202,8 +203,8 @@
 		box-shadow:4px 4px #cecece;
     }
 	.affix{
-	  	top:60px;
-		right:81px;
+	  	top:-300px;
+		right:5%;
 	}
 	.affix-bottom{
 		position: absolute;
@@ -241,8 +242,6 @@
   .line_area{
     border-bottom: 1px solid gray;
   }
-<<<<<<< HEAD
-=======
 	/* pay.jsp css  */
   .payCart-pay{
     border:1px solid gray;
@@ -423,38 +422,35 @@
   	float: right;
   }
 
-		
->>>>>>> branch 'sabio_final' of https://sablekiru@bitbucket.org/acorn_DVD/dvd.git
 </style>
 <div class="main_img"></div>
 <div class="main_left"></div>
-<div class="main_right">
-	<div data-spy="affix" data-offset-top="350" data-offset-bottom="300">
-		<div class="side_bar">
-			<div class="sideBtn">
-				<span class="glyphicon glyphicon-chevron-up">Top</span>
-			</div>
-			<br/>
-			<div class="cartBtn">
-				<a class="cartUnderline" href="">
-					<img class="cartImg" src="/dvd/resources/images/cart1.png" alt="장바구니 사진" />
-				</a>
-			</div>
-			<div class="infoBtn">
-				<a href="/dvd/users/info.do">
-					<img class="infoImg" src="/dvd/resources/images/users1.png" alt="" />
-				</a>
-			</div>
-			<div class="scheduleBtn">
-				<a href="">
-					<img class="scheduleImg" src="/dvd/resources/images/schedule1.png" alt="" />
-				</a>
-			</div>
-			<div class="questionBtn">
-				<a href="">
-					<img class="questionImg" src="/dvd/resources/images/question.png" alt="" />
-				</a>
-			</div>
+<div class="main_right"></div>
+<div data-spy="affix" data-offset-top="300" data-offset-bottom="300">
+	<div class="side_bar">
+		<div class="sideBtn">
+			<span class="glyphicon glyphicon-chevron-up">Top</span>
+		</div>
+		<br/>
+		<div class="cartBtn">
+			<a class="cartUnderline" href="">
+				<img class="cartImg" src="/dvd/resources/images/cart1.png" alt="장바구니 사진" />
+			</a>
+		</div>
+		<div class="infoBtn">
+			<a href="/dvd/users/info.do">
+				<img class="infoImg" src="/dvd/resources/images/users1.png" alt="" />
+			</a>
+		</div>
+		<div class="scheduleBtn">
+			<a href="">
+				<img class="scheduleImg" src="/dvd/resources/images/schedule1.png" alt="" />
+			</a>
+		</div>
+		<div class="questionBtn">
+			<a href="">
+				<img class="questionImg" src="/dvd/resources/images/question.png" alt="" />
+			</a>
 		</div>
 	</div>
 </div>
@@ -463,7 +459,7 @@
 <div>
    <div class="top_catal">
           <ul class="catalog">
-      		<li style="margin-left:15%">MAIN</li>
+      		<li onclick="location.href='/dvd/home.do'" style="margin-left:15%">MAIN</li>
       		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic'">한국 영화</li>
       		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&national=overseas'">해외 영화</li>
       		<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&production=new'">최신 영화</li>
