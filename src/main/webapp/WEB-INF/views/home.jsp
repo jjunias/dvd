@@ -67,7 +67,7 @@
 			<c:forEach var="tmp" begin="0" end="3" items="${newList}" varStatus="count">
 			<div class="new_movie new_movie${count.count}">
 				<div class="imgBox">
-					<img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" onclick="location.href='detail_form.do?num=${tmp.num}&ratingNum=1'"/>
+					<img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" onclick="location.href='movie/detail_form.do?num=${tmp.num}&ratingNum=1'"/>
 				</div>
 				<div class="txtBox">
 					<span><span style="margin-left:10px">개봉일 :${tmp.production}</span>
@@ -84,7 +84,7 @@
 			<c:forEach var="tmp" begin="0" end="3" items="${favorList}" varStatus="count">
 			<div class="favor_movie favor_movie${count.count}">
 				<div class="imgBox">
-					<img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" onclick="location.href='detail_form.do?num=${tmp.num}&ratingNum=1'"/>
+					<img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" onclick="location.href='movie/detail_form.do?num=${tmp.num}&ratingNum=1'"/>
 				</div>
 				<div class="txtBox">
 					<span><span style="margin-left:10px">개봉일 :${tmp.production}</span>

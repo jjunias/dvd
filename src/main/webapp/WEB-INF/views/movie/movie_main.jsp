@@ -136,7 +136,9 @@
 			<option value="views">조　회</option>
 		</select> 
 		<c:if test="${id eq 'admin'}">
-			<button class="btn btn-default write_btn" onclick="location.href='admin/insert_form.do?type=views&national=${param.national}'">글쓰기</button>
+			<c:if test="${param.national eq 'domestic'||${param.nationl eq'overseas'}">
+				<button class="btn btn-default write_btn" onclick="location.href='admin/insert_form.do?type=views&national=${param.national}'">글쓰기</button>
+			</c:if>
 		</c:if>
 		<c:forEach var="tmp" items="${list}" varStatus="count">
 			<div class="movieBox movie${count.count}">

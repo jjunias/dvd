@@ -28,7 +28,7 @@
    }
    .top_catal{
  	  position:fixed;
- 	  opacity:0.9;	
+ 	  opacity:0.98;	
       width:100%;
       height:40px;
       background-color:#232323;
