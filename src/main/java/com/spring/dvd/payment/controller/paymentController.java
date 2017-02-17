@@ -44,4 +44,11 @@ public class paymentController {
 		model.addAttribute("basket_list", basket_list);
 	}
 	
+	@RequestMapping("/users/complete_pay.do")
+	public void complete(String scroll, Model model){
+		
+		model.addAttribute("scroll", scroll);
+	}
+	
+	
 }

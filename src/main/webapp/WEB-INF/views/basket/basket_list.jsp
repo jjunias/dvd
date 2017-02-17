@@ -55,13 +55,6 @@
 	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
 	<div class="content">
 		<div class="basket_hgroup">
-			<ol class="basket_head_list">
-				<li>장바구니</li>
-				<li> | </li>
-				<li>주문결제</li>
-				<li> | </li>
-				<li>주문완료</li>
-			</ol>
 			<h2 class="basket_head_title">장바구니</h2>		
 		</div>
 		
@@ -78,7 +71,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="tmp" items="${list}">
+					<c:forEach var="tmp" items="${list}" varStatus="status">
 						<tr>
 							<td class="checkbox_td">
 								<input type="checkbox" name="check_sub" value="${tmp.num }"/>
@@ -114,13 +107,19 @@
 
 <script>
 	function basket(index){
-		if(index==1){
-			document.basketForm.action = "../users/cart_pay.do";
+		if($("input[name=check_sub]").is(":checked")==0){
+			alert("구매 혹은 삭제를 원하시는 상품을 선택해 주세요!");
 		}
 		else{
-			document.basketForm.action = "delete.do";
+			if(index==1){
+				document.basketForm.action = "../users/cart_pay.do";
+			}
+			else{
+				document.basketForm.action = "delete.do";
+			}
+			document.basketForm.submit();
 		}
-		document.basketForm.submit();
+		
 	}
 </script>
 </html>

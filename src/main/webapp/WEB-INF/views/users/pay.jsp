@@ -367,5 +367,10 @@ $(".pay-amount").on("change",function(){
       }
     });
 </script>
+<script>
+	$(".pay-paymentBtn").click(function(){
+		location.href="complete_pay.do";
+	});
+</script>
 </body>
 </html>

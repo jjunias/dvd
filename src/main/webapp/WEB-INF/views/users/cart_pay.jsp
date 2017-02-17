@@ -101,7 +101,7 @@
 </style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>장바구니</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
@@ -239,9 +239,16 @@
          </ul>
          <br/>
          <button class="btn btn-info cart-paymentBtn btn-lg">결제하기</button>
-       </div>  
+       </div>
      </div>
    </div>
+</div>
+<div>
+	<form action="">
+		<c:forEach var="tmp" items="${basket_list }">
+			
+		</c:forEach>
+	</form>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 <script>
@@ -395,6 +402,11 @@ $(".cart-amount").on("change",function(){
          .show()
       }
     });
+</script>
+<script>
+	$(".cart-paymentBtn").click(function(){
+		location.href="complete_pay.do?scroll=complete";
+	});
 </script>
 </body>
 </html>
