@@ -199,7 +199,7 @@
 		        			<td>
 			        			<div class="dvd_priceBox">
 						        	<div class="dvd_amount">
-								        수량:<select class="form-control" name="amount" id="amount${tmp.num }" >
+								        수량:<select class="form-control" name="amount" id="amount" >
 													<c:forEach begin="1" end="10" var="i">
 														<option name="option" value="${i }">${i }</option>
 													</c:forEach>
