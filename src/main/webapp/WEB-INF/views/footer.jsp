@@ -34,10 +34,10 @@
 			<div class="chan">
 				<strong class="nameCss">이찬준</strong>
 				<ul class="footerUl">
-					<li>인사말:안녕하세요 이찬준 입니다.</li>
+					<li>인사말:</li>
 					<li>주소:</li>
-					<li>메일:</li>
-					<li>전화:</li>
+					<li>메일:lcjltj@gmail.com</li>
+					<li>전화:01071256046</li>
 				</ul>
 			</div>
 		</div>
@@ -45,10 +45,10 @@
 			<div class="hee">
 				<strong class="nameCss">김희준</strong>
 				<ul class="footerUl">
-					<li>인사말:안녕하세요 김희준 입니다.</li>
-					<li>주소:</li>
-					<li>메일:</li>
-					<li>전화:</li>
+					<li>인사말: .</li>
+					<li>주소:수원시 장안구 서부로 2198번길42 307호</li>
+					<li>메일:cystory815@nate.com</li>
+					<li>전화:01033153132</li>
 				</ul>
 			</div>
 		</div>
@@ -56,7 +56,7 @@
 			<div class="hwan">
 				<strong class="nameCss">신동환</strong>
 				<ul class="footerUl">
-					<li>인사말:회원가입, 구매 개미뚠뚠</li>
+					<li>인사말:회원, 바로구매를 담당 </li>
 					<li>주소:서울시 용산구 용산동2가 1-244호</li>
 					<li>메일:kirubba@naver.com</li>
 					<li>전화:010-3167-2126</li>
