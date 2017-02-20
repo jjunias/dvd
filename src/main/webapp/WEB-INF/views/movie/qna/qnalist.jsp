@@ -60,7 +60,7 @@
 			</tr>
 				<th style="width:20%"><strong>작성자</strong></th>
 				<th style="width:45%">제목</th>
-				<th style="width:20%">답변 유무</th>`
+				<th style="width:20%">답변 유무</th>
 				<th style="width:10%">등록일</th>
 			</tr>
 		</thead>
@@ -145,33 +145,33 @@
 	</table>
 	<center>
 		<ul class="pagination">
+			<c:choose>
+				<c:when test="${startPageNum ne 1}">
+					<li><a href="detail_form.do?num=${dvd.num}&ratingNum=${param.ratingNum }&qnaNum=${startPageNum-1 }&scroll=qna">&laquo;</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="disabled"><a class="muted" href="javascript:">&laquo;</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 				<c:choose>
-					<c:when test="${startPageNum ne 1}">
-						<li><a href="detail_form.do?num=${dvd.num}&ratingNum=${param.ratingNum }&qnaNum=${startPageNum-1 }&scroll=qna">&laquo;</a></li>
+					<c:when test="${i eq qnaNum}">
+						<li class="active"><a href="javascript:">${i }</a></li>   
 					</c:when>
 					<c:otherwise>
-						<li class="disabled"><a class="muted" href="javascript:">&laquo;</a></li>
+						<li><a href="detail_form.do?num=${dvd.num}&scroll=qna&ratingNum=${param.ratingNum}&qnaNum=${i}">${i}</a></li>
 					</c:otherwise>
-				</c:choose>
-				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-					<c:choose>
-						<c:when test="${i eq qnaNum}">
-							<li class="active"><a href="javascript:">${i }</a></li>   
-						</c:when>
-						<c:otherwise>
-							<li><a href="detail_form.do?num=${dvd.num}&scroll=qna&ratingNum=${param.ratingNum}&qnaNum=${i}">${i}</a></li>
-						</c:otherwise>
-					</c:choose>    
-				</c:forEach>
-				<c:choose>
-					<c:when test="${endPageNum lt totalPageCount}">
-						<li><a href="detail_form.do?num=${dvd.num}&scroll=qna&ratingNum=${param.ratingNum}&qnaNum=${endPageNum+1}">&raquo;</a></li>
-					</c:when>
-					<c:otherwise>
-						<li class="disabled"><a class="muted" href="javascript:">&raquo;</a></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
+				</c:choose>    
+			</c:forEach>
+			<c:choose>
+				<c:when test="${endPageNum lt totalPageCount}">
+					<li><a href="detail_form.do?num=${dvd.num}&scroll=qna&ratingNum=${param.ratingNum}&qnaNum=${endPageNum+1}">&raquo;</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="disabled"><a class="muted" href="javascript:">&raquo;</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
 	</center>
 	<div class="qna_write">
 		<button type="submit" class="btn btn-default qna_writeBtn">글쓰기</button>
