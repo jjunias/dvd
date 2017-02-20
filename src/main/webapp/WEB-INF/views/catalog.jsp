@@ -13,7 +13,6 @@
 	}
 	.glyphicon-menu-hamburger{
 		float:right;
-		display: block !important;
 	}
 	.res_loginBar{
 		width: 80%;
@@ -46,11 +45,11 @@
 		width:20%;
 		margin-left: 15px;
 	}
-	
-	
+	.toggle_responseDown{
+		display: block !important;
+	}
 }
 </style>
-
 <!-- css 링크!! -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/catalog/catalog.css"/>
 <div class="main_img"></div>
@@ -90,7 +89,7 @@
 			<div class="response_SubMenu">
 				<ul>
 					<span class="glyphicon glyphicon-arrow-right toggle_responseUp"></span>
-					<li class="response_serach">
+					<li class="response_search">
 						<form action="/dvd/movie/movie_main.do">
 							<div class="input-group response_search_bar">
 								<input type="text" class="form-control" name="keyword" placeholder="Search..">
@@ -128,11 +127,11 @@
 					</li>
 					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&production=new'">최신 영화</li>
 					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&grade=1'">인기 영화</li>
-					<li style="background-color:white; margin-left:0;">
+					<li style="background-color:gray; margin-left:0;">
 					<c:choose>
 						<c:when test="${id eq null}">
 							<div class="res_loginBar">
-								<form id=login>
+								<form id="response_login">
 									<div class="form-group">
 										<label style="color:black"  for="login_id">아이디</label>
 										<input type="text" class="form-control" name="id" id="login_id" />								
@@ -142,7 +141,7 @@
 										<input type="password" class="form-control" name="pwd" id="login_pwd" />								
 									</div>
 									<div class="btnFloat">
-										<button class="btn btn-default" type="button" id="loginBtn">로그인</button>
+										<button class="btn btn-default" type="button" id="response_loginBtn">로그인</button>
 										<button class="btn btn-default" type="button" id="signUpBtn" 
 										 onclick="location.href='/dvd/users/insert_form.do?type=views' ">회원가입</button>								
 									</div>
@@ -163,12 +162,15 @@
 						<div class="col-img-float col-img">
 							<a href="/dvd/basket/list.do?id=${id }">
 								<img class="col-img-cart" src="/dvd/resources/images/cart1.png" />
+								<span>장바구니</span>
 							</a>
 							<a href="/dvd/users/info.do">
 								<img class="col-img-schedule col-img" src="/dvd/resources/images/schedule1.png" />
+								<span>정보수정</span>
 							</a>
 							<a href="/dvd/users/logout.do" >
 								<img class="col-img-logout col-img" src="/dvd/resources/images/logout.png" />
+								<span>로그아웃</span>
 							</a>						
 						</div>
 						</c:otherwise>

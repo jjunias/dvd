@@ -445,8 +445,8 @@ ul{
 	width:80%;
 	margin-left:5%;
 }
-.response_serach{
-	background-color:#3E3E3E;
+.response_search{
+	background-color:gray;
 	padding:15px 0;
 	padding-left:10%;
 	border:1px solid #2C2C2C;
@@ -461,6 +461,7 @@ ul{
 }
 .glyphicon-menu-hamburger{
 	color:white !important;
-	font-size:20px;
+}
+.toggle_responseDown{
 	display: none;
 }
