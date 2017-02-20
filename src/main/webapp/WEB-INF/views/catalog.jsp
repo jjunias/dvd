@@ -33,20 +33,58 @@
 		float:right;
 	}
 	.col-img{
-		margin-left: 30px;
+		/* width:50%; */
+	}
+	.col-img > div{
+		float:left;
+		padding:10px;
+		width:33.3333%;
+		box-sizing:border-box;
+		text-align:center;
+	}
+	.col-img > div a {
+		display:block;
+		padding:6px;
+		width:100%;
+		height:100%;
+		border:1px solid #b6b2b2;
+		border-radius:13px;
+	}
+	.col-img > div .col-img-span{
+		display:block;
+		width:100%;
+		height:53px;
+	}
+	.col-img > div .col-img-span img{
+		width:60%;
+		height:auto;
 	}
 	.col-img-logout{
-		width:20%;
+		width:60%;
+		margin-left: 9px;
 	}
-	.col-img-schedule{
-		width:20%;
+	.col-img-info{
+		width:60%;
 	}
 	.col-img-cart{
-		width:20%;
-		margin-left: 15px;
+		margin-top:4px;
+		width:60%;
 	}
 	.toggle_responseDown{
 		display: block !important;
+	}
+	.areaFont{
+		font-size: 15px;
+		color:black;
+	}
+	.cartUnderline{
+		text-decoration: none !important;
+	}
+	.loginBar-li{
+		width:100%;
+		background-color: white !important;
+		margin-left: 0px !important;
+		overflow: hidden;
 	}
 }
 </style>
@@ -127,7 +165,7 @@
 					</li>
 					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&production=new'">최신 영화</li>
 					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&grade=1'">인기 영화</li>
-					<li style="background-color:gray; margin-left:0;">
+					<li class="loginBar-li">
 					<c:choose>
 						<c:when test="${id eq null}">
 							<div class="res_loginBar">
@@ -159,19 +197,25 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-						<div class="col-img-float col-img">
-							<a href="/dvd/basket/list.do?id=${id }">
-								<img class="col-img-cart" src="/dvd/resources/images/cart1.png" />
-								<span>장바구니</span>
-							</a>
-							<a href="/dvd/users/info.do">
-								<img class="col-img-schedule col-img" src="/dvd/resources/images/schedule1.png" />
-								<span>정보수정</span>
-							</a>
-							<a href="/dvd/users/logout.do" >
-								<img class="col-img-logout col-img" src="/dvd/resources/images/logout.png" />
-								<span>로그아웃</span>
-							</a>						
+						<div class="col-img">
+							<div class="cartArea">
+								<a class="cartUnderline" href="/dvd/basket/list.do?id=${id }">
+									<span class="col-img-span"><img class="col-img-cart" src="/dvd/resources/images/cart1.png" /></span>
+									<div class="areaFont areaFont-cart">장바구니</div>
+								</a>							
+							</div>
+							<div class="infoArea">
+								<a class="cartUnderline" href="/dvd/users/info.do">
+									<span class="col-img-span"><img class="col-img-info col-img" src="/dvd/resources/images/users1.png" /></span>
+									<div class="areaFont areaFont-info">정보수정</div>
+								</a>							
+							</div>
+							<div class="logoutArea">
+								<a class="cartUnderline"  href="/dvd/users/logout.do" >
+									<span class="col-img-span"><img class="col-img-logout col-img" src="/dvd/resources/images/logout.png" /></span>
+									<div class="areaFont">로그아웃</div>
+								</a>													
+							</div>
 						</div>
 						</c:otherwise>
 					</c:choose>
@@ -255,6 +299,7 @@
   $(".toggle_responseUp").click(function(){
 	  $(".response_Menu").stop().hide();
   })
+  
 </script>
 <!--  javascript 링크 -->
 <script src="${pageContext.request.contextPath }/resources/js_each/catalog.js"></script>
