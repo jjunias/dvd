@@ -485,7 +485,7 @@
                 <a href="/dvd/users/insert_form.do?type=views" style="margin-right:50px;">회원가입</a>
              </c:when>
              <c:otherwise>
-                <div class="sessionId"><a href="/dvd/users/info.do">내 정보</a></div><span> | </span>
+               	<div class="sessionId"><a href="/dvd/users/info.do">내 정보</a></div><span> | </span>
                 <a href="/dvd/basket/list.do?id=${id }">장바구니</a><span> | </span>
                 <a href="/dvd/users/logout.do">로그아웃</a>
              </c:otherwise>
