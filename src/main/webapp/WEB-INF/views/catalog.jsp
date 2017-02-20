@@ -3,6 +3,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/views/source.jsp"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+@media(max-width:1700px){
+	.search_bar,.catalog{
+		display:none;
+	}
+	.top_one{
+		display:none;
+	}
+	.glyphicon-menu-hamburger{
+		float:right;
+		display: block !important;
+	}
+}
+@media(max-width:)
+</style>
+
 <!-- css 링크!! -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/catalog/catalog.css"/>
 <div class="main_img"></div>
@@ -38,6 +54,52 @@
 <div class="main_tr"></div>
 <div>
    <div class="top_catal">
+   		<div class="response_Menu">
+			<div class="response_SubMenu">
+				<ul>
+					<span class="glyphicon glyphicon-arrow-right toggle_responseUp"></span>
+					<li class="response_serach">
+						<form action="/dvd/movie/movie_main.do">
+							<div class="input-group response_search_bar">
+								<input type="text" class="form-control" name="keyword" placeholder="Search..">
+								<input type="hidden" name="type" value="list" />
+								<input type="hidden" name="num" value="1" />
+								<span class="input-group-btn">
+									<button class="btn btn-default"><p class="glyphicon glyphicon-search"></p></button>
+								</span>
+							</div>
+						</form>
+					</li>
+					</li>
+					<li onclick="location.href='/dvd/home.do'">MAIN</li>
+					<li class="res_domestic" onclick="res_domesticCatal()">한국 영화  <p style ="margin-left:40%;" class="glyphicon glyphicon-menu-down"></p>
+						<ul class="response_subDomestic">
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic'">전체보기</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=action'">액션</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=romance'">로맨스</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=comedy'">코미디</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=horor'">공포</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=drama'">드라마</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=etc'">기타</li>
+						</ul>
+					</li>
+					<li class="res_overseas" onclick="res_overseasCatal()">해외 영화  <p style ="margin-left:40%;" class="glyphicon glyphicon-menu-down"></p>
+						<ul class="response_subOverseas">
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&national=overseas'">전체보기</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=overseas&genre=action'">액션</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=overseas&genre=romance'">로맨스</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=overseas&genre=comedy'">코미디</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=overseas&genre=horor'">공포</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=overseas&genre=drama'">드라마</li>
+							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=overseas&genre=etc'">기타</li>
+						</ul>
+					</li>
+					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&production=new'">최신 영화</li>
+					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&grade=1'">인기 영화</li>
+					<li style="background-color:#3E3E3E;margin-left:0;">로그인 여기다하시면됩니다.!!</li>
+				</ul>
+			</div>
+		</div>
 		<ul class="catalog">
 			<li onclick="location.href='/dvd/home.do'" style="margin-left:15%">MAIN</li>
 			<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic'">한국 영화</li>
@@ -70,6 +132,7 @@
 				<a href="/dvd/users/logout.do">로그아웃</a>
 			</c:otherwise>
 		</c:choose>
+		<span class="glyphicon glyphicon-menu-hamburger toggle_responseDown"></span>
 		<div class="loginBar">
 			<div class="gBtn"><span class="glyphicon glyphicon-remove "></span></div>
 			<h3 style="text-align: center"><strong>Log in</strong></h3><br/>
@@ -97,5 +160,22 @@
 		</div>
 	</div>
 </div>
+<script>
+  function res_domesticCatal(){
+	  $(".response_subDomestic").stop().slideToggle();
+	  $(".res_domestic").children("p").toggleClass("glyphicon-menu-up");
+  }
+  
+  function res_overseasCatal(){
+	  $(".response_subOverseas").stop().slideToggle();
+	  $(".res_overseas").children("p").toggleClass("glyphicon-menu-up");
+  }
+  $(".toggle_responseDown").click(function(){
+	  $(".response_Menu").stop().show();
+  });
+  $(".toggle_responseUp").click(function(){
+	  $(".response_Menu").stop().hide();
+  })
+</script>
 <!--  javascript 링크 -->
 <script src="${pageContext.request.contextPath }/resources/js_each/catalog.js"></script>
