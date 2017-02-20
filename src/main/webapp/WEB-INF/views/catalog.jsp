@@ -15,8 +15,40 @@
 		float:right;
 		display: block !important;
 	}
+	.res_loginBar{
+		width: 80%;
+		margin: 0 auto;
+	}
+	.res_socialBtn{
+		width: 100%;
+		text-align: center !important;
+		margin-bottom: 5px;
+	}
+	.top_area{
+		border-bottom: 1px solid gray;
+	}
+	#loginBtn{
+		width:70px !important;
+	}
+	.btnFloat{
+		float:right;
+	}
+	.col-img{
+		margin-left: 30px;
+	}
+	.col-img-logout{
+		width:20%;
+	}
+	.col-img-schedule{
+		width:20%;
+	}
+	.col-img-cart{
+		width:20%;
+		margin-left: 15px;
+	}
+	
+	
 }
-@media(max-width:)
 </style>
 
 <!-- css 링크!! -->
@@ -96,7 +128,52 @@
 					</li>
 					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&production=new'">최신 영화</li>
 					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&grade=1'">인기 영화</li>
-					<li style="background-color:#3E3E3E;margin-left:0;">로그인 여기다하시면됩니다.!!</li>
+					<li style="background-color:white; margin-left:0;">
+					<c:choose>
+						<c:when test="${id eq null}">
+							<div class="res_loginBar">
+								<form id=login>
+									<div class="form-group">
+										<label style="color:black"  for="login_id">아이디</label>
+										<input type="text" class="form-control" name="id" id="login_id" />								
+									</div>
+									<div class="form-group">
+										<label style="color:black" for="login_pwd">비밀번호</label>
+										<input type="password" class="form-control" name="pwd" id="login_pwd" />								
+									</div>
+									<div class="btnFloat">
+										<button class="btn btn-default" type="button" id="loginBtn">로그인</button>
+										<button class="btn btn-default" type="button" id="signUpBtn" 
+										 onclick="location.href='/dvd/users/insert_form.do?type=views' ">회원가입</button>								
+									</div>
+									<br/>
+									<br/>
+									<div class="res_buttonGroup">
+										<button class="btn btn-social btn-facebook res_socialBtn">
+											<span class="fa fa-facebook"></span>Sign in with <strong style="font-size:16px;">Facebook</strong>
+										</button>
+										<button class="btn btn-social btn-twitter res_socialBtn">
+											<span class="fa fa-twitter"></span>Sign in with <strong style="font-size:16px;">Twitter</strong>
+										</button>
+									</div>
+								</form>
+							</div>
+						</c:when>
+						<c:otherwise>
+						<div class="col-img-float col-img">
+							<a href="/dvd/basket/list.do?id=${id }">
+								<img class="col-img-cart" src="/dvd/resources/images/cart1.png" />
+							</a>
+							<a href="/dvd/users/info.do">
+								<img class="col-img-schedule col-img" src="/dvd/resources/images/schedule1.png" />
+							</a>
+							<a href="/dvd/users/logout.do" >
+								<img class="col-img-logout col-img" src="/dvd/resources/images/logout.png" />
+							</a>						
+						</div>
+						</c:otherwise>
+					</c:choose>
+					</li>
 				</ul>
 			</div>
 		</div>
