@@ -132,7 +132,7 @@
 					<c:choose>
 						<c:when test="${id eq null}">
 							<div class="res_loginBar">
-								<form id=login>
+								<form class="login">
 									<div class="form-group">
 										<label style="color:black"  for="login_id">아이디</label>
 										<input type="text" class="form-control" name="id" id="login_id" />								
@@ -142,8 +142,8 @@
 										<input type="password" class="form-control" name="pwd" id="login_pwd" />								
 									</div>
 									<div class="btnFloat">
-										<button class="btn btn-default" type="button" id="loginBtn">로그인</button>
-										<button class="btn btn-default" type="button" id="signUpBtn" 
+										<button class="btn btn-default loginBtn" type="button" id="loginBtn">로그인</button>
+										<button class="btn btn-default signUpBtn" type="button" id="signUpBtn" 
 										 onclick="location.href='/dvd/users/insert_form.do?type=views' ">회원가입</button>								
 									</div>
 									<br/>
@@ -214,7 +214,7 @@
 			<div class="gBtn"><span class="glyphicon glyphicon-remove "></span></div>
 			<h3 style="text-align: center"><strong>Log in</strong></h3><br/>
             <div class="top_area"></div><br/>
-			<form id="login" >
+			<form class="login" >
 				<div class="form-group">
 					<label for="login_id" >아이디</label>
 					<input type="text" class="form-control"  name="id"  id="login_id" />
@@ -223,7 +223,7 @@
 					<label for="login_pwd" >비밀번호</label>
 					<input type="password" class="form-control" name="pwd"  id="login_pwd" />
 				</div>
-				<button class="btn btn-info btn1"  type="button" id="loginBtn" >로그인</button>
+				<button class="btn btn-info btn1 loginBtn"  type="button" id="loginBtn" >로그인</button>
 			</form><br/>
 			<div class="top_area"></div>
 			<h4 style="text-align: center">SNS Log in</h4>

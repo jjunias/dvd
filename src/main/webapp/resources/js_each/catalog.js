@@ -7,8 +7,8 @@ $(".gBtn").click(function() {
 });
 
 // 로그인
-$("#loginBtn").click(function() {
-	var formData = $("#login").serialize();
+$(".loginBtn").click(function() {
+	var formData = $(".login").serialize();
 	$.ajax({
 		url : "/dvd/users/login.do",
 		type : "post",
