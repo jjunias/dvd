@@ -167,6 +167,7 @@
 					<div class="col-xs-4 cart_pay_img">
 						<a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
 					</div>
+					<input type="hidden" class="hidden_num" value="${tmp.num }"/>
 					<div class="col-xs-8">
 						<table class="table cart-table-info">
 							<thead>
@@ -238,7 +239,7 @@
 					</li>
 				</ul>
 				<br/>
-				<button class="btn btn-info cart-paymentBtn btn-lg">결제하기</button>
+				<button class="btn btn-info cart-paymentBtn btn-lg" onclick="cart_payment()">결제하기</button>
 			</div>  
 		</div>
 	</div>
@@ -292,7 +293,7 @@
 		var phone = $("#buy_phone").val();
 
 		$("#shipping_name").val(name);
-		$("#shipping_phone").val(콜);
+		$("#shipping_phone").val(phone);
 		
 		$("#addrNum").val("${users.addrNum}");
 		$("#addr").val("${users.addr}");

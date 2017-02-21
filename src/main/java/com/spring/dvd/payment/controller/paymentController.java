@@ -30,6 +30,8 @@ public class paymentController {
 	private UsersService userService;
 	@Autowired
 	private DvdService dvdService;
+	@Autowired
+	private BasketService basketService;
 	
 	@RequestMapping("/users/pay")
 	public void getList(int num,HttpSession session,Model model){
@@ -50,12 +52,16 @@ public class paymentController {
 	}
 	
 	@RequestMapping("/users/complete_pay.do")
-	public void complete(String scroll, @RequestParam List<Integer> list,@RequestParam List<Integer> list2 ,Model model){
+	public void complete(String scroll, @RequestParam List<Integer> list,@RequestParam List<Integer> list2, HttpSession session ,Model model){
+		String id = (String) session.getAttribute("id");
 		List<BasketDto> dtoList =  new ArrayList<BasketDto>();
+		BasketDto dto = new BasketDto();
+		dto.setId(id);
 		for(int i=0;i<list.size();i++){
-			BasketDto dto = new BasketDto();
 			dto.setDvd_num((Integer) list.get(i));
 			dto.setCount((Integer) list2.get(i));
+			dto.setBuy(0);
+			basketService.update(dto);
 			dtoList.add(i, dto);
 		}
 		model.addAttribute("scroll", scroll);
