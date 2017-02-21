@@ -245,60 +245,59 @@
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 <script>
-
 	$(".cart-amount").on("change",function(){
-	   var index = $(this).parents(".cart-list-box").index();
-	   var a = $(this).val();
-	   var price = $(".cart-dvd_price strong").eq(index).text() * a;
-	   $(".list_val").eq(index).find(".ea").text(a + "개").next().text(price);
-	   var total = 0;
-	   var length = "${fn:length(basket_list)}";
-	   for(i=0; i<length; i++){
-	      total += parseInt($(".table_price").eq(i).text());
-	   }
-	   $(".cart-pay-result").text(total);
+		var index = $(this).parents(".cart-list-box").index();
+		var a = $(this).val();
+		var price = $(".cart-dvd_price strong").eq(index).text() * a;
+		$(".list_val").eq(index).find(".ea").text(a + "개").next().text(price);
+		var total = 0;
+		var length = "${fn:length(basket_list)}";
+		for(i=0; i<length; i++){
+			total += parseInt($(".table_price").eq(i).text());
+		}
+		$(".cart-pay-result").text(total);
 	})
-
 
 	function postCode() {
 		new daum.Postcode({oncomplete : function(data) {
-				var fullAddr = ''; 
-				var extraAddr = ''; 
-				
-				if (data.userSelectedType === 'R') {
-					fullAddr = data.roadAddress;
-				} else { 
-					fullAddr = data.jibunAddress;
+			var fullAddr = ''; 
+			var extraAddr = ''; 
+
+			if (data.userSelectedType === 'R') {
+				fullAddr = data.roadAddress;
+			} else { 
+				fullAddr = data.jibunAddress;
+			}
+			if (data.userSelectedType === 'R') {
+				if (data.bname !== '') {
+					extraAddr += data.bname;
 				}
-				if (data.userSelectedType === 'R') {
-					if (data.bname !== '') {
-						extraAddr += data.bname;
-					}
-					if (data.buildingName !== '') {
-						extraAddr += (extraAddr !== '' ? ', '
-								+ data.buildingName : data.buildingName);
-					}
-					fullAddr += (extraAddr !== '' ? ' (' + extraAddr+ ')' : '');
+				if (data.buildingName !== '') {
+					extraAddr += (extraAddr !== '' ? ', '
+						+ data.buildingName : data.buildingName);
 				}
-				document.getElementById('addrNum').value = data.zonecode; 
-				document.getElementById('addr').value = fullAddr;
-				document.getElementById('addrDetail').focus();
+				fullAddr += (extraAddr !== '' ? ' (' + extraAddr+ ')' : '');
+			}
+			document.getElementById('addrNum').value = data.zonecode; 
+			document.getElementById('addr').value = fullAddr;
+			document.getElementById('addrDetail').focus();
+
 			}
 		}).open();
 	}
     
     
-    $(".cart-shippingBtn").click(function(){
+	$(".cart-shippingBtn").click(function(){
 		var name = $("#buy_name").val();
 		var phone = $("#buy_phone").val();
-       
-       $("#shipping_name").val(name);
-       $("#shipping_phone").val(콜);
-       
-       $("#addrNum").val("${users.addrNum}");
-       $("#addr").val("${users.addr}");
-       $("#addrDetail").val("${users.addrDetail}");
-    });
+
+		$("#shipping_name").val(name);
+		$("#shipping_phone").val(콜);
+		
+		$("#addrNum").val("${users.addrNum}");
+		$("#addr").val("${users.addr}");
+		$("#addrDetail").val("${users.addrDetail}");
+	});
     
 	function chkPwd(str){
 		var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
@@ -372,9 +371,16 @@
 	});
 </script>
 <script>
-	$(".cart-paymentBtn").click(function(){
-		location.href="complete_pay.do?scroll=complete";
-	});
+	var length = "${fn:length(basket_list)}";
+	var list = [];
+	var list2 = [];
+	function cart_payment(){
+		for(var i=0;i<length;i++){
+			list[i] = $(".hidden_num").eq(i).val();
+			list2[i] = $(".cart-amount").eq(i).val();
+		};
+		location.href="complete_pay.do?scroll=complete"+"&list="+list+'&list2='+list2;
+	};
 </script>
 </body>
 </html>
