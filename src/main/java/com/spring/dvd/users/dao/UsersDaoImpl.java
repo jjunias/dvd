@@ -21,25 +21,21 @@ public class UsersDaoImpl implements UsersDao {
 
 	@Override
 	public List<UsersDto> getList() {
-
 		return null;
 	}
 
 	@Override
 	public UsersDto getData(String id) {
-
 		return session.selectOne("users.getData", id);
 	}
 
 	@Override
 	public int update(UsersDto dto) {
-		
 		return session.update("users.update",dto);
 	}
 
 	@Override
 	public int delete(String id) {
-		
 		return session.delete("users.delete",id);
 	}
 
@@ -51,29 +47,24 @@ public class UsersDaoImpl implements UsersDao {
 			return false;
 		}
 	}
-
-
+	
 	public String isValid(String id) {
-		System.out.println("2번");
 		return session.selectOne("users.login", id);
 	}
 
 	@Override
 	public int getCount() {
-
 		return 0;
 	}
 
 	@Override
 	public String getPassword(String id) {
 		String password=session.selectOne("users.getPwd", id);
-		
 		return password;
 	}
 
 	@Override
 	public int pwdUpdate(UsersDto dto) {
-		
 		return session.update("users.pwdUpdate",dto);
 	}
 

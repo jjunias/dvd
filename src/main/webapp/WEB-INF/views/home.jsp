@@ -14,19 +14,12 @@
 	.new_movie,.favor_movie{
 		float:left;
 		width:22%;
-		background-color:red;
+		height:350px;
 		margin-bottom:50px;
 	}
 	.favor{
 		float:left;
 		width:100%;
-	}
-	.movieBox{
-		float:left;
-		margin-top:60px;
-		border:2px solid #747474;
-		width:22%;
-		height:424px;
 	}
 	.favor_movie2,.favor_movie6,.favor_movie10,.new_movie2,.new_movie6,.new_movie10{
 		margin-left:4%;
@@ -37,12 +30,12 @@
 		margin-right:4%;
 	}
 	.imgBox{
-		height:370px;
+		height:80%;
 	}
 	.txtBox{
 		background-color:#232323;
 		width:100%;
-		height:50px;
+		height:20%;
 	}
 	.txtBox span{
 		color:white;
@@ -54,10 +47,26 @@
 		width:16px;
 		height:16px;
 	}
+	@media(max-width:1300px){
+		.new_movie,.favor_movie{
+			width:28%;
+			height:300px;
+			margin-bottom:30px;
+		}
+	}
+	@media(max-width:768px){
+		.new_movie,.favor_movie{
+			float:left;
+			width:80%;
+			margin-left:10%;
+			height:400px;
+			margin-bottom:30px;
+		}
+	}
 </style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>movie</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/catalog.jsp"/>
