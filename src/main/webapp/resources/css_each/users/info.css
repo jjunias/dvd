@@ -1,2 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
+	.info-formBox{
+		width:60%;
+		margin:0 auto;
+	}
+	#addrNum{
+		width:30%;
+		display:inline;
+	}
+	.updateTop{
+		padding-top:80px;
+		text-align: center;
+	}
+	.top_area{
+		border-bottom: 1px solid gray;
+	}
+	#updateBtn{
+		margin-right:10px;
+	}
+	#deleteBtn, #updateBtn{
+			
+	}
+	#deleteBtn{
+		right:0%;
+	}
+	.res_top_area{
+		margin-top:20px;
+	}
 
