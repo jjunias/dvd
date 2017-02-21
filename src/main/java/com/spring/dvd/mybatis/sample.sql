@@ -41,6 +41,8 @@ buy NUMBER default 0,
 count NUMBER default 0,
 regdate DATE default null
 );
+-- 장바구니 시퀀스
+CREATE SEQUNECE basket_seq NOCACHE;
 
 -- 평점 테이블
 CREATE TABLE rating(

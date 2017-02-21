@@ -154,8 +154,7 @@
 							<span class="cart-pay_font"><strong>결제 예정액</strong></span>
 							<div class="cart-priceBox"><strong class="cart-pay-result" >${sum }</strong>원</div>
 						</li>
-					</ul>
-				<button class="btn btn-info cart-paymentBtn btn-lg">결제하기</button>			
+					</ul>			
 				</div>
 				<br/>
 				<button class="btn btn-info cart-paymentBtn btn-lg" onclick="cart_payment()">결제하기</button>
