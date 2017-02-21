@@ -1,17 +1,22 @@
 package com.spring.dvd.payment.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.SynchronousQueue;
+import java.util.stream.Collector;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.dvd.basket.dto.BasketDto;
 import com.spring.dvd.basket.service.BasketService;
 import com.spring.dvd.movie.dto.DvdDto;
 import com.spring.dvd.movie.service.DvdService;
@@ -45,9 +50,16 @@ public class paymentController {
 	}
 	
 	@RequestMapping("/users/complete_pay.do")
-	public void complete(String scroll, Model model){
-		
+	public void complete(String scroll, @RequestParam List<Integer> list,@RequestParam List<Integer> list2 ,Model model){
+		List<BasketDto> dtoList =  new ArrayList<BasketDto>();
+		for(int i=0;i<list.size();i++){
+			BasketDto dto = new BasketDto();
+			dto.setDvd_num((Integer) list.get(i));
+			dto.setCount((Integer) list2.get(i));
+			dtoList.add(i, dto);
+		}
 		model.addAttribute("scroll", scroll);
+		model.addAttribute("dtoList", dtoList);
 	}
 	
 	
