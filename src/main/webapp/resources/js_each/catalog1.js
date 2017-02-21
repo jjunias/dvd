@@ -38,3 +38,18 @@ $("#response_loginBtn").click(function() {
 $(".sideBtn").click(function() {
 	$(window).scrollTop(0);
 });
+function res_domesticCatal(){
+	  $(".response_subDomestic").stop().slideToggle();
+	  $(".res_domestic").children("p").toggleClass("glyphicon-menu-up");
+}
+
+function res_overseasCatal(){
+	  $(".response_subOverseas").stop().slideToggle();
+	  $(".res_overseas").children("p").toggleClass("glyphicon-menu-up");
+}
+$(".toggle_responseDown").click(function(){
+	  $(".response_Menu").stop().show();
+});
+$(".toggle_responseUp").click(function(){
+	  $(".response_Menu").stop().hide();
+})
