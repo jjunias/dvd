@@ -3,94 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="/WEB-INF/views/source.jsp"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<style>
-@media(max-width:1700px){
-	.search_bar,.catalog{
-		display:none;
-	}
-	.top_one{
-		display:none;
-	}
-	.glyphicon-menu-hamburger{
-		float:right;
-	}
-	.res_loginBar{
-		width: 80%;
-		margin: 0 auto;
-	}
-	.res_socialBtn{
-		width: 100%;
-		text-align: center !important;
-		margin-bottom: 5px;
-	}
-	.top_area{
-		border-bottom: 1px solid gray;
-	}
-	#loginBtn{
-		width:70px !important;
-	}
-	.btnFloat{
-		float:right;
-	}
-	.col-img{
-		/* width:50%; */
-	}
-	.col-img > div{
-		float:left;
-		padding:10px;
-		width:33.3333%;
-		box-sizing:border-box;
-		text-align:center;
-	}
-	.col-img > div a {
-		display:block;
-		padding:6px;
-		width:100%;
-		height:100%;
-		border:1px solid #b6b2b2;
-		border-radius:13px;
-	}
-	.col-img > div .col-img-span{
-		display:block;
-		width:100%;
-		height:53px;
-	}
-	.col-img > div .col-img-span img{
-		width:60%;
-		height:auto;
-	}
-	.col-img-logout{
-		width:60%;
-		margin-left: 9px;
-	}
-	.col-img-info{
-		width:60%;
-	}
-	.col-img-cart{
-		margin-top:4px;
-		width:60%;
-	}
-	.toggle_responseDown{
-		display: block !important;
-	}
-	.areaFont{
-		font-size: 15px;
-		color:black;
-	}
-	.cartUnderline{
-		text-decoration: none !important;
-	}
-	.loginBar-li{
-		width:100%;
-		background-color: white !important;
-		margin-left: 0px !important;
-		overflow: hidden;
-	}
-}
-</style>
 <!-- css 링크!! -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/catalog/catalog.css"/>
-<div class="main_img"></div>
+<div class="main_img">
+	<img src="${pageContext.request.contextPath }/resources/images/main.png"/>
+</div>
 <div class="main_left"></div>
 <div class="main_right"></div>
 <div data-spy="affix" data-offset-top="300" data-offset-bottom="300">
@@ -125,9 +42,9 @@
    <div class="top_catal">
    		<div class="response_Menu">
 			<div class="response_SubMenu">
-				<ul>
+				<ul>	
 					<span class="glyphicon glyphicon-arrow-right toggle_responseUp"></span>
-					<li class="response_search">
+					<li class="response_search" style="margin-bottom:20px;">
 						<form action="/dvd/movie/movie_main.do">
 							<div class="input-group response_search_bar">
 								<input type="text" class="form-control" name="keyword" placeholder="Search..">
@@ -141,7 +58,7 @@
 					</li>
 					</li>
 					<li onclick="location.href='/dvd/home.do'">MAIN</li>
-					<li class="res_domestic" onclick="res_domesticCatal()">한국 영화  <p style ="margin-left:40%;" class="glyphicon glyphicon-menu-down"></p>
+					<li class="res_domestic" onclick="res_domesticCatal()">한국 영화  <p style ="margin-left:45%;" class="glyphicon glyphicon-menu-down"></p>
 						<ul class="response_subDomestic">
 							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic'">전체보기</li>
 							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=action'">액션</li>
@@ -152,7 +69,7 @@
 							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=domestic&genre=etc'">기타</li>
 						</ul>
 					</li>
-					<li class="res_overseas" onclick="res_overseasCatal()">해외 영화  <p style ="margin-left:40%;" class="glyphicon glyphicon-menu-down"></p>
+					<li class="res_overseas" onclick="res_overseasCatal()">해외 영화  <p style ="margin-left:45%;" class="glyphicon glyphicon-menu-down"></p>
 						<ul class="response_subOverseas">
 							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&national=overseas'">전체보기</li>
 							<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&national=overseas&genre=action'">액션</li>
@@ -164,7 +81,7 @@
 						</ul>
 					</li>
 					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&production=new'">최신 영화</li>
-					<li onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&grade=1'">인기 영화</li>
+					<li style="margin-bottom:20px;" onclick="location.href='/dvd/movie/movie_main.do?type=list&num=1&&grade=1'">인기 영화</li>
 					<li class="loginBar-li">
 					<c:choose>
 						<c:when test="${id eq null}">
@@ -244,17 +161,21 @@
 		</ul>
 		<div class="top_one"></div>
 		<div class="top_users"/>
-		<c:choose>
-			<c:when test="${id eq null}">
-				<div class="login_toggle">로그인</div><span> 　| 　</span>
-				<a href="/dvd/users/insert_form.do?type=views" style="margin-right:50px;">회원가입</a>
-			</c:when>
-			<c:otherwise>
-				<div class="sessionId"><a href="/dvd/users/info.do">내 정보</a></div><span> | </span>
-				<a href="/dvd/basket/list.do?id=${id }">장바구니</a><span> | </span>
-				<a href="/dvd/users/logout.do">로그아웃</a>
-			</c:otherwise>
-		</c:choose>
+		<div class="top_menu">
+			<c:choose>
+				<c:when test="${id eq null}">
+					<div class="login_toggle">로그인</div><span> 　| 　</span>
+					<a href="/dvd/users/insert_form.do?type=views" style="margin-right:50px;">회원가입</a>
+				</c:when>
+				<c:otherwise>
+					<div class="sessionId">
+						<a href="/dvd/users/info.do">내 정보</a></div><span> | </span>
+						<a href="/dvd/basket/list.do?id=${id }">장바구니</a><span> | </span>
+						<a href="/dvd/users/logout.do">로그아웃</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</div>
 		<span class="glyphicon glyphicon-menu-hamburger toggle_responseDown"></span>
 		<div class="loginBar">
 			<div class="gBtn"><span class="glyphicon glyphicon-remove "></span></div>
@@ -283,23 +204,5 @@
 		</div>
 	</div>
 </div>
-<script>
-  function res_domesticCatal(){
-	  $(".response_subDomestic").stop().slideToggle();
-	  $(".res_domestic").children("p").toggleClass("glyphicon-menu-up");
-  }
-  
-  function res_overseasCatal(){
-	  $(".response_subOverseas").stop().slideToggle();
-	  $(".res_overseas").children("p").toggleClass("glyphicon-menu-up");
-  }
-  $(".toggle_responseDown").click(function(){
-	  $(".response_Menu").stop().show();
-  });
-  $(".toggle_responseUp").click(function(){
-	  $(".response_Menu").stop().hide();
-  })
-  
-</script>
 <!--  javascript 링크 -->
-<script src="${pageContext.request.contextPath }/resources/js_each/catalog.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js_each/catalog1.js"></script>

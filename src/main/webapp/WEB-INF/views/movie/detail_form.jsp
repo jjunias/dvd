@@ -111,7 +111,6 @@
 					</c:if>
 					] ${dvd.title}</h2>
 				<hr/>
-				<span class="dvd_grade"><strong><fmt:formatNumber value="${dvd.grade*2}" pattern=".0"/> 점</span></strong>
 				<div class="star"></div>				
 				<div><strong>
 					<br/>

@@ -28,7 +28,7 @@
    }
 </style>
 <div class="footer">
-   <div class="col-xs-12 footerText">
+<!--    <div class="col-xs-12 footerText">
       <div class="col-xs-2">여백</div>
       <div class="col-xs-3">
          <div class="chan">
@@ -64,5 +64,5 @@
          </div>
       </div>
       <div class="col-xs-1">여백</div>
-   </div>
+   </div> -->
 </div>

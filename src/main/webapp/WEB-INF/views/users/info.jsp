@@ -19,11 +19,17 @@
 	.top_area{
 		border-bottom: 1px solid gray;
 	}
-	#deleteBtn, #updateBtn{
-		float:right;
-	}
 	#updateBtn{
 		margin-right:10px;
+	}
+	#deleteBtn, #updateBtn{
+			
+	}
+	#deleteBtn{
+		right:0%;
+	}
+	.res_top_area{
+		margin-top:20px;
 	}
 </style>
 <head>
@@ -41,36 +47,36 @@
 		</div><br/>
 		<form  id="update_form" class="form-horizontal">
 			<div class="form-group has-feedback">
-				<label for="id" class="col-sm-2 control-label">아이디</label>
-				<div class="col-sm-10">
+				<label for="id" class="col-lg-2 control-label">아이디</label>
+				<div class="col-lg-10">
 					<input type="text" class="form-control"  name="id"  id="id"  disabled="disabled"  value=" ${dto.id }" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="name" class="col-sm-2 control-label">이름</label>
-				<div class="col-sm-10">
+				<label for="name" class="col-lg-2 control-label">이름</label>
+				<div class="col-lg-10">
 					<input type="text" class="form-control"  name="name"  id="name" disabled="disabled" value="${dto.name }"/><br/>
 				</div>
 			</div>
 			<div class="form-group has-feedback">
-				<label for="phone" class="col-sm-2 control-label">전화번호</label>
-				<div class="col-sm-10">
+				<label for="phone" class="col-lg-2 control-label">전화번호</label>
+				<div class="col-lg-10">
 					<input type="text" class="form-control"  name="phone"  id="phone" value="${dto.phone }"><br/>
 					<p class="help-block"> 올바른 형식이 아닙니다.</p>
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div> 
 			<div class="form-group has-feedback">
-				<label for="email" class="col-sm-2 control-label">이메일</label>
-				<div class="col-sm-10">
+				<label for="email" class="col-lg-2 control-label">이메일</label>
+				<div class="col-lg-10">
 					<input type="email" class="form-control" name="email"  id="email"  value="${dto.email }"/>
 					<p class="help-block">여기는 이메일 check 부분 + 이메일인증버튼추가</p><br/>
 					<span class="glyphicon form-control-feedback"></span>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="addr" class="col-sm-2 control-label">우편번호</label>
-				<div class="col-sm-10">
+				<label for="addr" class="col-lg-2 control-label">우편번호</label>
+				<div class="col-lg-10">
 					<input type="text"  class="form-control"  name="addrNum"  id="addrNum" value="${dto.addrNum }">
 					<input type="button"  class="btn btn-default"  id="postCodeBtn" onclick="postCode()" value="우편번호 찾기"><br>
 					<input type="text"  class="form-control"  name="addr"  id="addr"  value="${dto.addr }">
@@ -78,14 +84,14 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
+				<div class="col-lg-offset-2 col-lg-10">
 					<button type="button" id="passwordBtn"  class="btn btn-default">비밀번호 변경</button>
-					<button type="button" id="deleteBtn"  class="btn btn-warning">탈퇴하기</button>
 					<button type="button" id="updateBtn"  class="btn btn-default">수정하기</button>
+					<button type="button" id="deleteBtn"  class="btn btn-warning">탈퇴하기</button>					
 				</div>
 			</div>
 		</form>
-		<div class="top_area"></div><br/>
+		<div class="top_area res_top_area"></div><br/>
 	</div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
