@@ -21,7 +21,9 @@
 	.pwdBtn{
 		float:right;
 		padding:10px;
-		margin-left:20px;
+	}
+	.cancelBtn{
+		margin-left:10px;
 	}
 </style>
 <head>
@@ -40,31 +42,31 @@
 			</div><br/>
 			<form  id="pwd_form" class="form-horizontal">
 				<div class="form-group has-feedback">
-					<label for="today_pwd" class="col-sm-2 control-label">현재 비밀번호</label>
-					<div class="col-sm-10 pwdToggle">
+					<label for="today_pwd" class="col-md-2 control-label">현재 비밀번호</label>
+					<div class="col-md-10 pwdToggle">
 						<input type="password" class="form-control" name="today_pwd"  id="today_pwd"   />
 					</div>
 				</div>
 				<div class="top_area"></div><br/>
 				<div class="form-group has-feedback">
-					<label for="pwd" class="col-sm-2 control-label">새 비밀번호</label>
-					<div class="col-sm-10 pwdToggle">
+					<label for="pwd" class="col-md-2 control-label">새 비밀번호</label>
+					<div class="col-md-10 pwdToggle">
 						<input type="password" class="form-control" name="pwd"  id="pwd"   placeholder="비밀번호(영문,숫자혼합,6자 이상)"/>
 						<p class="help-block"> 비밀번호를 확인하세요.(영문,숫자를 혼합하여 6~20자 이내)</p>
 						<span class="glyphicon form-control-feedback"></span>
 					</div>
 				</div>
 				<div class="form-group has-feedback">
-					<label for="pwd2" class="col-sm-2 control-label">비밀번호 확인</label>
-					<div class="col-sm-10">
+					<label for="pwd2" class="col-md-2 control-label">비밀번호 확인</label>
+					<div class="col-md-10">
 						<input type="password" class="form-control"  id="pwd2" placeholder="비밀번호 확인"/><br/>
 						<p class="help-block"> 비밀번호를 확인하세요.</p>
 						<span class="glyphicon form-control-feedback"></span>
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button class="btn btn-default pwdBtn" >취소</button>
+					<div class="col-md-offset-2 col-md-10">
+						<button class="btn btn-default pwdBtn cancelBtn" >취소</button>
 						<button class="btn btn-primary pwdBtn"  type="button" id="pwdBtn">확인</button>
 					</div>
 				</div>

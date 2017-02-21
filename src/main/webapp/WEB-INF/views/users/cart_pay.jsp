@@ -4,111 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
-<style>
-	.payCart-cart{
-		border:1px solid gray;
-		height: 305px;
-		overflow-y: scroll;
-	}
-	.control-label-cart{
-		padding-right: 20px;
-	}
-	.form-control-cart{
-		width: 70%;
-		display: inline;
-	}
-	.cart-phone, .cart-shipping-phone, .cart-email, .cart-pwd, .cart-addrNum{
-		margin-left: 32px;
-	}
-	.cart-name, .cart-shipping-name{
-		margin-left: 15px;
-	}
-	.cart-shippingBtn{
-		position: absolute;
-		margin-right: 45px;
-		top: 0;
-		right: 0;
-	}
-	.cart-shippingAddr{
-		position: relative;
-	}
-	.cart-addrNum{
-		width:30%;
-	}
-	.cart-addr, .cart-addrDetail{
-		margin-left: 112px;
-	}
-	.cart-pwd2{
-		margin-left:5px;
-	}
-	.cart-payment{
-		border:2px double blue;
-		height: 250px;
-	}
-	.ul-cart{
-		padding-left: 20px;
-		margin-bottom:0px;
-	}
-	.li-cart{
-		margin: 10px;
-		margin-bottom:0px;
-		margin-top:0px;
-	}
-	.cart-pay_font{
-		font-size: 20px;
-	}
-	.cart-pay-result{
-		font-size: 20px;
-		color: red;
-	}
-	.cart-paymentBtn{
-		margin-left: 5%;
-		width: 90%;
-	}
-	.cart-content_box{
-		padding-top:60px;
-	}
-	.cart-pay_final{
-		margin-top:20px;
-	}
-	.cart-table-info{
-		text-align: center;
-		margin-bottom:10px;
-	}
-	.cart-dvd_price{
-		padding-top:4px;
-		font-size:20px;
-		float:right;
-	}
-	.cart-amount{
-		width:24%;
-	}
-	.cart-col_right{
-		padding-right:0px;
-	}
-	.cart-list-box{
-		border-bottom: 1px solid gray;
-		width:100%;
-		height: 175px;
-		padding-top:15px;
-	}
-	.cart-priceBox{
-		float: right;
-	}
-	.cart_pay_img{
-		height: 140px;
-	}
-</style>
 <head>
 <meta charset="UTF-8">
-<title>장바구니</title>
+<title>장바구니 title</title>
+<jsp:include page="/WEB-INF/views/catalog.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/users/cart_pay.css" />
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/catalog.jsp"/>
 <div class="content">
 	<div class="cart-content_box">
-		<div class="col-xs-7">
+		<div class="col-sm-7 col-xs-12">
 			<div class="car_info">
 				<h3>주문자 정보</h3>
 				<div class="line_area"></div><br/><br/>
@@ -159,7 +65,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-5 cart-col_right">
+		<div class="col-sm-5 col-xs-12 cart-col_right">
 			<h3>주문상품 정보</h3>  
 			<div class="payCart-cart">
 				<c:forEach var="tmp" items="${basket_list }">
@@ -167,7 +73,7 @@
 					<div class="col-xs-4 cart_pay_img">
 						<a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-xs-8 cart-table-col">
 						<table class="table cart-table-info">
 							<thead>
 								<tr>
@@ -204,7 +110,7 @@
 			<div class="cart-payment">
 				<ul class="ul-cart">
 					<li class="li-cart">
-						<table class="table">
+						<table class="table table-margin">
 							<colgroup>
 								<col width="33.333%" />
 								<col width="33.333%" />
@@ -217,28 +123,39 @@
 									<th>가격</th>
 								</tr>
 							</thead>
-							<tbody>
-								<c:forEach var="tmp" items="${basket_list }" > 
-									<tr class="list_val">
-										<td>${tmp.title }</td>
-										<td class="ea">1개</td>
-										<td class="table_price">${tmp.price }</td>
-									</tr>
-									<c:set var="sum" value="${sum=sum+tmp.price }"/>
-								</c:forEach>
-							</tbody>
 						</table>
+						<div class="cart-table-scroll">
+							<table class="table">
+								<colgroup>
+									<col width="33.333%" />
+									<col width="33.333%" />
+									<col width="33.333%" />
+								</colgroup>
+								<tbody>
+									<c:forEach var="tmp" items="${basket_list }" > 
+										<tr class="list_val">
+											<td>${tmp.title }</td>
+											<td class="ea">1개</td>
+											<td class="table_price">${tmp.price }</td>
+										</tr>
+										<c:set var="sum" value="${sum=sum+tmp.price }"/>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 					</li>
 				</ul>
 				<div class="line_area"></div><br/>
-				<ul class="ul-cart">
-					<li class="li-cart">
-						<span class="cart-pay_font"><strong>결제 예정액</strong></span>
-						<div class="cart-priceBox"><strong class="cart-pay-result" >${sum }</strong>원</div>
-					</li>
-				</ul>
+				<div class="cart-payBox">
+					<ul class="ul-cart">
+						<li class="li-cart">
+							<span class="cart-pay_font"><strong>결제 예정액</strong></span>
+							<div class="cart-priceBox"><strong class="cart-pay-result" >${sum }</strong>원</div>
+						</li>
+					</ul>
+				<button class="btn btn-info cart-paymentBtn btn-lg">결제하기</button>			
+				</div>
 				<br/>
-				<button class="btn btn-info cart-paymentBtn btn-lg">결제하기</button>
 			</div>  
 		</div>
 	</div>
@@ -293,7 +210,7 @@
 		var phone = $("#buy_phone").val();
        
        $("#shipping_name").val(name);
-       $("#shipping_phone").val(콜);
+       $("#shipping_phone").val(phone);
        
        $("#addrNum").val("${users.addrNum}");
        $("#addr").val("${users.addr}");
