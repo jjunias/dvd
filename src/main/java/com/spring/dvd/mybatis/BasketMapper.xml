@@ -2,19 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="basket">
 	<insert id="insert" parameterType="basketDto">
-		INSERT INTO dvd_basket
-		VALUES(#{id}, #{dvd_num})
+		INSERT INTO dvd_basket(id, dvd_num, regdate)
+		VALUES(#{id}, #{dvd_num}, SYSDATE)
 	</insert>
 	
 	<delete id="delete" parameterType="basketDto">
 		DELETE FROM dvd_basket
 		WHERE id=#{id}
 		AND dvd_num=#{dvd_num}
+		AND buy=0
 	</delete>
 	
 	<select id="getList" parameterType="string" resultType="dvdDto">
-		SELECT dv.num, dv.title, dv.price, dv.savefilename
-		FROM (SELECT * FROM dvd_basket WHERE id = #{id}) bs, dvd dv
+		SELECT dv.num, dv.title, dv.price, dv.savefilename, bs.regdate
+		FROM (SELECT * FROM dvd_basket WHERE id = #{id} AND buy = 0) bs, dvd dv
 		WHERE dv.num = bs.dvd_num
 	</select>
 	

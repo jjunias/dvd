@@ -21,11 +21,11 @@
 		float:left;
 		width:100%;
 	}
-	.favor_movie2,.favor_movie6,.favor_movie10,.new_movie2,.new_movie6,.new_movie10{
+	.favor_movie2,.new_movie2{
 		margin-left:4%;
 		margin-right:2%;
 	}
-	.favor_movie3,.favor_movie7,.favor_movie11,.new_movie3,.new_movie7,.new_movie11{
+	.favor_movie3,.new_movie3{
 		margin-left:2%;
 		margin-right:4%;
 	}
@@ -47,20 +47,27 @@
 		width:16px;
 		height:16px;
 	}
-	@media(max-width:1300px){
+	@media(max-width:1360px){
 		.new_movie,.favor_movie{
 			width:28%;
 			height:300px;
 			margin-bottom:30px;
 		}
 	}
-	@media(max-width:768px){
-		.new_movie,.favor_movie{
-			float:left;
-			width:80%;
-			margin-left:10%;
+	@media(max-width:1100px){
+		.new_movie, .favor_movie{
+			width:43%;
 			height:400px;
-			margin-bottom:30px;
+		}		
+		.favor_movie1,.new_movie1,.favor_movie3,.new_movie3{
+			margin-left:5%;
+		}
+	}
+	@media(max-width:760px){
+	}
+	@media(max-width:360px){
+		.rating_text{
+			display:none;
 		}
 	}
 </style>
@@ -82,7 +89,7 @@
 					<span><span style="margin-left:10px">개봉일 :${tmp.production}</span>
 						<p class="scores" style="display:none;">${tmp.grade}</p>
 						<div class="rating_star" style="margin-left:10px;"></div>
-						<span style="float:right;margin-top:-18px;margin-right:10px;"><fmt:formatNumber value="${tmp.grade*2}" pattern=".0"/> / 10.0</span>
+						<span class="rating_text" style="float:right;margin-top:-18px;margin-right:10px;"><fmt:formatNumber value="${tmp.grade*2}" pattern=".0"/></span>
 					</span>
 				</div>
 			</div>
@@ -99,7 +106,7 @@
 					<span><span style="margin-left:10px">개봉일 :${tmp.production}</span>
 						<p class="scores_favor" style="display:none;">${tmp.grade}</p>
 						<div class="rating_Favorstar" style="margin-left:10px;"></div>
-						<span style="float:right;margin-top:-18px;margin-right:10px;"><fmt:formatNumber value="${tmp.grade*2}" pattern=".0"/> / 10.0</span>
+						<span class="rating_text" style="float:right;margin-top:-18px;margin-right:10px;"><fmt:formatNumber value="${tmp.grade*2}" pattern=".0"/></span>
 					</span>
 				</div>
 			</div>
