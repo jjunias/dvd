@@ -8,5 +8,6 @@ import com.spring.dvd.movie.dto.DvdDto;
 public interface BasketService {
 	public int insert(BasketDto dto);
 	public int delete(BasketDto dto);
+	public int update(BasketDto dto);
 	public List<DvdDto> getList(String id);
 }

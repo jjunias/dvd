@@ -38,6 +38,7 @@ public class BasketController {
 		dto.setId(id);
 		for(int value : check){
 			dto.setDvd_num(value);
+			dto.setBuy(0);
 			basketService.delete(dto);
 		}
 		return "redirect:/basket/list.do?id="+id;

@@ -23,6 +23,10 @@ public class BasketDaoImpl implements BasketDao {
 	public int delete(BasketDto dto) {
 		return session.delete("basket.delete", dto);
 	}
+	
+	public int update(BasketDto dto){
+		return session.update("basket.update", dto);
+	}
 
 	@Override
 	public List<DvdDto> getList(String id) {

@@ -22,13 +22,13 @@
 		font-size: 40px;
 		font-weight: bold;
 		text-align: center;
-		margin: 150px 0 100px 0;
+		margin: 100px 0 100px 0;
 	}
 	
-	.com_bcontent{
+	.com_btail{
 		border-bottom: 3px solid #5D5D5D;
 	}
-	.com_bcontent p{
+	.com_btail p{
 		font-size: 20px;
 		text-align: center;
 		margin-bottom: 30px;
@@ -56,7 +56,18 @@
 			<div class="com_btitle">
 				<h1>결제가 정상적으로 완료되었습니다!</h1>
 			</div>
+			
 			<div class="com_bcontent">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th></th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			
+			<div class="com_btail">
 				<p>계속 결제를 원하시면 <strong>장바구니</strong> 버튼을,</p>
 				<p>더 많은 상품을 보시려면 <strong>상품보기</strong> 버튼을 눌러주세요</p>
 			</div>
