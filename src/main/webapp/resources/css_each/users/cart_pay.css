@@ -101,4 +101,39 @@
 	.table-margin{
 		margin-bottom: 0px;
 	}
+	
+	@media(min-width:900px){
+		.payCart-cart{
+			width:386px;
+		}
+		.cart-payment{
+			width:386px;
+		}
+	}
+	@media(max-width:480px){
+		.cart-table-col{
+			font-size:12px;
+		}
+		.cart-dvd_price{
+			padding-top:8px;
+			font-size:15px;
+		}
+		.cart-amount{
+			width:20%;
+			padding: 6px 2px;
+		}
+		.cart-table-scroll{
+			font-size:12px;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 

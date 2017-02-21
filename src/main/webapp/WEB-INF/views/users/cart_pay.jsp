@@ -14,7 +14,7 @@
 <body>
 <div class="content">
 	<div class="cart-content_box">
-		<div class="col-sm-7 col-xs-12">
+		<div class="col-md-7 col-sm-12 col-xs-12">
 			<div class="car_info">
 				<h3>주문자 정보</h3>
 				<div class="line_area"></div><br/><br/>
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-5 col-xs-12 cart-col_right">
+		<div class="col-md-5 col-sm-12 col-xs-12 cart-col_right">
 			<h3>주문상품 정보</h3>  
 			<div class="payCart-cart">
 				<c:forEach var="tmp" items="${basket_list }">
@@ -156,7 +156,6 @@
 						</li>
 					</ul>			
 				</div>
-				<br/>
 				<button class="btn btn-info cart-paymentBtn btn-lg" onclick="cart_payment()">결제하기</button>
 			</div>  
 		</div>
