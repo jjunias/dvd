@@ -73,6 +73,8 @@
 					<div class="col-xs-4 cart_pay_img">
 						<a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
 					</div>
+
+					<input type="hidden" class="hidden_num" value="${tmp.num }"/>
 					<div class="col-xs-8 cart-table-col">
 						<table class="table cart-table-info">
 							<thead>
@@ -156,6 +158,7 @@
 				<button class="btn btn-info cart-paymentBtn btn-lg">결제하기</button>			
 				</div>
 				<br/>
+				<button class="btn btn-info cart-paymentBtn btn-lg" onclick="cart_payment()">결제하기</button>
 			</div>  
 		</div>
 	</div>
@@ -207,14 +210,14 @@
 	$(".cart-shippingBtn").click(function(){
 		var name = $("#buy_name").val();
 		var phone = $("#buy_phone").val();
-       
-       $("#shipping_name").val(name);
-       $("#shipping_phone").val(phone);
-       
-       $("#addrNum").val("${users.addrNum}");
-       $("#addr").val("${users.addr}");
-       $("#addrDetail").val("${users.addrDetail}");
-    });
+
+		$("#shipping_name").val(name);
+		$("#shipping_phone").val(phone);
+		
+		$("#addrNum").val("${users.addrNum}");
+		$("#addr").val("${users.addr}");
+		$("#addrDetail").val("${users.addrDetail}");
+	});
     
 	function chkPwd(str){
 		var reg_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;

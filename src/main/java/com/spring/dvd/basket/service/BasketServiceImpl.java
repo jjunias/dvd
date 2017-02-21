@@ -24,6 +24,11 @@ public class BasketServiceImpl implements BasketService{
 			return 0;
 		}
 	}
+	
+	@Override
+	public int update(BasketDto dto){
+		return basketDao.update(dto);
+	}
 
 	@Override
 	public int delete(BasketDto dto) {

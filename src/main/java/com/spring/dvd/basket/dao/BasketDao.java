@@ -9,6 +9,7 @@ public interface BasketDao {
 
 	public int insert(BasketDto dto);
 	public int delete(BasketDto dto);
+	public int update(BasketDto dto);
 	public List<DvdDto> getList(String id);
 	public BasketDto getData(BasketDto dto);
 }
