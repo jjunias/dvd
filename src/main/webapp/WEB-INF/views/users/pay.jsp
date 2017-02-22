@@ -3,130 +3,17 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
-<style>
-	.payCart-pay {
-		border: 1px solid gray;
-		height: 200px;
-		padding-top: 26px;
-	}
-	
-	.control-label-pay {
-		padding-right: 20px;
-	}
-	
-	.form-control-pay {
-		width: 70%;
-		display: inline;
-		margin-left: 4px;
-	}
-	
-	.pay-phone, .pay-shipping-phone, .pay-email, .pay-pwd, .pay-addrNum {
-		margin-left: 32px;
-	}
-	
-	.pay-name {
-		margin-left: 15px;
-	}
-	
-	.pay-shipping-name {
-		margin-left: 34px;
-	}
-	
-	.pay-shippingBtn {
-		position: absolute;
-		margin-right: 45px;
-		top: 0;
-		right: 0;
-	}
-	
-	.pay-shippingAddr {
-		position: relative;
-	}
-	
-	.pay-addrNum {
-		width: 30%;
-	}
-	
-	.pay-addr, .pay-addrDetail {
-		margin-left: 112px;
-	}
-	
-	.pay-payment {
-		border: 2px double blue;
-		height: 250px;
-	}
-	
-	.pay-priceBox {
-		float: right;
-		margin-right: 15px;
-		padding-left: 15px;
-	}
-	
-	.pay-ul {
-		padding-left: 20px;
-		margin-bottom: 0px;
-	}
-	
-	.pay-li {
-		padding-top: 10px;
-		margin: 10px;
-		margin-bottom: 0px;
-	}
-	
-	.pay-pay_font {
-		font-size: 20px;
-	}
-	
-	.pay-pay_result {
-		font-size: 20px;
-		color: red;
-	}
-	
-	.pay-paymentBtn {
-		margin-left: 10%;
-		width: 80%;
-	}
-	
-	.pay-content_box {
-		padding-top: 60px;
-	}
-	
-	.pay-pay_final {
-		margin-top: 0px;
-	}
-	
-	.pay-table-info {
-		text-align: center;
-	}
-	
-	.pay-dvd_price {
-		padding-top: 4px;
-		font-size: 20px;
-		float: right;
-	}
-	
-	.pay-priceTotal {
-		float: right;
-	}
-	
-	.pay-amount {
-		width: 24%;
-	}
-	
-	.pay_img {
-		height: 140px;
-	}
-</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/users/pay.css" />
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/catalog.jsp"/>
 <div class="content">
 	<div class="pay-content_box">
-		<div class="col-xs-7">
+		<div class="col-md-7 col-sm-12 col-xs-12">
 			<div class="car_info">
 				<h3>주문자 정보</h3>
 				<div class="line_area"></div><br/><br/>
@@ -157,7 +44,7 @@
 			<div class="shipping">
 				<div class="line_area"></div><br/>
 				<div class="pay-shippingAddr"> 
-					<h3>배송지 정보</h3><br/>
+					<h3>배송지 정보</h3>
 					<button class="btn btn-default pay-shippingBtn">주문자 정보와 동일</button>
 				</div>
 				<div class="form-group">
@@ -177,39 +64,72 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-5">
+		<div class="col-md-5 col-sm-12 col-xs-12 pay_col_right">
 			<h3>주문상품 정보</h3>  
 			<div class="payCart-pay">
-				<div class="col-xs-4 pay_img">
-					<a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
-				</div>
-				<div class="col-xs-8">
-					<input type="hidden" class="hidden_num" value="${dvd.num }"/>
-					<table class="table pay-table-info">
-						<thead>
-							<tr>
-								<td>장르</td>
-								<td>제목</td>
-								<td>제작년도</td>
+				<div class="desc_table_info">
+					<div class="col-xs-4 pay_img">
+						<a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
+					</div>
+					<div class="col-xs-8">
+						<table class="table pay-table-info">
+							<thead>
+								<tr>
+									<td>장르</td>
+									<td>제목</td>
+									<td>제작년도</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td>${dvd.genre }</td>
+								<td>${dvd.title }</td>
+								<td>${dvd.production }</td>
 							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<td>${dvd.genre }</td>
-							<td>${dvd.title }</td>
-							<td>${dvd.production }</td>
-						</tr>
-						</tbody>
-					</table>
-					<br/>
-					<div class="dvd_priceBox">
-						<div class="dvd_amount">
-							수량:<select class="form-control form-control-pay pay-amount" name="amount" id="amount" >
-									<c:forEach begin="1" end="10" var="i">
-										<option  name="option" value="${i }">${i }</option>
-									</c:forEach>
-								</select>
-							<div class="pay-dvd_price">가격 : <strong>${dvd.price }</strong>원</div>
+							</tbody>
+						</table>
+						<br/>
+						<div class="dvd_priceBox">
+							<div class="dvd_amount">
+								수량:<select class="form-control pay-amount" name="amount" id="amount" >
+										<c:forEach begin="1" end="10" var="i">
+											<option  name="option" value="${i }">${i }</option>
+										</c:forEach>
+									</select>
+								<div class="pay-dvd_price">가격 : <strong>${dvd.price }</strong>원</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="res_table_info">
+					<div class="col-xs-4 pay_img">
+						<a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
+					</div>
+					<div class="col-xs-8 res_col_table">
+						<table class="table pay-table-info">
+							<thead>
+								<tr>
+									<td>장르</td>
+									<td>제목</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>${dvd.genre }</td>
+									<td>${dvd.title }</td>
+								</tr>
+							</tbody>
+						</table>
+						<br/>
+						<div class="dvd_priceBox">
+							<div class="dvd_amount">
+								수량:<select class="form-control pay-amount" name="amount" id="amount" >
+										<c:forEach begin="1" end="10" var="i">
+											<option  name="option" value="${i }">${i }</option>
+										</c:forEach>
+									</select>
+								<div class="pay-dvd_price">가격 : <strong>${dvd.price }</strong>원</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -219,7 +139,7 @@
 			<div class="pay-payment">
 				<ul class="pay-ul">
 					<li class="pay-li">
-						<span final_price>상품가격</span>
+						<span>상품가격</span>
 						<div class="pay-priceBox"><strong>${dvd.price }</strong>원</div>
 						<div class="pay-priceTotal">${dvd.price } <span>1개</span></div>
 					</li>
