@@ -1,4 +1,189 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
-
-
+	.payCart-pay {
+		border: 1px solid gray;
+		height: 200px;
+		padding-top: 26px;
+	}
+	.control-label-pay {
+		padding-right: 20px;
+	}
+	
+	.form-control-pay {
+		width: 70%;
+		display: inline;
+		margin-left: 4px;
+	}
+	
+	.pay-phone, .pay-shipping-phone, .pay-email, .pay-pwd, .pay-addrNum {
+		margin-left: 32px;
+	}
+	
+	.pay-name {
+		margin-left: 15px;
+	}
+	
+	.pay-shipping-name {
+		margin-left: 34px;
+	}
+	
+	.pay-shippingBtn {
+		position: absolute;
+		margin-right: 45px;
+		top: 0;
+		right: 0;
+	}
+	
+	.pay-shippingAddr {
+		position: relative;
+	}
+	
+	.pay-addrNum {
+		width: 30%;
+	}
+	
+	.pay-addr, .pay-addrDetail {
+		margin-left: 112px;
+	}
+	
+	.pay-payment {
+		border: 2px double blue;
+		height: 250px;
+	}
+	
+	.pay-priceBox {
+		float: right;
+		margin-right: 15px;
+		padding-left: 15px;
+	}
+	
+	.pay-ul {
+		padding-left: 20px;
+		margin-bottom: 0px;
+	}
+	
+	.pay-li {
+		padding-top: 10px;
+		margin: 10px;
+		margin-bottom: 0px;
+	}
+	
+	.pay-pay_font {
+		font-size: 20px;
+	}
+	
+	.pay-pay_result {
+		font-size: 20px;
+		color: red;
+	}
+	
+	.pay-paymentBtn {
+		margin-left: 10%;
+		width: 80%;
+	}
+	
+	.pay-content_box {
+		padding-top: 60px;
+	}
+	
+	.pay-pay_final {
+		margin-top: 0px;
+	}
+	
+	.pay-table-info {
+		text-align: center;
+		margin-bottom: 0px !important;
+	}
+	
+	.pay-dvd_price {
+		padding-top: 4px;
+		font-size: 20px;
+		float: right;
+	}
+	
+	.pay-priceTotal {
+		float: right;
+	}
+	
+	.pay-amount {
+		width: 24%;
+		display:inline !important;
+	}
+	
+	.pay_img {
+		height: 140px;
+	}
+	.res_table_info{
+		display:none;
+	}
+	@media (min-width:900px){
+		.payCart-pay{
+			width:386px;
+		}
+		.pay-payment{
+			width:386px;
+		}
+	}
+	@media (max-width:950px){
+		.payCart-pay{
+			width:100%;
+		}
+		.pay-payment{
+			width:100%;
+		}
+	}
+	@media(max-width:500px){
+		.desc_table_info{
+			display:none;
+		}
+		.res_table_info{
+			display:block
+		}
+		.pay-table-info{
+			font-size:12px;
+		}
+		.pay-dvd_price{
+			padding-top:8px !important;
+			font-size:15px !important;
+		}
+		.pay-amount{
+			width:19% !important;
+			padding:1px 1px !important;
+			display:inline;
+		}
+		.res_col_table{
+			padding-right:1px !important;
+			padding-left:1px !important;
+		}
+		.pay_img{
+			padding-right:3px !important;
+			padding-left:3px !important;
+		}
+		.form-control-pay, .pay-addrNum{
+			width:100% !important;
+			margin-left:0px !important;
+		}
+		.pay-addrNum{
+			width:30% !important;
+			padding:3px 3px !important;
+			text-align: center;
+		}
+		.pay-postCodeBtn{
+			float:right;
+			width:38% !important;
+			font-size: 13px !important;
+			padding-left: 6px !important;
+			padding-right: 6px !important;
+		}
+		.pay-shippingBtn{
+			position:relative !important;
+			width:100% !important;
+			margin-bottom: 5px !important;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 	
