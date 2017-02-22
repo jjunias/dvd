@@ -68,8 +68,10 @@ public class paymentController {
 	}
 	
 	@RequestMapping("/users/complete_pay2.do")
-	public void complete2(String scroll, @RequestParam int dvd_num, @RequestParam int count, HttpSession session){
+	public String complete2(String scroll, @RequestParam int dvd_num, @RequestParam int count, HttpSession session, Model model){
 		String id = (String) session.getAttribute("id");
+		int num = dvd_num;
+		List<DvdDto> dtoList =  new ArrayList<DvdDto>();
 		BasketDto basketDto = new BasketDto();
 		DvdDto dvdDto = new DvdDto();
 		basketDto.setId(id);
@@ -77,7 +79,12 @@ public class paymentController {
 		basketService.insert(basketDto);
 		basketDto.setCount(count);
 		basketService.update(basketDto);
+		dvdDto = dvdService.getData(num);
+		dvdDto.setCount(count);
+		dtoList.add(dvdDto);
 		
+		model.addAttribute("dtoList", dtoList);
+		return "users/complete_pay";
 	}
 	
 	

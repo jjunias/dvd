@@ -184,6 +184,7 @@
 					<a href="/dvd/movie/detail_form.do?num=${dvd.num }"><img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/></a>
 				</div>
 				<div class="col-xs-8">
+					<input type="hidden" class="hidden_num" value="${dvd.num }"/>
 					<table class="table pay-table-info">
 						<thead>
 							<tr>
@@ -362,7 +363,9 @@
 </script>
 <script>
 	$(".pay-paymentBtn").click(function(){
-		location.href="complete_pay.do";
+		var dvd_num = $(".hidden_num").val();
+		var count = $(".pay-amount").val();
+		location.href="complete_pay2.do?scroll=complete" + "&dvd_num=" + dvd_num + "&count=" + count;
 	});
 </script>
 </body>

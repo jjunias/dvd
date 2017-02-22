@@ -87,13 +87,11 @@
 			</div>
 			
 			<div class="com_btail">
-				<p>계속 결제를 원하시면 <strong>장바구니</strong> 버튼을,</p>
 				<p>구매 내역을 보시려면 <strong>구매내역</strong> 버튼을 눌러주세요</p>
 			</div>
 		</div>
 		
 		<div class="com_fgroup">
-			<button class="btn btn-default">장바구니</button>
 			<button class="btn btn-default">구매내역</button>
 		</div>
 	</div>
