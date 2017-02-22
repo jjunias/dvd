@@ -39,5 +39,11 @@ public class BasketDaoImpl implements BasketDao {
 		BasketDto basketDto = session.selectOne("basket.getData", dto);
 		return basketDto;
 	}
+
+	@Override
+	public DvdDto getData2(int basket_num) {
+		DvdDto dvdDto = session.selectOne("basket.getData2", basket_num);
+		return dvdDto;
+	}
 	
 }

@@ -22,7 +22,7 @@
 	</delete>
 	
 	<select id="getList" parameterType="string" resultType="dvdDto">
-		SELECT dv.num, dv.title, dv.price, dv.savefilename, bs.regdate
+		SELECT bs.basket_num, dv.num, dv.title, dv.price, dv.savefilename
 		FROM (SELECT * FROM dvd_basket WHERE id = #{id} AND buy = 0) bs, dvd dv
 		WHERE dv.num = bs.dvd_num
 	</select>
@@ -33,5 +33,11 @@
 		WHERE id=#{id}
 		AND dvd_num=#{dvd_num}
 		AND buy=#{buy}
+	</select>
+	
+	<select id="getData2" parameterType="int" resultType="dvdDto">
+		SELECT dv.num, dv.title, dv.price, dv.savefilename, bs.count
+		FROM (SELECT * FROM dvd_basket WHERE basket_num=#{basket_num}) bs, dvd dv
+		WHERE dv.num = bs.dvd_num
 	</select>
 </mapper>

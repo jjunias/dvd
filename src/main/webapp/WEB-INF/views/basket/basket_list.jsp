@@ -18,21 +18,7 @@
 		color: #212121;
 		width: 20%;
 	}
-	
-	.basket_head_list{
-		float:right;
-		list-style: none;
-		margin-left: 50px;
-		text-align: right;
-		font-wight: bold;
-		width: 80%;
-	}
-	
-	.basket_head_list li{
-		display: inline;
-		font-size: 15px;
-		margin: 3px;
-	}
+
 	.thumbnail{
 		width: 20%;
 	}
@@ -48,6 +34,13 @@
 	}
 	input[type="checkbox"]{
 		width: 50px;
+	}
+	
+	.basket_no h1{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin: 100px 0 100px 0;
 	}
 </style>
 </head>

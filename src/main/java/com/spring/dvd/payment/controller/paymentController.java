@@ -52,7 +52,7 @@ public class paymentController {
 	}
 	
 	@RequestMapping("/users/complete_pay.do")
-	public void complete(String scroll, @RequestParam List<Integer> list,@RequestParam List<Integer> list2, HttpSession session ,Model model){
+	public void complete(String scroll, @RequestParam List<Integer> list, @RequestParam List<Integer> list2, @RequestParam List<Integer> list3, HttpSession session ,Model model){
 		String id = (String) session.getAttribute("id");
 		List<BasketDto> dtoList =  new ArrayList<BasketDto>();
 		BasketDto dto = new BasketDto();
@@ -60,7 +60,6 @@ public class paymentController {
 		for(int i=0;i<list.size();i++){
 			dto.setDvd_num((Integer) list.get(i));
 			dto.setCount((Integer) list2.get(i));
-			dto.setBuy(0);
 			basketService.update(dto);
 			dtoList.add(i, dto);
 		}

@@ -10,4 +10,5 @@ public interface BasketService {
 	public int delete(BasketDto dto);
 	public int update(BasketDto dto);
 	public List<DvdDto> getList(String id);
+	public DvdDto getData2(int basket_num);
 }

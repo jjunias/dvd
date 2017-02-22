@@ -40,4 +40,9 @@ public class BasketServiceImpl implements BasketService{
 		List<DvdDto> list = basketDao.getList(id);
 		return list;
 	}
+
+	@Override
+	public DvdDto getData2(int basket_num) {
+		return null;
+	}
 }

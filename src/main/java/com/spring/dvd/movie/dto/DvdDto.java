@@ -18,10 +18,11 @@ public class DvdDto extends GenericDto{
     private String regdate; //등록 일자
     
     private int dvd_num; //dvd num 사용
+    private int count;
     public DvdDto(){}//defalut 생성자
 
 	public DvdDto(int num, String national, String genre, String title, String actor, String content, String production,
-			int price, String trailer, float grade, int views, String regdate,int dvd_num) {
+			int price, String trailer, float grade, int views, String regdate,int dvd_num, int count) {
 		this.num = num;
 		this.national = national;
 		this.genre = genre;
@@ -35,6 +36,7 @@ public class DvdDto extends GenericDto{
 		this.views = views;
 		this.regdate = regdate;
 		this.dvd_num = dvd_num;
+		this.count = count;
 	}
 
 	public int getNum() {
@@ -139,5 +141,13 @@ public class DvdDto extends GenericDto{
 
 	public void setDvd_num(int dvd_num) {
 		this.dvd_num = dvd_num;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 }

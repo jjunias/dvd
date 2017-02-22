@@ -75,6 +75,7 @@
 					</div>
 
 					<input type="hidden" class="hidden_num" value="${tmp.num }"/>
+					<input type="hidden" class="hidden_basket_num" value="${tmp.basket_num }" />
 					<div class="col-xs-8 cart-table-col">
 						<table class="table cart-table-info">
 							<thead>
@@ -293,12 +294,14 @@
 	var length = "${fn:length(basket_list)}";
 	var list = [];
 	var list2 = [];
+	var list3 = [];
 	function cart_payment(){
 		for(var i=0;i<length;i++){
 			list[i] = $(".hidden_num").eq(i).val();
 			list2[i] = $(".cart-amount").eq(i).val();
+			list3[i] = $(".hidden_basket_num").eq(i).val();
 		};
-		location.href="complete_pay.do?scroll=complete"+"&list="+list+'&list2='+list2;
+		location.href="complete_pay.do?scroll=complete"+"&list="+list+'&list2='+list2+'&list3='+list3;
 	};
 </script>
 </body>

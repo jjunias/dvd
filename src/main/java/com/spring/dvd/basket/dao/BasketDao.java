@@ -12,4 +12,5 @@ public interface BasketDao {
 	public int update(BasketDto dto);
 	public List<DvdDto> getList(String id);
 	public BasketDto getData(BasketDto dto);
+	public DvdDto getData2(int basket_num);
 }

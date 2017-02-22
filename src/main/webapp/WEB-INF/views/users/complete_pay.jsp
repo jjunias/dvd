@@ -62,8 +62,16 @@
 					<thead>
 						<tr>
 							<th></th>
+							<th></th>
+							<th>제목</th>
+							<th>가격</th>
 						</tr>
 					</thead>
+					<tbody>
+						<tr>
+							
+						</tr>
+					</tbody>
 				</table>
 			</div>
 			
