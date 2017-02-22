@@ -75,7 +75,7 @@
 					</div>
 
 					<input type="hidden" class="hidden_num" value="${tmp.num }"/>
-					<input type="hidden" class="hidden_basket_num" value="${tmp.basket_num }" />
+					<input type="hidden" class="hidden_basket_num" value="${tmp.basket_num }"/>
 					<div class="col-xs-8 cart-table-col">
 						<table class="table cart-table-info">
 							<thead>

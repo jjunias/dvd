@@ -11,7 +11,7 @@
 		SET buy=1, count=#{count}, regdate=SYSDATE
 		WHERE id=#{id}
 		AND dvd_num=#{dvd_num}
-		AND buy=#{buy}
+		AND buy=0
 	</update>
 	
 	<delete id="delete" parameterType="basketDto">

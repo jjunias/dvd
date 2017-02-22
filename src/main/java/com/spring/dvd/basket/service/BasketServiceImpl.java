@@ -43,6 +43,7 @@ public class BasketServiceImpl implements BasketService{
 
 	@Override
 	public DvdDto getData2(int basket_num) {
-		return null;
+		DvdDto dvdDto = basketDao.getData2(basket_num);
+		return dvdDto;
 	}
 }

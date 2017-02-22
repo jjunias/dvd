@@ -26,6 +26,7 @@
 	}
 	
 	.com_btail{
+		margin-top: 100px;
 		border-bottom: 3px solid #5D5D5D;
 	}
 	.com_btail p{
@@ -36,12 +37,17 @@
 	
 	.com_fgroup{
 		text-align: center;
-		margin-top: 30px;
+		margin: 20px 0;
 	}
 	
 	.com_fgroup .btn{
 		text-align: center;
-		margin: 30px 5px;
+		margin: 20px 5px;
+	}
+	
+	.basket_img{
+		width:100px;
+		height:150px;
 	}
 </style>
 </head>
@@ -62,28 +68,33 @@
 					<thead>
 						<tr>
 							<th></th>
-							<th></th>
 							<th>제목</th>
 							<th>가격</th>
+							<th>수량</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							
-						</tr>
+						<c:forEach var="tmp" items="${dtoList}">
+							<tr>
+								<td><img class="basket_img" src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" class="thumbnail"/></td>
+								<td>${tmp.title }</td>
+								<td>${tmp.price }</td>
+								<td>${tmp.count }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 			
 			<div class="com_btail">
 				<p>계속 결제를 원하시면 <strong>장바구니</strong> 버튼을,</p>
-				<p>더 많은 상품을 보시려면 <strong>상품보기</strong> 버튼을 눌러주세요</p>
+				<p>구매 내역을 보시려면 <strong>구매내역</strong> 버튼을 눌러주세요</p>
 			</div>
 		</div>
 		
 		<div class="com_fgroup">
 			<button class="btn btn-default">장바구니</button>
-			<button class="btn btn-default">상품보기</button>
+			<button class="btn btn-default">구매내역</button>
 		</div>
 	</div>
 	

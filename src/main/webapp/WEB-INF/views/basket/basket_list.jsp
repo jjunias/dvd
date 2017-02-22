@@ -30,7 +30,12 @@
 		height:150px;
 	}
 	.btn_float{
-		float:right;
+		text-align: center;
+		margin: 20px 0;
+	}
+	.btn_float .btn{
+		text-align: center;
+		margin: 20px 5px;
 	}
 	input[type="checkbox"]{
 		width: 50px;
@@ -68,6 +73,9 @@
 						<tr>
 							<td class="checkbox_td">
 								<input type="checkbox" name="check_sub" value="${tmp.num }"/>
+							</td>
+							<td>
+								<input type="hidden" name="basket_num" value="${tmp.basket_num }"/>
 							</td>
 							<td><img class="basket_img" src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}" class="thumbnail"/></td>
 							<td>${tmp.title }</td>
