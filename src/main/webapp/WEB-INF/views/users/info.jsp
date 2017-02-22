@@ -47,8 +47,8 @@
 	<div class="info-formBox">
 		<div class="updateTop">
 			<div class="info_menu">
-				<div class="col-xs-3"><a href="">내 정보</a></div>
-				<div class="col-xs-3"><a href="">비밀번호 변경</a></div>
+				<div class="col-xs-3"><a href="/dvd/users/info.do">내 정보</a></div>
+				<div class="col-xs-3"><a href="/dvd/users/private/password_form.do?type=views">비밀번호 변경</a></div>
 				<div class="col-xs-3"><a href="">구매내역</a></div>
 				<div class="col-xs-3"><a href="">댓글보기</a></div>
 			</div>
