@@ -39,24 +39,24 @@
 	}
 	.txtBox{
 		float:left;
-		margin-top:30px;
+		margin-top : -10px;
 		margin-left:5%;
-		width:50%;
+		width:60%;
 		font-size:16px;
 
 	}
 	.buy_btn{
-		margin-right:5%;
+		margin-right:2%;
 	}
 	.view_list{
 		background-color: #232323;
-		width:40%;
+		width:60%;
 		height:50px;
 		border-radius:25px;
 		font-size: 17px;
 		padding-top:10px;
 		margin-top:10px;
-		margin-left:30%;
+		margin-left:20%;
 	}
 	.view_list a{
 		color:white;
@@ -88,6 +88,29 @@
 		margin-right:10%;
 		float:right;
 	}
+	@media(max-width:760px){
+		.view_list{
+			display:none !important;
+		}
+		iframe {
+			height:200px;
+		}
+		.imgBox{
+			width:30% !important;
+			margin-left: 3% !important; 
+		}
+	}
+	@media(max-width:400px){
+		.txt_national{
+			display: none;
+		}
+		.imgBox{
+			height:300px; 
+		}
+		.box{
+			height:400px;
+		}
+	}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -101,16 +124,16 @@
 				<button class="btn btn-warning dvd_update" onclick="location.href='admin/update_form.do?num=${dvd.num}&type=data'">수정</button>
 			</c:if>
 			<div class="imgBox">
-				<img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}" onclick="location.href='detail_form.do?num=${dvd.num}'"/>
+				<img src="${pageContext.request.contextPath }/upload/${dvd.saveFileName}"/>
 			</div>
 			<div class="txtBox">
-				<h2>[
-					<c:if test="${dvd.national eq 'domestic' }"> 국내 영화
+				<h2 class="txt_national">[
+					<c:if test="${dvd.national eq 'domestic' }">국내영화
 					</c:if>
-					<c:if test="${dvd.national eq 'overseas' }"> 해외 영화
+					<c:if test="${dvd.national eq 'overseas' }">해외영화
 					</c:if>
-					] ${dvd.title}</h2>
-				<hr/>
+					] ${dvd.title}
+				</h2><hr/>
 				<div class="star"></div>				
 				<div><strong>
 					<br/>
@@ -121,19 +144,22 @@
 					</strong>
 				</div>
 				<hr/>
-				<button class="btn btn-success buy_btn">구매 하기</button>
-				<button class="btn btn-warning" onclick="basketBtn(${dvd.num })">장바구니 담기</button>
+				<button class="btn btn-success buy_btn">구매</button>
+				<button class="btn btn-warning" onclick="basketBtn(${dvd.num })">장바구니</button>
 			</div>
 		</div>
-		<div class="view_list">
-			<span><a href="#box_trailer" style="margin-left:20%">동 영 상</a> |</span>
-			<span><a href="#box_content">줄 거 리</a> |</span>
-			<span><a href="#rating">평 점/리 뷰</a> |</span>
-			<span><a href="#qna">Q & A</a></span>
-		</div>
+		<table class="view_list">
+			<tr>
+				<td width="10%"></td>
+				<td width="20%"><a href="#box_trailer">동 영 상</a></td>
+				<td width="25%"><a href="#box_content">줄 거 리</a></td>
+				<td width="25%"><a href="#rating">평 점/리 뷰</a></td>
+				<td width="20%"><a href="#qna">Q & A</a></td>
+			</tr>
+		</table>
 		<div id="box_trailer">
 			<h3>동 영 상</h3>
-			<iframe width="90%" height="500" src="https://www.youtube.com/embed/${dvd.trailer}" frameborder="0" allowfullscreen></iframe>
+			<iframe class="iframe" width="90%" height="400" src="https://www.youtube.com/embed/${dvd.trailer}" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<div id="box_content">
 			<h3>줄거리</h3>

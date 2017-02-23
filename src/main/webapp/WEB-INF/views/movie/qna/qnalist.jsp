@@ -52,21 +52,37 @@
 	.q_Update{
 		display: none;
 	}
+	.qna_response{
+		display:none;
+	}
+	@media(max-width:760px){
+	
+		.table_menu,.qna_menu{
+			display: none;
+		}
+		.qna_response{
+			display:table-row;
+		}
+		.qna_writeBox{
+			width:80% !important;
+			margin-left: 10% !important;
+		}
+	}
 </style>
 <div id="box_qna">
 	<h3 id="qna">Q & A</h3>
 	<table class="table qna_table">
 		<thead>
-			</tr>
+			<tr class="table_menu">
 				<th style="width:20%"><strong>작성자</strong></th>
-				<th style="width:45%">제목</th>
+				<th style="width:35%">제목</th>
 				<th style="width:20%">답변 유무</th>
-				<th style="width:10%">등록일</th>
+				<th style="width:25%">등록일</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="tmp" items="${qnaList }" varStatus="status">
-				<tr>
+				<tr class="qna_menu">
 					<td>${tmp.qna_writer }</td>
 					<td style="cursor: pointer" onclick="showcontent('${status.count}')">${tmp.qna_title}</td>
 					<td>
@@ -81,6 +97,24 @@
 					</td>
 					<td>${tmp.regdate }</td>
 				</tr>
+				<tr class="qna_response">
+					<td>${tmp.qna_writer }</td>
+					<td style="cursor: pointer" onclick="showcontent('${status.count}')">${tmp.qna_title}</td>
+					<td>${tmp.regdate }</td>
+				</tr>
+				<tr class="qna_response">
+					<td style="border-top:0px" colspan="2"></td>
+					<td style="border-top:0px">
+						<c:choose>
+							<c:when test="${tmp.qna_answer eq null }">
+								<span>미답변</span>
+							</c:when>
+							<c:otherwise>
+								<span>답변완료</span>
+							</c:otherwise>
+						</c:choose>
+					</td>
+				</tr >
 				<tr>
 					<td colspan="4" class="qa_content">
 						<div class="question">
@@ -143,7 +177,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<center>
+	<center style="margin-left:-10%">
 		<ul class="pagination">
 			<c:choose>
 				<c:when test="${startPageNum ne 1}">
@@ -205,7 +239,8 @@
 				$(".loginBar").stop().slideToggle(300);
 			}
 		}else{
-			$(".qna_writeBox").toggle();
+			$(".qna_writeBox").show();
+			$(".qna_writeBtn").hide();
 		}
 	});
 	//글자 길이
@@ -235,6 +270,7 @@
 	//글쓰기 닫기
 	$("#qna_cancel").click(function(){
 		$(".qna_writeBox").hide();
+		$(".qna_writeBtn").show();
 		$("#qna_title").val("");
 		$("#qna_content").val("");
 	});
