@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/source.jsp"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <!-- css 링크!! -->
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/catalog/catalog.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/catalog.css"/>
 <div class="main_img">
 	<img src="${pageContext.request.contextPath }/resources/images/main.png"/>
 </div>
@@ -205,4 +205,5 @@
 	</div>
 </div>
 <!--  javascript 링크 -->
-<script src="${pageContext.request.contextPath }/resources/js_each/catalog1.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js_each/catalog.js"></script>
+

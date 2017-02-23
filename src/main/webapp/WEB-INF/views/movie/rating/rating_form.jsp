@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
+	.rating_response{
+		display:none;
+	}
 	.rating_star,#input_star,.update_star{
 		width:130px !important;
 	}
@@ -20,12 +23,6 @@
 		width:100%;
 		height:170px;
 		outline: none;
-	}
-	.content_btn button{
-		width: 80%;
-		margin-bottom:10px;
-		margin-left:10%;
-		border-left:2px solid #E4E4E4;
 	}
 	#up_btn{
 	height:80px;
@@ -66,19 +63,38 @@
 	.btn_float{
 		float:right;
 	}
+	@media(max-width:760px){
+		.rating_star_response,#input_star,.update_star{
+			width:80px !important;
+		}
+		#input_star img,.rating_star_response img,.update_star img{
+			width:10px;
+			height:10px;
+		}
+		.table_menu,.rating{
+			display: none;
+		}
+		.rating_response{
+			display:table-row;
+		}
+		.rating_writeBox{
+			width:80% !important;
+			margin-left: 10% !important;
+		}
+	}
 }
 </style>
 <div id="box_rating">
-	<h3 id='rating'>평점 / 리뷰</h3>
+	<h3 id='rating'>평점/리뷰</h3>
 	<div class="rating_table">
 		<table class="table">
 		<thead>
-			<tr>
-				<th style="width:20%"><strong>작성자</strong></th>
-				<th style="width:35%">제목</th>
+			<tr class="table_menu">
+				<th style="width:15%"><strong>작성자</strong></th>
+				<th style="width:31%">제목</th>
 				<th style="width:20%">평점</th>
-				<th style="width:15%">추천수</th>
-				<th style="width:10%">등록일</th>
+				<th style="width:14%">추천수</th>
+				<th style="width:15%">등록일</th>
 			</tr>
 		</thead>
 		<tbody class="rating_body">
@@ -92,30 +108,42 @@
 					<td class="rating_recommend">${tmp.recommend}회</td>
 					<td class="rating_regdate">${tmp.regdate }</td>
 				</tr>
-				<tr class="content_tr">
-					<td colspan="4" class="rating_content">
-						<textarea readonly="readonly" name="rating_content" class="rating_content">${tmp.content}</textarea>
+				<tr class="rating_response">
+					<td style="width:20%">${tmp.writer }</td>
+					<td style="width:60%" colspan="3" onclick="open_content('${status.count}')" style="cursor:pointer;">${tmp.title}</td>
+					<td style="width:20%" class="rating_recommend_response">${tmp.recommend}회</td>
+				</tr>
+				<tr class="rating_response">
+					<td style="width:20%;border-top:0px"></td>
+					<td style="width:40%;border-top:0px" colspan="2" class="rating_score"><span class="scores" style='display:none'>${tmp.score}</span>
+						<div class="rating_star_response" ></div>
 					</td>
-					<td class="content_btn">
-						<c:if test="${id eq tmp.writer}">
-							<button class="btn update_toggleBtn btn-default" onclick="update_toggleBtn(${status.count})">수정</button>
-							<button class="btn btn-default" onclick="ratingDelete(${tmp.num})" >삭제</button>
-						</c:if>
-						<button class="btn btn-default" onclick="up_btn('${status.count}','${tmp.num}')">
-							<span class="glyphicon glyphicon-thumbs-up" style="font-size:20px;color:darkblue"></span>
-						</button>
+					<td  style="width:40%;border-top:0px" colspan="2" class="rating_regdate">${tmp.regdate }</td>
+				</tr>
+				<tr class="content_tr">
+					<td  colspan="5" class="rating_content">
+						<textarea readonly="readonly" name="rating_content" class="rating_content">${tmp.content}</textarea>
+						<div class="btn_float">
+							<c:if test="${id eq tmp.writer}">
+								<button class="btn update_toggleBtn btn-default" onclick="update_toggleBtn('${status.count}')">수정</button>
+								<button class="btn btn-default" onclick="ratingDelete('${tmp.num}')" >삭제</button>
+							</c:if>
+							<button class="btn btn-default" onclick="up_btn('${status.count}','${tmp.num}')">
+								<span class="glyphicon glyphicon-thumbs-up" style="font-size:20px;color:darkblue"></span>
+							</button>
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<c:if test="${id eq tmp.writer}">
-					<td colspan="4" class="rating_updateWrite">
+					<td colspan="5" class="rating_updateWrite">
 						<div>     
 							<div class="rating_UpdatewriteBox form-group">
 								<form class="rating_Updateform">
 									<input type="hidden" name="num" value="${tmp.num}" />
 									<div class="form-group">
 										<label class="control-label" for="title">제목:</label>
-										<input class="form-control rating_UpdatetitleWrite" type="text" name="title" id="title" value="${tmp.title}"/>
+										<input class="form-control rating_UpdatetitleWrite"  maxlength="10" size="10" type="text" name="title" id="title" value="${tmp.title}"/>
 									</div>
 									<label class="control-label" for="score">평점:</label>	
 									<div class="update_star"></div>
@@ -138,7 +166,7 @@
 		</tbody>
 		</table>
 	</div>
-	<center>
+	<center style="margin-left:-10%">
 		<ul class="pagination">
 				<c:choose>
 					<c:when test="${pagingRating.startPageNum ne 1}">
@@ -175,7 +203,7 @@
 				<div class="form-group">
 					<input type="hidden" name="dvd_num" value="${dvd.num}"/>
 					<label class="control-label" for="title">제목:</label>
-					<input class="form-control rating_titleWrite" type="text" name="title" id="title"/>
+					<input class="form-control rating_titleWrite" maxlength="10" size="10" type="text" name="title" id="title"/>
 				</div>
 				<label class="control-label" for="score">평점:</label>	
 				<div id="input_star"></div>
@@ -207,9 +235,7 @@
 				data:{"rating_num":num},
 				success:function(data){
 					if(data == 1){
-						var preCommend = $(".rating_recommend").eq(count-1).text();
-						var commend =parseInt(preCommend)+1;
-						$(".rating_recommend").eq(count-1).text(commend+"회");
+						location.reload();
 					}else{
 						alert("이미 공감한 글 입니다.");
 					}
@@ -232,7 +258,12 @@
 		score : 0
 	});
 	//list 별
-	for(var i=0;i<5;i++){	
+	for(var i=0;i<5;i++){
+		$(".rating_star_response").eq(i).raty({
+			half : true,
+			score : $(".scores").eq(i).text(),
+			readOnly: true
+		});
 		$('.rating_star').eq(i).raty({
 			half : true,
 			score : $(".scores").eq(i).text(),
@@ -279,12 +310,14 @@
 				$(".loginBar").stop().slideToggle(300);
 			}
 		}else{
-			$(".rating_writeBox").toggle();
+			$(".rating_writeBox").show();
+			$(".rating_writeBtn").hide();
 		}
 	});
 	//글쓰기 취소(초기화)
 	$("#rating_cancel").click(function(){
 		$(".rating_writeBox").hide();
+		$(".rating_writeBtn").show();
 		$('#input_star').raty({
 			half : true,
 			score : 0
