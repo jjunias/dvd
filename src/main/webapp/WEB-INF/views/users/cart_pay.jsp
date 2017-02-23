@@ -14,9 +14,9 @@
 <body>
 <div class="content">
 	<div class="cart-content_box">
-		<div class="col-sm-7 col-xs-12">
+		<div class="col-md-7 col-sm-12 col-xs-12">
 			<div class="car_info">
-				<h3>주문자 정보</h3>
+				<h3 class="res_h3">주문자 정보</h3>
 				<div class="line_area"></div><br/><br/>
 				<div class="form-group">
 					<label for="buy_name" class="control-label control-label-cart cart-buy-name">주문자 이름</label>
@@ -45,7 +45,7 @@
 			<div class="shipping">
 				<div class="line_area"></div><br/>
 				<div class="cart-shippingAddr"> 
-					<h3>배송지 정보</h3><br/>
+					<h3 class="res_h3 res_h3_second">배송지 정보</h3><br/>
 					<button class="btn btn-default cart-shippingBtn">주문자 정보와 동일</button>
 				</div>
 				<div class="form-group">
@@ -56,52 +56,85 @@
 					<label for="shipping_phone" class="control-label control-label-cart">휴대전화</label>
 					<input type="text" class="form-control form-control-cart cart-shipping-phone" name="shipping_phone"  id="shipping_phone"  /><br/>
 				</div>
-				<div class="form-group">
+				<div class="form-group addrRelative">
 					<label for="addr" class="control-label control-label-cart">우편번호</label>
-					<input type="text"  class="form-control form-control-cart cart-addrNum"  name="addrNum"  id="addrNum" placeholder="우편번호">
-					<input type="button"  class="btn btn-default"  id="postCodeBtn" onclick="postCode()" value="우편번호 찾기"><br>
+					<input type="button"  class="btn btn-default"  id="postCodeBtn" onclick="postCode()" value="우편번호 찾기">
+					<input type="text"  class="form-control form-control-cart cart-addrNum"  name="addrNum"  id="addrNum" placeholder="우편번호">					
 					<input type="text"  class="form-control form-control-cart cart-addr"  name="addr"  id="addr" placeholder="주소">
 					<input type="text"  class="form-control form-control-cart cart-addrDetail"  name="addrDetail"  id="addrDetail" placeholder="상세주소">
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-5 col-xs-12 cart-col_right">
+		<div class="col-md-5 col-sm-12 col-xs-12 cart-col_right">
 			<h3>주문상품 정보</h3>  
 			<div class="payCart-cart">
 				<c:forEach var="tmp" items="${basket_list }">
 				<div class="cart-list-box">
-					<div class="col-xs-4 cart_pay_img">
-						<a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
+					<div class="desc_cart_pay_table">
+						<div class="col-xs-4 cart_pay_img">
+							<a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
+						</div>
+						<input type="hidden" class="hidden_num" value="${tmp.num }"/>
+						<div class="col-xs-8 cart-table-col">
+							<table class="table cart-table-info">
+								<thead>
+									<tr>
+										<td>장르</td>
+										<td>제목</td>
+										<td>제작년도</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>${tmp.genre }</td>
+										<td>${tmp.title }</td>
+										<td>${tmp.production }</td>
+									</tr>
+								</tbody>
+							</table>
+							<br/>
+							<div class="dvd_priceBox">
+								<div class="dvd_amount">
+									수량:<select class="form-control form-control-cart cart-amount" name="amount" >
+											<c:forEach begin="1" end="9" var="i">
+												<option  name="option" value="${i }">${i }</option>
+											</c:forEach>
+										</select>
+									<div class="cart-dvd_price">가격 : <strong>${tmp.price }</strong>원</div>
+								</div>
+							</div>
+						</div>
 					</div>
-
-					<input type="hidden" class="hidden_num" value="${tmp.num }"/>
-					<input type="hidden" class="hidden_basket_num" value="${tmp.basket_num }"/>
-					<div class="col-xs-8 cart-table-col">
-						<table class="table cart-table-info">
-							<thead>
-								<tr>
-									<td>장르</td>
-									<td>제목</td>
-									<td>제작년도</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>${tmp.genre }</td>
-									<td>${tmp.title }</td>
-									<td>${tmp.production }</td>
-								</tr>
-							</tbody>
-						</table>
-						<br/>
-						<div class="dvd_priceBox">
-							<div class="dvd_amount">
-								수량:<select class="form-control form-control-cart cart-amount" name="amount" >
-										<c:forEach begin="1" end="9" var="i">
-											<option  name="option" value="${i }">${i }</option>
-										</c:forEach>
-									</select>
-								<div class="cart-dvd_price">가격 : <strong>${tmp.price }</strong>원</div>
+					<div class="res_cart_pay_table">
+						<div class="col-xs-4 cart_pay_img">
+							<a href="/dvd/movie/detail_form.do?num=${tmp.num }"><img src="${pageContext.request.contextPath }/upload/${tmp.saveFileName}"/></a>
+						</div>
+						<input type="hidden" class="hidden_num" value="${tmp.num }"/>
+						<div class="col-xs-8 cart-table-col">
+							<table class="table cart-table-info">
+								<thead>
+									<tr>
+										<td>장르</td>
+										<td>제목</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>${tmp.genre }</td>
+										<td>${tmp.title }</td>
+									</tr>
+								</tbody>
+							</table>
+							<br/>
+							<div class="dvd_priceBox">
+								<div class="dvd_amount">
+									수량:<select class="form-control form-control-cart cart-amount" name="amount" >
+											<c:forEach begin="1" end="9" var="i">
+												<option  name="option" value="${i }">${i }</option>
+											</c:forEach>
+										</select>
+									<div class="cart-dvd_price">가격 : <strong>${tmp.price }</strong>원</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -157,7 +190,6 @@
 						</li>
 					</ul>			
 				</div>
-				<br/>
 				<button class="btn btn-info cart-paymentBtn btn-lg" onclick="cart_payment()">결제하기</button>
 			</div>  
 		</div>
