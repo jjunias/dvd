@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script> <!-- 스마트 에디터 -->
 <jsp:include page="/WEB-INF/views/source.jsp"/><!-- jquery , boostrap -->
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/movie/insert.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css_each/movie/insert1.css"/>
 <!DOCTYPE html>
 <html>
 <style>
@@ -16,6 +16,15 @@
 	  overflow: hidden;
 	  clip:rect(0,0,0,0);
 	  border: 0;
+	}
+	.label_width{
+		width:70px;
+	}
+	@media(max-width:860px){
+		
+	}
+	.hide{
+		border:0px;
 	}
 </style>
 <head>
@@ -34,7 +43,7 @@
 		</div><br/>
 		<form class="form-horizontal" action="update.do" method="post" enctype="multipart/form-data">
 			<div class="form-group">	
-				<label class="control-label" for="genre">장 르:</label>
+				<label class="control-label label_width" for="genre">장 르:</label>
 				<select class="form-control input" name="genre"> 
 					<option value="" >장르 선택</option>
 					<option value="action">액션</option>
@@ -44,26 +53,27 @@
 					<option value="darama">드라마</option>
 					<option value="etc">기타</option>
 				</select><br/>
-				<label class="control-label" for="title">제 목:</label>
+				<label class="control-label label_width" for="title">제 목:</label>
 				<input class="form-control input" type="text" name="title" id="title" value="${dvd.title }"/><br/>
-				<label class="control-label" for="production">개 봉 일:</label>
+				<label class="control-label label_width" for="production">개 봉 일:</label>
 				<input class="form-control input" type="text" name="production" id="production" value="${dvd.production }"/><br/>
-				<label class="control-label" for="actor">배 우:</label>
+				<label class="control-label label_width" for="actor">배 우:</label>
 				<input class="form-control input" type="text" name="actor" id="actor" value="${dvd.actor }" /><br/>
-				<label class="control-label" for="price">가 격:</label>
+				<label class="control-label label_width" for="price">가 격:</label>
 				<input class="form-control input" type="text" numberonly="true" name="price" id="price" value="${dvd.price }"/><br/>
-				<label class="control-label" for="trailer">동영상:</label>
+				<label class="control-label label_width" for="trailer">동영상:</label>
 				<input class="form-control input" type="text" name="trailer" id="trailer" placeholder="https://youtu.be/((이곳만 입력))" value="${dvd.trailer}"/><br/>
-				<label class="control-label" for="picture">사진 :</label>
+				<label class="control-label label_width" for="picture">사진 :</label>
 				<input type="hidden" name="national" value="${param.national}" />
 				<div class="filebox">
-					<label for="ex_filename" class="ex_filename">업로드</label>
+					<label for="ex_filename" class="ex_filename">업로드</label><br/>
+					<span class="control-label label_width" ><strong>파일명:</strong></span>
 					<input class="upload-name form-control input" type="text" id="upload_" value="${dvd.saveFileName }" disabled="disabled"/> 
 					<input type="file" id="ex_filename" accept=".gif,.jpg,.png" name="myFile" value="hi" class="upload-hidden"/>
 				</div>
 			</div>
 			<div class="naver">
-				<textarea name="content" id="content" style="width:766px;height:412px;display:none">${dvd.content }</textarea>
+				<textarea name="content" id="content" style="width:95%;height:412px;display:none">${dvd.content }</textarea>
 			</div>
 			<div class="btn_div">
 				<input class="btn btn-default" type="button" onclick="submitContents(this);" value="수정" />
